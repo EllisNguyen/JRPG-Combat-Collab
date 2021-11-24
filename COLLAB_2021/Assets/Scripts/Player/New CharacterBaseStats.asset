@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5afd9ceaf690e9a4a8e9ab4c319d8e5a, type: 3}
+  m_Name: New CharacterBaseStats
+  m_EditorClassIdentifier: 
+  charName: 
+  health: 6
+  mana: 0
+  physicalAtkDmg: 0
+  specialAtkDmg: 0
+  physicalDef: 0
+  specialDef: 0
+  speed: 0
+  critChance: 0
+  critDmg: 0
+  elementalRes: 0
+  exp: 0
+  eles: 4
