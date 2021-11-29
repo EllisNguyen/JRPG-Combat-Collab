@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e018c152a96b414ea69b8e15bd6a866, type: 3}
-  m_Name: TEST 2
+  m_Name: TEST 3
   m_EditorClassIdentifier: 
   itemName: test 3
   itemDescription: test 3 item is cool

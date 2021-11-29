@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Sirenix.OdinInspector;
 
+[TypeInfoBox("This is the scriptable object and also a parent class for all  type of items.")]
 public class TestInvent_Panel : MonoBehaviour
 {
     [HideInInspector] public TestInvent_Item itemData;
 
     public bool IsUpdatingInterface { get; private set; }
 
-
+    #region struct stuff
     /// <summary>
     /// Get stat amount.
     /// </summary>
@@ -29,8 +31,6 @@ public class TestInvent_Panel : MonoBehaviour
         public int speed;
         public int critChance;
     }
-
-    private ItemStats stats;
 
     /// <summary>
     /// Get progress bar.
@@ -46,8 +46,9 @@ public class TestInvent_Panel : MonoBehaviour
         public Image critChance_Bar;
     }
 
-    [SerializeField] private StatBar bar;
-
+    /// <summary>
+    /// Declare all stat number UI.
+    /// </summary>
     [Serializable]
     public struct StatNumber
     {
@@ -59,14 +60,30 @@ public class TestInvent_Panel : MonoBehaviour
         public TextMeshProUGUI critChance_Num;
     }
 
+    #endregion
+
+    private ItemStats stats;
+
+    [ShowInInspector, PropertySpace(16)]
+
+    [Header("STAT VISUAL")]
+    [InfoBox("Visual stuff for item stat.")]
+    [SerializeField] private StatBar bar;
+
+    [ShowInInspector, PropertySpace(16)]
+
+    [InfoBox("Item display.")]
     [SerializeField] TextMeshProUGUI itemName;
     [SerializeField] TextMeshProUGUI itemDescription;
     [SerializeField] Image itemSprite;
 
+    [InfoBox("Number text for stat progress bar.")]
     [SerializeField] private StatNumber numTxt;
 
     public void SetStatsSmooth()
     {
+        //Do nothing if no data available.
+        //Might need to do something if something is not available.
         if (itemData == null) return;
 
         //Set item name and description.
@@ -90,7 +107,7 @@ public class TestInvent_Panel : MonoBehaviour
         SmoothFillAmount(bar.speed_Bar, (float)itemData.SPEED / 100);
         SmoothFillAmount(bar.critChance_Bar, (float)itemData.CRIT_CHANCE / 100);
 
-        //HARD CODE WARNING. (but these var are constant so writing code like this is fine)
+        //HARD CODE WARNING. (but these var are in constant number of var so writing code like this is fine)
         numTxt.physAtk_Num.text = "+" + itemData.PHYS_ATK.ToString();
         numTxt.physDef_Num.text = "+" + itemData.PHYS_DEF.ToString();
         numTxt.specAtk_Num.text = "+" + itemData.SPEC_ATK.ToString();
