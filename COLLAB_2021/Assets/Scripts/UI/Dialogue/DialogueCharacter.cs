@@ -12,17 +12,47 @@ public class DialogueCharacter : MonoBehaviour
 {
     //dialogue for this specific class
     public Dialogue dialogue;
+    bool isInRange = false;
+    [SerializeField] GameObject textPopUp;
 
-    //When this shpere is clicked initiate the dialogue
-    private void OnMouseDown()
+    //If player is in the trigger of the character, check for initiate dialogue input
+    private void OnTriggerEnter(Collider collider)
     {
-        InitiateDialogue();
+        if(collider.gameObject.tag == "Player")
+        {
+            isInRange = true;
+            textPopUp.SetActive(true);
+        }
     }
 
-    //Initiate the dialogue
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag =="Player")
+        {
+            isInRange = false;
+            textPopUp.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if(isInRange)
+        {
+            InitiateDialogue();
+        }
+    }
+
+
+    //Check for E to Initiate the dialogue
     //called in OnMouseDown()
     void InitiateDialogue()   
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            textPopUp.SetActive(false);
+        }
+        
     }
+    
 }

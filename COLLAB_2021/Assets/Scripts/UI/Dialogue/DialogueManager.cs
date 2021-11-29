@@ -42,20 +42,15 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
+        Dequeue();
+
     }
 
-    private void Update()
-    {
-        //Dequeue or Continue the conversation each time left mouse is clicked
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Dequeue();
-        }
-    }
+    
 
     //display the next sentence
     //called in Update()
-    void Dequeue()
+    public void Dequeue()
     {
 
         //Check if the end of the queue has been reached
