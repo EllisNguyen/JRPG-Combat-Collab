@@ -14,8 +14,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayName; //reference for name text
     [SerializeField] TextMeshProUGUI displayDialogue; //reference for dialogue text
     [SerializeField] Queue<string> sentences; //queue for sentences in a dialogue
-    
-    
+
+    public bool inDialogue = false;
 
 
 
@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         Dequeue();
+        inDialogue = true;
 
     }
 
@@ -73,5 +74,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         displayDialogue.text = "end";
+        inDialogue = false;
     }
 }
