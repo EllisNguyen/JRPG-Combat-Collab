@@ -14,8 +14,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI displayName; //reference for name text
     [SerializeField] TextMeshProUGUI displayDialogue; //reference for dialogue text
     [SerializeField] Queue<string> sentences; //queue for sentences in a dialogue
-    
-    
+
+    public bool inDialogue = false;
 
 
 
@@ -42,20 +42,16 @@ public class DialogueManager : MonoBehaviour
             sentences.Enqueue(sentence);
         }
 
+        Dequeue();
+        inDialogue = true;
+
     }
 
-    private void Update()
-    {
-        //Dequeue or Continue the conversation each time left mouse is clicked
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Dequeue();
-        }
-    }
+    
 
     //display the next sentence
     //called in Update()
-    void Dequeue()
+    public void Dequeue()
     {
 
         //Check if the end of the queue has been reached
@@ -78,5 +74,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         displayDialogue.text = "end";
+        inDialogue = false;
     }
 }
