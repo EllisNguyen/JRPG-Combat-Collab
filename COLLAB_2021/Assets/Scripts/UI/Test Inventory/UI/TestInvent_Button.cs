@@ -6,7 +6,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class TestInvent_Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -17,16 +19,19 @@ public class TestInvent_Button : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     [SerializeField] TestInvent_Panel inventoryPanel;
     [SerializeField] TestInvent_Item buttonItem;
+    [SerializeField] TestInventory_Ui baseInventory;
+
+    [SerializeField] Image itemSprite;
+    [SerializeField] TextMeshProUGUI countText;
 
     void Awake()
     {
-        //Don't do this :(
+        // :(
         inventoryPanel = (TestInvent_Panel)FindObjectOfType(typeof(TestInvent_Panel));
+        baseInventory = (TestInventory_Ui)FindObjectOfType(typeof(TestInventory_Ui));
 
         button = gameObject.GetComponent<Button>();
-        button.transform.localRotation = Quaternion.identity;
-
-        
+        button.transform.localRotation = Quaternion.identity;     
     }
 
     /// <summary>
@@ -53,7 +58,7 @@ public class TestInvent_Button : MonoBehaviour, IPointerEnterHandler, IPointerEx
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
-        button.Select();
+        //button.Select();
         SelectButton();
     }
 
@@ -61,5 +66,12 @@ public class TestInvent_Button : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         inventoryPanel.itemData = buttonItem;
         inventoryPanel.SetStatsSmooth();
+        //baseInventory.HandleUpdate();
+    }
+
+    public void SetData(ItemSlott itemSlot)
+    {
+        itemSprite.sprite = itemSlot.ITEM.SPRITE;
+        countText.text = $"x{itemSlot.COUNT}";
     }
 }

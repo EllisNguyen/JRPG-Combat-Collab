@@ -91,29 +91,29 @@ public class TestInvent_Panel : MonoBehaviour
         itemDescription.text = itemData.DESCRIPTION;
         itemSprite.sprite = itemData.SPRITE;
 
-        //Get and set item stat value.
-        stats.physAtk = itemData.PHYS_ATK;
-        stats.physDef = itemData.PHYS_DEF;
-        stats.specAtk = itemData.SPEC_ATK;
-        stats.specDef = itemData.SPEC_DEF;
-        stats.speed = itemData.SPEED;
-        stats.critChance = itemData.CRIT_CHANCE;
+        ////Get and set item stat value.
+        //stats.physAtk = itemData.PHYS_ATK;
+        //stats.physDef = itemData.PHYS_DEF;
+        //stats.specAtk = itemData.SPEC_ATK;
+        //stats.specDef = itemData.SPEC_DEF;
+        //stats.speed = itemData.SPEED;
+        //stats.critChance = itemData.CRIT_CHANCE;
 
-        //Animate the stat bar. Look cool :)
-        SmoothFillAmount(bar.physAtk_Bar, (float)itemData.PHYS_ATK / 100);
-        SmoothFillAmount(bar.physDef_Bar, (float)itemData.PHYS_DEF / 100);
-        SmoothFillAmount(bar.specAtk_Bar, (float)itemData.SPEC_ATK / 100);
-        SmoothFillAmount(bar.specDef_Bar, (float)itemData.SPEC_DEF / 100);
-        SmoothFillAmount(bar.speed_Bar, (float)itemData.SPEED / 100);
-        SmoothFillAmount(bar.critChance_Bar, (float)itemData.CRIT_CHANCE / 100);
+        ////Animate the stat bar. Look cool :)
+        //SmoothFillAmount(bar.physAtk_Bar, (float)itemData.PHYS_ATK / 100);
+        //SmoothFillAmount(bar.physDef_Bar, (float)itemData.PHYS_DEF / 100);
+        //SmoothFillAmount(bar.specAtk_Bar, (float)itemData.SPEC_ATK / 100);
+        //SmoothFillAmount(bar.specDef_Bar, (float)itemData.SPEC_DEF / 100);
+        //SmoothFillAmount(bar.speed_Bar, (float)itemData.SPEED / 100);
+        //SmoothFillAmount(bar.critChance_Bar, (float)itemData.CRIT_CHANCE / 100);
 
-        //HARD CODE WARNING. (but these var are in constant number of var so writing code like this is fine)
-        numTxt.physAtk_Num.text = "+" + itemData.PHYS_ATK.ToString();
-        numTxt.physDef_Num.text = "+" + itemData.PHYS_DEF.ToString();
-        numTxt.specAtk_Num.text = "+" + itemData.SPEC_ATK.ToString();
-        numTxt.specDef_Num.text = "+" + itemData.SPEC_DEF.ToString();
-        numTxt.speed_Num.text = "+" + itemData.SPEED.ToString();
-        numTxt.critChance_Num.text = "+" + itemData.CRIT_CHANCE.ToString();
+        ////HARD CODE WARNING. (but these var are in constant number of var so writing code like this is fine)
+        //numTxt.physAtk_Num.text = "+" + itemData.PHYS_ATK.ToString();
+        //numTxt.physDef_Num.text = "+" + itemData.PHYS_DEF.ToString();
+        //numTxt.specAtk_Num.text = "+" + itemData.SPEC_ATK.ToString();
+        //numTxt.specDef_Num.text = "+" + itemData.SPEC_DEF.ToString();
+        //numTxt.speed_Num.text = "+" + itemData.SPEED.ToString();
+        //numTxt.critChance_Num.text = "+" + itemData.CRIT_CHANCE.ToString();
     }
 
     //Function that helps animate the fillamount image bar.

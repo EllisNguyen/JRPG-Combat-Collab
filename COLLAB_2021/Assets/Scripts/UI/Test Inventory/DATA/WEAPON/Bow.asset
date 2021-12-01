@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e018c152a96b414ea69b8e15bd6a866, type: 3}
-  m_Name: TEST 1
+  m_Script: {fileID: 11500000, guid: 68a1d681f459f0b43b3e7fb2eeb62a37, type: 3}
+  m_Name: Bow
   m_EditorClassIdentifier: 
-  itemName: test 1
-  itemDescription: cool description
+  itemName: Bow
+  itemDescription: Bow stuff shoot arrow stuff.
   itemSprite: {fileID: 21300000, guid: dbef0a76fe3974542888e09e324d1836, type: 3}
-  physAtk: 18
-  physDef: 76
-  specAtk: 77
-  specDef: 84
-  speed: 49
-  critChance: 8
+  physAtk: 7
+  physDef: 47
+  specAtk: 1
+  specDef: 18
+  speed: 10
+  critChance: 9
