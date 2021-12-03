@@ -1,6 +1,6 @@
 ///Author: Quan.TM
 ///Description: Hold the stats for characters and attributes.
-///Day created: 11/02/2021
+///Day created: 02/11/2021
 ///Last edited: 14/11/2021 - Phab Nguyen.
 using System.Collections;
 using System.Collections.Generic;

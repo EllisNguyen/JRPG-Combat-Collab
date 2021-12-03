@@ -1,3 +1,7 @@
+///Author: Quan.TM
+///Description: Option menu buttons functions.
+///Day created: 29/11/2021
+///Last edited: DD/MM/YYYY - editor name.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

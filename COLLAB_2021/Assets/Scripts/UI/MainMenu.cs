@@ -1,3 +1,7 @@
+///Author: Quan.TM
+///Description: Main menu buttons function.
+///Day created: 29/11/2021
+///Last edited: DD/MM/YYYY - editor name.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

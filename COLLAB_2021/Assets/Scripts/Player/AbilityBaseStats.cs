@@ -1,6 +1,6 @@
 ///Author: Quan.TM
 ///Description: Hold the stats for character abilities.
-///Day created: 11/02/2021
+///Day created: 02/11/2021
 ///Last edited: DD/MM/YYYY - editor name.
 using System.Collections;
 using System.Collections.Generic;
