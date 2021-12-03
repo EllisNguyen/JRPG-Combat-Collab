@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674648669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.07, y: 0.74, z: -0.85}
+  m_LocalPosition: {x: 3.14, y: 0.74, z: -0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 817180984}
   - component: {fileID: 817180982}
   - component: {fileID: 817180983}
+  - component: {fileID: 817180987}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -750,6 +751,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &817180987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817180981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674ad6d3b9246554ca61a044574881c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 674648674}
+  movementSpeed: 6
+  popupObject: {fileID: 7142250376991314112, guid: a8ab934fe50d0f34495c90d595313dc2, type: 3}
 --- !u!1 &828187726
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,8 +959,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976523274}
-  m_LocalRotation: {x: 0.28300282, y: -0.000000016502968, z: 0.0000000048694537, w: 0.9591191}
-  m_LocalPosition: {x: 7.07, y: 6.771, z: -10.18}
+  m_LocalRotation: {x: 0.28300282, y: 0.000000016502973, z: -0.000000004869455, w: 0.9591191}
+  m_LocalPosition: {x: 3.14, y: 6.771, z: -10.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 392138960}
@@ -982,6 +998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: {fileID: 2120401872}
   displayDialogue: {fileID: 1339525329}
+  inDialogue: 0
 --- !u!4 &1086232239
 Transform:
   m_ObjectHideFlags: 0
@@ -1274,8 +1291,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427363252}
-  m_LocalRotation: {x: 0.28300282, y: -0.000000016502968, z: 0.0000000048694537, w: 0.9591191}
-  m_LocalPosition: {x: 7.07, y: 6.771, z: -10.18}
+  m_LocalRotation: {x: 0.28300282, y: 0.000000016502973, z: -0.000000004869455, w: 0.9591191}
+  m_LocalPosition: {x: 3.14, y: 6.771, z: -10.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

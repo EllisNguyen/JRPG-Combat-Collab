@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
+    [SerializeField] GameObject popupObject;
+    private DamagePopup damagePopup;
 
     bool follow = true; //enables following player or not
 
@@ -50,6 +52,16 @@ public class EnemyMovement : MonoBehaviour
             FollowPlayer();// Execute if player is not colliding with the enemy
         }
 
+    }
+
+    private void OnMouseDown()
+    {
+        int damage = 50;
+        //instantiate popups and get their DamagePopup class
+        damagePopup = Instantiate(popupObject, transform.position, Quaternion.identity).GetComponent<DamagePopup>();
+
+        //Set the damage value the stated here
+        damagePopup.SetDamageText(damage);
     }
 
     private void OnTriggerEnter(Collider collision)
