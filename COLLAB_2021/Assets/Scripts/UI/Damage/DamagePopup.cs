@@ -8,18 +8,37 @@ using TMPro;
  * Summary:
  * Make damage pops up.
  * Bimzy Dev, 2021, How to make DAMAGE POPUPS in 5 Minutes! - Unity [online], https://www.youtube.com/watch?v=I2j6mQpCrWE&t=56s [accessed 12/03/2021]
+ * Notes:
+ * The damage popup object needs to be referenced and instantiate in the enemy code. Insert the following:
+ * Variables:
+ * [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
+
+    private DamagePopup damagePopup; //reference to the DamagePopup class
+
+    Function:
+    //pass the damage value through here
+    private void PopupValue(float damage)
+    {
+        
+        //instantiate popups and get their DamagePopup class
+        damagePopup = Instantiate(popupObject, transform.position, Quaternion.identity).GetComponent<DamagePopup>();
+
+        //Set the damage value the stated here
+        damagePopup.SetDamageText(damage);
+    }
  */
 
 public class DamagePopup : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI damageDisplay;
-    [SerializeField] float lifetime = 0.6f;
-    [SerializeField] float minDist = 2f;
-    [SerializeField] float maxDist = 3f;
+    [SerializeField] TextMeshProUGUI damageDisplay; //reference to the damage displayer
+    [SerializeField] float lifetime = 0.6f; //the amount of time the text will be around
+    [SerializeField] float minDist = 2f; //minimum starting distance
+    [SerializeField] float maxDist = 3f; //maximum starting distance
 
-    private Vector3 initialPos;
-    private Vector3 targetPos;
-    private float timer;
+    private Vector3 initialPos; //store the starting position of each popup
+    private Vector3 targetPos; //store the target position that each popup will move towards
+    private float timer; //start at 0 and act as the counter for the lifetime variable
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +67,10 @@ public class DamagePopup : MonoBehaviour
 
     }
 
+    //Called in Update()
+    /// <summary>
+    /// Adjust the pop-up according to the time
+    /// </summary>
     private void Timer()
     {
         //increase time based on delta time
@@ -73,8 +96,11 @@ public class DamagePopup : MonoBehaviour
         transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, Mathf.Sin(timer / lifetime));
     }
 
-    //Display value
-    public void SetDamageText(int damage)
+    /// <summary>
+    /// Set the text to be the damage value
+    /// </summary>
+    /// <param name="damage"></param>
+    public void SetDamageText(float damage)
     {
         damageDisplay.text = damage.ToString();
     }
