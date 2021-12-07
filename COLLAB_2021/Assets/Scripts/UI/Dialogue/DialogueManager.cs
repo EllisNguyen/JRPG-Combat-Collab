@@ -8,6 +8,8 @@ using TMPro; // included to access the components of TextMeshPro
  * Object: DialogueManager
  * Summary:
  * Handles dialogues
+ * Notes:
+ * Set the Continue button in DialogueCanvas On Click() to Dequeue() so that the conversation can progress
  */
 public class DialogueManager : MonoBehaviour
 {
@@ -17,7 +19,11 @@ public class DialogueManager : MonoBehaviour
 
     public bool inDialogue = false;
 
-
+    private void Awake()
+    {
+        displayName = GameObject.Find("Speaker").GetComponent<TextMeshProUGUI>();
+        displayDialogue = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
+    }
 
     // Start is called before the first frame update
     void Start()

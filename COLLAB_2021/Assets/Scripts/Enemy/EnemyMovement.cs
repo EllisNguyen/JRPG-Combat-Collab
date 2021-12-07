@@ -14,35 +14,11 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
-    [SerializeField] GameObject popupObject;
-    private DamagePopup damagePopup;
+    [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
+
+    private DamagePopup damagePopup; //reference to the DamagePopup class
 
     bool follow = true; //enables following player or not
-
-    //example of subscribing to event in GameManager
-   /* void Awake()
-    {
-        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-    }
-
-    private void GameManager_OnGameStateChanged(GameState currentState)
-    {
-
-
-        if (currentState == GameState.CombatPhase)
-        {
-            //Destroy this game object when it is combat phase
-            Destroy(this.gameObject);
-        }
-
-    }
-   */
-
 
     // Update is called once per frame
     void Update()
@@ -56,7 +32,12 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        int damage = 50;
+        PopupValue(100);
+    }
+
+    private void PopupValue(float damage)
+    {
+        
         //instantiate popups and get their DamagePopup class
         damagePopup = Instantiate(popupObject, transform.position, Quaternion.identity).GetComponent<DamagePopup>();
 

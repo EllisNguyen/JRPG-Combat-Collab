@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
             case GameState.UpInventory:
                 UpInventory();
                 break;
+            case GameState.Paused:
+                GamePaused();
+                break;
         }
     }
 
@@ -99,6 +102,11 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    private void GamePaused()
+    {
+        
+    }
 }
 
 
@@ -109,5 +117,6 @@ public enum GameState
     CombatPhase,
     Menu,
     UpInventory,
+    Paused,
 
 }
