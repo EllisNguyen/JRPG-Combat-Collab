@@ -2,17 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Heal : MonoBehaviour
+[CreateAssetMenu(menuName = "Item/Create new recovery item")]
+public class Item_Heal : ItemBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("HP restore")]
+    [SerializeField] int hpAmount;
+    [SerializeField] bool restoreMaxHp;
 
-    // Update is called once per frame
-    void Update()
+    [Header("PP restore")]
+    [SerializeField] int ppAmount;
+    [SerializeField] bool restoreMaxPp;
+
+    [Header("Status restore")]
+    [SerializeField] ConditionID status;
+    [SerializeField] bool recoverAllStatus;
+
+    [Header("Status restore")]
+    [SerializeField] bool revive;
+    [SerializeField] bool maxRevive;
+
+    public override bool Use(Character character)
     {
-        
+
+        return false;
+
     }
 }
