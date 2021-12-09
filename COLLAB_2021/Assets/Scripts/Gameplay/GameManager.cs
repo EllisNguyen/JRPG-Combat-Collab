@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameManagerInstance = this;
+        r_topDownMovement = FindObjectOfType<TopDownMovement>();
 
     }
 

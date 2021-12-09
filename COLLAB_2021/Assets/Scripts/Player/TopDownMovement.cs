@@ -23,7 +23,9 @@ public class TopDownMovement : MonoBehaviour
     //Creates an instance to reference
     private void Awake()
     {
-        
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
     }
     // Start is called before the first frame update
     void Start()
