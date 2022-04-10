@@ -5,17 +5,19 @@
 
 using System;
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerParty : MonoBehaviour
 {
-    [SerializeField] List<CharacterBaseStats> characters;
+    Character _character;
+    [SerializeField] List<Character> characters;
 
     public event Action OnUpdatedParty;
 
     //Property to expose character list.
-    public List<CharacterBaseStats> Characters
+    public List<Character> Characters
     {
         get
         {
@@ -23,7 +25,7 @@ public class PlayerParty : MonoBehaviour
         }
         set
         {
-            //Set value of the creature and invoke the updated UI.
+            //Set value of the character and invoke the updated UI.
             characters = value;
             OnUpdatedParty?.Invoke();
         }
@@ -31,7 +33,7 @@ public class PlayerParty : MonoBehaviour
 
     private void Awake()
     {
-        //Loop through each creature in the party (creatures list)
+        //Loop through each character in the party (character list)
         foreach (var character in characters)
         {
             //Init character stats number stuff.
@@ -39,25 +41,26 @@ public class PlayerParty : MonoBehaviour
         }
     }
 
-    public CharacterBaseStats GetHealthyCharacter()
+    public Character GetHealthyCharacter()
     {
         //Loop through list of characters and find the first one satisfy the HP>0 condition.
-        return characters.Where(x => x.health > 0).FirstOrDefault();
+        return characters.Where(x => x.HP > 0).FirstOrDefault();
     }
 
-    public void AddCcharacter(CharacterBaseStats newCharacter)
+    public void AddCharacter(Character newCharacter)
     {
         if (characters.Count < 6)
         {
             characters.Add(newCharacter);
 
-            //Invoke update creature party UI.
+            //Invoke update character party UI.
             OnUpdatedParty?.Invoke();
         }
-        else
-        {
-            //TODO: transfer the creature to inventory.
-        }
+    }
+
+    public static PlayerParty GetPlayerPartyComponent()
+    {
+        return FindObjectOfType<GameManager>().GetComponent<PlayerParty>();
     }
 
 }

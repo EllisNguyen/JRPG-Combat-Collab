@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5afd9ceaf690e9a4a8e9ab4c319d8e5a, type: 3}
+  m_Name: Mercedes
+  m_EditorClassIdentifier: 
+  charName: Mercedes
+  portraitSprite: {fileID: 996521316398358069, guid: 60d213fa8ad31024c8bffbc4b88dcb0f, type: 3}
+  battleSprite: {fileID: 996521316398358069, guid: 60d213fa8ad31024c8bffbc4b88dcb0f, type: 3}
+  charDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque
+    porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+  health: 26
+  mana: 38
+  physicalAtkDmg: 43
+  specialAtkDmg: 36
+  physicalDef: 68
+  specialDef: 49
+  speed: 46
+  critChance: 46
+  critDmg: 58
+  elementalRes: 29
+  exp: 5
+  eles: 0

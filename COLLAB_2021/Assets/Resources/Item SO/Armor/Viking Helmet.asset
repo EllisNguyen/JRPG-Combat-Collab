@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab30b83c0b23b24d8a722d0aaa16edb, type: 3}
+  m_Name: Viking Helmet
+  m_EditorClassIdentifier: 
+  rarity: 1
+  itemName: Viking Helmet
+  itemDescription: horny helmet :)
+  itemSprite: {fileID: 21300000, guid: a6d1118f239904a668126198564cc6a1, type: 3}
+  sellPrice: 0
+  buyPrice: 0
+  stackable: 0
+  coreAttributes:
+  - attributeType: 0
+    attributeName: Health Regen
+    attributeGain: 35
+  - attributeType: 2
+    attributeName: Attack Up
+    attributeGain: 18
+  - attributeType: 7
+    attributeName: Crit. Rate
+    attributeGain: 46
+  - attributeType: 2
+    attributeName: Attack Up
+    attributeGain: 16

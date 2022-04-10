@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Armor : MonoBehaviour
+[CreateAssetMenu(menuName = "Item/Create armor item")]
+public class Item_Armor : ItemBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //TODO: add custom behaviours for the armor here.
+
+    /*
+    Custom behaviours like: (example)
+    -Dialogue display on-screen when player put on a piece of armor.
+    -Additional bonus on player stat when put on.
+    -Level requirement to wear the armor piece.
+    -Maybe random a certain stat(s).
+    */
+
 }

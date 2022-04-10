@@ -13,24 +13,37 @@ Handles the changes of the game state.
 References:
 Tarodev, (2021). Game Manager - Controlling the flow of your game [Unity Tutorial][online]. Available from: https://www.youtube.com/watch?v=4I0vonyqMi8 [accessed 20th October 2021]
  
+Last edit: Nguyen Tien Phap - 20/02/2022
+
  */
-
-
-
 
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManagerInstance; // for easier accessibility
+    public static GameManager Instance; // for easier accessibility
     public GameState currentGameState; //variable to hold enum value
     public static event Action<GameState> OnGameStateChanged; //Call an action so that other class can subscribe to and invoke the subcribed classes' functions with the passed in GameState
 
-    [SerializeField] TopDownMovement r_topDownMovement; //TopDownMovement class reference
+    public MapUi mapUi;
+
+    [Header("Party setting")]
+    public CharacterAboutPanel characterAbout;
+
+    [Header("Inventory settings")]
+    public int inventoryCapacity = 45;
+    public Color belowCapacity;
+    public Color aboveCapacity;
+    public InventoryContainer inventoryContainer;
+    public ItemAboutPanel itemAbout;
+    public Color common;
+    public Color uncommon;
+    public Color rare;
+    public Color legendary;
+    public Color exotic;
 
     private void Awake()
     {
-        gameManagerInstance = this;
-        r_topDownMovement = FindObjectOfType<TopDownMovement>();
+        Instance = this;
 
     }
 
@@ -48,7 +61,7 @@ public class GameManager : MonoBehaviour
                 //Do stuffs in FreeRoaming()
                 FreeRoaming();
                 break;
-            case GameState.CombatPhase:
+            case GameState.Battle:
                 //Do stuffs in InitCombat()
                 InitCombat();
                 break;
@@ -79,18 +92,19 @@ public class GameManager : MonoBehaviour
 
     }*/
 
-    private void InitCombat()
-    {
-        //do stuffs when combat
-        //Debug.Log("3");
-    }
-
     private void FreeRoaming()
     {
 
         //updates movements through Movements() in TopDownMovement class
         //Debug.Log("1");
-        r_topDownMovement.Movements();
+
+    }
+
+    private void InitCombat()
+    {
+
+        //updates movements through Movements() in TopDownMovement class
+        //Debug.Log("1");
 
     }
 
@@ -115,7 +129,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     FreeRoam,
-    CombatPhase,
+    Battle,
     Menu,
     UpInventory,
     Paused,

@@ -1,9 +1,8 @@
 ///Author: Quan.TM
 ///Description: Hold the stats for characters and attributes.
 ///Day created: 02/11/2021
-///Last edited: 14/11/2021 - Phab Nguyen.
-using System.Collections;
-using System.Collections.Generic;
+///Last edited: 28/03/2021 - Phab Nguyen.
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New CharacterBaseStats", menuName = "CharacterBaseStats")]
@@ -13,17 +12,20 @@ public class CharacterBaseStats : ScriptableObject
     #region PlayerStats
     [Header("Player Stats")]
     public string charName;
-    public int health;
-    public int mana;
-    public int physicalAtkDmg;
-    public int specialAtkDmg;
-    public int physicalDef;
-    public int specialDef;
-    public int speed;
-    public int critChance;
-    public int critDmg;
-    public int elementalRes;
-    public int exp;
+    public Sprite portraitSprite;
+    public Sprite battleSprite;
+    [TextArea] public string charDescription;
+    [Range(5,100)] public int health = 50;
+    [Range(5,100)] public int mana;
+    [Range(5,100)] public int physicalAtkDmg;
+    [Range(5,100)] public int specialAtkDmg;
+    [Range(5,100)] public int physicalDef;
+    [Range(5,100)] public int specialDef;
+    [Range(5,100)] public int speed;
+    [Range(5,100)] public int critChance;
+    [Range(5,100)] public int critDmg;
+    [Range(5,100)] public int elementalRes;
+    [Range(5,100)] public int exp;
     public elements eles; //Reference to the elements enum
     #endregion
 
@@ -39,7 +41,7 @@ public class CharacterBaseStats : ScriptableObject
 
     public class ElementChart //Type effectiveness
     {
-        static float[][] chart =                                        //Column = attacker; Row = defender
+        static float[][] chart =    //Column = attacker; Row = defender
         {
             //                          Hea   Ele  Rad  Ice  Lgt   Dar     
             /*Heat*/        new float[]{1f,   1f,  1f,  2f,  0.5f, 1f},

@@ -1,12 +1,12 @@
 ///Author: Phab Nguyen
 ///Description: Stat storage and calculation.
 ///Day created: 11/11/2021
-///Last edited: 17/11/2021 - Phab Nguyen.
+///Last edited: 28/03/2022 - Phab Nguyen.
 
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Character
 {
 
@@ -14,7 +14,7 @@ public class Character
     [SerializeField] int level;
 
     //Constructor.
-    //Create a new instance of the creature.
+    //Create a new instance of the character.
     public Character(CharacterBaseStats cBase, int pLevel)
     {
         _base = cBase;
@@ -23,13 +23,14 @@ public class Character
         Init();
     }
 
-    //Reference to CreatureData script.
+    //Reference to CharacterBaseStats script.
     public CharacterBaseStats Base { get { return _base; } }
     public int Level { get { return level; } }
 
     public int Exp { get; set; }
 
     public int HP { get; set; }
+    public int MP { get; set; }
 
     //Event to call when inflict status condition.
     //Update Icon and UI.
@@ -38,18 +39,20 @@ public class Character
     //Event to call when HP changed.
     //Update every other UI.
     public event System.Action OnHPChanged;
+    public event System.Action OnMPChanged;
 
-    //Initialize creature's stats.
+    //Initialize character's stats.
     //Add move according to learnable moves list.
     //Calculate or modify the stats once.
     public void Init()
     {
-
-
-
+        //Set stats
+        CalculateStats();
+        HP = MaxHP;
+        MP = MaxMP;
     }
 
-    //Dictionary that store all creature's stats key.
+    //Dictionary that store all character's stats key.
     //Privately set the stats only.
     public Dictionary<Stat, int> Stats { get; private set; }
 
@@ -158,9 +161,11 @@ public class Character
     /// STAT: HEALTH
     /// </summary>
     public int MaxHP { get; private set; }
+    public int MaxMP { get; private set; }
 
     #endregion
 
+    #region HP control
     public void DecreaseHP(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHP);
@@ -172,4 +177,19 @@ public class Character
         HP = Mathf.Clamp(HP + amount, 0, MaxHP);
         OnHPChanged?.Invoke();
     }
+    #endregion HP control
+
+    #region MP control
+    public void DecreaseMP(int damage)
+    {
+        MP = Mathf.Clamp(MP - damage, 0, MaxMP);
+        OnMPChanged?.Invoke();
+    }
+
+    public void IncreaseMP(int amount)
+    {
+        MP = Mathf.Clamp(MP + amount, 0, MaxMP);
+        OnMPChanged?.Invoke();
+    }
+    #endregion MP control
 }

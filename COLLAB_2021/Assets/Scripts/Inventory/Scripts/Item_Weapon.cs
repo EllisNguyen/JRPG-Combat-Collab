@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Weapon : MonoBehaviour
+[CreateAssetMenu(menuName = "Item/Create weapon item")]
+public class Item_Weapon : ItemBase
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //TODO: add custom behaviours for the weapon here.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /*
+    Custom behaviours like: (example)
+    -Dialogue display on-screen when player equip the weapon.
+    -Additional bonus on player stat when equip.
+    -Level requirement to wear the armor piece.
+    -Maybe random a certain stat(s).
+    */
 }
