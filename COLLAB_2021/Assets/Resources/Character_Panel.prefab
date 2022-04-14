@@ -1984,7 +1984,6 @@ MonoBehaviour:
   blinkTime: 0
   outline: {fileID: 0}
   moveToPos: {x: 0, y: 0, z: 0}
-  appearImg: {fileID: 0}
   onMouseOver:
     m_PersistentCalls:
       m_Calls: []
