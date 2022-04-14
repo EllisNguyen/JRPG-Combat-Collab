@@ -9,6 +9,8 @@ using UnityEngine;
 //List of enum for rarity of the item.
 public enum ItemRarity { Common, Uncommon, Rare, Legendary, Exotic }
 
+public enum ItemInteraction { None , Use, Consume, Equip}
+
 public class ItemBase : ScriptableObject
 {
     //ABOUT
@@ -21,6 +23,8 @@ public class ItemBase : ScriptableObject
     [SerializeField] int buyPrice;//Buy price.
     [SerializeField] bool stackable;//Stackable?
     Color rarityColor;
+
+    public ItemInteraction interactionKey;
 
     [SerializeField] List<CoreAttribute> coreAttributes;
 
@@ -96,27 +100,70 @@ public class CoreAttribute
     {
         switch (attributeType)
         {
+            //REGEN ATTRIBUTE.
             case AttributeType.HealthRegen:
                 attributeName = "Health Regen";
                 break;
             case AttributeType.ManaRegen:
                 attributeName = "Mana Regen";
                 break;
-            case AttributeType.AtkUp:
-                attributeName = "Attack";
+
+            //ATTACK ATTRIBUTE.
+            case AttributeType.Atk1:
+                attributeName = "ATK+";
+                break;            
+            case AttributeType.Atk2:
+                attributeName = "ATK++";
+                break;            
+            case AttributeType.Atk3:
+                attributeName = "ATK+++";
                 break;
-            case AttributeType.DefUp:
-                attributeName = "Defense";
+
+            //DEFENSE ATTRIBUTE.
+            case AttributeType.Def1:
+                attributeName = "DEF+";
                 break;
-            case AttributeType.SpAtkUp:
-                attributeName = "Sp. Attack";
+            case AttributeType.Def2:
+                attributeName = "DEF++";
                 break;
-            case AttributeType.SpDefUp:
-                attributeName = "Sp. Defense";
+            case AttributeType.Def3:
+                attributeName = "DEF+++";
                 break;
-            case AttributeType.SpdUp:
-                attributeName = "Speed";
+
+            //SPECIAL ATTACK ATTRIBUTE.
+            case AttributeType.SpAtk1:
+                attributeName = "Sp.ATK+";
                 break;
+            case AttributeType.SpAtk2:
+                attributeName = "Sp.ATK++";
+                break;
+            case AttributeType.SpAtk3:
+                attributeName = "Sp.ATK+++";
+                break;
+
+            //SPECIAL DEFENSE ATTRIBUTE.
+            case AttributeType.SpDef1:
+                attributeName = "Sp.DEF+";
+                break;
+            case AttributeType.SpDef2:
+                attributeName = "Sp.DEF++";
+                break;
+            case AttributeType.SpDef3:
+                attributeName = "Sp.DEF+++";
+                break;
+
+            //SPEED ATTRIBUTE.
+            case AttributeType.Spd1:
+                attributeName = "SPD+";
+                break;
+            case AttributeType.Spd2:
+                attributeName = "SPD++";
+                break;
+            case AttributeType.Spd3:
+                attributeName = "SPD+++";
+                break;
+
+            //CRITICAL ATTRIBUTE.
             case AttributeType.CritRateUp:
                 attributeName = "Crit. Rate";
                 break;
@@ -130,12 +177,14 @@ public class CoreAttribute
         return attributeName;
     }
 
+    //Publicly expose attributeName string, free to ref and set.
     public string AttributeName
     {
         get { return attributeName; }
         set => attributeName = value;
     }
 
+    //Publicly expose attributeGain int, free to ref and set.
     public int AttributeGain
     {
         get { return attributeGain; }
@@ -149,15 +198,24 @@ public class CoreAttribute
 public enum AttributeType
 {
     //Regen Item
-    HealthRegen,
-    ManaRegen,
+    HealthRegen, ManaRegen,
 
-    //Armor Boost
-    AtkUp,
-    DefUp,
-    SpAtkUp,
-    SpDefUp,
-    SpdUp,
+    //ATK Boost
+    Atk1, Atk2, Atk3,
+
+    //DEF Boost
+    Def1, Def2, Def3,
+
+    //SP.ATK Boost
+    SpAtk1, SpAtk2, SpAtk3,
+
+    //SP.DEF Boost
+    SpDef1, SpDef2, SpDef3,
+
+    //SPD Boost
+    Spd1, Spd2, Spd3,
+
+    //CRIT Boost
     CritRateUp,
     CritDmgUp,
 }
