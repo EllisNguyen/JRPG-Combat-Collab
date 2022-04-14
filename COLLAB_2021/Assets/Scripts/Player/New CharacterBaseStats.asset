@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: New CharacterBaseStats
   m_EditorClassIdentifier: 
   charName: 
+  portraitSprite: {fileID: 0}
+  battleSprite: {fileID: 0}
+  charDescription: 
   health: 6
-  mana: 0
-  physicalAtkDmg: 0
-  specialAtkDmg: 0
-  physicalDef: 0
-  specialDef: 0
-  speed: 0
-  critChance: 0
-  critDmg: 0
-  elementalRes: 0
-  exp: 0
+  mana: 5
+  physicalAtkDmg: 5
+  specialAtkDmg: 5
+  physicalDef: 5
+  specialDef: 5
+  speed: 5
+  critChance: 5
+  critDmg: 5
+  elementalRes: 5
+  exp: 5
   eles: 4

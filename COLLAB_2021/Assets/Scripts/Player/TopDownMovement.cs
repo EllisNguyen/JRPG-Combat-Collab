@@ -65,14 +65,16 @@ public class TopDownMovement : MonoBehaviour
 
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
             {
+                
                 playerPosition += movements * Time.deltaTime * sprintSpeed;
+                
                 //movements
             }
         }
         else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         //normal speed
         {
-
+            
             playerPosition += movements * Time.deltaTime * speed;
             //movements
         }
