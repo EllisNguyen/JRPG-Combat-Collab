@@ -20,17 +20,12 @@ public class TopDownMovement : MonoBehaviour
     [SerializeField] float sprintSpeed = 10f; //player sprint speed
 
 
-    //Creates an instance to reference
-    private void Awake()
-    {
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
-    }
+    
     // Start is called before the first frame update
     void Start()
     {
         cameraTransform = GameObject.Find("Main Camera").transform; //get camera reference
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     // Update is called once per frame
