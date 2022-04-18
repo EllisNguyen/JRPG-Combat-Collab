@@ -34,6 +34,7 @@ public class TopDownMovement : MonoBehaviour
         
         
     }
+
     /// <summary>
     /// Movements for player based on Vector.
     /// Located in TopDownMovement Class.

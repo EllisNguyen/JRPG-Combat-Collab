@@ -158,7 +158,7 @@ public class Inventory : MonoBehaviour
     //Simply expose the inventory.
     public static Inventory GetInventory()
     {
-        return FindObjectOfType<GameManager>().GetComponent<Inventory>();
+        return FindObjectOfType<PlayerEntity>().GetComponent<Inventory>();
     }
 }
 

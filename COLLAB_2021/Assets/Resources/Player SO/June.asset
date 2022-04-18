@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: June
   m_EditorClassIdentifier: 
   charName: June
-  portraitSprite: {fileID: 412100771788018831, guid: c2d7df75d77888a43954196116a8ced3, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 262346ce6a2bad040a0ddf25dce20848, type: 3}
   battleSprite: {fileID: 412100771788018831, guid: c2d7df75d77888a43954196116a8ced3, type: 3}
   charDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque
     porro quisquam est, qui dolorem ipsum quia dolor sit amet.

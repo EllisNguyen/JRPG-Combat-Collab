@@ -61,7 +61,7 @@ public class CharacterParty : MonoBehaviour
     public static CharacterParty GetPlayerPartyComponent()
     {
         //TODO: return the CharacterParty from player's prefab instead of from GameManager.
-        return FindObjectOfType<GameManager>().GetComponent<CharacterParty>();
+        return FindObjectOfType<PlayerEntity>().GetComponent<CharacterParty>();
     }
 
 }

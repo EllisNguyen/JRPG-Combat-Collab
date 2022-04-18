@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eris
   m_EditorClassIdentifier: 
   charName: Eris
-  portraitSprite: {fileID: -2771506632773180858, guid: 1f2e0c4fa87d1af4e8b11ca47c322360, type: 3}
+  portraitSprite: {fileID: 21300000, guid: f13e872def4a1c54fbd979f8fc237173, type: 3}
   battleSprite: {fileID: -2771506632773180858, guid: 1f2e0c4fa87d1af4e8b11ca47c322360, type: 3}
   charDescription: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
     nisi ut aliquip ex ea commodo consequat.

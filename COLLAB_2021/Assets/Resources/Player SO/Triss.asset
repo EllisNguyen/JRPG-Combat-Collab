@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Triss
   m_EditorClassIdentifier: 
   charName: Triss
-  portraitSprite: {fileID: -1251264290007083758, guid: 837fc8de7a8d48d4b97cd453c76399f3, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 8e79b1771c8815d47987a30034b28885, type: 3}
   battleSprite: {fileID: -1251264290007083758, guid: 837fc8de7a8d48d4b97cd453c76399f3, type: 3}
   charDescription: Sed ut perspiciatis unde omnis iste natus error sit voluptatem
     accusantium doloremque laudantium.

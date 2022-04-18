@@ -14,6 +14,10 @@ public class PartyContainer : MonoBehaviour
 
     CharacterParty party;//Ref the list of active character.
 
+    [Header("UI elements")]
+    [SerializeField] GameObject mainPartyPanel;
+    [SerializeField] GameObject partyAboutPanel;
+
     void OnEnable()
     {
         Init();
@@ -35,6 +39,9 @@ public class PartyContainer : MonoBehaviour
     /// </summary>
     public void Init()
     {
+        mainPartyPanel.SetActive(true);
+        partyAboutPanel.SetActive(false);
+
         //Find all PartyMember_UI class in child and put in an array.
         memberSlots = GetComponentsInChildren<CharacterPanel>(true);
 
