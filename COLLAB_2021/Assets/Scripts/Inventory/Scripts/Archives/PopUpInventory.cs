@@ -20,19 +20,19 @@ public class PopUpInventory : MonoBehaviour
             popUpInventory();
             Debug.Log("Hgfhfgh");
         }
-        Debug.Log(GameManager.Instance.currentGameState);
+        Debug.Log(GameManager.Instance.gameState);
     }
     public void popUpInventory()
     {
         if(inventoryUI.enabled==true)
         {
-            GameManager.Instance.currentGameState = GameState.FreeRoam;
+            GameManager.Instance.gameState = GameState.FreeRoam;
 
         }
         else
         if (inventoryUI.enabled == false)
         {
-            GameManager.Instance.currentGameState = GameState.UpInventory;
+            GameManager.Instance.gameState = GameState.UpInventory;
         }
 
         inventoryUI.enabled = !inventoryUI.enabled;

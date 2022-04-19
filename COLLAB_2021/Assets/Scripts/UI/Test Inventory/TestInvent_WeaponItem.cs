@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "TEST", menuName = "TEST/Create TEST WEAPON")]
-[TypeInfoBox("This is the scriptable object that held the base info for weapon item. This item have 6 attributes.")]
 public class TestInvent_WeaponItem : TestInvent_Item
 {
     //STATS

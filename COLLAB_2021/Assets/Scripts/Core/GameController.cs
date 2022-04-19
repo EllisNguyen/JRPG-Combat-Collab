@@ -43,6 +43,8 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        state = GameManager.Instance.gameState;
+
         if (state == GameState.FreeRoam)
         {
             if (!r_topDownMovement) return;
@@ -51,6 +53,10 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Battle)
         {
             battleSystem.HandleUpdate();
+        }
+        else if(state == GameState.Menu)
+        {
+            //TODO: menu.
         }
     }
 }

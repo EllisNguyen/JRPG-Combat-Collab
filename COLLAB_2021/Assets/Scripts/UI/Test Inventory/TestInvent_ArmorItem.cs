@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "TEST", menuName = "TEST/Create TEST ARMOR")]
+
 [TypeInfoBox("This is the scriptable object that held the base info for armor item. This item have 6 attributes.")]
 public class TestInvent_ArmorItem : TestInvent_Item
 {

@@ -21,7 +21,7 @@ Last edit: Nguyen Tien Phap - 20/02/2022
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; // for easier accessibility
-    public GameState currentGameState; //variable to hold enum value
+    public GameState gameState; //variable to hold enum value
     public static event Action<GameState> OnGameStateChanged; //Call an action so that other class can subscribe to and invoke the subcribed classes' functions with the passed in GameState
 
     public MapUi mapUi;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //examples of handling
-        switch (currentGameState)
+        switch (gameState)
         {
             case GameState.FreeRoam:
                 //Do stuffs in FreeRoaming()
