@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [Header("Player References")]
     [SerializeField] TopDownMovement r_topDownMovement; //TopDownMovement class reference
     [SerializeField] BattleSystem battleSystem;
-    [SerializeField] Camera worldCamera;
-
+    [SerializeField] GameObject worldCamera;
+    
     GameState state;
 
     public static GameController Instance { get; private set; }
@@ -23,7 +24,8 @@ public class GameController : MonoBehaviour
         ConditionsDB.Init();
     }
 
-    EnemyEntity enemy;
+    [Header("Battle References")]
+    [SerializeField] EnemyEntity enemy;
 
     public void StartBattle(EnemyEntity enemy)
     {
@@ -32,7 +34,7 @@ public class GameController : MonoBehaviour
         battleSystem.gameObject.SetActive(true);
         this.enemy = enemy;
 
-        worldCamera.gameObject.SetActive(false);
+        worldCamera.SetActive(false);
 
         var playerParty = GameManager.Instance.GetComponent<CharacterParty>();
         var enemyParty = enemy.GetComponent<CharacterParty>();
