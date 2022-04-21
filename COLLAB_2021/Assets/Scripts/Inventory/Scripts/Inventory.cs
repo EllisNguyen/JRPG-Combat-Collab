@@ -1,7 +1,7 @@
 ///Author: Phap Nguyen.
 ///Description: the main class of the Inventory, all categories, adding and removing item operation will be control by this class.
 ///Day created: 20/01/2022
-///Last edited: 28/03/2022 - Phap Nguyen.
+///Last edited: 21/04/2022 - Phap Nguyen.
 
 using System;
 using System.Collections.Generic;
@@ -98,6 +98,11 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Return the category of item by read through the ItemBase SO.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
     ItemCatergory GetCategoryFromItem(ItemBase item)
     {
         if (item is Item_Consumable)
@@ -110,20 +115,32 @@ public class Inventory : MonoBehaviour
             return ItemCatergory.QuestItem;
     }
 
+    /// <summary>
+    /// Method to add item into the inventory list.
+    /// </summary>
+    /// <param name="item">To get information of the created item scriptable object</param>
+    /// <param name="count">How many item will be add to the inventory.</param>
     public void AddItem(ItemBase item, int count = 1)
     {
+        //Get the category and slot of the item from the item SO.
         int category = (int)GetCategoryFromItem(item);
         var currentSlot = GetSlotsByCategory(category);
 
         var itemSlot = currentSlot.FirstOrDefault(slot => slot.Item == item);
+        
+        //Check for available item slot.
+        //If the slot of current item is already exist.
         if(itemSlot != null)
         {
+            //Check for stacking availability.
             if(item.Stackable)
-                itemSlot.Count += count;
+                itemSlot.Count += count;//Add all set count item into the inventory.
             else
             {
+                //Loop through the set count item of the non-stackable item.
                 for (int i = 0; i < count; i++)
                 {
+                    //Create a new slot for the item in the inventory one by one.
                     currentSlot.Add(new ItemSlot()
                     {
                         Item = item,
@@ -132,10 +149,13 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+        //If the currently picking up item doesnot already have a slot in the inventory.
         else
         {
+            //Check for stacking availability.
             if (item.Stackable)
             {
+                //Add the set count of item into the inventory.
                 currentSlot.Add(new ItemSlot()
                 {
                     Item = item,
@@ -144,8 +164,10 @@ public class Inventory : MonoBehaviour
             }
             else
             {
+                //Loop through the set count item of the non-stackable item.
                 for (int i = 0; i < count; i++)
                 {
+                    //Create a new slot for the item in the inventory one by one.
                     currentSlot.Add(new ItemSlot()
                     {
                         Item = item,
@@ -154,6 +176,8 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        //Invoke the OnUpdated event to update the UI.
         OnUpdated?.Invoke();
     }
 
@@ -188,6 +212,7 @@ public class Inventory : MonoBehaviour
     }
 }
 
+//Serializable class to call whenever modifying item inside the inventory.
 [Serializable]
 public class ItemSlot
 {
@@ -195,6 +220,7 @@ public class ItemSlot
     [SerializeField] int count;
     [SerializeField] int coreAttributeCount;
 
+    //Publicly expose local variables.
     public ItemBase Item { get => item; set => item = value; }
     public int Count { get => count; set => count = value; }
     public int CoreAttributeCount { get => coreAttributeCount; set => coreAttributeCount = value; }
