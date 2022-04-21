@@ -19,8 +19,24 @@ MonoBehaviour:
   sellPrice: 10
   buyPrice: 20
   stackable: 1
-  interactionKey: 0
   coreAttributes:
   - attributeType: 1
     attributeName: Mana Regen
     attributeGain: 11
+  hpAmount: 0
+  restoreMaxHp: 0
+  mpAmount: 5
+  restoreMaxMp: 0
+  ppAmount: 0
+  restoreMaxPp: 0
+  status: 0
+  recoverAllStatus: 0
+  revive: 0
+  maxRevive: 0
+  atkBoostAmount: 0
+  defBoostAmount: 0
+  spatkBoostAmount: 0
+  spdefBoostAmount: 0
+  spdBoostAmount: 0
+  critRateBoostAmount: 0
+  isPermanentBoost: 0

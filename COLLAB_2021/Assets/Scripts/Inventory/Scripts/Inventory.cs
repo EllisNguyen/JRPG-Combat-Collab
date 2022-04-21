@@ -110,37 +110,15 @@ public class Inventory : MonoBehaviour
             return ItemCatergory.QuestItem;
     }
 
-    /// <summary>
-    /// Method use to add item into the inventory.
-    /// Require the item SO and number of item going to add into the inventory.
-    /// </summary>
-    /// <param name="item"></param>
-    /// <param name="count"></param>
     public void AddItem(ItemBase item, int count = 1)
     {
         int category = (int)GetCategoryFromItem(item);
         var currentSlot = GetSlotsByCategory(category);
 
         var itemSlot = currentSlot.FirstOrDefault(slot => slot.Item == item);
-        if(itemSlot != null)
+        if(itemSlot != null && item.Stackable)
         {
-            //Add the number of item = count to inventory if item is stackable.
-            if(item.Stackable)
-                itemSlot.Count += count;
-            else
-            {
-                if(count > 1)
-                {
-                    for (int i = 0; i < count; i++)
-                    {
-                        currentSlot.Add(new ItemSlot()
-                        {
-                            Item = item,
-                            Count = 1,
-                        });
-                    }
-                }
-            }
+            itemSlot.Count += count;
         }
         else
         {

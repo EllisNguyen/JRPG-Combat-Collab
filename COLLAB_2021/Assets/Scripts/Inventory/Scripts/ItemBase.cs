@@ -14,17 +14,13 @@ public enum ItemInteraction { None , Use, Consume, Equip}
 public class ItemBase : ScriptableObject
 {
     //ABOUT
-    [Header("Item visual")]
+    [Header("VISUAL STUFF")]
     public ItemRarity rarity;
     [SerializeField] string itemName;//Item name.
     [TextArea] [SerializeField] string itemDescription;//Item description.
     [SerializeField] Sprite itemSprite;//Item sprite.
-
-    [Header("Shopping attributes")]
     [SerializeField] int sellPrice;//Sell price.
     [SerializeField] int buyPrice;//Buy price.
-
-    [Header("Inventory attributes")]
     [SerializeField] bool stackable;//Stackable?
     Color rarityColor;
 

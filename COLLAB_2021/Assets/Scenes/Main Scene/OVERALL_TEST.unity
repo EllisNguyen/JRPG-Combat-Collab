@@ -5698,6 +5698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       value: -0.000000016502968
       objectReference: {fileID: 0}
@@ -5711,6 +5712,13 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0000000048694533
 >>>>>>> Stashed changes
+=======
+      value: 0.000000016502971
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000000048694546
+>>>>>>> parent of 75e2c88 (inventory fix)
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670823, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_Follow
@@ -5794,6 +5802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
+<<<<<<< HEAD
 <<<<<<< Updated upstream
       value: -0.000000016502968
       objectReference: {fileID: 0}
@@ -5807,6 +5816,13 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.0000000048694533
 >>>>>>> Stashed changes
+=======
+      value: 0.000000016502971
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000000048694546
+>>>>>>> parent of 75e2c88 (inventory fix)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
@@ -26611,7 +26627,7 @@ GameObject:
   - component: {fileID: 1785781109}
   - component: {fileID: 1785781108}
   m_Layer: 0
-  m_Name: PickupTest
+  m_Name: MapObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26645,9 +26661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120e464ac5dd35468e915b4bd645627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list:
-  - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
-    itemCount: 5
+  item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
+  count: 1
 --- !u!114 &1785781109
 MonoBehaviour:
   m_ObjectHideFlags: 0
