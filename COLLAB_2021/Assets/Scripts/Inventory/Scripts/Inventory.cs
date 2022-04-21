@@ -116,17 +116,43 @@ public class Inventory : MonoBehaviour
         var currentSlot = GetSlotsByCategory(category);
 
         var itemSlot = currentSlot.FirstOrDefault(slot => slot.Item == item);
-        if(itemSlot != null && item.Stackable)
+        if(itemSlot != null)
         {
-            itemSlot.Count += count;
+            if(item.Stackable)
+                itemSlot.Count += count;
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    currentSlot.Add(new ItemSlot()
+                    {
+                        Item = item,
+                        Count = 1,
+                    });
+                }
+            }
         }
         else
         {
-            currentSlot.Add(new ItemSlot()
+            if (item.Stackable)
             {
-                Item = item,
-                Count = count,
-            });
+                currentSlot.Add(new ItemSlot()
+                {
+                    Item = item,
+                    Count = count,
+                });
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    currentSlot.Add(new ItemSlot()
+                    {
+                        Item = item,
+                        Count = 1,
+                    });
+                }
+            }
         }
         OnUpdated?.Invoke();
     }

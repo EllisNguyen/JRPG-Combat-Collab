@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -26629,9 +26629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120e464ac5dd35468e915b4bd645627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  list:
+  pickupList:
   - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
-    itemCount: 5
+    itemCount: 3
 --- !u!114 &1785781109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29771,9 +29771,6 @@ MonoBehaviour:
     coreAttributeCount: 0
   - item: {fileID: 11400000, guid: 104b29eeba1689141a547862a4739f5e, type: 2}
     count: 7
-    coreAttributeCount: 0
-  - item: {fileID: 11400000, guid: c36ad79449e135942be3d5d6ea959fbe, type: 2}
-    count: 4
     coreAttributeCount: 0
   armorSlots:
   - item: {fileID: 11400000, guid: 5c9458b48f54d8f4091d5b398cd2b0f9, type: 2}
