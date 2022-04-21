@@ -68,7 +68,7 @@ public class ItemPanel : MonoBehaviour
     //Do the fadein anim.
     public IEnumerator EnableInventory()
     {
-        canvasGroup.DOFade(1, fadeInTime);
+        canvasGroup?.DOFade(1, fadeInTime);
         yield return new WaitForSeconds(fadeInTime);
     }
 

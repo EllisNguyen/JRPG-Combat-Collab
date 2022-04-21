@@ -19,24 +19,8 @@ MonoBehaviour:
   sellPrice: 40
   buyPrice: 100
   stackable: 1
+  interactionKey: 0
   coreAttributes:
   - attributeType: 0
     attributeName: Health Regen
     attributeGain: 40
-  hpAmount: 50
-  restoreMaxHp: 0
-  mpAmount: 0
-  restoreMaxMp: 0
-  ppAmount: 0
-  restoreMaxPp: 0
-  status: 0
-  recoverAllStatus: 0
-  revive: 0
-  maxRevive: 0
-  atkBoostAmount: 0
-  defBoostAmount: 0
-  spatkBoostAmount: 0
-  spdefBoostAmount: 0
-  spdBoostAmount: 0
-  critRateBoostAmount: 0
-  isPermanentBoost: 0
