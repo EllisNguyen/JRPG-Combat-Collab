@@ -5,12 +5,12 @@ using UnityEngine;
 public class Move
 {
     public MoveData Base { get; set; }
-    public int PP { get; set; }
+    public int Mana { get; set; }
 
     public Move(MoveData pBase)
     {
         Base = pBase;
-        PP = pBase.PP;
+        Mana = pBase.Mana;
     }
 
     /// <summary>
@@ -20,7 +20,7 @@ public class Move
     public Move(MoveSaveData saveData)
     {
         Base = MoveDB.GetMoveByName(saveData.name);
-        PP = saveData.pp;
+        Mana = saveData.mana;
     }
 
     public MoveSaveData GetSaveData()
@@ -28,7 +28,7 @@ public class Move
         var saveData = new MoveSaveData()
         {
             name = Base.Name,
-            pp = Base.PP
+            mana = Base.Mana
         };
 
         return saveData;
@@ -37,7 +37,7 @@ public class Move
     //Implementation of restoring PP item.
     public void IncreasePP(int amount)
     {
-        PP = Mathf.Clamp(PP + amount, 0, Base.PP);
+        Mana = Mathf.Clamp(Mana + amount, 0, Base.Mana);
     }
 }
 
@@ -45,5 +45,5 @@ public class Move
 public class MoveSaveData
 {
     public string name;
-    public int pp;
+    public int mana;
 }

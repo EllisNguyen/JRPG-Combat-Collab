@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Move", menuName = "Creature/Create new move")]
+[CreateAssetMenu(fileName = "Move", menuName = "Create new move")]
 public class MoveData : ScriptableObject
 {
     [SerializeField] string name;
@@ -15,7 +15,7 @@ public class MoveData : ScriptableObject
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] bool alwaysHit;
-    [SerializeField] int pp;
+    [SerializeField] int mana;
     [SerializeField] [Range(-7, 5)] int priority;
     [SerializeField] MoveCategory category;
     [SerializeField] MoveEffect effect;
@@ -68,10 +68,10 @@ public class MoveData : ScriptableObject
     }
 
     //Expose PP int variable using property
-    public int PP
+    public int Mana
     {
         //Get the value of the property
-        get { return pp; }
+        get { return mana; }
     }
 
     //Expose Priority int variable using property
@@ -114,7 +114,7 @@ public class MoveData : ScriptableObject
 public enum MoveCategory
 {
     Physical,
-    Special,
+    Range,
     Status
 }
 
