@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5afd9ceaf690e9a4a8e9ab4c319d8e5a, type: 3}
-  m_Name: Mech arm
+  m_Name: Grey wolf
   m_EditorClassIdentifier: 
   charName: Mech arm
-  portraitSprite: {fileID: 21300000, guid: 91e63ba8a3e074c49914de9bd3c3e995, type: 3}
-  battleSprite: {fileID: 21300000, guid: 91e63ba8a3e074c49914de9bd3c3e995, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
+  battleSprite: {fileID: 21300000, guid: 03d60d02db2f54c029a14fa2d2ce097b, type: 3}
   charDescription: 
   health: 24
   mana: 5

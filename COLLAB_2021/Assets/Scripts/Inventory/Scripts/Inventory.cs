@@ -74,7 +74,24 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Return the category of item by read through the ItemBase SO.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <returns></returns>
+    ItemCatergory GetCategoryFromItem(ItemBase item)
+    {
+        if (item is Item_Consumable)
+            return ItemCatergory.Consumable;
+        else if (item is Item_Armor)
+            return ItemCatergory.Armor;
+        else if (item is Item_Weapon)
+            return ItemCatergory.Weapon;
+        else
+            return ItemCatergory.QuestItem;
+    }
+
+    /// <summary>
+    /// Method to use item apply onto a selected character.
     /// </summary>
     /// <param name="itemIndex"></param>
     /// <param name="selectedCreature"></param>
@@ -96,23 +113,6 @@ public class Inventory : MonoBehaviour
         }
 
         return null;
-    }
-
-    /// <summary>
-    /// Return the category of item by read through the ItemBase SO.
-    /// </summary>
-    /// <param name="item"></param>
-    /// <returns></returns>
-    ItemCatergory GetCategoryFromItem(ItemBase item)
-    {
-        if (item is Item_Consumable)
-            return ItemCatergory.Consumable;
-        else if (item is Item_Armor)
-            return ItemCatergory.Armor;
-        else if(item is Item_Weapon)
-            return ItemCatergory.Weapon;
-        else
-            return ItemCatergory.QuestItem;
     }
 
     /// <summary>

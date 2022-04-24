@@ -16644,12 +16644,14 @@ MonoBehaviour:
   descriptionTxt: {fileID: 390856654}
   portrait: {fileID: 2119751631}
   hpProgressor: {fileID: 1101030648}
+  mpProgressor: {fileID: 0}
   atkProgressor: {fileID: 1853556834}
   defProgressor: {fileID: 86574140}
   spAtkProgressor: {fileID: 131737596}
   spDefProgressor: {fileID: 2109032401}
   spdProgressor: {fileID: 1713705584}
   hpTxt: {fileID: 179607538}
+  mpTxt: {fileID: 0}
   atkTxt: {fileID: 1229639137}
   defTxt: {fileID: 1153029934}
   spatkTxt: {fileID: 1192836061}
@@ -27173,8 +27175,8 @@ MonoBehaviour:
   pickupList:
   - item: {fileID: 11400000, guid: f49b0f82a9f332f4ab989df1cd1cd0a5, type: 2}
     itemCount: 6
-  - item: {fileID: 11400000, guid: 5893acd579a1b0244a23016df8a77243, type: 2}
-    itemCount: 4
+  - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
+    itemCount: 3
 --- !u!114 &1803370654
 MonoBehaviour:
   m_ObjectHideFlags: 0

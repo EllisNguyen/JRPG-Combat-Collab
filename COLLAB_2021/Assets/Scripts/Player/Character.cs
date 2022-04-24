@@ -104,6 +104,9 @@ public class Character
 
         //Calculate HP
         MaxHP = Mathf.FloorToInt((Base.health * Level) / 100f) + 10 + Level;
+
+        //Calculate HP
+        MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 5 + Level;
     }
 
     #region Stats

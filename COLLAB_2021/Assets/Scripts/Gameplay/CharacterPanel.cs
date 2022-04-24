@@ -29,7 +29,7 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     [Header("Stat")]
     [SerializeField] HpBar hpBar;//Ref to HP bar class.
-    [SerializeField] Image manaBar;
+    [SerializeField] MpBar mpBar;
     [SerializeField] Image expBar;
 
     CharacterAboutPanel aboutPanel;
@@ -85,6 +85,7 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         //Set current health on health bar.
         hpBar.SetHP((float)_character.HP / _character.MaxHP);
+        mpBar.SetMP((float)_character.MP / _character.MaxMP);
 
         expBar.fillAmount = _character.Exp;
     }

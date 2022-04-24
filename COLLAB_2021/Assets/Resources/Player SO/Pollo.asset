@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5afd9ceaf690e9a4a8e9ab4c319d8e5a, type: 3}
-  m_Name: Eris
+  m_Name: Pollo
   m_EditorClassIdentifier: 
   charName: Eris
   portraitSprite: {fileID: 21300000, guid: f13e872def4a1c54fbd979f8fc237173, type: 3}

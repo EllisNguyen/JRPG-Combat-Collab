@@ -26,6 +26,7 @@ public class CharacterAboutPanel : MonoBehaviour
 
     //Store the stats into these var.
     int hp;
+    int mp;
     int atk;
     int def;
     int spatk;
@@ -35,6 +36,7 @@ public class CharacterAboutPanel : MonoBehaviour
     //Progressor for the stats.
     [Header("Stats UI")]
     [SerializeField] Image hpProgressor;
+    [SerializeField] Image mpProgressor;
     [SerializeField] Image atkProgressor;
     [SerializeField] Image defProgressor;
     [SerializeField] Image spAtkProgressor;
@@ -44,6 +46,7 @@ public class CharacterAboutPanel : MonoBehaviour
     //Text element for the stats.
     [Header("Number")]
     [SerializeField] TextMeshProUGUI hpTxt;
+    [SerializeField] TextMeshProUGUI mpTxt;
     [SerializeField] TextMeshProUGUI atkTxt;
     [SerializeField] TextMeshProUGUI defTxt;
     [SerializeField] TextMeshProUGUI spatkTxt;
@@ -61,6 +64,7 @@ public class CharacterAboutPanel : MonoBehaviour
         //Store data from Character to local var(s).
         #region data number
         hp = selectedCharacter.Base.health;
+        mp = selectedCharacter.Base.mana;
         atk = selectedCharacter.Base.physicalAtkDmg;
         def = selectedCharacter.Base.physicalDef;
         spatk = selectedCharacter.Base.specialAtkDmg;
@@ -71,6 +75,7 @@ public class CharacterAboutPanel : MonoBehaviour
         //Set UI text for stats.
         #region Set UI text
         hpTxt.text = hp.ToString();
+        mpTxt.text = hp.ToString();
         atkTxt.text = atk.ToString();
         defTxt.text = def.ToString();
         spatkTxt.text = spatk.ToString();
@@ -95,6 +100,7 @@ public class CharacterAboutPanel : MonoBehaviour
         //Run the SmoothFillAmount operation for all set stats.
         #region Set progressor
         SmoothFillAmount(hpProgressor, (float)hp / 200);
+        SmoothFillAmount(mpProgressor, (float)mp / 200);
         SmoothFillAmount(atkProgressor, (float)atk / 200);
         SmoothFillAmount(defProgressor, (float)def / 200);
         SmoothFillAmount(spAtkProgressor, (float)spatk / 200);
@@ -107,6 +113,7 @@ public class CharacterAboutPanel : MonoBehaviour
     public void ResetFillammount()
     {
         SmoothFillAmount(hpProgressor, (float)hp / 200);
+        SmoothFillAmount(mpProgressor, (float)mp / 200);
         SmoothFillAmount(atkProgressor, (float)atk / 200);
         SmoothFillAmount(defProgressor, (float)def / 200);
         SmoothFillAmount(spAtkProgressor, (float)spatk / 200);

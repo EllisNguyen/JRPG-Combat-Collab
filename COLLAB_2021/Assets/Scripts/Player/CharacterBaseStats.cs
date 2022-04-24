@@ -29,20 +29,26 @@ public class CharacterBaseStats : ScriptableObject
     public elements eles; //Reference to the elements enum
     #endregion
 
-    public enum elements
+    public void OnValidate()
     {
-        heat,
-        electric,
-        radiation,
-        ice,
-        light,
-        dark
-    };
+        charName = name;
+    }
+}
 
-    public class ElementChart //Type effectiveness
+public enum elements
+{
+    heat,
+    electric,
+    radiation,
+    ice,
+    light,
+    dark
+};
+
+public class ElementChart //Type effectiveness
+{
+    static float[][] chart =    //Column = attacker; Row = defender
     {
-        static float[][] chart =    //Column = attacker; Row = defender
-        {
             //                          Hea   Ele  Rad  Ice  Lgt   Dar     
             /*Heat*/        new float[]{1f,   1f,  1f,  2f,  0.5f, 1f},
             /*Electric*/    new float[]{0.5f, 1f,  2f,  1f,  1f,   1f},
@@ -52,13 +58,12 @@ public class CharacterBaseStats : ScriptableObject
             /*Dark*/        new float[]{1f,   1f,  1f,  1f,  2f,   0f},
         };
 
-        public static float ElementalModifier(elements attacker, elements defender)
-        {
-            int row = (int)attacker - 1;
-            int col = (int)defender - 1;
+    public static float ElementalModifier(elements attacker, elements defender)
+    {
+        int row = (int)attacker - 1;
+        int col = (int)defender - 1;
 
-            return chart[row][col];
-        }
+        return chart[row][col];
     }
 }
 

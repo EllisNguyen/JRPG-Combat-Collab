@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BattleHud : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] HpBar hpBar;
+    [SerializeField] MpBar mpBar;
+    [SerializeField] GameObject expBar;
+
+    public void SetData(Character character)
     {
-        
+        nameText.text = character.Base.charName + " - Lv." + character.Level;
+        hpBar.SetHP((float)character.HP / character.MaxHP);
+        mpBar.SetMP((float)character.MP / character.MaxMP);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisableNonPlayerElement()
     {
-        
+        expBar.SetActive(false);
     }
 }

@@ -8,6 +8,9 @@ public class BattlePawn : MonoBehaviour
 {
     public SpriteRenderer graphic;
 
+    [SerializeField] CharacterBaseStats _base;
+    [SerializeField] int level;
+
     public Character Character { get; set; }
     [SerializeField] bool isPlayerUnit;
     //Expose the isPlayerUnit property.
@@ -19,15 +22,11 @@ public class BattlePawn : MonoBehaviour
         }
     }
 
-    public TextMeshProUGUI charName;
-    public TextMeshProUGUI charLevel;
-    public Image healthBar;
     ConditionsDB condition;
 
-    public void Setup(Character character)
+    public void Setup()
     {
-        //Apply sprite correctly for player's and opponent's.
-        Character = character;
+        Character = new Character(_base, level);
 
         graphic.sprite = Character.Base.battleSprite;
     }

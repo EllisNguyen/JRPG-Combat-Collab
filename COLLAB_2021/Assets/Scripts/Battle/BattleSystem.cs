@@ -12,9 +12,11 @@ public class BattleSystem : MonoBehaviour
 {
 
     [Header("Player")]
+    [SerializeField] BattleHud playerHud;
     [SerializeField] List<BattlePawn> playerUnits;
 
     [Header("Enemy")]
+    [SerializeField] BattleHud enemyHud;
     [SerializeField] List<BattlePawn> enemyUnits;
 
     [Header("Battle component")]
@@ -50,44 +52,60 @@ public class BattleSystem : MonoBehaviour
     int playerRandomSpawn;
     int enemyRandomSpawn;
 
+    public void Start()
+    {
+        SetupBattle();
+    }
+
     public void SetupBattle()
     {
-        
-        
-
-        print(playerRandomSpawn);
-
-        for (int i = 0; i < playerParty.Characters.Count; i++)
+        foreach (var player in playerUnits)
         {
-            playerRandomSpawn = UnityEngine.Random.Range(0, playerSpawnPoints.Count);
-            print("step 1: PLAYER party include " + playerParty.Characters.Count + " characters.");
-            var player = Instantiate(playerPawn_Pref, playerSpawnPoints[playerRandomSpawn].transform.position, Quaternion.identity);
-            playerUnits.Add(player.GetComponent<BattlePawn>());
-
-            if (playerUnits.Count >= 2) break;
+            player.Setup();
         }
 
-        ////Loop through player party and setup the spawn.
-        //for (int j = 0; j < playerUnits.Count; j++)
-        //{
-        //    print("number of player units are = " + playerUnits.Count);
-        //    playerUnits[j].Setup(playerParty.GetHealthyCharacter());
-        //}
-
-        for (int k = 0; k < enemyParty.Characters.Count; k++)
+        foreach (var enemy in enemyUnits)
         {
-            enemyRandomSpawn = UnityEngine.Random.Range(0, enemySpawnPoints.Count);
-            print("step 1: ENEMY party include " + enemyParty.Characters.Count + " monster.");
-            var enemy = Instantiate(enemyPawn_Pref, enemySpawnPoints[enemyRandomSpawn].transform.position, Quaternion.identity);
-            enemyUnits.Add(enemy.GetComponent<BattlePawn>());
+            enemy.Setup();
         }
 
-        print("hello");
-        ////Loop through enemy party and setup the spawn.
-        //for (int l = 0; l < enemyUnits.Count; l++)
+        playerHud.SetData(playerUnits[0].Character);
+        enemyHud.SetData(enemyUnits[0].Character);
+        enemyHud.DisableNonPlayerElement();
+
+        //print(playerRandomSpawn);
+
+        //for (int i = 0; i < playerParty.Characters.Count; i++)
         //{
-        //    enemyUnits[l].Setup(enemyParty.GetHealthyCharacter());
+        //    playerRandomSpawn = UnityEngine.Random.Range(0, playerSpawnPoints.Count);
+        //    print("step 1: PLAYER party include " + playerParty.Characters.Count + " characters.");
+        //    var player = Instantiate(playerPawn_Pref, playerSpawnPoints[playerRandomSpawn].transform.position, Quaternion.identity);
+        //    playerUnits.Add(player.GetComponent<BattlePawn>());
+
+        //    if (playerUnits.Count >= 2) break;
         //}
+
+        //////Loop through player party and setup the spawn.
+        ////for (int j = 0; j < playerUnits.Count; j++)
+        ////{
+        ////    print("number of player units are = " + playerUnits.Count);
+        ////    playerUnits[j].Setup(playerParty.GetHealthyCharacter());
+        ////}
+
+        //for (int k = 0; k < enemyParty.Characters.Count; k++)
+        //{
+        //    enemyRandomSpawn = UnityEngine.Random.Range(0, enemySpawnPoints.Count);
+        //    print("step 1: ENEMY party include " + enemyParty.Characters.Count + " monster.");
+        //    var enemy = Instantiate(enemyPawn_Pref, enemySpawnPoints[enemyRandomSpawn].transform.position, Quaternion.identity);
+        //    enemyUnits.Add(enemy.GetComponent<BattlePawn>());
+        //}
+
+        //print("hello");
+        //////Loop through enemy party and setup the spawn.
+        ////for (int l = 0; l < enemyUnits.Count; l++)
+        ////{
+        ////    enemyUnits[l].Setup(enemyParty.GetHealthyCharacter());
+        ////}
     }
 
     public void HandleUpdate()
