@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] TopDownMovement r_topDownMovement; //TopDownMovement class reference
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] GameObject worldCamera;
+    [SerializeField] DialogueManager dialogueManager; //dialogueManager Ref
     
     GameState state;
 
@@ -16,7 +17,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         Instance = this;
-
+        dialogueManager = FindObjectOfType<DialogueManager>(); //Auto populate the variable with dialogue manager class in the scene
         ////Deactivate cursor.
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
@@ -50,7 +51,8 @@ public class GameController : MonoBehaviour
         if (state == GameState.FreeRoam)
         {
             if (!r_topDownMovement) return;
-            r_topDownMovement.Movements();
+            //if player is not in dialogue then he/she can move
+            if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
         }
         else if (state == GameState.Battle)
         {

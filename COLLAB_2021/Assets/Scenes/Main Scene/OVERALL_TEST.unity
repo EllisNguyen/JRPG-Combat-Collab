@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5869,11 +5869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502973
+      value: 0.000000016502971
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004869455
+      value: -0.0000000048694546
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670823, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_Follow
@@ -5957,11 +5957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502973
+      value: 0.000000016502971
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004869455
+      value: -0.0000000048694546
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
@@ -26848,6 +26848,8 @@ GameObject:
   - component: {fileID: 1785781110}
   - component: {fileID: 1785781109}
   - component: {fileID: 1785781108}
+  - component: {fileID: 1785781112}
+  - component: {fileID: 1785781111}
   m_Layer: 0
   m_Name: PickupTest
   m_TagString: Untagged
@@ -26883,9 +26885,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120e464ac5dd35468e915b4bd645627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPos: {fileID: 0}
   pickupList:
   - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
     itemCount: 3
+  rb: {fileID: 0}
+  movingForce: 3
 --- !u!114 &1785781109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26893,7 +26898,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785781106}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f90c33ebf86e646862e29d26b9ab0a, type: 3}
   m_Name: 
@@ -26944,6 +26949,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &1785781111
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785781106}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 2
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &1785781112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785781106}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.26, y: 2.32, z: 2.91}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &1789177843
 GameObject:
   m_ObjectHideFlags: 0
@@ -27143,7 +27177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1803370652
 Transform:
   m_ObjectHideFlags: 0
@@ -27172,11 +27206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120e464ac5dd35468e915b4bd645627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPos: {fileID: 0}
   pickupList:
   - item: {fileID: 11400000, guid: f49b0f82a9f332f4ab989df1cd1cd0a5, type: 2}
     itemCount: 6
   - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
     itemCount: 3
+  rb: {fileID: 0}
+  movingForce: 0
 --- !u!114 &1803370654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27184,7 +27221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803370651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99f90c33ebf86e646862e29d26b9ab0a, type: 3}
   m_Name: 

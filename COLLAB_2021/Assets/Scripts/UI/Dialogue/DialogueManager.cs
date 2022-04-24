@@ -15,7 +15,9 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI displayName; //reference for name text
     [SerializeField] TextMeshProUGUI displayDialogue; //reference for dialogue text
+    [SerializeField] GameObject continueButton; //reference to the continue button
     [SerializeField] Queue<string> sentences; //queue for sentences in a dialogue
+    
 
     public bool inDialogue = false;
 
@@ -23,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         displayName = GameObject.Find("Speaker").GetComponent<TextMeshProUGUI>();
         displayDialogue = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
+        continueButton = GameObject.Find("Continue");
     }
 
     // Start is called before the first frame update
@@ -30,12 +33,24 @@ public class DialogueManager : MonoBehaviour
     {
         //Initialize the queue
         sentences = new Queue<string>();
+
+        //Set the color of the dialogue UI to transparent and hide the continue button
+        displayName.faceColor = new Color32(0, 0, 0, 0);
+        displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+        continueButton.SetActive(false);
+
     }
 
     
     //Start the dialogue
     public void StartDialogue(Dialogue dialogue)
     {
+
+        //Enable everything when start dialogue
+        displayName.faceColor = new Color32(0, 0, 0, 255);
+        displayDialogue.faceColor = new Color32(0, 0, 0, 255);
+        continueButton.SetActive(true);
+
         //Change the name text into the speaker's name
         displayName.text = dialogue.speaker;
 
@@ -81,5 +96,10 @@ public class DialogueManager : MonoBehaviour
     {
         displayDialogue.text = "end";
         inDialogue = false;
+        //Set the color of the dialogue UI to transparent and hide the continue button
+        //After the conversation ended
+        displayName.faceColor = new Color32(0, 0, 0, 0);
+        displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+        continueButton.SetActive(false);
     }
 }

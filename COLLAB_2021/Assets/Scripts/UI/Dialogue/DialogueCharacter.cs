@@ -6,7 +6,7 @@ using UnityEngine;
  * Scripts: DialogueCharacter
  * Object: Sphere
  * Summary:
- * Handles dialogues
+ * Handles dialogues. Search for player using TAG.
  */
 public class DialogueCharacter : MonoBehaviour
 {
@@ -20,6 +20,7 @@ public class DialogueCharacter : MonoBehaviour
     {
         //Get the dialogue manager
         dialogueManager = FindObjectOfType<DialogueManager>();
+        textPopUp.SetActive(false);
     }
 
     //If player is in the trigger of the character, check for initiate dialogue input
@@ -50,6 +51,7 @@ public class DialogueCharacter : MonoBehaviour
         {
             InitiateDialogue();
         }
+        
     }
 
 
