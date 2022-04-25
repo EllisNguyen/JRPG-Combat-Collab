@@ -55,13 +55,14 @@ public class DialogueManager : MonoBehaviour
         displayName.text = dialogue.speaker;
 
         //Clear the queue to make sure nothing is in there
-        sentences.Clear();
+        if (sentences == null) sentences = new Queue<string>();
+        else sentences.Clear();
 
         //Enqueue each sentence that are specified in DialogueCharacter holder
          foreach(string sentence in dialogue.sentences)
-        {
+         {
             sentences.Enqueue(sentence);
-        }
+         }
 
         Dequeue();
         inDialogue = true;
