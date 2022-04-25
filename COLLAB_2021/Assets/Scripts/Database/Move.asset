@@ -12,18 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdac6b2b7e24b646892f7e4c965996b, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  name: 
-  description: 
+  name: Fireball
+  description: ball of fire
   type: 0
-  power: 0
-  accuracy: 0
+  power: 15
+  accuracy: 100
   alwaysHit: 0
-  pp: 0
-  priority: 0
+  mana: 0
+  priority: 1
   category: 0
   effect:
-    boosts: []
-    status: 0
-    volatileStatus: 0
-  secondaries: []
-  target: 0
+    boosts:
+    - stat: 0
+      boost: 1
+    - stat: 2
+      boost: 2
+    - stat: 5
+      boost: -2
+    - stat: 1
+      boost: 2
+    - stat: 6
+      boost: 1
+    - stat: 2
+      boost: -3
+    status: 1
+    volatileStatus: 6
+  secondaries:
+  - boosts:
+    - stat: 6
+      boost: -2
+    status: 1
+    volatileStatus: 6
+    chance: 30
+    target: 0
+  target: 1
