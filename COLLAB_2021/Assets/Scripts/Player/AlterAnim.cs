@@ -21,8 +21,6 @@ public class AlterAnim : MonoBehaviour
     bool wasPreviouslyMoving;
 
     //States.
-    SpriteAnimator walkDownAnim;
-    SpriteAnimator walkUpAnim;
     SpriteAnimator walkRightAnim;
     SpriteAnimator walkLeftAnim;
 
@@ -43,10 +41,15 @@ public class AlterAnim : MonoBehaviour
         var prevAnim = currentAnim;
 
         if (MoveX == 1)
+        {
+            spriteRenderer.flipX = false;
             currentAnim = walkRightAnim;
+        }
         else if (MoveX == -1)
+        {
+            spriteRenderer.flipX = true;
             currentAnim = walkLeftAnim;
-        else if (MoveY == 1)
+        }
 
         //Check if the animation changes.
         if (currentAnim != prevAnim || IsMoving != wasPreviouslyMoving)
@@ -63,15 +66,9 @@ public class AlterAnim : MonoBehaviour
     public void SetFacingDirection(FacingDirection dir)
     {
         if (dir == FacingDirection.right)
-        {
-            flip = false;
             MoveX = 1;
-        }
         else if (dir == FacingDirection.left)
-        {
-            flip = true;
             MoveX = -1;
-        }
     }
 
     public FacingDirection DefaultDirection { get => defaultDirection; }

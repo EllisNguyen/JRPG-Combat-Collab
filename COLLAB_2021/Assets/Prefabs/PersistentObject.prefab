@@ -6613,7 +6613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4041421278731205651
 Transform:
   m_ObjectHideFlags: 0
@@ -26201,7 +26201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4041421280379628149}
   - component: {fileID: 4041421280379628170}
-  - component: {fileID: 4041421280379628171}
+  - component: {fileID: 4246225516771707138}
   m_Layer: 0
   m_Name: graphic
   m_TagString: Untagged
@@ -26274,7 +26274,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &4041421280379628171
+--- !u!114 &4246225516771707138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26283,14 +26283,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4041421280379628148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484a8488399a3244ab0214a06957ee34, type: 3}
+  m_Script: {fileID: 11500000, guid: fa3731688d2a0d543a16753f3c24f54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkDownSprites: []
-  walkUpSprites: []
-  walkRightSprites: []
-  walkLeftSprites: []
-  defaultDirection: 1
+  walkRightSprites:
+  - {fileID: 5043395037558663772, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: -8432719292549815190, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: -5033891105202000990, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  walkLeftSprites:
+  - {fileID: 5043395037558663772, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: -8432719292549815190, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: -5033891105202000990, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  defaultDirection: 3
+  flip: 0
   idleFrame: 1
 --- !u!1 &4041421280384549916
 GameObject:
@@ -26526,7 +26533,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.45
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -26544,6 +26551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   sprintSpeed: 10
+  animator: {fileID: 4246225516771707138}
+  isMoving: 0
 --- !u!54 &4041421280388896406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -27837,11 +27846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502971
+      value: -0.000000016502968
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000048694546
+      value: 0.0000000048694537
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670823, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_Follow
@@ -27925,11 +27934,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502971
+      value: -0.000000016502968
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000048694546
+      value: 0.0000000048694537
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}

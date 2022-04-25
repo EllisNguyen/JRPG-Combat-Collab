@@ -2233,7 +2233,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
     itemCount: 3
   rb: {fileID: 0}
-  movingForce: 3
+  movingForce: 5
 --- !u!114 &1785781109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2851,19 +2851,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502973
+      value: -0.000000016502966
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004869455
+      value: 0.0000000048694533
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016502973
+      value: -0.000000016502966
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004869455
+      value: 0.0000000048694533
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}

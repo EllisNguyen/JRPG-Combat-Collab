@@ -8,6 +8,8 @@ Date: 05 Oct 2021
 Attached to: Player
 Summary:
 Handles Player's Movements
+
+Last edit: 25/04/2022 - by Phap Nguyen.
  */
 
 public class TopDownMovement : MonoBehaviour
@@ -15,12 +17,14 @@ public class TopDownMovement : MonoBehaviour
     //Variables
     Transform cameraTransform;
 
-    
+
     [SerializeField] float speed = 6f; //player movement speed
     [SerializeField] float sprintSpeed = 10f; //player sprint speed
 
+    [SerializeField] AlterAnim animator;
+    [SerializeField] bool isMoving;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,8 +35,8 @@ public class TopDownMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
     }
 
     /// <summary>
@@ -45,6 +49,12 @@ public class TopDownMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal"); //Get horizontal input without smoothing
         float vertical = Input.GetAxisRaw("Vertical");//Get vertical input without smoothing
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized; //Input data stored into a Vector and normalized
+
+        if (direction.x != 0)
+        {
+            animator.MoveX = direction.x;
+            
+        }
 
         Vector3 playerPosition = this.transform.position;//store the position before moving
 
@@ -73,12 +83,16 @@ public class TopDownMovement : MonoBehaviour
             
             playerPosition += movements * Time.deltaTime * speed;
             //movements
+
+            isMoving = true;
         }
         else
         {
             //animation idle
+            isMoving = false;
         }
 
+        animator.IsMoving = isMoving;
         this.transform.position = playerPosition; //updating the position after moving
 
     }
