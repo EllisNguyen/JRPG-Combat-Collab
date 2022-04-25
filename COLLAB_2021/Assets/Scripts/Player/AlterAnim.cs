@@ -63,9 +63,15 @@ public class AlterAnim : MonoBehaviour
     public void SetFacingDirection(FacingDirection dir)
     {
         if (dir == FacingDirection.right)
+        {
+            flip = false;
             MoveX = 1;
+        }
         else if (dir == FacingDirection.left)
+        {
+            flip = true;
             MoveX = -1;
+        }
     }
 
     public FacingDirection DefaultDirection { get => defaultDirection; }
