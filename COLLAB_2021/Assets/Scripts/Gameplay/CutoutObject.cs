@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CutoutObject : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class CutoutObject : MonoBehaviour
     private LayerMask wallMask;
 
     private Camera mainCamera;
+
+    [SerializeField] List<Material> curMaterials;
+    [SerializeField] float fadeTime = 0.5f;
+    [Range(0.05f, 0.15f)][SerializeField] float cutoutSize = 0.1f;
 
     private void Awake()
     {
@@ -25,16 +30,38 @@ public class CutoutObject : MonoBehaviour
         Vector3 offset = targetObject.position - transform.position;
         RaycastHit[] hitObjects = Physics.RaycastAll(transform.position, offset, offset.magnitude, wallMask);
 
-        for (int i = 0; i < hitObjects.Length; ++i)
+        if (hitObjects.Length == 0)
+        {
+            foreach (Material mat in curMaterials)
+            {
+                mat.DOFloat(0f, "_CutoutSize", fadeTime);
+                mat.DOFloat(0f, "_FalloffSize", fadeTime);
+
+                StartCoroutine(WaitToClear(fadeTime));
+            }
+            return;
+        }
+
+        for (int i = 0; i < hitObjects.Length; i++)
         {
             Material[] materials = hitObjects[i].transform.GetComponent<Renderer>().materials;
 
-            for (int m = 0; m < materials.Length; ++m)
+            if (curMaterials.Count == hitObjects.Length) return;
+
+            foreach (Material mat in materials)
             {
-                materials[m].SetVector("_CutoutPos", cutoutPos);
-                materials[m].SetFloat("_CutoutSize", 0.1f);
-                materials[m].SetFloat("_FalloffSize", 0.05f);
+                mat.DOFloat(cutoutSize, "_CutoutSize", fadeTime);
+                mat.DOFloat(0.05f, "_FalloffSize", fadeTime);
+
+                curMaterials.Add(mat);
             }
         }
+    }
+
+    IEnumerator WaitToClear(float fadeTime)
+    {
+        yield return new WaitForSeconds(fadeTime);
+
+        curMaterials.Clear();
     }
 }
