@@ -6,10 +6,13 @@ public class PlayerEntity : MonoBehaviour
     public GameObject party;
     public GameObject pauseMenu;
     GameObject curMenu;
+    [SerializeField] TopDownMovement movement; //TopDownMovement class reference
 
     // Update is called once per frame
-    void Update()
+    public void HandleUpdate()
     {
+        movement.Movements();
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ActivateMenu(pauseMenu);
@@ -25,6 +28,10 @@ public class PlayerEntity : MonoBehaviour
             ActivateMenu(party);
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+        }
     }
 
     /// <summary>

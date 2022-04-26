@@ -57,7 +57,7 @@ public class DialogueCharacter : MonoBehaviour
 
     //Check for E to Initiate the dialogue
     //called in OnMouseDown()
-    void InitiateDialogue()   
+    public void InitiateDialogue()   
     {
         //start dialogue if player is not in another dialogue and has pressed E
         if(Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)

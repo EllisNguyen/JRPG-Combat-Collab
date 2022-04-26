@@ -131,6 +131,7 @@ public enum GameState
     FreeRoam,
     Battle,
     Menu,
+    Dialogue,
     UpInventory,
     Paused,
 

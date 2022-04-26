@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [Header("Player References")]
-    [SerializeField] TopDownMovement r_topDownMovement; //TopDownMovement class reference
+    [SerializeField] PlayerEntity playerEntity;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] GameObject worldCamera;
     [SerializeField] DialogueManager dialogueManager; //dialogueManager Ref
@@ -48,19 +48,40 @@ public class GameController : MonoBehaviour
     {
         state = GameManager.Instance.gameState;
 
-        if (state == GameState.FreeRoam)
+        //if (state == GameState.FreeRoam)
+        //{
+        //    if (!r_topDownMovement) return;
+        //    //if player is not in dialogue then he/she can move
+        //    if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
+        //}
+        //else if (state == GameState.Battle)
+        //{
+        //    battleSystem.HandleUpdate();
+        //}
+        //else if(state == GameState.Menu)
+        //{
+        //    //TODO: menu.
+        //}
+
+        switch (state)
         {
-            if (!r_topDownMovement) return;
-            //if player is not in dialogue then he/she can move
-            if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
-        }
-        else if (state == GameState.Battle)
-        {
-            battleSystem.HandleUpdate();
-        }
-        else if(state == GameState.Menu)
-        {
-            //TODO: menu.
+            case GameState.FreeRoam:
+                playerEntity.HandleUpdate();
+                break;
+            case GameState.Battle:
+                battleSystem.HandleUpdate();
+                break;
+            case GameState.Menu:
+                break;
+            case GameState.Dialogue:
+                dialogueManager.HandleUpdate();
+                break;
+            case GameState.UpInventory:
+                break;
+            case GameState.Paused:
+                break;
+            default:
+                break;
         }
     }
 }

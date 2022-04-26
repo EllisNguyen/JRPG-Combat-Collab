@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class Pickup : MonoBehaviour, Interactable
+public class Pickup : MonoBehaviour
 {
     [SerializeField] Transform playerPos; //Store player's position for movements towards the player
     [SerializeField] List<PickupList> pickupList;
@@ -18,21 +18,7 @@ public class Pickup : MonoBehaviour, Interactable
     [SerializeField] float movingForce; //amount of force apply on the item for it to move towards the character
     private bool moving = false; //boolean for turning the movements of the item on/off
     [SerializeField] SpriteRenderer graphic;
-
-    
-
-    public void Interact()
-    {
-        //TODO: change from getting the GameManager to getting from the character's prefab.
-        var inventory = FindObjectOfType<PlayerEntity>().GetComponent<Inventory>();
-
-        //Loop through the list of potential pickup.
-        //And add them into the inventory.
-        for (int i = 0; i < pickupList.Count; i++)
-        {
-            inventory.AddItem(pickupList[i].Item, pickupList[i].ItemCount);
-        }
-    }
+    [SerializeField] BoxCollider pickupCollider;
 
     private void Awake()
     {
@@ -98,12 +84,17 @@ public class Pickup : MonoBehaviour, Interactable
         }
     }
 
+#if UNITY_EDITOR
     void OnValidate()
     {
         graphic = GetComponentInChildren<SpriteRenderer>();
-        if (pickupList.Count == 0) return;
+        if (pickupList.Count == 0)
+        {
+            graphic.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Assets/UI/pickup_null.png", typeof(Sprite));
+            return;
+        }
 
-        if(pickupList.Count > 1)
+        if (pickupList.Count > 1)
         {
             graphic.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Assets/UI/pickup_pouch.png", typeof(Sprite));
         }
@@ -112,6 +103,7 @@ public class Pickup : MonoBehaviour, Interactable
             graphic.sprite = pickupList[0].Item.ItemSprite;
         }
     }
+#endif
 }
 
 
