@@ -66,12 +66,14 @@ public class GameController : MonoBehaviour
         switch (state)
         {
             case GameState.FreeRoam:
-                playerEntity.HandleUpdate();
+                playerEntity.HandleInput();
+                playerEntity.HandleMovement();
                 break;
             case GameState.Battle:
                 battleSystem.HandleUpdate();
                 break;
             case GameState.Menu:
+                playerEntity.HandleInput();
                 break;
             case GameState.Dialogue:
                 dialogueManager.HandleUpdate();
