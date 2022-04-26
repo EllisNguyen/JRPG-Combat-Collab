@@ -93,7 +93,7 @@ public class DialogueManager : MonoBehaviour
 
     //End the dialogue
     //called in Dequeue()
-    void EndDialogue()
+    public void EndDialogue()
     {
         displayDialogue.text = "end";
         inDialogue = false;

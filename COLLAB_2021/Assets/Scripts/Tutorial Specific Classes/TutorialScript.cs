@@ -14,6 +14,7 @@ public class TutorialScript : MonoBehaviour
 {
     //Variables
     [SerializeField] TutorialDialogue movementDialogues; //ref to the movementDialogue Obj
+    [SerializeField] TutorialDialogue newspaperDialogues; //ref to the inventoryDialogue Obj
     private DialogueManager dialogueManager; //ref to the dialogue manager
 
 
@@ -22,7 +23,7 @@ public class TutorialScript : MonoBehaviour
     {
         //Get the dialogue manager
         dialogueManager = FindObjectOfType<DialogueManager>(); //auto populate the variable
-        StartCoroutine(Delay()); //initiate a Delay before the tutorial start
+        StartCoroutine(MovementDialogueInitiate()); //initiate a Delay before the tutorial start
 
     }
 
@@ -32,17 +33,28 @@ public class TutorialScript : MonoBehaviour
         //Removes the tutorial dialogue upon movement
         if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal") && movementDialogues.inDialogue)
         {
-            dialogueManager.Dequeue();
+            
+            dialogueManager.EndDialogue();
+            
         }
+        
+            
         
     }
 
-    IEnumerator Delay()
+    IEnumerator MovementDialogueInitiate()
     {
-        yield return new WaitForSeconds(2f); //Delay for 2s
+        yield return new WaitForSeconds(4f); //Delay for 4s
 
         //Start conversartion with God
         dialogueManager.StartDialogue(movementDialogues.dialogue);
         movementDialogues.inDialogue = true;
+    }
+
+    IEnumerator ReachNewsPaper()
+    {
+        yield return new WaitForSeconds(2f);//Delay 2s
+        dialogueManager.StartDialogue(newspaperDialogues.dialogue);
+        newspaperDialogues.inDialogue = true;
     }
 }
