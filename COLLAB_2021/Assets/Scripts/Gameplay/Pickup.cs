@@ -6,6 +6,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class Pickup : MonoBehaviour, Interactable
 {
     [SerializeField] Transform playerPos; //Store player's position for movements towards the player
@@ -13,6 +17,7 @@ public class Pickup : MonoBehaviour, Interactable
     [SerializeField] Rigidbody rb; //Rigidbody ref
     [SerializeField] float movingForce; //amount of force apply on the item for it to move towards the character
     private bool moving = false; //boolean for turning the movements of the item on/off
+    [SerializeField] SpriteRenderer graphic;
 
     
 
@@ -90,6 +95,21 @@ public class Pickup : MonoBehaviour, Interactable
             Destroy(this.gameObject);
 
             //Add the item into inventory and destroy this gameobject
+        }
+    }
+
+    void OnValidate()
+    {
+        graphic = GetComponentInChildren<SpriteRenderer>();
+        if (pickupList.Count == 0) return;
+
+        if(pickupList.Count > 1)
+        {
+            graphic.sprite = (Sprite)AssetDatabase.LoadAssetAtPath("Assets/Assets/UI/pickup_pouch.png", typeof(Sprite));
+        }
+        else if(pickupList.Count == 1)
+        {
+            graphic.sprite = pickupList[0].Item.ItemSprite;
         }
     }
 }
