@@ -4,11 +4,17 @@ public class PlayerEntity : MonoBehaviour
 {
     public GameObject inventory;
     public GameObject party;
+    public GameObject pauseMenu;
     GameObject curMenu;
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ActivateMenu(pauseMenu);
+        }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             ActivateMenu(inventory);
