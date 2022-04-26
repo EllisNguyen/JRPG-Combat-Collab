@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /*
 Author: Ly Duong Huy
@@ -10,15 +11,24 @@ Summary:
 Simple Enemy Follow the player Script
  */
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour, EnemyInterface
 {
     [SerializeField] Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
     [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
-
+    public int ID { get; set; } //ID of the enemy. Stays inside of enemy movements for TESTING
     private DamagePopup damagePopup; //reference to the DamagePopup class
+    EnemyInterface instance;
+    public static event Action<EnemyInterface> enemyDead;
 
     bool follow = true; //enables following player or not
+
+    private void Start()
+    {
+        ID = 0; //Set enemy ID TESTING
+        instance = this.gameObject.GetComponent<EnemyInterface>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -45,11 +55,21 @@ public class EnemyMovement : MonoBehaviour
         damagePopup.SetDamageText(damage);
     }
 
+    //invoke event to the quest counter and destroy this gameobject
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            enemyDead?.Invoke(instance);
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            follow = false; //Set follow to false when player enters the enemy trigger
+            follow = true; //Set follow to true when player enters the enemy trigger
             
 
         }
@@ -59,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            follow = true; //Set follow to true when player exit the enemy trigger
+            follow = false; //Set follow to false when player exit the enemy trigger
 
         }
     }
