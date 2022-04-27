@@ -27937,9 +27937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 4041421280285288563}
-  party: {fileID: 4041421280302465164}
+  partyMenu: {fileID: 4041421280302465164}
   pauseMenu: {fileID: 688584898217626602}
   movement: {fileID: 4041421280388896407}
+  party: {fileID: 4041421280388896427}
 --- !u!114 &4041421280388896424
 MonoBehaviour:
   m_ObjectHideFlags: 0

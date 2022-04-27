@@ -17,12 +17,12 @@ public class BattleInfoGetter : MonoBehaviour
         battleSystem.player = player;
         battleSystem.enemy = enemy;
 
-        var playerParty = player.party;
-        var enemyParty = enemy.party;
+        battleSystem.playerParty = player.party;
+        battleSystem.enemyParty = enemy.party;
 
         //battleSystem.SetupBattle(battleSystem.player.);
 
-        battleSystem.StartBattle(playerParty, enemyParty);
+        battleSystem.StartBattle(battleSystem.playerParty, battleSystem.enemyParty);
     }
 
     // Update is called once per frame

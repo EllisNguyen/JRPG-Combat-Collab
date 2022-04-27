@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Pollo
   portraitSprite: {fileID: 21300000, guid: f13e872def4a1c54fbd979f8fc237173, type: 3}
-  battleSprite: {fileID: 0}
+  battleSprite: {fileID: -2854817042713855047, guid: 174c725653e308c47906e412ab882a0d, type: 3}
   battleIcon: {fileID: 21300000, guid: 626ccc4e43c0f7c4ebafa4cd7d62291a, type: 3}
   overworldAnim:
   - {fileID: 0}

@@ -24,9 +24,9 @@ public class BattlePawn : MonoBehaviour
 
     ConditionsDB condition;
 
-    public void Setup()
+    public void Setup(Character character)
     {
-        Character = new Character(_base, level);
+        Character = character;
 
         graphic.sprite = Character.Base.battleSprite;
     }

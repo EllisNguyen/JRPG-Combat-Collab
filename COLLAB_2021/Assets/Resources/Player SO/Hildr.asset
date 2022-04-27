@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Hildr
   portraitSprite: {fileID: 21300000, guid: 3075cd4e0e76a7a40bb93750e643671b, type: 3}
-  battleSprite: {fileID: 0}
+  battleSprite: {fileID: 5735305630628629067, guid: f3ab96f41244595449c3b96e6d719b12, type: 3}
   battleIcon: {fileID: 21300000, guid: 42039536311c25d48b5ff2d3f1a16848, type: 3}
   overworldAnim: []
   charDescription: 

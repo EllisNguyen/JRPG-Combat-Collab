@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Sagith
   portraitSprite: {fileID: 21300000, guid: 262346ce6a2bad040a0ddf25dce20848, type: 3}
-  battleSprite: {fileID: 0}
+  battleSprite: {fileID: -8465048047403305680, guid: ae85d2b6b436cda4faccb193dfe18baf, type: 3}
   battleIcon: {fileID: 21300000, guid: ffd818720aaebdc4fae9aae0be79a612, type: 3}
   overworldAnim: []
   charDescription: 
