@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // included to access the components of TextMeshPro
+
 /*
  * Author: Ly Duong Huy
  * Scripts: DialogueManager
@@ -122,5 +123,6 @@ public class DialogueManager : MonoBehaviour
         dialogueContainer.SetActive(false);
 
         GameManager.Instance.gameState = GameState.FreeRoam;
+        
     }
 }

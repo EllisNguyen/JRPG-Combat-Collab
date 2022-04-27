@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 /*
  * Author: Ly Duong Huy
@@ -12,9 +13,9 @@ public class DialogueCharacter : MonoBehaviour
 {
     //dialogue for this specific class
     public Dialogue dialogue;
-    bool isInRange = false;
-    private DialogueManager dialogueManager;
-    [SerializeField] GameObject textPopUp;
+    
+    public DialogueManager dialogueManager;
+    [SerializeField] public GameObject textPopUp;
 
     private void Start()
     {
@@ -29,8 +30,22 @@ public class DialogueCharacter : MonoBehaviour
         //Player is in the talking range, make the popup appears and enable the player to start the dialogue
         if(collider.gameObject.tag == "Player")
         {
-            isInRange = true;
+            
             textPopUp.SetActive(true);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            //start dialogue if player is not in another dialogue and has pressed E
+            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
+            {
+                Debug.Log("Pressed E");
+                InitiateDialogue();
+
+            }
         }
     }
 
@@ -39,33 +54,27 @@ public class DialogueCharacter : MonoBehaviour
         //player is no longer in the talking range, disable the popup and do not let the player start conversation
         if(other.gameObject.tag =="Player")
         {
-            isInRange = false;
+            
             textPopUp.SetActive(false);
         }
     }
 
     private void Update()
     {
-        //Check for player's input to start dialogue
-        if(isInRange)
-        {
-            InitiateDialogue();
-        }
+        
         
     }
 
 
-    //Check for E to Initiate the dialogue
+    //Run initiate Dialogue
     //called in OnMouseDown()
-    public void InitiateDialogue()   
+    public virtual void InitiateDialogue()   
     {
-        //start dialogue if player is not in another dialogue and has pressed E
-        if(Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
-        {
-            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-            textPopUp.SetActive(false);
-        }
         
+        
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        textPopUp.SetActive(false);
+
     }
     
 }
