@@ -1,20 +1,20 @@
 ///Author: Quan.TM
 ///Description: Hold the stats for characters and attributes.
 ///Day created: 02/11/2021
-///Last edited: 28/03/2021 - Phab Nguyen.
+///Last edited: 28/04/2021 - Phab Nguyen.
 
 using System.Collections.Generic;
 using UnityEngine;
-
-//[CreateAssetMenu(fileName = "New CharacterBaseStats", menuName = "CharacterBaseStats")]
+using Sirenix.OdinInspector;
 
 public class CharacterBaseStats : ScriptableObject
 {
     #region PlayerStats
     [Header("Character Visual")]
     public string charName;
-    public Sprite portraitSprite;
-    public Sprite battleSprite;
+    [PreviewField] public Sprite portraitSprite;
+    [PreviewField] public Sprite battleSprite;
+    [PreviewField] public Sprite battleIcon;
     public List<Sprite> overworldAnim;
 
     [Header("Character Stats")]
@@ -37,10 +37,26 @@ public class CharacterBaseStats : ScriptableObject
     {
         charName = name;
     }
+
+    [Button]
+    public void RandomAttributes()
+    {
+        health = Random.Range(5, 50);
+        mana = Random.Range(5, 50);
+        physicalAtkDmg = Random.Range(5, 50);
+        specialAtkDmg = Random.Range(5, 50);
+        physicalDef = Random.Range(5, 50);
+        specialDef = Random.Range(5, 50);
+        speed = Random.Range(5, 50);
+        critChance = Random.Range(5, 50);
+        critDmg = Random.Range(5, 50);
+        elementalRes = Random.Range(5, 50);
+    }
 }
 
 public enum elements
 {
+    normal,
     heat,
     electric,
     radiation,

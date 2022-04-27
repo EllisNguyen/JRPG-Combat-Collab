@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e444fd1745a2d814f9aedd3da180b692, type: 3}
+  m_Name: Normal Slime
+  m_EditorClassIdentifier: 
+  charName: Normal Slime
+  portraitSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  battleSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  battleIcon: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  overworldAnim:
+  - {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  - {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  - {fileID: 8936921706386391257, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  - {fileID: -2063852962750616285, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  charDescription: 
+  health: 22
+  mana: 11
+  physicalAtkDmg: 48
+  specialAtkDmg: 33
+  physicalDef: 30
+  specialDef: 40
+  speed: 42
+  critChance: 26
+  critDmg: 35
+  elementalRes: 10
+  exp: 5
+  eles: 0

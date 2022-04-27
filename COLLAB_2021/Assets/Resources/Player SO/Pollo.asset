@@ -9,23 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5afd9ceaf690e9a4a8e9ab4c319d8e5a, type: 3}
+  m_Script: {fileID: 11500000, guid: dff6a98628ccc7448848e3c1629d5578, type: 3}
   m_Name: Pollo
   m_EditorClassIdentifier: 
-  charName: Eris
+  charName: Pollo
   portraitSprite: {fileID: 21300000, guid: f13e872def4a1c54fbd979f8fc237173, type: 3}
-  battleSprite: {fileID: -2771506632773180858, guid: 1f2e0c4fa87d1af4e8b11ca47c322360, type: 3}
-  charDescription: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-    nisi ut aliquip ex ea commodo consequat.
-  health: 50
-  mana: 70
-  physicalAtkDmg: 86
-  specialAtkDmg: 32
-  physicalDef: 50
-  specialDef: 37
-  speed: 81
-  critChance: 25
-  critDmg: 27
-  elementalRes: 80
+  battleSprite: {fileID: 0}
+  battleIcon: {fileID: 21300000, guid: 626ccc4e43c0f7c4ebafa4cd7d62291a, type: 3}
+  overworldAnim:
+  - {fileID: 0}
+  charDescription: 
+  health: 28
+  mana: 34
+  physicalAtkDmg: 24
+  specialAtkDmg: 18
+  physicalDef: 48
+  specialDef: 38
+  speed: 37
+  critChance: 28
+  critDmg: 45
+  elementalRes: 11
   exp: 5
-  eles: 0
+  eles: 3

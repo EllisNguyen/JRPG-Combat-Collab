@@ -47,7 +47,7 @@ public class CharacterParty : MonoBehaviour
         return characters.Where(x => x.HP > 0).FirstOrDefault();
     }
 
-    public void AddCcharacter(Character newCharacter)
+    public void AddCharacter(Character newCharacter)
     {
         if (characters.Count < 6)
         {

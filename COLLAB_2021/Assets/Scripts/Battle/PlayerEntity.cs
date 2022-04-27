@@ -7,6 +7,7 @@ public class PlayerEntity : MonoBehaviour
     public GameObject pauseMenu;
     GameObject curMenu;
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
+    public CharacterParty characterParty;
 
     public void HandleMovement()
     {

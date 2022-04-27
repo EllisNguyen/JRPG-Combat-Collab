@@ -15,6 +15,30 @@ public class AlterAnim : MonoBehaviour
     public bool IsMoving { get; set; }
     public bool Flip { get; set; }
 
+    public List<Sprite> WalkRightSprites
+    {
+        get
+        {
+            return walkRightSprites;
+        }
+        set
+        {
+            walkRightSprites = value;
+        }
+    }
+
+    public List<Sprite> WalkLeftSprites
+    {
+        get
+        {
+            return walkLeftSprites;
+        }
+        set
+        {
+            walkLeftSprites = value;
+        }
+    }
+
     [SerializeField] int idleFrame = 1;
     SpriteAnimator currentAnim;
 

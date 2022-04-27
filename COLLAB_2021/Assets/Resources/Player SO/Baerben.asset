@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dff6a98628ccc7448848e3c1629d5578, type: 3}
-  m_Name: Hildr
+  m_Name: Baerben
   m_EditorClassIdentifier: 
-  charName: Hildr
-  portraitSprite: {fileID: 21300000, guid: 3075cd4e0e76a7a40bb93750e643671b, type: 3}
+  charName: Baerben
+  portraitSprite: {fileID: 21300000, guid: c2deaa051d0300c46a3d76291bc27615, type: 3}
   battleSprite: {fileID: 0}
-  battleIcon: {fileID: 21300000, guid: 42039536311c25d48b5ff2d3f1a16848, type: 3}
+  battleIcon: {fileID: 21300000, guid: 47dc27d2f6dccd54a893365645987640, type: 3}
   overworldAnim: []
   charDescription: 
-  health: 46
-  mana: 12
-  physicalAtkDmg: 26
-  specialAtkDmg: 40
-  physicalDef: 15
-  specialDef: 26
-  speed: 35
-  critChance: 27
-  critDmg: 17
-  elementalRes: 27
+  health: 49
+  mana: 28
+  physicalAtkDmg: 6
+  specialAtkDmg: 27
+  physicalDef: 38
+  specialDef: 16
+  speed: 22
+  critChance: 35
+  critDmg: 15
+  elementalRes: 30
   exp: 5
-  eles: 1
+  eles: 4

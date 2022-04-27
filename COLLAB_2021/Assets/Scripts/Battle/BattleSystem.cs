@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Inventory, BattleOver }
 
@@ -28,8 +29,8 @@ public class BattleSystem : MonoBehaviour
     CharacterParty playerParty;
     CharacterParty enemyParty;
 
-    PlayerEntity player;
-    EnemyEntity enemy;
+    [BoxGroup("Entity")] public PlayerEntity player;
+    [BoxGroup("Entity")] public EnemyEntity enemy;
 
     public event Action<bool> OnBattleOver;
     BattleState state;
@@ -54,7 +55,7 @@ public class BattleSystem : MonoBehaviour
 
     public void Start()
     {
-        SetupBattle();
+        //SetupBattle();
     }
 
     public void SetupBattle()

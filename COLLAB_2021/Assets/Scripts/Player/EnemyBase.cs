@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Enemy", menuName = "Character Stat")]
+[CreateAssetMenu(fileName = "Enemy Stat", menuName = "Character Stat/New Enemy")]
 public class EnemyBase : CharacterBaseStats
 {
     // Start is called before the first frame update

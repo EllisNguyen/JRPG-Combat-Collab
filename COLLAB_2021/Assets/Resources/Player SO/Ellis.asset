@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dff6a98628ccc7448848e3c1629d5578, type: 3}
-  m_Name: Hildr
+  m_Name: Ellis
   m_EditorClassIdentifier: 
-  charName: Hildr
-  portraitSprite: {fileID: 21300000, guid: 3075cd4e0e76a7a40bb93750e643671b, type: 3}
+  charName: Ellis
+  portraitSprite: {fileID: 21300000, guid: 8e79b1771c8815d47987a30034b28885, type: 3}
   battleSprite: {fileID: 0}
-  battleIcon: {fileID: 21300000, guid: 42039536311c25d48b5ff2d3f1a16848, type: 3}
+  battleIcon: {fileID: 21300000, guid: 0fb80ab8c45c1ec40a9acfc7b6c863cc, type: 3}
   overworldAnim: []
   charDescription: 
-  health: 46
-  mana: 12
-  physicalAtkDmg: 26
-  specialAtkDmg: 40
-  physicalDef: 15
-  specialDef: 26
-  speed: 35
-  critChance: 27
-  critDmg: 17
-  elementalRes: 27
+  health: 21
+  mana: 21
+  physicalAtkDmg: 32
+  specialAtkDmg: 23
+  physicalDef: 16
+  specialDef: 31
+  speed: 29
+  critChance: 9
+  critDmg: 7
+  elementalRes: 12
   exp: 5
-  eles: 1
+  eles: 0

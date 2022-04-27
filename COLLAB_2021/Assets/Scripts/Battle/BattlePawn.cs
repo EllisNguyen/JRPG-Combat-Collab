@@ -8,7 +8,7 @@ public class BattlePawn : MonoBehaviour
 {
     public SpriteRenderer graphic;
 
-    [SerializeField] CharacterBaseStats _base;
+    [SerializeField] PlayerBase _base;
     [SerializeField] int level;
 
     public Character Character { get; set; }
