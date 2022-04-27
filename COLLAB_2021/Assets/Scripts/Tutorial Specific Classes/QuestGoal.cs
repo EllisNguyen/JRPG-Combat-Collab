@@ -10,12 +10,13 @@ using UnityEngine;
  */
 
 [System.Serializable]
-public class QuestVariable
+public class QuestGoal
 {
+    public QuestSystem quest;
     public bool completed;
 
     //Variables
-    public string title;
+
     [TextArea(3, 10)]
     public string description;
     public int currentAmount;
@@ -33,6 +34,7 @@ public class QuestVariable
 
     public void Complete()
     {
+        quest.CheckGoals();
         completed = true;
     }
 }

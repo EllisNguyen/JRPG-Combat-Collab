@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour, EnemyInterface
     [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
     public int ID { get; set; } //ID of the enemy. Stays inside of enemy movements for TESTING
     private DamagePopup damagePopup; //reference to the DamagePopup class
-    EnemyInterface instance;
+    EnemyInterface instance; //instance of the enemyinterface
     public static event Action<EnemyInterface> enemyDead;
 
     public bool follow = true; //enables following player or not
