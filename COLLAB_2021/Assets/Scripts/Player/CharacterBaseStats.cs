@@ -3,17 +3,21 @@
 ///Day created: 02/11/2021
 ///Last edited: 28/03/2021 - Phab Nguyen.
 
+using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New CharacterBaseStats", menuName = "CharacterBaseStats")]
+//[CreateAssetMenu(fileName = "New CharacterBaseStats", menuName = "CharacterBaseStats")]
 
 public class CharacterBaseStats : ScriptableObject
 {
     #region PlayerStats
-    [Header("Player Stats")]
+    [Header("Character Visual")]
     public string charName;
     public Sprite portraitSprite;
     public Sprite battleSprite;
+    public List<Sprite> overworldAnim;
+
+    [Header("Character Stats")]
     [TextArea] public string charDescription;
     [Range(5,100)] public int health = 50;
     [Range(5,100)] public int mana;
