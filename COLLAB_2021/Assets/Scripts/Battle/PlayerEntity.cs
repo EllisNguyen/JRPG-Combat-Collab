@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerEntity : MonoBehaviour
 {
     public GameObject inventory;
-    public GameObject party;
+    public GameObject partyMenu;
     public GameObject pauseMenu;
     GameObject curMenu;
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
-    public CharacterParty characterParty;
+    public CharacterParty party;
 
     public void HandleMovement()
     {
@@ -28,7 +28,7 @@ public class PlayerEntity : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.U)) 
         {
-            ActivateMenu(party);
+            ActivateMenu(partyMenu);
         }
 
         if (Input.GetKeyDown(KeyCode.E))

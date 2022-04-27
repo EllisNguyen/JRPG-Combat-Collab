@@ -11,10 +11,20 @@ public class BattleInfoGetter : MonoBehaviour
     {
         battleSystem = GetComponent<BattleSystem>();
 
-        battleSystem.player = GameController.Instance.player;
-        battleSystem.enemy = GameController.Instance.enemy;
+        var player = GameController.Instance.player;
+        var enemy = GameController.Instance.enemy;
+
+        battleSystem.player = player;
+        battleSystem.enemy = enemy;
+
+        var playerParty = player.party;
+        var enemyParty = enemy.party;
 
         //battleSystem.SetupBattle(battleSystem.player.);
+
+
+
+        battleSystem.StartBattle(playerParty, enemyParty);
     }
 
     // Update is called once per frame

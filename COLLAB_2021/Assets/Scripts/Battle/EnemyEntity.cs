@@ -28,7 +28,7 @@ public class EnemyEntity : MonoBehaviour
     [Header("Battle attributes.")]
     [SerializeField] string name;
     [SerializeField] Sprite sprite;
-    public CharacterParty enemyParty;
+    public CharacterParty party;
     public int enemyLevel;
 
     GameState state;
@@ -40,8 +40,7 @@ public class EnemyEntity : MonoBehaviour
 #if UNITY_EDITOR
     void OnValidate()
     {
-        enemyParty = gameObject.GetComponent<CharacterParty>();
-        enemyParty.Characters.
+        party = gameObject.GetComponent<CharacterParty>();
 
         detectionCollider.radius = detectionRadius;
         triggerCollider.radius = triggerRadius;
