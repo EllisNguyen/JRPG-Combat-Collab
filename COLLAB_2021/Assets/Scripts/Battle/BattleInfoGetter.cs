@@ -22,8 +22,6 @@ public class BattleInfoGetter : MonoBehaviour
 
         //battleSystem.SetupBattle(battleSystem.player.);
 
-
-
         battleSystem.StartBattle(playerParty, enemyParty);
     }
 

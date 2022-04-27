@@ -22,15 +22,15 @@ MonoBehaviour:
   - {fileID: 9019170361998946011, guid: f71969e2508c77b459cea098517e047a, type: 3}
   - {fileID: 8277129383740711746, guid: f71969e2508c77b459cea098517e047a, type: 3}
   charDescription: 
-  health: 35
-  mana: 49
-  physicalAtkDmg: 33
-  specialAtkDmg: 13
-  physicalDef: 33
-  specialDef: 28
-  speed: 35
-  critChance: 31
-  critDmg: 37
-  elementalRes: 29
+  health: 24
+  mana: 36
+  physicalAtkDmg: 10
+  specialAtkDmg: 23
+  physicalDef: 23
+  specialDef: 41
+  speed: 19
+  critChance: 23
+  critDmg: 25
+  elementalRes: 24
   exp: 5
   eles: 1

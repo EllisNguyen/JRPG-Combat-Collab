@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("TestBattle", LoadSceneMode.Additive);
 
         //Start battle.
-        //battleSystem.StartBattle(playerParty, enemyParty);
+        battleSystem.StartBattle(playerParty, enemyParty);
     }
 
     private void Update()
