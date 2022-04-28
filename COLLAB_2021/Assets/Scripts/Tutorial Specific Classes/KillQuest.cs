@@ -10,7 +10,8 @@ using UnityEngine;
 
 public class KillQuest : QuestGoal
 {
-    public int enemyID;
+    public int enemyID; //enemyID used to be compared with
+    //the type that the quest will call in order to add into the goals list
     public KillQuest(QuestSystem quest, int monsterID, string description, bool completed, int currentAmount, int targetAmount)
     {
         this.quest = quest;
@@ -24,14 +25,17 @@ public class KillQuest : QuestGoal
     public override void Initiate()
     {
         base.Initiate();
-        EnemyMovement.enemyDead += EnemyDied;
+        EnemyMovement.enemyDead += EnemyDied; //subscribe to the enemy died event
     }
 
+    //Check for enemy ID and increase the current amount of enemy type killed
     void EnemyDied(EnemyInterface enemyInterface)
     {
         if (enemyInterface.ID == this.enemyID)
         {
             this.currentAmount++;
+            //double check to fix bug
+            CheckRequirements();
             CheckRequirements();
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -606,136 +606,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1026006086
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8725076222945569800, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_Radius
-      value: 1.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.speaker
-      value: Newspaper
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: "\"The Empire enters negotiation with the Northern tribes\u2019 leaders.\""
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.data[1]
-      value: '"The Northern tribes will stay independent as a vassal."'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569802, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_Name
-      value: Newspaper (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076223000721552, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_text
-      value: E to read [Newspaper]
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
---- !u!1 &1026006087 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8725076222945569802, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-  m_PrefabInstance: {fileID: 1026006086}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1026006088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2943463206291641200, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-  m_PrefabInstance: {fileID: 1026006086}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1026006089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026006087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be9e3b0c3c1c5504892ee745819f5fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    speaker: Village Chief
-    sentences:
-    - Help me with my slime slaying quest.
-    - I'll help you with your erectile dysfunction
-  dialogueManager: {fileID: 0}
-  textPopUp: {fileID: 1026006088}
-  assignedQuest: 0
-  helped: 0
-  questCompletedDialogue:
-    speaker: Village Chief
-    sentences:
-    - Oh son you're back. But I'm dying.
-    - Yeah blood is coming out of my ass
-  questNotCompletedDialogue:
-    speaker: Village Chief
-    sentences:
-    - 'Son, can''t you help me this one time? '
-    - I really need a  break right now.
-  questAlreadyDoneDialogue:
-    speaker: Village Chief
-    sentences:
-    - Dead.
-    - Still Dead Lmao
-  quests: {fileID: 788934402}
-  questType: Quest01
 --- !u!1 &1035871900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,11 +875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 3e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1017,11 +887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 3e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
@@ -1073,6 +943,67 @@ MonoBehaviour:
     sentences:
     - Use W, A, S, D to move around.
   inDialogue: 0
+--- !u!1001 &7829383310684699888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_Name
+      value: Newspaper (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: quests
+      value: 
+      objectReference: {fileID: 788934402}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
 --- !u!1001 &8725076222808876315
 PrefabInstance:
   m_ObjectHideFlags: 0

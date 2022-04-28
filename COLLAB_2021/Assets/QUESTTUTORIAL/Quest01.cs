@@ -19,7 +19,7 @@ public class Quest01 : QuestSystem
         questID = 0;
         experienceReward = 100;
 
-        Goals.Add(new MeetNPCQuest(this,0,"Meet the Newspaper",false,0,1));
+        Goals.Add(new MeetNPCQuest(this,1,"Read the Bulletin",false,0,1));
         
 
         //Initiate the goals

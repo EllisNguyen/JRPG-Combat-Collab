@@ -28,9 +28,10 @@ public class QuestSystem : MonoBehaviour
     public void CheckGoals()
     {
         //Check if all of the goals are completed (using lamba expression)
-        completed = (Goals.All(g => g.completed));
+        completed = Goals.All(g => g.completed);
+        
         //If the goals are completed then quest is completed. Give Rewards
-        if (completed) GiveReward();
+        //if (completed) GiveReward();
     }
 
     public void GiveReward()

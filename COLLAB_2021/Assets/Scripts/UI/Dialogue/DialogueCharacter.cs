@@ -17,6 +17,8 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
     public DialogueManager dialogueManager;
     [SerializeField] public GameObject textPopUp;
 
+    public int npcIdNumber; //ID number
+
     public int ID { get; set; } //NPC ID for Quest identification
     public static event Action<NPCInterface> npcIDcheck;
 
@@ -25,6 +27,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
     {
         
         instance = this; //refer the interface instance to this
+        instance.ID = npcIdNumber; //Set this npc's ID
         //Get the dialogue manager
         dialogueManager = FindObjectOfType<DialogueManager>();
         textPopUp.SetActive(false);
@@ -33,8 +36,9 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
     //If player is in the trigger of the character, check for initiate dialogue input
     private void OnTriggerEnter(Collider collider)
     {
+        
         //Player is in the talking range, make the popup appears and enable the player to start the dialogue
-        if(collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             
             textPopUp.SetActive(true);
@@ -49,7 +53,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
             {
                 npcIDcheck?.Invoke(instance); //Trigger event
-                Debug.Log("Pressed E");
+
                 InitiateDialogue();
 
             }
