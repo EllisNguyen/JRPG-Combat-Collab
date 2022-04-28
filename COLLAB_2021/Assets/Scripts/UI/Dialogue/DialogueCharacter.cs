@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System;
 using UnityEngine;
 /*
  * Author: Ly Duong Huy
@@ -9,7 +9,7 @@ using UnityEngine;
  * Summary:
  * Handles dialogues. Search for player using TAG.
  */
-public class DialogueCharacter : MonoBehaviour
+public class DialogueCharacter : MonoBehaviour, NPCInterface
 {
     //dialogue for this specific class
     public Dialogue dialogue;
@@ -17,8 +17,14 @@ public class DialogueCharacter : MonoBehaviour
     public DialogueManager dialogueManager;
     [SerializeField] public GameObject textPopUp;
 
+    public int ID { get; set; } //NPC ID for Quest identification
+    public static event Action<NPCInterface> npcIDcheck;
+
+    public NPCInterface instance; //instance NPCinterface
     private void Start()
     {
+        
+        instance = this; //refer the interface instance to this
         //Get the dialogue manager
         dialogueManager = FindObjectOfType<DialogueManager>();
         textPopUp.SetActive(false);
@@ -42,6 +48,7 @@ public class DialogueCharacter : MonoBehaviour
             //start dialogue if player is not in another dialogue and has pressed E
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
             {
+                npcIDcheck?.Invoke(instance); //Trigger event
                 Debug.Log("Pressed E");
                 InitiateDialogue();
 

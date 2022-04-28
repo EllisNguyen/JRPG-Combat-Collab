@@ -735,8 +735,7 @@ MonoBehaviour:
     - Dead.
     - Still Dead Lmao
   quests: {fileID: 788934402}
-  questType: QuestExecution
-  questInfo: {fileID: 11400000, guid: 9084f0e843838ed4eb101c3d8d9417d4, type: 2}
+  questType: Quest01
 --- !u!1 &1035871900
 GameObject:
   m_ObjectHideFlags: 0

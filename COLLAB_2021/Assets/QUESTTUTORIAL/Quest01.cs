@@ -19,7 +19,7 @@ public class Quest01 : QuestSystem
         questID = 0;
         experienceReward = 100;
 
-        Goals.Add(new KillQuest(this,0,"Kill all slimes",false,0,5));
+        Goals.Add(new MeetNPCQuest(this,0,"Meet the Newspaper",false,0,1));
         
 
         //Initiate the goals
