@@ -11,15 +11,18 @@ using UnityEngine.UI;
     
 public class Quest : ScriptableObject
 {
+    //check if the button is clicked or not so the player can not click dropdown again so it not bug again
     public bool HaveClicked = false;
     
     [System.Serializable]
     
     public struct Info
     {
-        
+        //Name of the quest
         public string Name;
+        //The drop down icon
         public Sprite Icon;
+        //The Description of the quest
         public string Description;
         
     }
@@ -29,19 +32,26 @@ public class Quest : ScriptableObject
     
     public struct Stat
     {
+        //How many XP they can get 
         public int XP;
-        public GameObject Checkmark;
+       
     }
     [Header("Reward")] public Stat Reward = new Stat { XP = 10 };
 
+    //check if the mission is completed  or not
     public bool Completed { get; protected set; }
+    //quest completed event 
     public QuestCompletedEvent QuestCompleted;
    
     public abstract class QuestGoal:ScriptableObject
     {
+        //get the description
         protected string Description;
+        //get the current amount in the QuestGoal
         public int CurrentAmount { get; protected set; }
+        //set the amount of the quest in hierarchy 
         public int RequiredAmount = 1;
+        //get it complete  or not 
         public bool Completed { get; protected set; }
         [HideInInspector] public UnityEvent GoalCompleted;
         public virtual string GetDescription()
@@ -54,24 +64,30 @@ public class Quest : ScriptableObject
             {
                 
             }
+            //when initialize set complete to false 
             Completed = false;
+            
             GoalCompleted = new UnityEvent();
         }
         protected void Evaluate()
         {
             if(CurrentAmount>= RequiredAmount)
             {
+                //if the current amount more than required amount then is complete
                 Complete(); 
             }
         }
         private void Complete()
         {
+            //set complete to true
             Completed = true;
             GoalCompleted.Invoke();
+            //remove all the listener
             GoalCompleted.RemoveAllListeners();
         }
         public void Skip()
         {
+            //if we click the skip button it will complete
             Complete();
         }
         

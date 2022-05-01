@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3281,6 +3281,22 @@ PrefabInstance:
     - target: {fileID: 6573348969444853194, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
       propertyPath: m_Name
       value: Image (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573348969527657619, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
+      propertyPath: m_Name
+      value: QuestDescription
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573348969919720448, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
+      propertyPath: m_Name
+      value: Quest Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573348969939550281, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573348969939550282, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
+      propertyPath: m_Name
+      value: HowManyXpGetForComplete
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6b0721c76cf574f82828fabcdfe4db, type: 3}
