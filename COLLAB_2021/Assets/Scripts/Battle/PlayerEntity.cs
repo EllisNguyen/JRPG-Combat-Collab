@@ -3,12 +3,18 @@ using UnityEngine;
 public class PlayerEntity : MonoBehaviour
 {
     public GameObject inventory;
-    public GameObject party;
+    public GameObject partyMenu;
     public GameObject pauseMenu;
     GameObject curMenu;
+    [SerializeField] TopDownMovement movement; //TopDownMovement class reference
+    public CharacterParty party;
 
-    // Update is called once per frame
-    void Update()
+    public void HandleMovement()
+    {
+        movement.Movements();
+    }
+
+    public void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -22,9 +28,13 @@ public class PlayerEntity : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.U)) 
         {
-            ActivateMenu(party);
+            ActivateMenu(partyMenu);
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+
+        }
     }
 
     /// <summary>

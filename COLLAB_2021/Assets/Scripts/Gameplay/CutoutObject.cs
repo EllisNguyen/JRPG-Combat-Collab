@@ -14,7 +14,7 @@ public class CutoutObject : MonoBehaviour
     private Camera mainCamera;
 
     [SerializeField] List<Material> curMaterials;
-    [SerializeField] float fadeTime = 0.5f;
+    [SerializeField] float fadeTime = 0.2f;
     [Range(0.05f, 0.15f)][SerializeField] float cutoutSize = 0.1f;
 
     private void Awake()

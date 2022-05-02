@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff6a98628ccc7448848e3c1629d5578, type: 3}
+  m_Name: Sagith
+  m_EditorClassIdentifier: 
+  charName: Sagith
+  portraitSprite: {fileID: 21300000, guid: 262346ce6a2bad040a0ddf25dce20848, type: 3}
+  battleSprite: {fileID: -8465048047403305680, guid: ae85d2b6b436cda4faccb193dfe18baf, type: 3}
+  battleIcon: {fileID: 21300000, guid: ffd818720aaebdc4fae9aae0be79a612, type: 3}
+  overworldAnim: []
+  charDescription: 
+  health: 28
+  mana: 12
+  physicalAtkDmg: 35
+  specialAtkDmg: 33
+  physicalDef: 24
+  specialDef: 42
+  speed: 34
+  critChance: 11
+  critDmg: 45
+  elementalRes: 20
+  exp: 5
+  eles: 2

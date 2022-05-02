@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 
 /*
@@ -13,15 +14,17 @@ Simple Enemy Follow the player Script
 
 public class EnemyMovement : MonoBehaviour, EnemyInterface
 {
-    [SerializeField] Transform playerTransform; //stores the player's Transform in the Editor
+    public Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
     [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
     public int ID { get; set; } //ID of the enemy. Stays inside of enemy movements for TESTING
     private DamagePopup damagePopup; //reference to the DamagePopup class
-    EnemyInterface instance;
+    EnemyInterface instance; //instance of the enemyinterface
     public static event Action<EnemyInterface> enemyDead;
 
-    bool follow = true; //enables following player or not
+    public bool follow = true; //enables following player or not
+
+    public NavMeshAgent enemy;
 
     private void Start()
     {
@@ -29,13 +32,11 @@ public class EnemyMovement : MonoBehaviour, EnemyInterface
         instance = this.gameObject.GetComponent<EnemyInterface>();
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void HandleUpdate()
     {
-        if (follow == true)
+        if (follow == true && playerTransform != null)
         {
-            FollowPlayer();// Execute if player is not colliding with the enemy
+            enemy.SetDestination(playerTransform.position);
         }
 
     }
@@ -53,42 +54,5 @@ public class EnemyMovement : MonoBehaviour, EnemyInterface
 
         //Set the damage value the stated here
         damagePopup.SetDamageText(damage);
-    }
-
-    //invoke event to the quest counter and destroy this gameobject
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            enemyDead?.Invoke(instance);
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            follow = true; //Set follow to true when player enters the enemy trigger
-            
-
-        }
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            follow = false; //Set follow to false when player exit the enemy trigger
-
-        }
-    }
-
-    void FollowPlayer()
-    //follow player function using MoveTowards command
-    {
-        Vector3 targetPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
     }
 }

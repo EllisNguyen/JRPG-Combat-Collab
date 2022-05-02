@@ -5,6 +5,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Inventory, BattleOver }
 
@@ -25,11 +26,14 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] GameObject enemyPawn_Pref;
     [SerializeField] InventoryUI inventoryUI;
 
-    CharacterParty playerParty;
-    CharacterParty enemyParty;
+    [BoxGroup("Entity")] public CharacterParty playerParty;
+    [BoxGroup("Entity")] public CharacterParty enemyParty;
 
-    PlayerEntity player;
-    EnemyEntity enemy;
+    [BoxGroup("Entity")] public PlayerEntity player;
+    [BoxGroup("Entity")] public EnemyEntity enemy;
+
+    //[BoxGroup("Party")] public CharacterParty playerParty;
+    //[BoxGroup("Party")] public CharacterParty enemyParty;
 
     public event Action<bool> OnBattleOver;
     BattleState state;
@@ -54,20 +58,23 @@ public class BattleSystem : MonoBehaviour
 
     public void Start()
     {
-        SetupBattle();
+        //SetupBattle();
     }
 
     public void SetupBattle()
     {
-        foreach (var player in playerUnits)
-        {
-            player.Setup();
-        }
+        //foreach (var player in playerUnits)
+        //{
+        //    playerUnits[0].Setup();
+        //}
 
-        foreach (var enemy in enemyUnits)
-        {
-            enemy.Setup();
-        }
+        //foreach (var enemy in enemyUnits)
+        //{
+        //    enemy.Setup();
+        //}
+
+        playerUnits[0].Setup(playerParty.GetHealthyCharacter());
+        enemyUnits[0].Setup(enemyParty.GetHealthyCharacter());
 
         playerHud.SetData(playerUnits[0].Character);
         enemyHud.SetData(enemyUnits[0].Character);

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [Header("Player References")]
-    [SerializeField] TopDownMovement r_topDownMovement; //TopDownMovement class reference
+    public PlayerEntity player;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] GameObject worldCamera;
     [SerializeField] DialogueManager dialogueManager; //dialogueManager Ref
@@ -26,13 +27,13 @@ public class GameController : MonoBehaviour
     }
 
     [Header("Battle References")]
-    [SerializeField] EnemyEntity enemy;
+    public EnemyEntity enemy;
 
     public void StartBattle(EnemyEntity enemy)
     {
         //Change game state and enable battle UI.
         state = GameState.Battle;
-        battleSystem.gameObject.SetActive(true);
+        //battleSystem.gameObject.SetActive(true);
         this.enemy = enemy;
 
         worldCamera.SetActive(false);
@@ -40,27 +41,52 @@ public class GameController : MonoBehaviour
         var playerParty = GameManager.Instance.GetComponent<CharacterParty>();
         var enemyParty = enemy.GetComponent<CharacterParty>();
 
+        SceneManager.LoadScene("TestBattle", LoadSceneMode.Additive);
+
         //Start battle.
-        battleSystem.StartBattle(playerParty, enemyParty);
+        //battleSystem.StartBattle(playerParty, enemyParty);
     }
 
     private void Update()
     {
         state = GameManager.Instance.gameState;
 
-        if (state == GameState.FreeRoam)
+        //if (state == GameState.FreeRoam)
+        //{
+        //    if (!r_topDownMovement) return;
+        //    //if player is not in dialogue then he/she can move
+        //    if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
+        //}
+        //else if (state == GameState.Battle)
+        //{
+        //    battleSystem.HandleUpdate();
+        //}
+        //else if(state == GameState.Menu)
+        //{
+        //    //TODO: menu.
+        //}
+
+        switch (state)
         {
-            if (!r_topDownMovement) return;
-            //if player is not in dialogue then he/she can move
-            if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
-        }
-        else if (state == GameState.Battle)
-        {
-            battleSystem.HandleUpdate();
-        }
-        else if(state == GameState.Menu)
-        {
-            //TODO: menu.
+            case GameState.FreeRoam:
+                player.HandleInput();
+                player.HandleMovement();
+                break;
+            case GameState.Battle:
+                battleSystem.HandleUpdate();
+                break;
+            case GameState.Menu:
+                player.HandleInput();
+                break;
+            case GameState.Dialogue:
+                dialogueManager.HandleUpdate();
+                break;
+            case GameState.UpInventory:
+                break;
+            case GameState.Paused:
+                break;
+            default:
+                break;
         }
     }
 }

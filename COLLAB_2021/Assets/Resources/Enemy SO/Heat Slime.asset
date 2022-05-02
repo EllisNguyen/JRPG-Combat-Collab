@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e444fd1745a2d814f9aedd3da180b692, type: 3}
+  m_Name: Heat Slime
+  m_EditorClassIdentifier: 
+  charName: Heat Slime
+  portraitSprite: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  battleSprite: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  battleIcon: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  overworldAnim:
+  - {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  - {fileID: 5694436933679424390, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  - {fileID: 9019170361998946011, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  - {fileID: 8277129383740711746, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  charDescription: 
+  health: 24
+  mana: 36
+  physicalAtkDmg: 10
+  specialAtkDmg: 23
+  physicalDef: 23
+  specialDef: 41
+  speed: 19
+  critChance: 23
+  critDmg: 25
+  elementalRes: 24
+  exp: 5
+  eles: 1

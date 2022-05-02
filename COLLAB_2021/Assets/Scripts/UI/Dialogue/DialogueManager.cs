@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // included to access the components of TextMeshPro
+
 /*
  * Author: Ly Duong Huy
  * Scripts: DialogueManager
@@ -13,6 +14,7 @@ using TMPro; // included to access the components of TextMeshPro
  */
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] GameObject dialogueContainer; //reference to the dialogue container
     [SerializeField] TextMeshProUGUI displayName; //reference for name text
     [SerializeField] TextMeshProUGUI displayDialogue; //reference for dialogue text
     [SerializeField] GameObject continueButton; //reference to the continue button
@@ -23,9 +25,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        displayName = GameObject.Find("Speaker").GetComponent<TextMeshProUGUI>();
-        displayDialogue = GameObject.Find("Dialogue").GetComponent<TextMeshProUGUI>();
-        continueButton = GameObject.Find("Continue");
+        //displayName = GameObject.Find("Speaker_Txt").GetComponent<TextMeshProUGUI>();
+        //displayDialogue = GameObject.Find("Dialogue_Txt").GetComponent<TextMeshProUGUI>();
+        //continueButton = GameObject.Find("Continue");
+        //continueButton = GameObject.Find("Dialogue_Container");
     }
 
     // Start is called before the first frame update
@@ -34,9 +37,11 @@ public class DialogueManager : MonoBehaviour
         //Initialize the queue
         sentences = new Queue<string>();
 
-        //Set the color of the dialogue UI to transparent and hide the continue button
-        displayName.faceColor = new Color32(0, 0, 0, 0);
-        displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+        //DISABLE THE WHOLE CONTAINER NOW, DON'T NEED TO SET TEXT COLOR ANYMORE
+        //displayName.faceColor = new Color32(0, 0, 0, 0);
+        //displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+
+        dialogueContainer.SetActive(false);
         continueButton.SetActive(false);
 
     }
@@ -45,10 +50,12 @@ public class DialogueManager : MonoBehaviour
     //Start the dialogue
     public void StartDialogue(Dialogue dialogue)
     {
+        //DISABLE THE WHOLE CONTAINER NOW, DON'T NEED TO SET TEXT COLOR ANYMORE
+        //displayName.faceColor = new Color32(0, 0, 0, 255);
+        //displayDialogue.faceColor = new Color32(0, 0, 0, 255);
 
         //Enable everything when start dialogue
-        displayName.faceColor = new Color32(0, 0, 0, 255);
-        displayDialogue.faceColor = new Color32(0, 0, 0, 255);
+        dialogueContainer.SetActive(true);
         continueButton.SetActive(true);
 
         //Change the name text into the speaker's name
@@ -66,16 +73,23 @@ public class DialogueManager : MonoBehaviour
 
         Dequeue();
         inDialogue = true;
-
+        GameManager.Instance.gameState = GameState.Dialogue;
     }
 
+    //Added by Phap -> ref by GameManager, whenever the dialogue is active, player can push e to continue dialogue.
+    public void HandleUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Dequeue();
+        }
+    }
     
 
     //display the next sentence
     //called in Update()
     public void Dequeue()
     {
-
         //Check if the end of the queue has been reached
         if(sentences.Count == 0)
         {
@@ -95,12 +109,20 @@ public class DialogueManager : MonoBehaviour
     //called in Dequeue()
     public void EndDialogue()
     {
-        displayDialogue.text = "end";
+        //displayDialogue.text = "end";
         inDialogue = false;
         //Set the color of the dialogue UI to transparent and hide the continue button
         //After the conversation ended
-        displayName.faceColor = new Color32(0, 0, 0, 0);
-        displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+
+        //DISABLE THE WHOLE CONTAINER NOW, DON'T NEED TO SET TEXT COLOR ANYMORE
+        //displayName.faceColor = new Color32(0, 0, 0, 0);
+        //displayDialogue.faceColor = new Color32(0, 0, 0, 0);
+
+
         continueButton.SetActive(false);
+        dialogueContainer.SetActive(false);
+
+        GameManager.Instance.gameState = GameState.FreeRoam;
+        
     }
 }

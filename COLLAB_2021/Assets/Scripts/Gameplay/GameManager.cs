@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     public Color legendary;
     public Color exotic;
 
+    [Header("Progression bool")]
+    public bool enableSkill = false;
+    public bool enableInventory = false;
+
     private void Awake()
     {
         Instance = this;
@@ -131,6 +135,7 @@ public enum GameState
     FreeRoam,
     Battle,
     Menu,
+    Dialogue,
     UpInventory,
     Paused,
 
