@@ -53,7 +53,8 @@ public class TopDownMovement : MonoBehaviour
         if (direction.x != 0)
         {
             animator.MoveX = direction.x;
-            
+            if (direction.x > 0) animator.FlipSprite(false);
+            else animator.FlipSprite(true);
         }
 
         Vector3 playerPosition = this.transform.position;//store the position before moving
@@ -94,6 +95,5 @@ public class TopDownMovement : MonoBehaviour
 
         animator.IsMoving = isMoving;
         this.transform.position = playerPosition; //updating the position after moving
-
     }
 }

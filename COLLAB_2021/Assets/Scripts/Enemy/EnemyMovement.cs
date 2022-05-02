@@ -55,4 +55,10 @@ public class EnemyMovement : MonoBehaviour, EnemyInterface
         //Set the damage value the stated here
         damagePopup.SetDamageText(damage);
     }
+
+    public Vector3 GetMovementDirection()
+    {
+        Vector3 normalizedDirection = enemy.desiredVelocity.normalized;
+        return normalizedDirection;
+    }
 }

@@ -6,14 +6,21 @@ public class AlterAnim : MonoBehaviour
 {
     [SerializeField] List<Sprite> walkRightSprites;
     [SerializeField] List<Sprite> walkLeftSprites;
-    [SerializeField] FacingDirection defaultDirection = FacingDirection.down;
+    [SerializeField] FacingDirection defaultDirection = FacingDirection.right;
     [SerializeField] bool flip;
 
     //Parameters.
     public float MoveX { get; set; }
-    public float MoveY { get; set; }
     public bool IsMoving { get; set; }
-    public bool Flip { get; set; }
+
+    [SerializeField] int idleFrame = 1;
+    SpriteAnimator currentAnim;
+
+    bool wasPreviouslyMoving;
+
+    //States.
+    SpriteAnimator walkRightAnim;
+    SpriteAnimator walkLeftAnim;
 
     public List<Sprite> WalkRightSprites
     {
@@ -39,15 +46,6 @@ public class AlterAnim : MonoBehaviour
         }
     }
 
-    [SerializeField] int idleFrame = 1;
-    SpriteAnimator currentAnim;
-
-    bool wasPreviouslyMoving;
-
-    //States.
-    SpriteAnimator walkRightAnim;
-    SpriteAnimator walkLeftAnim;
-
     SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -64,14 +62,12 @@ public class AlterAnim : MonoBehaviour
         //Store current anim.
         var prevAnim = currentAnim;
 
-        if (MoveX == 1)
+        if (MoveX > 0)
         {
-            spriteRenderer.flipX = false;
             currentAnim = walkRightAnim;
         }
-        else if (MoveX == -1)
+        else if (MoveX < 0)
         {
-            spriteRenderer.flipX = true;
             currentAnim = walkLeftAnim;
         }
 
@@ -85,17 +81,30 @@ public class AlterAnim : MonoBehaviour
             spriteRenderer.sprite = currentAnim.Frames[idleFrame];
 
         wasPreviouslyMoving = IsMoving;
+        spriteRenderer.flipX = flip;
     }
 
     public void SetFacingDirection(FacingDirection dir)
     {
         if (dir == FacingDirection.right)
+        {
             MoveX = 1;
+        }
         else if (dir == FacingDirection.left)
+        {
             MoveX = -1;
+        }
     }
 
     public FacingDirection DefaultDirection { get => defaultDirection; }
+
+    public bool FlipSprite(bool isFlipped = false)
+    {
+        flip = isFlipped;
+
+        return flip;
+    }
 }
 
-public enum FacingDirection { up, down, left, right }
+public enum FacingDirection { left, right }
+

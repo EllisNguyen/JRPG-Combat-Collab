@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
         var playerParty = GameManager.Instance.GetComponent<CharacterParty>();
         var enemyParty = enemy.GetComponent<CharacterParty>();
 
+        GameManager.Instance.gameState = GameState.Battle;
+
         SceneManager.LoadScene("TestBattle", LoadSceneMode.Additive);
 
         //Start battle.

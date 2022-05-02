@@ -30,6 +30,7 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] Sprite sprite;
     public CharacterParty party;
     public int enemyLevel;
+    public bool isMoving;
 
     GameState state;
 
@@ -65,7 +66,37 @@ public class EnemyEntity : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.gameState == GameState.FreeRoam) movement.HandleUpdate();
+        if (GameManager.Instance.gameState != GameState.FreeRoam)
+        {
+            movement.enemy.enabled = false;
+            return;
+        }
+        else
+        {
+            movement.enemy.enabled = true;
+        }
+
+        if (movement.GetMovementDirection().x > 0)
+        {
+            animator.MoveX = movement.GetMovementDirection().x;
+            animator.FlipSprite(false);
+        }
+        else
+        {
+            animator.MoveX = movement.GetMovementDirection().x;
+            animator.FlipSprite(true);
+        }
+
+        movement.HandleUpdate();
+
+        if (movement.enemy.velocity.sqrMagnitude != 0)
+        {
+            isMoving = true;
+        }
+        else
+            isMoving = false;
+
+        animator.IsMoving = isMoving;
     }
 
     public void InitBattle()

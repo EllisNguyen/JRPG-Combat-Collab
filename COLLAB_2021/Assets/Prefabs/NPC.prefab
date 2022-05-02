@@ -187,7 +187,7 @@ MonoBehaviour:
   - {fileID: 8788777522980839456, guid: ebc0c1a29b74a3f4795d7520ad93e2b2, type: 3}
   - {fileID: -2323417964571395930, guid: ebc0c1a29b74a3f4795d7520ad93e2b2, type: 3}
   - {fileID: -8942132103185399073, guid: ebc0c1a29b74a3f4795d7520ad93e2b2, type: 3}
-  defaultDirection: 3
+  defaultDirection: 1
   flip: 0
   idleFrame: 1
 --- !u!1 &8725076222945569802
@@ -257,7 +257,9 @@ MonoBehaviour:
       I\u2019m really worried for you, my son."
     - "Warriors should be in tip-top condition every single minute. Back in my days\u2026"
     - Oh, right. Right. Where was I?
+  dialogueManager: {fileID: 0}
   textPopUp: {fileID: 2943463206291641200}
+  npcIdNumber: 0
 --- !u!136 &7641317338317834273
 CapsuleCollider:
   m_ObjectHideFlags: 0

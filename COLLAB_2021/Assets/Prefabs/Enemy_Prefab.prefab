@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3538318352488113224}
   - component: {fileID: 3538318352488113226}
   - component: {fileID: 8797810910489976030}
+  - component: {fileID: 4835036657912175883}
   m_Layer: 0
   m_Name: Enemy_Prefab
   m_TagString: Untagged
@@ -73,6 +74,9 @@ MonoBehaviour:
   graphic: {fileID: 7144750862092222269}
   name: 
   sprite: {fileID: 0}
+  party: {fileID: 4835036657912175883}
+  enemyLevel: 0
+  isMoving: 0
 --- !u!114 &3538318352488113226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +116,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4835036657912175883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3538318352488113227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59932f57798d66b47b247f543a999340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters: []
 --- !u!1 &6977865155444874033
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +374,6 @@ MonoBehaviour:
   - {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   - {fileID: 8936921706386391257, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   - {fileID: -2063852962750616285, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  defaultDirection: 3
+  defaultDirection: 1
   flip: 0
   idleFrame: 0
