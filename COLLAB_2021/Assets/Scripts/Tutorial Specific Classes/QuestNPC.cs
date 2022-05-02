@@ -13,6 +13,7 @@ public class QuestNPC : DialogueCharacter
     public bool assignedQuest; //determine whether the quest has been assigned to the player or not
     public bool helped; //determine whether the player has finished the quest
 
+    private QuestManager questManager;
     
     public Dialogue questCompletedDialogue;
     
@@ -20,12 +21,20 @@ public class QuestNPC : DialogueCharacter
     
     public Dialogue questAlreadyDoneDialogue;
 
-    [SerializeField] private GameObject quests;
+    //[SerializeField] private GameObject quests;
 
-    [SerializeField]
-    private string questType;
+    //[SerializeField] private string questType;
 
-    private QuestSystem quest;
+    private Quest.QuestGoal quest;
+
+    [SerializeField] Quest questToAdd;
+    //private QuestSystem quest;
+
+    private void Start()
+    {
+        
+        questManager = FindObjectOfType<QuestManager>();
+    }
     public override void InitiateDialogue()
     {
         
@@ -58,16 +67,19 @@ public class QuestNPC : DialogueCharacter
 
         assignedQuest = true;
 
-        //passed in the quest in order to keep a reference to it.
-        quest = (QuestSystem)quests.AddComponent(System.Type.GetType(questType));
+        //passed in the quest in order to keep a reference to it. (TEST)
+        //quest = (QuestSystem)quests.AddComponent(System.Type.GetType(questType));
+
+        questManager.CurrentQuests.Add(questToAdd);
         
+
     }
 
     void CheckQuest()
     {
-        if (quest.completed)
+        if (quest.Completed)
         {
-            quest.GiveReward();
+            
             helped = true;
             assignedQuest = false;
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)

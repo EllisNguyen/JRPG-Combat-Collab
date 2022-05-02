@@ -104,7 +104,7 @@ public class Quest : ScriptableObject
             goal.GoalCompleted.AddListener(delegate { CheckGoals(); });
         }
     }
-    private void CheckGoals()
+    public void CheckGoals()
     {
         Completed = Goals.All(g => g.Completed);
         if(Completed)
