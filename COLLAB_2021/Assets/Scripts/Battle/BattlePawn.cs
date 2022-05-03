@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: Pawn that hold information of the battle character.
+///Day created: 27/11/2021
+///Last edited: 03/05/2022 - Phap Nguyen.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

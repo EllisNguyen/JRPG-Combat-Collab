@@ -67,9 +67,7 @@ public class Character
         //Apply stats boosting effect.
         //Get the boosted value of the stat from StatBoost the Dictionary.
         int boost = StatBoosts[stat];
-        //An array of value that boosting the stat.
-        //The boosted stat will multiply by the value in the float array.
-        var boostValues = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f };
+        var boostValues = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f };//An array of value that boosting the stat.
 
         //If the boost is >= 0, then it's positive boosting.
         //Multiply the current stat with the boostValue.

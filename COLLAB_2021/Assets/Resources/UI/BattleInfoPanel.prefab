@@ -1,5 +1,141 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &989824945287679326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4501215218341969931}
+  - component: {fileID: 7749252483146750849}
+  - component: {fileID: 9117678020495799128}
+  m_Layer: 29
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4501215218341969931
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989824945287679326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6970467469361670849}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 40, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7749252483146750849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989824945287679326}
+  m_CullTransparentMesh: 1
+--- !u!114 &9117678020495799128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989824945287679326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '<size=9>Level</size>
+
+    99'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f3270c83ee489c84eb130d4d8671bbd0, type: 2}
+  m_sharedMaterial: {fileID: 2642991204477231934, guid: f3270c83ee489c84eb130d4d8671bbd0, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: -25
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6970467467427124239
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,13 +148,13 @@ GameObject:
   - component: {fileID: 6970467467427124275}
   - component: {fileID: 6970467467427124274}
   - component: {fileID: 6970467467427124237}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6970467467427124236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -131,7 +267,7 @@ GameObject:
   - component: {fileID: 6970467467566183996}
   - component: {fileID: 6970467467566183970}
   - component: {fileID: 6970467467566183997}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Progressor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,13 +343,13 @@ GameObject:
   - component: {fileID: 6970467467748430900}
   - component: {fileID: 6970467467748430903}
   - component: {fileID: 6970467467748430902}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6970467467748430897
 RectTransform:
   m_ObjectHideFlags: 0
@@ -326,7 +462,7 @@ GameObject:
   - component: {fileID: 6970467467873934377}
   - component: {fileID: 6970467467873934383}
   - component: {fileID: 6970467467873934382}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +597,7 @@ GameObject:
   - component: {fileID: 6970467467878688421}
   - component: {fileID: 6970467467878688420}
   - component: {fileID: 6970467467878688423}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: StatusHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +619,7 @@ RectTransform:
   - {fileID: 6970467467748430897}
   - {fileID: 6970467467427124236}
   m_Father: {fileID: 6970467469361670849}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -563,7 +699,7 @@ GameObject:
   - component: {fileID: 6970467467998253706}
   - component: {fileID: 6970467467998253704}
   - component: {fileID: 6970467467998253707}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Progressor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -639,7 +775,7 @@ GameObject:
   - component: {fileID: 6970467468064722015}
   - component: {fileID: 6970467468064722014}
   - component: {fileID: 6970467468064722009}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: EXP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +867,7 @@ GameObject:
   - component: {fileID: 6970467468155480592}
   - component: {fileID: 6970467468155480595}
   - component: {fileID: 6970467468155480598}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +970,7 @@ GameObject:
   - component: {fileID: 6970467468324064206}
   - component: {fileID: 6970467468324064204}
   - component: {fileID: 6970467468324064207}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +1104,7 @@ GameObject:
   - component: {fileID: 6970467468428300191}
   - component: {fileID: 6970467468428300189}
   - component: {fileID: 6970467468428300188}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,8 +1185,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1102,7 +1238,7 @@ GameObject:
   - component: {fileID: 6970467468669582800}
   - component: {fileID: 6970467468669582806}
   - component: {fileID: 6970467468669582801}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Progressor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1178,7 +1314,7 @@ GameObject:
   - component: {fileID: 6970467469255822412}
   - component: {fileID: 6970467469255822415}
   - component: {fileID: 6970467469255822414}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,11 +1336,11 @@ RectTransform:
   - {fileID: 6970467469444344858}
   - {fileID: 6970467468064722008}
   m_Father: {fileID: 6970467469361670849}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.3, y: -0.0000014938}
+  m_AnchoredPosition: {x: 15, y: -0.0000014938}
   m_SizeDelta: {x: 110, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6970467469255822412
@@ -1283,13 +1419,13 @@ GameObject:
   - component: {fileID: 6970467469333651279}
   - component: {fileID: 6970467469333651278}
   - component: {fileID: 6970467469333651273}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6970467469333651272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1403,7 +1539,7 @@ GameObject:
   - component: {fileID: 6970467469361670855}
   - component: {fileID: 6970467469361670854}
   - component: {fileID: 6970467469361670852}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: BattleInfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,11 +1553,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6970467469361670848}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6970467468428300191}
+  - {fileID: 4501215218341969931}
   - {fileID: 6970467469255822409}
   - {fileID: 6970467467878688422}
   m_Father: {fileID: 0}
@@ -1483,6 +1620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 6970467468428300188}
+  levelText: {fileID: 9117678020495799128}
   hpBar: {fileID: 6970467468155480598}
   mpBar: {fileID: 6970467469444344862}
   expBar: {fileID: 6970467468064722011}
@@ -1497,7 +1635,7 @@ GameObject:
   - component: {fileID: 6970467469422887653}
   - component: {fileID: 6970467469422887659}
   - component: {fileID: 6970467469422887658}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1633,7 +1771,7 @@ GameObject:
   - component: {fileID: 6970467469444344856}
   - component: {fileID: 6970467469444344859}
   - component: {fileID: 6970467469444344862}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: MP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

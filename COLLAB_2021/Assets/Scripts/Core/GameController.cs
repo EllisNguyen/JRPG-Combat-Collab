@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: Game controller that hold the information of current play session.
+///Day created: 22/03/2022
+///Last edited: 03/05/2022 - Phap Nguyen.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +17,12 @@ public class GameController : MonoBehaviour
     [SerializeField] DialogueManager dialogueManager; //dialogueManager Ref
     
     GameState state;
+
+    public BattleSystem BattleSystem
+    {
+        get { return battleSystem; }
+        set { battleSystem = value; }
+    }
 
     public static GameController Instance { get; private set; }
 
@@ -52,21 +63,6 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         state = GameManager.Instance.gameState;
-
-        //if (state == GameState.FreeRoam)
-        //{
-        //    if (!r_topDownMovement) return;
-        //    //if player is not in dialogue then he/she can move
-        //    if (!dialogueManager.inDialogue) r_topDownMovement.Movements();
-        //}
-        //else if (state == GameState.Battle)
-        //{
-        //    battleSystem.HandleUpdate();
-        //}
-        //else if(state == GameState.Menu)
-        //{
-        //    //TODO: menu.
-        //}
 
         switch (state)
         {
