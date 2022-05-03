@@ -72,7 +72,7 @@ public class QuestNPC : DialogueCharacter
 
         questManager.CurrentQuests.Add(questToAdd);
         quest = questManager.CurrentQuests[0];
-        quest.Initialize();
+        questManager.CreateQuest();
 
     }
 
