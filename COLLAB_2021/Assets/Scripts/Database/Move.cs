@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Move
 {
     public MoveData Base { get; set; }
     public int Mana { get; set; }
 
-    public Move(MoveData pBase)
+    public Move(MoveData cBase)
     {
-        Base = pBase;
-        Mana = pBase.Mana;
+        Base = cBase;
+        Mana = cBase.Mana;
     }
 
     /// <summary>

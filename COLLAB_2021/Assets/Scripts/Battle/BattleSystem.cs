@@ -18,36 +18,41 @@ public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleState state;
 
-    [Header("Player")]
-    [SerializeField] BattleHud playerHud;
-    [SerializeField] List<BattlePawn> playerUnits;
+    [FoldoutGroup("Player")][SerializeField] BattleHud playerHud;
+    [FoldoutGroup("Player")][SerializeField] List<BattlePawn> playerUnits;
 
-    [Header("Enemy")]
-    [SerializeField] BattleHud enemyHud;
-    [SerializeField] List<BattlePawn> enemyUnits;
+    [PropertySpace(10)]
 
-    [Header("Battle component")]
+    [FoldoutGroup("Enemy")][SerializeField] BattleHud enemyHud;
+    [FoldoutGroup("Enemy")][SerializeField] List<BattlePawn> enemyUnits;
+
+    [PropertySpace(10)]
+
     //[SerializeField] BattleDialogueBox dialogueBox;
-    [SerializeField] GameObject playerPawn_Pref;
-    [SerializeField] GameObject enemyPawn_Pref;
-    [SerializeField] InventoryUI inventoryUI;
+    [FoldoutGroup("Battle Components")][SerializeField] GameObject playerPawn_Pref;
+    [FoldoutGroup("Battle Components")][SerializeField] GameObject enemyPawn_Pref;
+    [FoldoutGroup("Battle Components")][SerializeField] InventoryUI inventoryUI;
+    [FoldoutGroup("Battle Components")][SerializeField] BattleDialogue dialogueBox;
 
-    [BoxGroup("Entity")][ReadOnly] public CharacterParty playerParty;
-    [BoxGroup("Entity")][ReadOnly] public CharacterParty enemyParty;
+    [PropertySpace(10)]
 
-    [BoxGroup("Entity")][ReadOnly] public PlayerEntity player;
-    [BoxGroup("Entity")][ReadOnly] public EnemyEntity enemy;
+    [FoldoutGroup("Entity")][ReadOnly] public CharacterParty playerParty;
+    [FoldoutGroup("Entity")][ReadOnly] public CharacterParty enemyParty;
+
+    [FoldoutGroup("Entity")][ReadOnly] public PlayerEntity player;
+    [FoldoutGroup("Entity")][ReadOnly] public EnemyEntity enemy;
 
     //[BoxGroup("Party")] public CharacterParty playerParty;
     //[BoxGroup("Party")] public CharacterParty enemyParty;
 
     public event Action<bool> OnBattleOver;
 
-    [Header("SpawnPoints")]
-    public List<Transform> playerSpawnPoints;
-    public List<Transform> enemySpawnPoints;
+    [PropertySpace(10)]
 
-    [BoxGroup("Battle Multiplier")][SerializeField] float speedProgressorMultiplier = 0.3f;
+    [FoldoutGroup("Spawnpoints")]public List<Transform> playerSpawnPoints;
+    [FoldoutGroup("Spawnpoints")] public List<Transform> enemySpawnPoints;
+
+    [FoldoutGroup("Battle Multiplier")][SerializeField] float speedProgressorMultiplier = 0.03f;
 
     public float SpeedProgressorMultiplier => speedProgressorMultiplier;
     public BattleState State
@@ -56,11 +61,20 @@ public class BattleSystem : MonoBehaviour
         set { state = value; }
     }
 
-    [BoxGroup("Speed progressor")][SerializeField] RectTransform progressorHolder;
-    [BoxGroup("Speed progressor")][SerializeField] Image activeCharacter;
-    [BoxGroup("Speed progressor")][SerializeField] SpeedProgressor speedProgressorPrefab;
-    [BoxGroup("Speed progressor")][SerializeField] List<SpeedProgressor> playerProgressors;
-    [BoxGroup("Speed progressor")][SerializeField] List<SpeedProgressor> enemyProgressors;
+    [FoldoutGroup("Speed progressor")][SerializeField] RectTransform progressorHolder;
+    [FoldoutGroup("Speed progressor")][SerializeField] Image activeCharacter;
+    [FoldoutGroup("Speed progressor")][SerializeField] SpeedProgressor speedProgressorPrefab;
+    [FoldoutGroup("Speed progressor")][SerializeField] List<SpeedProgressor> playerProgressors;
+    [FoldoutGroup("Speed progressor")][SerializeField] List<SpeedProgressor> enemyProgressors;
+
+    [SerializeField] BattlePawn activeUnit;
+    [SerializeField] Image activeSprite;
+
+    public BattlePawn ActiveUnit
+    {
+        get { return activeUnit; }
+        set { activeUnit = value; }
+    }
 
     public Image ActiveCharacter
     {
@@ -81,7 +95,7 @@ public class BattleSystem : MonoBehaviour
         //player = playerParty.GetComponent<PlayerEntity>();
         //enemy = enemyParty.GetComponent<EnemyEntity>();
 
-        SetupBattle();
+        StartCoroutine(SetupBattle());
         //WaitingForTurn();
     }
 
@@ -90,6 +104,10 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     void ResetSpeedProgressor()
     {
+        activeCharacter.sprite = null;
+        activeUnit = null;
+        activeSprite.enabled = false;
+
         foreach (Transform child in progressorHolder.transform)
         {
             //Destroy them all.
@@ -117,26 +135,13 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    int playerRandomSpawn;
-    int enemyRandomSpawn;
-
     public void Start()
     {
         //SetupBattle();
     }
 
-    public void SetupBattle()
+    public IEnumerator SetupBattle()
     {
-        //foreach (var player in playerUnits)
-        //{
-        //    playerUnits[0].Setup();
-        //}
-
-        //foreach (var enemy in enemyUnits)
-        //{
-        //    enemy.Setup();
-        //}
-
         playerUnits[0].Setup(playerParty.GetHealthyCharacter());
         enemyUnits[0].Setup(enemyParty.GetHealthyCharacter());
 
@@ -144,41 +149,15 @@ public class BattleSystem : MonoBehaviour
         enemyHud.SetData(enemyUnits[0].Character);
         enemyHud.DisableNonPlayerElement();
 
+
         ResetSpeedProgressor();
 
-        //print(playerRandomSpawn);
+        yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName}.");
+        dialogueBox.SetSkillList(playerUnits[0].Character.Moves);
 
-        //for (int i = 0; i < playerParty.Characters.Count; i++)
-        //{
-        //    playerRandomSpawn = UnityEngine.Random.Range(0, playerSpawnPoints.Count);
-        //    print("step 1: PLAYER party include " + playerParty.Characters.Count + " characters.");
-        //    var player = Instantiate(playerPawn_Pref, playerSpawnPoints[playerRandomSpawn].transform.position, Quaternion.identity);
-        //    playerUnits.Add(player.GetComponent<BattlePawn>());
+        yield return new WaitForSecondsRealtime(1f);
 
-        //    if (playerUnits.Count >= 2) break;
-        //}
-
-        //////Loop through player party and setup the spawn.
-        ////for (int j = 0; j < playerUnits.Count; j++)
-        ////{
-        ////    print("number of player units are = " + playerUnits.Count);
-        ////    playerUnits[j].Setup(playerParty.GetHealthyCharacter());
-        ////}
-
-        //for (int k = 0; k < enemyParty.Characters.Count; k++)
-        //{
-        //    enemyRandomSpawn = UnityEngine.Random.Range(0, enemySpawnPoints.Count);
-        //    print("step 1: ENEMY party include " + enemyParty.Characters.Count + " monster.");
-        //    var enemy = Instantiate(enemyPawn_Pref, enemySpawnPoints[enemyRandomSpawn].transform.position, Quaternion.identity);
-        //    enemyUnits.Add(enemy.GetComponent<BattlePawn>());
-        //}
-
-        //print("hello");
-        //////Loop through enemy party and setup the spawn.
-        ////for (int l = 0; l < enemyUnits.Count; l++)
-        ////{
-        ////    enemyUnits[l].Setup(enemyParty.GetHealthyCharacter());
-        ////}
+        state = BattleState.Waiting;
     }
 
     public void HandleUpdate()
@@ -187,7 +166,7 @@ public class BattleSystem : MonoBehaviour
         {
             case BattleState.Start:
                 Debug.Log("bro");
-                WaitingForTurn();
+                //WaitingForTurn();
                 break;
             case BattleState.Waiting:
                 Debug.Log("waiting to choose move");
@@ -203,7 +182,14 @@ public class BattleSystem : MonoBehaviour
 
                 break;
             case BattleState.Busy:
-
+                if(activeUnit != null)
+                {
+                    if (activeUnit == playerUnits[0])
+                    {
+                        StartCoroutine(PlayerAction());
+                    }
+                    else ResetEnemyProgressor();
+                }
                 break;
             case BattleState.Inventory:
 
@@ -216,13 +202,26 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    IEnumerator PlayerAction()
+    {
+        state = BattleState.ActionSelection;
+        activeSprite.enabled = true;
+        activeSprite.sprite = playerUnits[0].Character.Base.portraitSprite;
+        yield return dialogueBox.TypeDialogue("Select your next move.");
+        dialogueBox.EnableActionSelector(true);
+    }
+
     void WaitingForTurn()
     {
+        activeCharacter.sprite = null;
+        activeUnit = null;
+        activeSprite.enabled = false;
+
         for (int i = 0; i < playerUnits.Count; i++)
         {
             foreach (SpeedProgressor progressor in playerProgressors)
             {
-                StartCoroutine(progressor.SpeedProgress(playerUnits[i].Character));
+                StartCoroutine(progressor.SpeedProgress(playerUnits[i].Character, playerUnits[0]));
             }
         }
 
@@ -230,15 +229,45 @@ public class BattleSystem : MonoBehaviour
         {
             foreach (SpeedProgressor progressor in enemyProgressors)
             {
-                StartCoroutine(progressor.SpeedProgress(enemyUnits[j].Character));
+                StartCoroutine(progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[0]));
             }
         }
     }
+
+    #region HANDLE ACTION SELECTION
+
+    public void Attack()
+    {
+
+    }
+
+    public void Guard()
+    {
+
+    }
+
+    public void Skill()
+    {
+        dialogueBox.EnableSkillSelector(true);
+    }
+
+    public void Bag()
+    {
+
+    }
+
+    public void Flee()
+    {
+
+    }
+
+    #endregion HANDLE ACTION SELECTION
 
     [Button]
     public void ResetEnemyProgressor()
     {
         if (state != BattleState.Waiting) state = BattleState.Waiting;
+        activeUnit = null;
         enemyProgressors[0].Slider.value = 0;
     }
 
@@ -246,15 +275,7 @@ public class BattleSystem : MonoBehaviour
     public void ResetPlayerProgressor()
     {
         if(state != BattleState.Waiting) state = BattleState.Waiting;
+        activeUnit = null;
         playerProgressors[0].Slider.value = 0;
-    }
-
-    public void Attack()
-    {
-        state = BattleState.ActionSelection;
-    }
-    public void Guard()
-    {
-        state = BattleState.MoveSelection;
     }
 }

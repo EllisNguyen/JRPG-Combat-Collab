@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     public Color legendary;
     public Color exotic;
 
+    [Header("Dialogue settings")]
+    public float letterPerSecond = 30f;
+
     [Header("Progression bool")]
     public bool enableSkill = false;
     public bool enableInventory = false;

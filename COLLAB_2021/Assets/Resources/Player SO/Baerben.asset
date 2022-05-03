@@ -30,3 +30,8 @@ MonoBehaviour:
   elementalRes: 30
   exp: 5
   eles: 4
+  learnableMoves:
+  - moveData: {fileID: 11400000, guid: 405f4b206c895374eb590973142ccf5c, type: 2}
+    level: 0
+  - moveData: {fileID: 0}
+    level: 0

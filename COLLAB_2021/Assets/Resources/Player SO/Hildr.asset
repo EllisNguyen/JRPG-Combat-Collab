@@ -30,3 +30,10 @@ MonoBehaviour:
   elementalRes: 27
   exp: 5
   eles: 1
+  learnableSkills:
+  - skillData: {fileID: 11400000, guid: 4f3c582d3f62e724082650f023ca1c08, type: 2}
+    level: 0
+  - skillData: {fileID: 11400000, guid: 4a8801744e37660498b0d421cfb08990, type: 2}
+    level: 0
+  - skillData: {fileID: 11400000, guid: 5561deaf1996d574591fd59e3cc68165, type: 2}
+    level: 0

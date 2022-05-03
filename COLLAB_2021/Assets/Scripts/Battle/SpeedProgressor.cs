@@ -38,9 +38,10 @@ public class SpeedProgressor : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="characterSpeed"></param>
+    /// <param name="character"></param>
+    /// <param name="activeUnit"></param>
     /// <returns></returns>
-    public IEnumerator SpeedProgress(Character character)
+    public IEnumerator SpeedProgress(Character character, BattlePawn activeUnit)
     {
         int characterSpeed = character.Base.speed;
         print(character.Base.charName + " " + characterSpeed);
@@ -57,6 +58,7 @@ public class SpeedProgressor : MonoBehaviour
         {
             if(battleSystem.State != BattleState.Busy) battleSystem.State = BattleState.Busy;
             battleSystem.ActiveCharacter.sprite = character.Base.battleIcon;
+            battleSystem.ActiveUnit = activeUnit;
         }
     }
 

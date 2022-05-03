@@ -33,6 +33,10 @@ public class CharacterBaseStats : ScriptableObject
     public elements eles; //Reference to the elements enum
     #endregion
 
+    [SerializeField] List<LearnableSkill> learnableSkills;
+
+    public List<LearnableSkill> LearnableSkills { get { return learnableSkills; } }
+
     public void OnValidate()
     {
         charName = name;
@@ -52,6 +56,16 @@ public class CharacterBaseStats : ScriptableObject
         critDmg = Random.Range(5, 50);
         elementalRes = Random.Range(5, 50);
     }
+}
+
+[System.Serializable]
+public class LearnableSkill
+{
+    [SerializeField] MoveData skillData;
+    [SerializeField] int level;
+
+    public MoveData Base { get { return skillData; } }
+    public int Level { get { return level; } }
 }
 
 public enum elements
@@ -97,4 +111,6 @@ public enum Stat
     physicalDef,
     specialDef,
     speed,
+    critChance,
+    critDmg
 }

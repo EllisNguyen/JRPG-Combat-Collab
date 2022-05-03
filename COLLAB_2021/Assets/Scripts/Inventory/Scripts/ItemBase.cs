@@ -53,6 +53,8 @@ public class ItemBase : ScriptableObject
     /// </summary>
     void OnValidate()
     {
+        itemName = name;
+
         for (int i = 0; i < CoreAttributes.Count; i++)
         {
             CoreAttributes[i].AttributeName = CoreAttributes[i].SetAttribute(CoreAttributes[i].AttributeType);

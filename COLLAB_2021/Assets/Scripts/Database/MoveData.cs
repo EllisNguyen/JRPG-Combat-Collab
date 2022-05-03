@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Move", menuName = "Create new move")]
 public class MoveData : ScriptableObject
 {
-    [SerializeField] string name;
+    [SerializeField] string moveName;
 
     [TextArea]
     [SerializeField] string description;
@@ -22,12 +22,17 @@ public class MoveData : ScriptableObject
     [SerializeField] List<SecondaryEffects> secondaries;
     [SerializeField] MoveTarget target;
 
+    void OnValidate()
+    {
+        moveName = name;
+    }
+
     #region getter for name and description
     //Expose name variable using property
     public string Name
     {
         //Get the value of the property
-        get { return name; }
+        get { return moveName; }
     }
 
     //Expose description variable using property

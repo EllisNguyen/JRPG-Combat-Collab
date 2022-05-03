@@ -13,6 +13,8 @@ public class Character
     [SerializeField] CharacterBaseStats _base;
     [SerializeField] int level;
 
+    public List<Move> Moves { get; set; }
+
     //Constructor.
     //Create a new instance of the character.
     public Character(CharacterBaseStats cBase, int pLevel)
@@ -25,6 +27,24 @@ public class Character
 
     //Reference to CharacterBaseStats script.
     public CharacterBaseStats Base { get { return _base; } }
+
+    //Property that store the current status condition.
+    public Condition Status { get; private set; }
+
+    //Declare the number of turn that the status effect will last.
+    public int StatusTime { get; set; }
+
+    //Store the status that only last during the battle.
+    public Condition VolatileStatus { get; private set; }
+
+    //Declare the number of turn that the Volatile status effect will last.
+    public int VolatileStatusTime { get; set; }
+
+    //List of element:
+    //Queue of string to display what happened when apply status effect.
+    //Init the Queue before adding anything to it.
+    public Queue<string> StatusChanges { get; private set; }
+
     public int Level { get { return level; } }
 
     public int Exp { get; set; }
@@ -46,10 +66,25 @@ public class Character
     //Calculate or modify the stats once.
     public void Init()
     {
+        Moves = new List<Move>();
+
+        foreach (var move in _base.LearnableSkills)
+        {
+            if (move.Level <= level) Moves.Add(new Move(move.Base));
+        }
+
         //Set stats
         CalculateStats();
         HP = MaxHP;
         MP = MaxMP;
+
+        //Initialize the status changes.
+        StatusChanges = new Queue<string>();
+
+        //Reset all boosted stats.
+        ResetStatBoost();
+        Status = null;
+        VolatileStatus = null;
     }
 
     //Dictionary that store all character's stats key.
@@ -105,6 +140,26 @@ public class Character
 
         //Calculate HP
         MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 5 + Level;
+    }
+
+    /// <summary>
+    /// Reset all the stats.
+    /// Call when end battle or when new battle start.
+    /// </summary>
+    void ResetStatBoost()
+    {
+        //Set all stats enum key back to value 0.
+        StatBoosts = new Dictionary<Stat, int>()
+        {
+            //Set value to 0 when none of the stats are boosted.
+            {Stat.physicalAtkDmg, 0},
+            {Stat.physicalDef, 0},
+            {Stat.specialAtkDmg, 0},
+            {Stat.specialDef, 0},
+            {Stat.speed, 0},
+            {Stat.critChance, 0},
+            {Stat.critDmg, 0},
+        };
     }
 
     #region Stats
