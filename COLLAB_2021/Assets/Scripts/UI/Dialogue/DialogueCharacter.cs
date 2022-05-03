@@ -23,7 +23,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
     public static event Action<NPCInterface> npcIDcheck;
 
     public NPCInterface instance; //instance NPCinterface
-    private void Start()
+    public virtual void Start()
     {
         
         instance = this; //refer the interface instance to this
