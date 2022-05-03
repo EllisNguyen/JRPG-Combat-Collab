@@ -8114,6 +8114,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8226367472507086456, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: CurrentQuests.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226367472507086456, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: CurrentQuests.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e605f9e3a1b0df549b01e7d31140ec17, type: 2}
     - target: {fileID: 8226367472551707536, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -8200,6 +8208,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8226367472551707540, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226367473273872901, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226367473273872901, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226367473273872901, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226367473273872901, guid: 37edac7c9c3bf694bac6213535f8f3e6, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

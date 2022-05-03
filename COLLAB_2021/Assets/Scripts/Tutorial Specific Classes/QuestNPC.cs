@@ -25,14 +25,14 @@ public class QuestNPC : DialogueCharacter
 
     //[SerializeField] private string questType;
 
-    private Quest.QuestGoal quest;
+    private Quest quest;
 
     [SerializeField] Quest questToAdd;
     //private QuestSystem quest;
 
-    private void Start()
+    public  override void Start()
     {
-        
+        base.Start();
         questManager = FindObjectOfType<QuestManager>();
     }
     public override void InitiateDialogue()
@@ -71,7 +71,8 @@ public class QuestNPC : DialogueCharacter
         //quest = (QuestSystem)quests.AddComponent(System.Type.GetType(questType));
 
         questManager.CurrentQuests.Add(questToAdd);
-        
+        quest = questManager.CurrentQuests[0];
+        quest.Initialize();
 
     }
 
