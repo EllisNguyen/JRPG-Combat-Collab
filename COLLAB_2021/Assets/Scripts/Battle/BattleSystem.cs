@@ -36,11 +36,11 @@ public class BattleSystem : MonoBehaviour
 
     [PropertySpace(10)]
 
-    [FoldoutGroup("Entity")][ReadOnly] public CharacterParty playerParty;
-    [FoldoutGroup("Entity")][ReadOnly] public CharacterParty enemyParty;
+    [FoldoutGroup("Requires entities")][ReadOnly] public CharacterParty playerParty;
+    [FoldoutGroup("Requires entities")][ReadOnly] public CharacterParty enemyParty;
 
-    [FoldoutGroup("Entity")][ReadOnly] public PlayerEntity player;
-    [FoldoutGroup("Entity")][ReadOnly] public EnemyEntity enemy;
+    [FoldoutGroup("Requires entities")][ReadOnly] public PlayerEntity player;
+    [FoldoutGroup("Requires entities")][ReadOnly] public EnemyEntity enemy;
 
     //[BoxGroup("Party")] public CharacterParty playerParty;
     //[BoxGroup("Party")] public CharacterParty enemyParty;
@@ -53,6 +53,9 @@ public class BattleSystem : MonoBehaviour
     [FoldoutGroup("Spawnpoints")] public List<Transform> enemySpawnPoints;
 
     [FoldoutGroup("Battle Multiplier")][SerializeField] float speedProgressorMultiplier = 0.03f;
+
+    [FoldoutGroup("Basic Move")] public MoveData basicAttack;
+    [FoldoutGroup("Basic Move")] public MoveData basicGuard;
 
     public float SpeedProgressorMultiplier => speedProgressorMultiplier;
     public BattleState State
@@ -67,8 +70,11 @@ public class BattleSystem : MonoBehaviour
     [FoldoutGroup("Speed progressor")][SerializeField] List<SpeedProgressor> playerProgressors;
     [FoldoutGroup("Speed progressor")][SerializeField] List<SpeedProgressor> enemyProgressors;
 
-    [SerializeField] BattlePawn activeUnit;
-    [SerializeField] Image activeSprite;
+    [FoldoutGroup("Active entity")][SerializeField] BattlePawn activeUnit;
+    [FoldoutGroup("Active entity")][SerializeField] Image activeSprite;
+
+    int escapeAttempt;
+    MoveData moveToLearn;
 
     public BattlePawn ActiveUnit
     {
@@ -85,6 +91,7 @@ public class BattleSystem : MonoBehaviour
     void OnEnable()
     {
         GameController.Instance.BattleSystem = this;
+        GameController.Instance.SubToBattleEnd();
     }
 
     public void StartBattle(CharacterParty playerParty, CharacterParty enemyParty)
@@ -133,11 +140,6 @@ public class BattleSystem : MonoBehaviour
             progresorObj.SetProgressorData(enemyUnits[0].Character);
             enemyProgressors.Add(progresorObj);
         }
-    }
-
-    public void Start()
-    {
-        //SetupBattle();
     }
 
     public IEnumerator SetupBattle()
@@ -234,16 +236,102 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    IEnumerator HandleCreatureFainted(BattlePawn faintedUnit)
+    {
+        //Display enemy fainted dialogue and play faint animation.
+        yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} fainted.");
+
+        //Enemy fainted and player won.
+        yield return new WaitForSeconds(2f);
+
+        //Calculate EXP gained if enemy fainted.
+        if (!faintedUnit.IsPlayerUnit)
+        {
+            //EXP gains.
+            var expYield = faintedUnit.Character.Base.expYield;
+            int enemyLevel = faintedUnit.Character.Level;
+
+            int expGain = Mathf.FloorToInt((expYield * enemyLevel) / 7);
+            playerUnits[0].Character.Exp += expGain;
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} gained {expGain} exp.");
+            yield return playerHud.SetExpSmooth();
+
+            //Check level up.
+            //Update the HUD.
+            //Learn new move(s).
+            while (playerUnits[0].Character.CheckForLevelUp())
+            {
+                playerHud.SetLevel();
+                yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} grew to level {playerUnits[0].Character.Level}.");
+
+                yield return playerHud.SetExpSmooth(true);
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        CheckForBattleOver(faintedUnit);
+    }
+
+    //Check for the Unit that is fainted is Player's or Opponent's.
+    void CheckForBattleOver(BattlePawn faintedUnit)
+    {
+        if (faintedUnit.IsPlayerUnit)
+        {
+            //Declare a check for healthy creature in party.
+            var nextCreature = playerParty.GetHealthyCharacter();
+
+            BattleOver(false);
+        }
+        else
+        {
+            BattleOver(true);
+
+        }
+    }
+
+    IEnumerator ShowDamageDetails(DamageDetails damageDetails)
+    {
+        //Update crit dialogue when creature landed a crit.
+        if (damageDetails.Critical > 1)
+            yield return dialogueBox.TypeDialogue("Holy shit it's a crit.");
+
+        //Update effectiveness dialogue.
+        if (damageDetails.TypeEffectiveness > 1)
+            yield return dialogueBox.TypeDialogue("Damn boi, that's a lot of damage.");
+        else if (damageDetails.TypeEffectiveness < 1)
+            yield return dialogueBox.TypeDialogue("What a weak ass skill, try another.");
+
+    }
+
+    /// <summary>
+    /// Trigger the battle over state.
+    /// </summary>
+    void BattleOver(bool won)
+    {
+        state = BattleState.BattleOver;
+
+        //Loop through all character in party.
+        //Reset all boosted stats.
+        playerParty.Characters.ForEach(c => c.OnBattleOver());
+
+        //Notify the game that the battle is over.
+        OnBattleOver(won);
+
+        enemy.gameObject.SetActive(false);
+    }
+
     #region HANDLE ACTION SELECTION
 
     public void Attack()
     {
-
+        //TODO: init basic attack.
     }
 
     public void Guard()
     {
-
+        //TODO: init basic guard.
     }
 
     public void Skill()
@@ -253,15 +341,51 @@ public class BattleSystem : MonoBehaviour
 
     public void Bag()
     {
-
+        //TODO: open inventory.
     }
 
     public void Flee()
     {
-
+        dialogueBox.EnableActionSelector(false);
+        StartCoroutine(TryToEscape());
     }
 
     #endregion HANDLE ACTION SELECTION
+
+    IEnumerator TryToEscape()
+    {
+        state = BattleState.Busy;
+
+        ++escapeAttempt;
+
+        //Get player's and enemy's speed.
+        int playerSpeed = playerUnits[0].Character.Base.speed;
+        int enemySpeed = enemyUnits[0].Character.Base.speed;
+
+        if (enemySpeed < playerSpeed)
+        {
+            yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
+            BattleOver(true);
+        }
+        else
+        {
+            //Battle escape calculation.
+            float f = (playerSpeed * 128) / enemySpeed + 30 * escapeAttempt;
+            f = f % 256;
+
+            if (UnityEngine.Random.Range(0, 256) < f)
+            {
+                yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
+                BattleOver(true);
+            }
+            //Continue battle when escape failed.
+            else
+            {
+                yield return dialogueBox.TypeDialogue("Damn that thing's still on our tails.");
+                state = BattleState.RunningTurn;
+            }
+        }
+    }
 
     [Button]
     public void ResetEnemyProgressor()

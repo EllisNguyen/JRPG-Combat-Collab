@@ -142,6 +142,17 @@ public class Character
         MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 5 + Level;
     }
 
+    public bool CheckForLevelUp()
+    {
+        if (Exp > Base.GetExpForLevel(level + 1))
+        {
+            ++level;
+            return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// Reset all the stats.
     /// Call when end battle or when new battle start.
@@ -248,4 +259,58 @@ public class Character
         OnMPChanged?.Invoke();
     }
     #endregion MP control
+
+    //Apply status condition to the creature.
+    public void SetStatus(ConditionID conditionId)
+    {
+        if (Status != null) return;
+
+        //Get condition ID from ConditionDB dictionary.
+        //Store it to Status property.
+        Status = ConditionsDB.Conditions[conditionId];
+
+        //Check if a status is applied and require OnStart Action.
+        Status?.OnStart?.Invoke(this);
+
+        //Add the status dialogue to queue.
+        StatusChanges.Enqueue($"{Base.charName} {Status.StartMessage}");
+
+        //Apply status condition indicator.
+        OnStatusChanged?.Invoke();
+    }
+
+    //Kill the status condition on the creature.
+    public void CureStatus()
+    {
+        Status = null;
+
+        //Reset status condition indicator.
+        OnStatusChanged?.Invoke();
+    }
+
+    //This func fire when battle is over.
+    public void OnBattleOver()
+    {
+        VolatileStatus = null;
+        ResetStatBoost();
+    }
+}
+
+public class DamageDetails
+{
+    public bool Fainted { get; set; }
+    public float Critical { get; set; }
+    public float TypeEffectiveness { get; set; }
+}
+
+[System.Serializable]
+public class CharacterSaveData
+{
+    public string name;//Use this to get all data of the creature in the scriptable object.
+
+    public int hp;
+    public int level;
+    public int exp;
+    public ConditionID? statusId;
+    public List<MoveSaveData> moves;
 }

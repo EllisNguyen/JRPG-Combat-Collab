@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 0.4261303, g: 0.6387468, b: 0.6792453, a: 1}
+  m_AmbientEquatorColor: {r: 0.40033823, g: 0.52264315, b: 0.57735854, a: 0.85}
+  m_AmbientGroundColor: {r: 0.20016912, g: 0.26132157, b: 0.28867927, a: 0.85}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -6294,7 +6294,7 @@ PrefabInstance:
     - target: {fileID: 4041421280388896427, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: characters.Array.data[0]._base
       value: 
-      objectReference: {fileID: 11400000, guid: bca7f43336c19f244b34920e7a5e3e80, type: 2}
+      objectReference: {fileID: 11400000, guid: 78933a6cabe915a46bb97393f82c30ab, type: 2}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.30200952

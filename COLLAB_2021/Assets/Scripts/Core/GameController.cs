@@ -56,6 +56,7 @@ public class GameController : MonoBehaviour
 
         SceneManager.LoadScene("TestBattle", LoadSceneMode.Additive);
 
+
         //Start battle.
         //battleSystem.StartBattle(playerParty, enemyParty);
     }
@@ -86,5 +87,19 @@ public class GameController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void SubToBattleEnd()
+    {
+        battleSystem.OnBattleOver += EndBattle;
+    }
+
+    public void EndBattle(bool won)
+    {
+        SceneManager.UnloadSceneAsync("TestBattle");
+
+        battleSystem = null;
+        GameManager.Instance.gameState = GameState.FreeRoam;
+        worldCamera.SetActive(true);
     }
 }

@@ -29,10 +29,11 @@ public class CharacterBaseStats : ScriptableObject
     [Range(5,100)] public int critChance;
     [Range(5,100)] public int critDmg;
     [Range(5,100)] public int elementalRes;
-    [Range(5,100)] public int exp;
+    [Range(5,100)] public int expYield;
     public elements eles; //Reference to the elements enum
     #endregion
 
+    [SerializeField] GrowthRate growthRate;
     [SerializeField] List<LearnableSkill> learnableSkills;
 
     public List<LearnableSkill> LearnableSkills { get { return learnableSkills; } }
@@ -40,6 +41,49 @@ public class CharacterBaseStats : ScriptableObject
     public void OnValidate()
     {
         charName = name;
+    }
+
+    //Growth rate formula, the required EXP for each level.
+    public int GetExpForLevel(int level)
+    {
+        if (growthRate == GrowthRate.Fast)
+        {
+            return 4 * (level * level * level) / 5;
+        }
+        else if (growthRate == GrowthRate.MediumFast)
+        {
+            return (level * level * level);
+        }
+        else if (growthRate == GrowthRate.MediumSlow)
+        {
+            return 6 * (level * level * level) / 5 - 15 * (level * level) + 100 * level - 140;
+        }
+        else if (growthRate == GrowthRate.Slow)
+        {
+            return 5 * (level * level * level) / 4;
+        }
+        else if (growthRate == GrowthRate.Fluctuating)
+        {
+            return GetFluctuating(level);
+        }
+        return -1;
+    }
+
+    // Created a new method for getting the fluctuating levels
+    public int GetFluctuating(int level)
+    {
+        if (level <= 15)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor((level + 1) / 3) + 24) / 50));
+        }
+        else if (level >= 15 && level <= 36)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((level + 14) / 50));
+        }
+        else
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor(level / 2) + 32) / 50));
+        }
     }
 
     [Button]
@@ -79,6 +123,14 @@ public enum elements
     dark
 };
 
+public enum GrowthRate
+{
+    Fast,
+    MediumFast,
+    MediumSlow,
+    Slow,
+    Fluctuating
+}
 public class ElementChart //Type effectiveness
 {
     static float[][] chart =    //Column = attacker; Row = defender
