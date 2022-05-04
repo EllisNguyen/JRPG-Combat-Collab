@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class QuestNPC : DialogueCharacter
 {
     public bool assignedQuest; //determine whether the quest has been assigned to the player or not
     public bool helped; //determine whether the player has finished the quest
+
+    public static event Action<Quest> questAssigned;
 
     private QuestManager questManager;
     
@@ -89,6 +92,7 @@ public class QuestNPC : DialogueCharacter
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
             {
                 FindObjectOfType<DialogueManager>().StartDialogue(questCompletedDialogue);
+                questAssigned?.Invoke(quest);
                 textPopUp.SetActive(false);
             }
         }
