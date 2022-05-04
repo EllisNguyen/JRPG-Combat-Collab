@@ -12,18 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdac6b2b7e24b646892f7e4c965996b, type: 3}
   m_Name: Micro-aggression
   m_EditorClassIdentifier: 
-  moveName: Micro-agression
+  moveName: Micro-aggression
   description: 
-  type: 1
-  power: 45
+  element: 0
+  power: 15
   accuracy: 90
-  alwaysHit: 0
+  alwaysHit: 1
   mana: 5
   priority: 0
   category: 0
   effect:
-    boosts: []
+    boosts:
+    - stat: 4
+      boost: -1
+    - stat: 5
+      boost: -1
     status: 0
     volatileStatus: 0
-  secondaries: []
-  target: 0
+  secondaries:
+  - boosts:
+    - stat: 6
+      boost: -2
+    status: 0
+    volatileStatus: 6
+    chance: 40
+    target: 0
+  target: 1

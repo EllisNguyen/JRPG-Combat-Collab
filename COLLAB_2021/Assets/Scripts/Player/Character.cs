@@ -3,9 +3,11 @@
 ///Day created: 11/11/2021
 ///Last edited: 28/03/2022 - Phab Nguyen.
 
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 [System.Serializable]
 public class Character
@@ -15,6 +17,15 @@ public class Character
     [SerializeField] int level;
 
     public List<Move> Moves { get; set; }
+
+    Move _currentMove;
+
+    //Store current move.
+    public Move CurrentMove
+    {
+        get { return _currentMove; }
+        set { _currentMove = value; }
+    }
 
     //Constructor.
     //Create a new instance of the character.
@@ -147,6 +158,36 @@ public class Character
         MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 5 + Level;
     }
 
+    //Modify stat boost dictionary when a status move is performed.
+    public void ApplyBoost(List<StatBoost> statBoosts)
+    {
+        //Loop through all listed boost that set in the editor.
+        foreach (var statBoost in statBoosts)
+        {
+            //Store value of stat and boost into variables.
+            var stat = statBoost.stat;
+            var boost = statBoost.boost;
+
+            //Add the boost(s) into the stat(s) in the stat boost dictionary.
+            //Finalize the value and clamp the value between -6 and 6.
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
+
+            //Show dialogue.
+            if (boost > 0)
+            {
+                //Add a dialogue to the queue to run.
+                StatusChanges.Enqueue(($"{Base.charName}'s {stat} rose !!"));
+            }
+            else
+            {
+                //Add a dialogue to the queue to run.
+                StatusChanges.Enqueue(($"{Base.charName}'s {stat} fell !!"));
+            }
+
+            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}.");
+        }
+    }
+
     public bool CheckForLevelUp()
     {
         if (Exp > Base.GetExpForLevel(level + 1))
@@ -237,6 +278,48 @@ public class Character
 
     #endregion
 
+    //Formula follow Pokemon.
+    //Damage calculation: bulbapedia.bulbagarden.net/wiki/Damage
+    public DamageDetails TakeDamage(Move move, Character attacker)
+    {
+        //Crit hit calculation in pokemon
+        float critical = 1f;
+        if (UnityEngine.Random.value * 100f <= 6.25f)
+        {
+            critical = 1.5f;
+        }
+
+        //Get types of the creature receiving damage.
+        float element = ElementChart.ElementalModifier(move.Base.Element, this.Base.element);
+
+        //
+        var damageDetails = new DamageDetails()
+        {
+            ElementalModifier = element,
+            Critical = critical,
+            Fainted = false
+        };
+
+        //Conditional operator:
+        //Chose which calculation formula base on attaker move (spATK or ATK).
+        float attack = (move.Base.Category == MoveCategory.Range) ? attacker.SpecATK : attacker.PhysATK;
+        float defense = (move.Base.Category == MoveCategory.Range) ? attacker.SpecDEF : attacker.PhysDEF;
+
+        //Vary the receiving damage (but minimal).
+        //Multiply with the type effectiveness and critical randomness.
+        float modifier = UnityEngine.Random.Range(0.85f, 1f) * element * critical;
+
+        //
+        float a = (2 * attacker.Level + 10) / 250f;
+        float d = a * move.Base.Power * ((float)attack / defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifier);
+
+        //Receive damage, check if creature is fainted.
+        DecreaseHP(damage);
+
+        return damageDetails;
+    }
+
     #region HP control
     public void DecreaseHP(int damage)
     {
@@ -293,6 +376,72 @@ public class Character
         OnStatusChanged?.Invoke();
     }
 
+    //Apply status condition to the creature.
+    public void SetVolatileStatus(ConditionID conditionId)
+    {
+        if (VolatileStatus != null) return;
+
+        //Get condition ID from ConditionDB dictionary.
+        //Store it to Status property.
+        VolatileStatus = ConditionsDB.Conditions[conditionId];
+
+        //Check if a status is applied and require OnStart Action.
+        VolatileStatus?.OnStart?.Invoke(this);
+
+        //Add the status dialogue to queue.
+        StatusChanges.Enqueue($"{Base.charName} {VolatileStatus.StartMessage}");
+    }
+
+    //Kill the status condition on the creature.
+    public void CureVolatileStatus()
+    {
+        VolatileStatus = null;
+    }
+
+    //For AI enemy.
+    //Choose a random move out of its selected move.
+    public Move GetRandomMove()
+    {
+        //Declare a list of move with PP available.
+        var movesWithMana = Moves.Where(x => x.Mana > 0).ToList();
+
+        //Run the move that have PP.
+        int r = UnityEngine.Random.Range(0, movesWithMana.Count);
+        return movesWithMana[r];
+    }
+
+    //A boolean check.
+    public bool OnBeforeMove()
+    {
+        //Boolean to check wether creature can perform a move.
+        bool canPerformMove = true;
+
+        //Check if status condition is not null.
+        if (Status?.OnBeforeMove != null)
+        {
+            if (!Status.OnBeforeMove(this))
+                canPerformMove = false;
+        }
+
+        //Check if volatile status is not null.
+        if (VolatileStatus?.OnBeforeMove != null)
+        {
+            if (!VolatileStatus.OnBeforeMove(this))
+                canPerformMove = false;
+        }
+
+        return canPerformMove;
+    }
+
+    //This func fire when a turn ended.
+    public void OnAfterTurn()
+    {
+        //Null condition operator.
+        //Call the action if status is not null.
+        Status?.OnAfterTurn?.Invoke(this);
+        VolatileStatus?.OnAfterTurn?.Invoke(this);
+    }
+
     public static event Action<CharacterBaseStats> enemyDead;//Event to for quest check
 
     //This func fire when battle is over.
@@ -311,7 +460,7 @@ public class DamageDetails
 {
     public bool Fainted { get; set; }
     public float Critical { get; set; }
-    public float TypeEffectiveness { get; set; }
+    public float ElementalModifier { get; set; }
 }
 
 [System.Serializable]

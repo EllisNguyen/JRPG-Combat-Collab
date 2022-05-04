@@ -14,16 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Fireball
   description: 
-  type: 1
+  element: 1
   power: 45
   accuracy: 90
-  alwaysHit: 0
+  alwaysHit: 1
   mana: 7
   priority: 0
-  category: 0
+  category: 1
   effect:
     boosts: []
     status: 0
     volatileStatus: 0
-  secondaries: []
+  secondaries:
+  - boosts: []
+    status: 2
+    volatileStatus: 0
+    chance: 10
+    target: 0
   target: 0

@@ -1,7 +1,7 @@
 ///Author: Phap Nguyen.
 ///Description: Speed progressor.
 ///Day created: 22/02/2022
-///Last edited: 03/05/2022 - Phap Nguyen.
+///Last edited: 05/05/2022 - Phap Nguyen.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -59,6 +59,9 @@ public class SpeedProgressor : MonoBehaviour
             if(battleSystem.State != BattleState.Busy) battleSystem.State = BattleState.Busy;
             battleSystem.ActiveCharacter.sprite = character.Base.battleIcon;
             battleSystem.ActiveUnit = activeUnit;
+
+            if (activeUnit.IsPlayerUnit == battleSystem.ActiveUnit.IsPlayerUnit) battleSystem.action = BattleAction.Move;
+            //else StartCoroutine(battleSystem.RunTurnsEnemy(BattleAction.Wait));
         }
     }
 

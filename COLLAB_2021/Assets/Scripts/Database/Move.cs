@@ -5,7 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class Move
 {
-    public MoveData Base { get; set; }
+    MoveData _base;
+
+    public MoveData Base
+    {
+        get { return _base; }
+        set { _base = value; }
+    }
     public int Mana { get; set; }
 
     public Move(MoveData cBase)

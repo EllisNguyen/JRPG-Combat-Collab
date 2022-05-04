@@ -30,7 +30,7 @@ public class CharacterBaseStats : ScriptableObject
     [Range(5,100)] public int critDmg;
     [Range(5,100)] public int elementalRes;
     [Range(5,100)] public int expYield;
-    public elements eles; //Reference to the elements enum
+    public elements element; //Reference to the elements enum
     #endregion
 
     [SerializeField] GrowthRate growthRate;

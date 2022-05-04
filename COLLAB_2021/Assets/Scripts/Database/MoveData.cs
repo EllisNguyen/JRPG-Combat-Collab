@@ -11,7 +11,7 @@ public class MoveData : ScriptableObject
     [TextArea]
     [SerializeField] string description;
 
-    [SerializeField] elements type;
+    [SerializeField] elements element;
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] bool alwaysHit;
@@ -44,10 +44,10 @@ public class MoveData : ScriptableObject
     #endregion
 
     //Expose name variable using property
-    public elements Type
+    public elements Element
     {
         //Get the value of the property
-        get { return type; }
+        get { return element; }
     }
 
     #region Move's stats

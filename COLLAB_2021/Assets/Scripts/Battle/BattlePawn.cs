@@ -12,9 +12,11 @@ using TMPro;
 
 public class BattlePawn : MonoBehaviour
 {
+    public bool isActive = false;
+
     public SpriteRenderer graphic;
 
-    [SerializeField] PlayerBase _base;
+    [SerializeField] CharacterBaseStats _base;
     [SerializeField] int level;
     [SerializeField] BattleHud hud;
 
@@ -32,10 +34,8 @@ public class BattlePawn : MonoBehaviour
     //Expose the hud property.
     public BattleHud Hud
     {
-        get
-        {
-            return hud;
-        }
+        get { return hud; }
+        set { hud = value; }
     }
 
     ConditionsDB condition;
@@ -80,12 +80,22 @@ public class BattlePawn : MonoBehaviour
 
         //Do a slight movement.
         if (isPlayerUnit)
-            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x + 25f, 0.15f));
+            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x + 3f, 0.15f));
         else
-            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x - 25f, 0.15f));
+            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x - 3f, 0.15f));
 
         //Return to original position.
         sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x, 0.15f));
+    }
+
+    public void PlayFaintAnimation()
+    {
+        //Declare a dotween sequence func.
+        var sequence = DOTween.Sequence();
+
+        //Play sequence of move and fade altogether.
+        sequence.Append(gameObject.transform.DOLocalMoveY(originalPos.y - 50f, 0.15f));
+        sequence.Join(graphic.DOFade(0, 0.1f));
     }
 
     public void PlayHitAnimation()

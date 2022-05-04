@@ -1,7 +1,7 @@
 ///Author: Phap Nguyen.
 ///Description: Battle system for the game.
 ///Day created: 22/12/2022
-///Last edited: 03/05/2022 - Phap Nguyen.
+///Last edited: 05/05/2022 - Phap Nguyen.
 
 using System.Collections.Generic;
 using DG.Tweening;
@@ -14,7 +14,7 @@ using Sirenix.OdinInspector;
 
 public enum BattleState { Start, Waiting, ActionSelection, MoveSelection, RunningTurn, Busy, Inventory, BattleOver }
 
-public enum BattleAction { NormalMove, SwitchCharacter, UseSkill, UseItem, Run }
+public enum BattleAction { Move, SwitchCharacter, UseItem, Run, Wait }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -30,7 +30,6 @@ public class BattleSystem : MonoBehaviour
 
     [PropertySpace(10)]
 
-    //[SerializeField] BattleDialogueBox dialogueBox;
     [FoldoutGroup("Battle Components")][SerializeField] GameObject playerPawn_Pref;
     [FoldoutGroup("Battle Components")][SerializeField] GameObject enemyPawn_Pref;
     [FoldoutGroup("Battle Components")][SerializeField] InventoryUI inventoryUI;
@@ -58,6 +57,8 @@ public class BattleSystem : MonoBehaviour
 
     [FoldoutGroup("Basic Move")] public MoveData basicAttack;
     [FoldoutGroup("Basic Move")] public MoveData basicGuard;
+    [FoldoutGroup("Basic Move")] public SkillPanel currentMovePanel;
+    [FoldoutGroup("Basic Move")] public Move currentMove;
 
     public float SpeedProgressorMultiplier => speedProgressorMultiplier;
     public BattleState State
@@ -77,6 +78,7 @@ public class BattleSystem : MonoBehaviour
 
     int escapeAttempt;
     MoveData moveToLearn;
+    public BattleAction action;
 
     public BattlePawn ActiveUnit
     {
@@ -151,6 +153,10 @@ public class BattleSystem : MonoBehaviour
 
         playerHud.SetData(playerUnits[0].Character);
         enemyHud.SetData(enemyUnits[0].Character);
+
+        playerUnits[0].Hud = playerHud;
+        enemyUnits[0].Hud = enemyHud;
+
         enemyHud.DisableNonPlayerElement();
 
 
@@ -159,10 +165,31 @@ public class BattleSystem : MonoBehaviour
         yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName}.");
         dialogueBox.SetSkillList(playerUnits[0].Character.Moves);
 
-        yield return new WaitForSecondsRealtime(1f);
+        //yield return new WaitForSecondsRealtime(1f);
 
-        yield return dialogueBox.TypeDialogue($"Ready for action.");
+        //yield return dialogueBox.TypeDialogue($"Ready for action.");
         state = BattleState.Waiting;
+    }
+
+    public void BasicAttack()
+    {
+        var move = new Move(basicAttack);
+
+        //UseSKill(playerUnits[0], enemyUnits[0], move);
+        //RunMove()
+        StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+    }
+
+    public void BasicGuard()
+    {
+        var move = new Move(basicGuard);
+
+        StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+    }
+
+    public void UseSKill(BattlePawn caster, BattlePawn receiver, Move move)
+    {
+        state = BattleState.RunningTurn;
     }
 
     public void HandleUpdate()
@@ -170,7 +197,6 @@ public class BattleSystem : MonoBehaviour
         switch (state)
         {
             case BattleState.Start:
-                Debug.Log("bro");
                 //WaitingForTurn();
                 break;
             case BattleState.Waiting:
@@ -178,23 +204,17 @@ public class BattleSystem : MonoBehaviour
                 WaitingForTurn();
                 break;
             case BattleState.ActionSelection:
+                if(currentMove != null) print(currentMove.Base.Name);
                 break;
             case BattleState.MoveSelection:
 
                 break;
             case BattleState.RunningTurn:
-
+                //dialogueBox.EnableActionSelector(false);
                 break;
             case BattleState.Busy:
-                dialogueBox.EnableDialogueText(true);
-                if (activeUnit != null)
-                {
-                    if (activeUnit == playerUnits[0])
-                    {
-                        HandleActionSelection();
-                    }
-                    else ResetEnemyProgressor();
-                }
+                ActionSelection();
+                
                 break;
             case BattleState.Inventory:
 
@@ -212,6 +232,31 @@ public class BattleSystem : MonoBehaviour
         //if (state != BattleState.ActionSelection) return;
 
         StartCoroutine(PlayerAction());
+    }
+
+    void HandleMoveSelection()
+    {
+        //Can only move between 0 and current number of moves.
+        //currentMove = ;
+
+        //dialogueBox.UpdateMoveSelection(currentMove, playerUnits[0].Character.CurrentMove);
+
+        //SELECT A MOVE
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
+        {
+            var move = playerUnits[0].Character.CurrentMove;
+            if (playerUnits[0].Character.Base.mana == 0) return;
+
+            //dialogueBox.EnableMoveSelector(false);
+            dialogueBox.EnableDialogueText(true);
+            StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
+        {
+            //dialogueBox.EnableMoveSelector(false);
+            dialogueBox.EnableDialogueText(true);
+            ActionSelection();
+        }
     }
 
     IEnumerator PlayerAction()
@@ -306,6 +351,237 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    //
+    public IEnumerator RunTurnsPlayer(BattleAction playerAction)
+    {
+        //Perform player's turn.
+        state = BattleState.RunningTurn;
+
+        //Check if player perform a move.
+        if (playerAction == BattleAction.Move)
+        {
+            //PLAYER.
+            //Store the current move into player's current creature data.
+            //playerUnits[0].Character.CurrentMove = currentMove;
+
+            //OPPONENT.
+            //Store the current move into player's current creature data (as randomly choose one).
+
+            //enemyUnits[0].Character.CurrentMove = enemyUnits[0].Character.GetRandomMove();
+
+            //Move FIRST TURN and SECOND TURN base on the creature's SPEED stat.
+            //First turn.
+            yield return RunMove(playerUnits[0], enemyUnits[0], currentMove);
+            yield return RunAfterTurn(playerUnits[0]);//End turn.
+            if (state == BattleState.BattleOver) yield break;
+
+            ////Exec if second creature still live.
+            //if (secondCharacter.HP > 0)
+            //{
+            //    //Second turn.
+            //    yield return RunMove(secondUnit, firstUnit, secondUnit.Character.CurrentMove);
+            //    yield return RunAfterTurn(secondUnit);//End turn.
+            //    if (state == BattleState.BattleOver) yield break;
+            //}
+        }
+
+        ////Check if player try to switch creature.
+        //if (playerAction == BattleAction.SwitchCharacter)
+        //{
+        //    //var selectedCharacter = partyScreen.SelectedMember;
+        //    state = BattleState.Busy;
+        //    //yield return SwitchCharacter(selectedCharacter);
+        //}
+        ////Check if player try to use items.
+        //else if (playerAction == BattleAction.UseItem)
+        //{
+        //    //This handle from item screen, do nothing and skip the turn after used the item.
+        //    dialogueBox.EnableActionSelector(false);
+        //}
+        ////Escape wild battle.
+        else if (playerAction == BattleAction.Run)
+        {
+            yield return TryToEscape();
+        }
+
+        //Return to action selection if battle is not over.
+        if (state != BattleState.BattleOver)
+        {
+            //ActionSelection();
+            state = BattleState.Busy;
+        }
+    }
+
+    public IEnumerator RunTurnsEnemy(BattleAction playerAction)
+    {
+        //Perform player's turn.
+        state = BattleState.RunningTurn;
+
+        //Enemy turn.
+        var enemyMove = enemyUnits[0].Character.GetRandomMove();
+        yield return RunMove(enemyUnits[0], playerUnits[0], enemyMove);
+        yield return RunAfterTurn(enemyUnits[0]);//End turn.
+        if (state == BattleState.BattleOver) yield break;
+    }
+
+    public void ActionSelection()
+    {
+        dialogueBox.EnableDialogueText(true);
+        if (activeUnit != null)
+        {
+            if (activeUnit == playerUnits[0])
+            {
+                HandleActionSelection();
+            }
+            else ResetEnemyProgressor();
+        }
+    }
+
+    #region Performing move logic
+    //Object oriented scripting toward performing the move of the creature.
+    //
+    IEnumerator RunMove(BattlePawn sourceUnit, BattlePawn targetUnit, Move move)
+    {
+        //Declare a bool from the creature current status and check if any status will stop the creature move.
+        bool canRunMove = sourceUnit.Character.OnBeforeMove();
+        if (!canRunMove)
+        {
+            yield return ShowStatusChanges(sourceUnit.Character);
+
+            //Call the update health bar function.
+            yield return sourceUnit.Hud.WaitForHpUpdate();
+
+            yield break;
+        }
+        yield return ShowStatusChanges(sourceUnit.Character);
+
+        dialogueBox.EnableDialogueText(true);
+
+        //Decrease the PP of the move and fire the dialogue coroutine.
+        //move.Mana--;
+        yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
+
+        //Check if the attack landed.
+        if (CheckIfMoveHits(move, sourceUnit.Character, targetUnit.Character))
+        {
+            //Perform a simple attack animation.
+            sourceUnit.PlayAttackAnimation();
+            //yield return new WaitForSeconds(1f);
+
+            //Hit animation.
+            targetUnit.PlayHitAnimation();
+
+            //Check if the move is Status effect.
+            if (move.Base.Category == MoveCategory.Status)
+            {
+                yield return RunMoveEffect(move.Base.Effect, sourceUnit.Character, targetUnit.Character, move.Base.Target);
+            }
+            //Do damage if not Status effect move.
+            else
+            {
+                //Declare fainted boolean
+                var damageDetails = targetUnit.Character.TakeDamage(move, sourceUnit.Character);
+
+                //Call the update health bar func.
+                yield return targetUnit.Hud.WaitForHpUpdate();
+
+                //Show crit or type effectiveness dialogue.
+                yield return ShowDamageDetails(damageDetails);
+            }
+
+            //Check for available secondary effects.
+            //Check if secondary effect available.
+            //Check for opponent health.
+            if (move.Base.Secondaries != null && move.Base.Secondaries.Count > 0 && targetUnit.Character.HP > 0)
+            {
+                //Loop through all secondary effects.
+                foreach (var secondary in move.Base.Secondaries)
+                {
+                    //Chance of secondary fx to occur.
+                    var rnd = UnityEngine.Random.Range(1, 101);
+
+                    //Compare random number to fixed chance.
+                    if (rnd <= secondary.Chance)
+                    {
+                        yield return RunMoveEffect(secondary, sourceUnit.Character, targetUnit.Character, secondary.Target);
+                    }
+                }
+            }
+
+            //Check for the creature's health.
+            if (targetUnit.Character.HP <= 0)
+            {
+                yield return HandleCharacterFainted(targetUnit);
+            }
+        }
+        //If the move does not landed / missed.
+        else
+        {
+            yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()}'s attack missed.");
+        }
+    }
+
+    //E
+    IEnumerator RunMoveEffect(MoveEffect effects, Character source, Character target, MoveTarget moveTarget)
+    {
+        //STAT BOOSTING EFFECT.
+        //Check if the move can actually do something.
+        if (effects.Boost != null)
+        {
+            //Apply boost to source unit if target is SELF.
+            if (moveTarget == MoveTarget.Self)
+                source.ApplyBoost(effects.Boost);
+            //Apply boost to source unit if target is FOE.
+            else
+                target.ApplyBoost(effects.Boost);
+        }
+
+        //STATUS CONDITION.
+        //Check if the status move inflict any status condition.
+        if (effects.Status != ConditionID.none)
+        {
+            //Apply the status condition.
+            target.SetStatus(effects.Status);
+        }
+
+        //VOLATILE STATUS.
+        //Check if the status move inflict any status condition.
+        if (effects.VolatileStatus != ConditionID.none)
+        {
+            //Apply the status condition.
+            target.SetVolatileStatus(effects.VolatileStatus);
+        }
+
+        //Display the status change messages.
+        //Only display one that on the queue.
+        yield return ShowStatusChanges(source);
+        yield return ShowStatusChanges(target);
+    }
+
+    //Exec when a turn end.
+    IEnumerator RunAfterTurn(BattlePawn sourceUnit)
+    {
+        //Don't run the coroutin if battle is over.
+        if (state == BattleState.BattleOver) yield break;
+
+        //Continue until the state is RunningTurn.
+        yield return new WaitUntil(() => state == BattleState.RunningTurn);
+
+        //Fire the OnAfterTurn() action.
+        sourceUnit.Character.OnAfterTurn();
+        yield return ShowStatusChanges(sourceUnit.Character);
+
+        //Call the update health bar func.
+        yield return sourceUnit.Hud.WaitForHpUpdate();
+
+        //Check for the creature's health again if the status condition cause the creature to faint.
+        if (sourceUnit.Character.HP <= 0)
+        {
+            yield return HandleCharacterFainted(sourceUnit);
+            yield return new WaitUntil(() => state == BattleState.RunningTurn);
+        }
+    }
+
     //Boolean to calculate accuracy of the move, check if the move hit or not.
     //EVASION and ACCURACY.
     bool CheckIfMoveHits(Move move, Character source, Character target)
@@ -340,6 +616,49 @@ public class BattleSystem : MonoBehaviour
         return UnityEngine.Random.Range(1, 101) <= move.Base.Accuracy;
     }
 
+    #endregion
+
+    //
+    IEnumerator SwitchCharacter(Character newCreature, bool isTrainerAboutToUse = false)
+    {
+        //Check for current creature HP.
+        if (playerUnits[0].Character.HP > 0)
+        {
+            //Sequence of calling back the creature.
+            yield return dialogueBox.TypeDialogue($"Come back {playerUnits[0].Character.Base.charName.ToUpper()}.");
+            playerUnits[0].PlayFaintAnimation();
+            yield return new WaitForSeconds(2f);
+        }
+
+        //Send out the next healthy creature.
+        playerUnits[0].Setup(newCreature);
+
+        //
+        //dialogueBox.SetMoveName(newCreature.Moves);
+
+        //Set dialogue text with typing effect
+        yield return (dialogueBox.TypeDialogue($"Do your best {newCreature.Base.charName.ToUpper()}!"));
+
+        //if (isTrainerAboutToUse)
+        //    StartCoroutine(SendNextTrainerCreature());
+        //else
+        //    state = BattleState.RunningTurn;
+    }
+
+    //
+    IEnumerator ShowStatusChanges(Character character)
+    {
+        //Check if any messages stat change queue.
+        while (character.StatusChanges.Count > 0)
+        {
+            //Dequeue the first message and store it in message var.
+            var message = character.StatusChanges.Dequeue();
+
+            //Display in dialogue box.
+            yield return dialogueBox.TypeDialogue(message);
+        }
+    }
+
     IEnumerator ShowDamageDetails(DamageDetails damageDetails)
     {
         //Update crit dialogue when creature landed a crit.
@@ -347,9 +666,9 @@ public class BattleSystem : MonoBehaviour
             yield return dialogueBox.TypeDialogue("Holy shit it's a crit.");
 
         //Update effectiveness dialogue.
-        if (damageDetails.TypeEffectiveness > 1)
+        if (damageDetails.ElementalModifier > 1)
             yield return dialogueBox.TypeDialogue("Damn boi, that's a lot of damage.");
-        else if (damageDetails.TypeEffectiveness < 1)
+        else if (damageDetails.ElementalModifier < 1)
             yield return dialogueBox.TypeDialogue("What a weak ass skill, try another.");
 
     }
@@ -376,7 +695,7 @@ public class BattleSystem : MonoBehaviour
 
     public void Attack()
     {
-        //TODO: init basic attack.
+        BasicAttack();
     }
 
     public void Guard()
@@ -397,7 +716,7 @@ public class BattleSystem : MonoBehaviour
     public void Flee()
     {
         dialogueBox.EnableActionSelector(false);
-        StartCoroutine(TryToEscape());
+        StartCoroutine(RunTurnsPlayer(BattleAction.Run));
     }
 
     #endregion HANDLE ACTION SELECTION

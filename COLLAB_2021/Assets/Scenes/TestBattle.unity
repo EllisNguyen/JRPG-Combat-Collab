@@ -332,6 +332,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -420,6 +440,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
 --- !u!224 &52462846 stripped
@@ -494,6 +534,7 @@ MonoBehaviour:
   speedProgressorMultiplier: 0.0002
   basicAttack: {fileID: 11400000, guid: ad949738acc8da943877e954ee4d4924, type: 2}
   basicGuard: {fileID: 11400000, guid: aefa919a8fa54614ead62997809990df, type: 2}
+  currentMoves: {fileID: 0}
   progressorHolder: {fileID: 911599688}
   activeCharacter: {fileID: 1518813487}
   speedProgressorPrefab: {fileID: 4499779866189884537, guid: a205d5bd75053c04bb3791ad1f4f792e, type: 3}
@@ -655,6 +696,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -742,6 +803,26 @@ PrefabInstance:
     - target: {fileID: 5605761347772792972, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Name
       value: SkillButton (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
@@ -874,6 +955,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -961,6 +1062,26 @@ PrefabInstance:
     - target: {fileID: 5605761347772792972, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Name
       value: SkillButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
@@ -1526,6 +1647,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1613,6 +1754,26 @@ PrefabInstance:
     - target: {fileID: 5605761347772792972, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Name
       value: SkillButton (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
@@ -2935,6 +3096,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3022,6 +3203,26 @@ PrefabInstance:
     - target: {fileID: 5605761347772792972, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Name
       value: SkillButton (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
@@ -5767,6 +5968,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151686920}
     m_Modifications:
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605761347245370553, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5605761347772792971, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5854,6 +6075,26 @@ PrefabInstance:
     - target: {fileID: 5605761347772792972, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
       propertyPath: m_Name
       value: SkillButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617667940481882691, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 844d01d27a929a84ab7f423a1a99f157, type: 3}

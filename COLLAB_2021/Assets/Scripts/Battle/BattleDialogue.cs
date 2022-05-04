@@ -16,6 +16,11 @@ public class BattleDialogue : MonoBehaviour
 
     [SerializeField] SkillPanel skillPrefab;
 
+    void OnDisable()
+    {
+        EnableActionSelector(false);
+    }
+
     public void SetDialogue(string dialogue)
     {
         dialogueText.text = dialogue;
@@ -40,6 +45,8 @@ public class BattleDialogue : MonoBehaviour
     public void EnableActionSelector(bool enabled)
     {
         actionSelector.SetActive(enabled);
+
+        if(actionSelector.active == false) skillSelector.SetActive(false);
     }
 
     public void EnableSkillSelector(bool enabled)
@@ -63,10 +70,12 @@ public class BattleDialogue : MonoBehaviour
         {
             var skillButton = Instantiate(skillPrefab, skillContainer.transform);
 
-            skillButton.SetData(skill);
-            //skillsList.Add(skill);
-            //skillPanels.Add(skillButton);
-        }
+            //for (int i = 0; i < skillsList.Count; i++)
+            //{
+            //    skillButton.name = skillsList[i].Base.Name;
+            //}
 
+            skillButton.SetData(skill);
+        }
     }
 }
