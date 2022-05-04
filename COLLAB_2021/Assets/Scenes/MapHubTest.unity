@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1129,6 +1129,51 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &163395030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163395032}
+  - component: {fileID: 163395031}
+  m_Layer: 0
+  m_Name: Tutorial Director
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &163395031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163395030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fbbb5cb51d4dc458d64b72a84a5b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questNPC2: {fileID: 0}
+  menuTransitionObject: {fileID: 0}
+--- !u!4 &163395032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163395030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189471782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1459,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202365149}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &226344092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226344094}
+  - component: {fileID: 226344093}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226344093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226344092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f0c5e7deee4f844ad22118b5dbe2d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &226344094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226344092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249488587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4013,7 +4101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_Name
-      value: QuestNPC
+      value: Village Chief
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039998, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_Radius
@@ -4047,6 +4135,10 @@ PrefabInstance:
       value: Try to read what is on that bulletin board and come back here.
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questCompletedDialogue.sentences.Array.data[0]
       value: That is very concerning.
       objectReference: {fileID: 0}
@@ -4055,16 +4147,20 @@ PrefabInstance:
       value: The Imperial Army is heard to be moving here currently.
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.data[2]
+      value: Go and meet Andre. He's just up that slide to my back.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questNotCompletedDialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questAlreadyDoneDialogue.sentences.Array.data[0]
-      value: Yeah, that's what happened.
+      value: Go and talk to Andre.
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questAlreadyDoneDialogue.sentences.Array.data[1]
-      value: Keep yourself ready all time.
+      value: He's waiting for you up that slide in front of you.
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questNotCompletedDialogue.sentences.Array.data[0]
@@ -4298,19 +4394,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
-      propertyPath: m_LocalRotation.y
       value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 3e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
@@ -7288,7 +7384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_Name
-      value: QuestNPC2
+      value: Andre
       objectReference: {fileID: 0}
     - target: {fileID: 5050181826615882388, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: defaultDirection
@@ -7304,15 +7400,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questNumber
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: dialogue.speaker
       value: Andre
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questCompletedDialogue.speaker
       value: Andre
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Ah, here you are. Help me slay those slimes will ya?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: I would go by myself if not for that arrow that grazed my knee.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: The slimes should still be on the rooftop of that building to your left.
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questAlreadyDoneDialogue.speaker
@@ -7321,6 +7433,30 @@ PrefabInstance:
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questNotCompletedDialogue.speaker
       value: Andre
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.data[0]
+      value: Oh nicely done. I would have done better though.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.data[1]
+      value: That should be the end of them. (End of Alpha)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questAlreadyDoneDialogue.sentences.Array.data[0]
+      value: Thanks for participating.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questAlreadyDoneDialogue.sentences.Array.data[1]
+      value: Please give us feedbacks.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNotCompletedDialogue.sentences.Array.data[0]
+      value: Come on, it shouldn't take you that long.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNotCompletedDialogue.sentences.Array.data[1]
+      value: Just go to the far right and climb the slide. You can't miss it.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
@@ -7419,6 +7555,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681241695}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1704258429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1704258432}
+  - component: {fileID: 1704258431}
+  - component: {fileID: 1704258430}
+  m_Layer: 0
+  m_Name: ToMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1704258430
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704258429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.86
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1704258431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704258429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2031ab2f3eeb124791df216d4ed52ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: TestMenu
+--- !u!4 &1704258432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704258429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1714381133
 GameObject:
   m_ObjectHideFlags: 0

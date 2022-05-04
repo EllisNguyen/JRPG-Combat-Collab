@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HaveClicked: 1
   Infomation:
-    Name: For The Village
+    Name: For the Village
     Icon: {fileID: 0}
     Description: Kill the Slimes on the outskirt of the village.
   Reward:
@@ -33,7 +33,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee28e190476d164192676d57ab5a98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredAmount: 1
+  RequiredAmount: 2
   GoalCompleted:
     m_PersistentCalls:
       m_Calls: []
