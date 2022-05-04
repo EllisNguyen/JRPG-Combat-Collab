@@ -164,5 +164,8 @@ public enum Stat
     specialDef,
     speed,
     critChance,
-    critDmg
+    critDmg,
+
+    accuracy,
+    evasion
 }

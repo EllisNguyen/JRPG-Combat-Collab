@@ -14,6 +14,8 @@ using Sirenix.OdinInspector;
 
 public enum BattleState { Start, Waiting, ActionSelection, MoveSelection, RunningTurn, Busy, Inventory, BattleOver }
 
+public enum BattleAction { NormalMove, SwitchCharacter, UseSkill, UseItem, Run }
+
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleState state;
@@ -159,6 +161,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
 
+        yield return dialogueBox.TypeDialogue($"Ready for action.");
         state = BattleState.Waiting;
     }
 
@@ -175,7 +178,6 @@ public class BattleSystem : MonoBehaviour
                 WaitingForTurn();
                 break;
             case BattleState.ActionSelection:
-
                 break;
             case BattleState.MoveSelection:
 
@@ -184,11 +186,12 @@ public class BattleSystem : MonoBehaviour
 
                 break;
             case BattleState.Busy:
-                if(activeUnit != null)
+                dialogueBox.EnableDialogueText(true);
+                if (activeUnit != null)
                 {
                     if (activeUnit == playerUnits[0])
                     {
-                        StartCoroutine(PlayerAction());
+                        HandleActionSelection();
                     }
                     else ResetEnemyProgressor();
                 }
@@ -204,12 +207,22 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    void HandleActionSelection()
+    {
+        //if (state != BattleState.ActionSelection) return;
+
+        StartCoroutine(PlayerAction());
+    }
+
     IEnumerator PlayerAction()
     {
         state = BattleState.ActionSelection;
         activeSprite.enabled = true;
         activeSprite.sprite = playerUnits[0].Character.Base.portraitSprite;
+
         yield return dialogueBox.TypeDialogue("Select your next move.");
+
+        dialogueBox.EnableDialogueText(false);
         dialogueBox.EnableActionSelector(true);
     }
 
@@ -218,6 +231,8 @@ public class BattleSystem : MonoBehaviour
         activeCharacter.sprite = null;
         activeUnit = null;
         activeSprite.enabled = false;
+
+        dialogueBox.EnableDialogueText(false);
 
         for (int i = 0; i < playerUnits.Count; i++)
         {
@@ -236,7 +251,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator HandleCreatureFainted(BattlePawn faintedUnit)
+    IEnumerator HandleCharacterFainted(BattlePawn faintedUnit)
     {
         //Display enemy fainted dialogue and play faint animation.
         yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} fainted.");
@@ -289,6 +304,40 @@ public class BattleSystem : MonoBehaviour
             BattleOver(true);
 
         }
+    }
+
+    //Boolean to calculate accuracy of the move, check if the move hit or not.
+    //EVASION and ACCURACY.
+    bool CheckIfMoveHits(Move move, Character source, Character target)
+    {
+        //Return true if the move never miss.
+        if (move.Base.AlwaysHit)
+            return true;
+
+        //Declare the move accuracy.
+        float moveAccuracy = move.Base.Accuracy;
+
+        //Store the move acuracy in the battle.
+        int accuracy = source.StatBoosts[Stat.accuracy];
+        int evasion = source.StatBoosts[Stat.evasion];
+
+        //An array of value that boosting the stat.
+        var boostValues = new float[] { 1f, 4f / 3f, 5f / 3f, 2f, 7f / 3f, 8f / 3f, 3f };
+
+        //Buff or debuff accuracy if accuracy point is > or < 0.
+        if (accuracy > 0)
+            moveAccuracy *= boostValues[accuracy];
+        else
+            moveAccuracy /= boostValues[-accuracy];
+
+        //Buff or debuff evasion if accuracy point is > or < 0.
+        if (evasion > 0)
+            moveAccuracy /= boostValues[evasion];
+        else
+            moveAccuracy *= boostValues[-evasion];
+
+        //Check if random generated number less than or equal to the move accuracy.
+        return UnityEngine.Random.Range(1, 101) <= move.Base.Accuracy;
     }
 
     IEnumerator ShowDamageDetails(DamageDetails damageDetails)
