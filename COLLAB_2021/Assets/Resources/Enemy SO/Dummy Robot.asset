@@ -16,7 +16,11 @@ MonoBehaviour:
   portraitSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   battleSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   battleIcon: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
-  overworldAnim: []
+  overworldAnim:
+  - {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
+  - {fileID: 565527446963865111, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
+  - {fileID: 5480778246275730266, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
+  - {fileID: -4736246051006100697, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   charDescription: 
   health: 30
   mana: 9
