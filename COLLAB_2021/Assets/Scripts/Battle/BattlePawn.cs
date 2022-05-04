@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 
 public class BattlePawn : MonoBehaviour
@@ -15,6 +16,7 @@ public class BattlePawn : MonoBehaviour
 
     [SerializeField] PlayerBase _base;
     [SerializeField] int level;
+    [SerializeField] BattleHud hud;
 
     public Character Character { get; set; }
     [SerializeField] bool isPlayerUnit;
@@ -27,12 +29,74 @@ public class BattlePawn : MonoBehaviour
         }
     }
 
+    //Expose the hud property.
+    public BattleHud Hud
+    {
+        get
+        {
+            return hud;
+        }
+    }
+
     ConditionsDB condition;
+    Vector3 originalPos;
 
     public void Setup(Character character)
     {
         Character = character;
 
         graphic.sprite = Character.Base.battleSprite;
+
+        PlayEnterAnimation();
+    }
+
+    //Animation when Character enter the battle.
+    public void PlayEnterAnimation()
+    {
+        //Set position when battle start.
+        if (isPlayerUnit)
+            gameObject.transform.localPosition = new Vector3(-10f, originalPos.y);
+        else
+            gameObject.transform.localPosition = new Vector3(10f, originalPos.y);
+
+        gameObject.transform.DOLocalMoveX(originalPos.x, Character.Speed / 7f);
+    }
+
+    //Animation when Character enter the battle.
+    public void PlayFleeAnimation()
+    {
+        ////Set position when battle start.
+        //if (isPlayerUnit)
+        //    gameObject.transform.localPosition = new Vector3(originalPos.y, -10f);
+
+        //if (isPlayerUnit)
+            gameObject.transform.DOLocalMoveX(-10f, Character.Speed / 7f);
+    }
+
+    public void PlayAttackAnimation()
+    {
+        //Declare a dotween sequence func.
+        var sequence = DOTween.Sequence();
+
+        //Do a slight movement.
+        if (isPlayerUnit)
+            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x + 25f, 0.15f));
+        else
+            sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x - 25f, 0.15f));
+
+        //Return to original position.
+        sequence.Append(gameObject.transform.DOLocalMoveX(originalPos.x, 0.15f));
+    }
+
+    public void PlayHitAnimation()
+    {
+        //Declare a dotween sequence func.
+        var sequence = DOTween.Sequence();
+
+        //Flick color when hit.
+        sequence.Append(graphic.DOColor(Color.red, 0.1f));
+
+        //Return to original color.
+        sequence.Append(graphic.DOColor(Color.white, 0.1f));
     }
 }

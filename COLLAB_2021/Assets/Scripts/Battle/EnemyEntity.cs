@@ -61,6 +61,7 @@ public class EnemyEntity : MonoBehaviour
             animator.WalkLeftSprites = _base.overworldAnim;
             animator.WalkRightSprites = _base.overworldAnim;
         }
+        //party.AddCharacter();
     }
 #endif
 

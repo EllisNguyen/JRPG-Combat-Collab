@@ -48,7 +48,8 @@ MonoBehaviour:
   graphic: {fileID: 7457195411735927923}
   _base: {fileID: 0}
   level: 0
-  isPlayerUnit: 0
+  hud: {fileID: 0}
+  isPlayerUnit: 1
 --- !u!1 &1133204272936557958
 GameObject:
   m_ObjectHideFlags: 0

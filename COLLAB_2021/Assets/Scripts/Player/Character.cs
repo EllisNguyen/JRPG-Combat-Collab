@@ -27,7 +27,11 @@ public class Character
     }
 
     //Reference to CharacterBaseStats script.
-    public CharacterBaseStats Base { get { return _base; } }
+    public CharacterBaseStats Base
+    {
+        get { return _base; }
+        set { _base = value; }
+    }
 
     //Property that store the current status condition.
     public Condition Status { get; private set; }

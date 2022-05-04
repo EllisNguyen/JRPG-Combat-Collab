@@ -365,6 +365,7 @@ public class BattleSystem : MonoBehaviour
 
         if (enemySpeed < playerSpeed)
         {
+            playerUnits[0].PlayFleeAnimation();
             yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
             BattleOver(true);
         }
@@ -376,6 +377,7 @@ public class BattleSystem : MonoBehaviour
 
             if (UnityEngine.Random.Range(0, 256) < f)
             {
+                playerUnits[0].PlayFleeAnimation();
                 yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
                 BattleOver(true);
             }
