@@ -27,6 +27,8 @@ public class QuestNPC : DialogueCharacter
 
     private Quest quest;
 
+    [SerializeField] int questNumber;
+
     [SerializeField] Quest questToAdd;
     //private QuestSystem quest;
 
@@ -71,8 +73,9 @@ public class QuestNPC : DialogueCharacter
         //quest = (QuestSystem)quests.AddComponent(System.Type.GetType(questType));
 
         questManager.CurrentQuests.Add(questToAdd);
-        quest = questManager.CurrentQuests[0];
+        quest = questManager.CurrentQuests[questNumber];
         questManager.CreateQuest();
+        
 
     }
 

@@ -315,6 +315,7 @@ public class BattleSystem : MonoBehaviour
         //Loop through all character in party.
         //Reset all boosted stats.
         playerParty.Characters.ForEach(c => c.OnBattleOver());
+        enemyParty.Characters.ForEach(e => e.OnBattleOver());
 
         //Notify the game that the battle is over.
         OnBattleOver(won);

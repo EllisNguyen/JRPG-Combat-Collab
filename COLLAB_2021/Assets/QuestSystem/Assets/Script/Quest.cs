@@ -23,6 +23,7 @@ public class Quest : ScriptableObject
         //The drop down icon
         public Sprite Icon;
         //The Description of the quest
+        [TextArea(3,10)]
         public string Description;
         
     }

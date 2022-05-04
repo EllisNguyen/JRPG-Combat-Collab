@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class Character
@@ -288,12 +289,18 @@ public class Character
         OnStatusChanged?.Invoke();
     }
 
+    public static event Action<CharacterBaseStats> enemyDead;//Event to for quest check
+
     //This func fire when battle is over.
     public void OnBattleOver()
     {
+        Debug.Log("Name: " + _base.charName);
+        enemyDead?.Invoke(_base);
         VolatileStatus = null;
         ResetStatBoost();
     }
+
+    
 }
 
 public class DamageDetails

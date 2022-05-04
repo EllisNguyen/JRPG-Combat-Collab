@@ -12,15 +12,15 @@ Summary:
 Simple Enemy Follow the player Script
  */
 
-public class EnemyMovement : MonoBehaviour, EnemyInterface
+public class EnemyMovement : MonoBehaviour
 {
     public Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
     [SerializeField] GameObject popupObject; //Store the damage popup object for instantiation
-    public int ID { get; set; } //ID of the enemy. Stays inside of enemy movements for TESTING
+    //public int ID { get; set; } //ID of the enemy. Stays inside of enemy movements for TESTING
     private DamagePopup damagePopup; //reference to the DamagePopup class
-    EnemyInterface instance; //instance of the enemyinterface
-    public static event Action<EnemyInterface> enemyDead;
+    //EnemyInterface instance; //instance of the enemyinterface
+    
 
     public bool follow = true; //enables following player or not
 
@@ -28,8 +28,8 @@ public class EnemyMovement : MonoBehaviour, EnemyInterface
 
     private void Start()
     {
-        ID = 0; //Set enemy ID TESTING
-        instance = this.gameObject.GetComponent<EnemyInterface>();
+        //ID = 0; //Set enemy ID TESTING
+        //instance = this.gameObject.GetComponent<EnemyInterface>();
     }
 
     public void HandleUpdate()

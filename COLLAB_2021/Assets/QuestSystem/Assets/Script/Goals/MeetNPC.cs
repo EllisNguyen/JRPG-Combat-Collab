@@ -17,6 +17,8 @@ public class MeetNPC : Quest.QuestGoal
     public string npcName; //Name of a monster to fill in the description
     [SerializeField] int npcID; //ID of the monster
 
+    
+
     public override string GetDescription()
     {
         return $"Meet {npcName}";

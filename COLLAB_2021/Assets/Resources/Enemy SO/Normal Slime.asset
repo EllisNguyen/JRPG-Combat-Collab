@@ -16,11 +16,7 @@ MonoBehaviour:
   portraitSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   battleSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   battleIcon: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  overworldAnim:
-  - {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: 8936921706386391257, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -2063852962750616285, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  overworldAnim: []
   charDescription: 
   health: 12
   mana: 28
@@ -32,5 +28,7 @@ MonoBehaviour:
   critChance: 11
   critDmg: 7
   elementalRes: 26
-  exp: 5
+  expYield: 5
   eles: 0
+  growthRate: 0
+  learnableSkills: []

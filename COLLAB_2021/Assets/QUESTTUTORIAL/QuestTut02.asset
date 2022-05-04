@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63fcd69e7a45e2e479e0eaeaaeb3328f, type: 3}
-  m_Name: QuestTut01
+  m_Name: QuestTut02
   m_EditorClassIdentifier: 
   HaveClicked: 1
   Infomation:
-    Name: Learn the Basics
+    Name: For The Village
     Icon: {fileID: 0}
-    Description: Read the contents of the bulletin board then come back to the village
-      chief.
+    Description: Kill the Slimes on the outskirt of the village.
   Reward:
     XP: 10
   Goals:
-  - {fileID: 4460342489111225132}
---- !u!114 &4460342489111225132
+  - {fileID: 6431018159649807199}
+--- !u!114 &6431018159649807199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31,12 +30,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d354aa27e89c404f899f8ede718e191, type: 3}
+  m_Script: {fileID: 11500000, guid: dee28e190476d164192676d57ab5a98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredAmount: 1
   GoalCompleted:
     m_PersistentCalls:
       m_Calls: []
-  npcName: Bulletin Board
-  npcID: 1
+  Monster: Slime
+  monsterName: Normal Slime

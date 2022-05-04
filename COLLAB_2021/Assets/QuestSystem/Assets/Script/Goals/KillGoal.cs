@@ -14,7 +14,7 @@ using System.Linq;
 public class KillGoal : Quest.QuestGoal
 {
     public string Monster; //Name of a monster to fill in the description
-    [SerializeField] int monsterID; //ID of the monster
+    [SerializeField] string monsterName; //ID of the monster
 
     public override string GetDescription()
     {
@@ -25,11 +25,11 @@ public class KillGoal : Quest.QuestGoal
     public override void Initilize()
     {
         base.Initilize();
-        EnemyMovement.enemyDead += OnMonsterDie;
+        Character.enemyDead += OnMonsterDie;
     }
-    private void OnMonsterDie(EnemyInterface enemyInterface)
+    private void OnMonsterDie(CharacterBaseStats charBaseStats)
     {
-        if (enemyInterface.ID == this.monsterID) 
+        if (charBaseStats.charName == this.monsterName) 
             CurrentAmount++;
         Evaluate();
     }

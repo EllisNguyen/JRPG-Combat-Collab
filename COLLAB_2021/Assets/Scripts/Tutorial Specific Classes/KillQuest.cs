@@ -25,7 +25,7 @@ public class KillQuest : QuestGoal
     public override void Initiate()
     {
         base.Initiate();
-        EnemyMovement.enemyDead += EnemyDied; //subscribe to the enemy died event
+        //EnemyMovement.enemyDead += EnemyDied; //subscribe to the enemy died event
     }
 
     //Check for enemy ID and increase the current amount of enemy type killed
