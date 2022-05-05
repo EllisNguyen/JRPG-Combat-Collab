@@ -133,21 +133,24 @@ public enum GrowthRate
 }
 public class ElementChart //Type effectiveness
 {
-    static float[][] chart =    //Column = attacker; Row = defender
+    static float[][] chart =    //Row = attacker; Col = defender
     {
-            //                          Hea   Ele  Rad  Ice  Lgt   Dar     
-            /*Heat*/        new float[]{1f,   1f,  1f,  2f,  0.5f, 1f},
-            /*Electric*/    new float[]{0.5f, 1f,  2f,  1f,  1f,   1f},
-            /*Radiation*/   new float[]{1f,   2f,  1f,  1f,  1f,   1f},
-            /*Ice*/         new float[]{0.5f, 1f,  2f,  0f,  1f,   0.5f},
-            /*Light*/       new float[]{1f,   1f,  1f,  1f,  0f,   2f},
-            /*Dark*/        new float[]{1f,   1f,  1f,  1f,  2f,   0f},
+            //                          Nor  Hea   Ele  Rad  Ice  Lgt   Dar     
+            /*Normal*/      new float[]{1f,  1f,   1f,  1f,  2f,  0.5f, 1f},
+            /*Heat*/        new float[]{1f,  1f,   1f,  1f,  2f,  0.5f, 1f},
+            /*Electric*/    new float[]{1f,  0.5f, 1f,  2f,  1f,  1f,   1f},
+            /*Radiation*/   new float[]{1f,  1f,   2f,  1f,  1f,  1f,   1f},
+            /*Ice*/         new float[]{1f,  0.5f, 1f,  2f,  0f,  1f,   0.5f},
+            /*Light*/       new float[]{1f,  1f,   1f,  1f,  1f,  0f,   2f},
+            /*Dark*/        new float[]{1f,  1f,   1f,  1f,  1f,  2f,   0f},
         };
 
     public static float ElementalModifier(elements attacker, elements defender)
     {
-        int row = (int)attacker - 1;
-        int col = (int)defender - 1;
+        int row = (int)attacker;
+        int col = (int)defender;
+
+        Debug.Log($"ROW: {row} --- COL: {col}");
 
         return chart[row][col];
     }

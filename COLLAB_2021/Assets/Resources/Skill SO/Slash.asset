@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Slash
   description: 
-  element: 6
+  element: 0
   power: 25
   accuracy: 100
   alwaysHit: 1

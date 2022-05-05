@@ -531,10 +531,10 @@ MonoBehaviour:
   enemy: {fileID: 0}
   playerSpawnPoints: []
   enemySpawnPoints: []
-  speedProgressorMultiplier: 0.0002
+  speedProgressorMultiplier: 0.005
   basicAttack: {fileID: 11400000, guid: ad949738acc8da943877e954ee4d4924, type: 2}
   basicGuard: {fileID: 11400000, guid: aefa919a8fa54614ead62997809990df, type: 2}
-  currentMoves: {fileID: 0}
+  currentMovePanel: {fileID: 0}
   progressorHolder: {fileID: 911599688}
   activeCharacter: {fileID: 1518813487}
   speedProgressorPrefab: {fileID: 4499779866189884537, guid: a205d5bd75053c04bb3791ad1f4f792e, type: 3}
@@ -542,6 +542,7 @@ MonoBehaviour:
   enemyProgressors: []
   activeUnit: {fileID: 0}
   activeSprite: {fileID: 1277697787}
+  action: 0
 --- !u!114 &70077217
 MonoBehaviour:
   m_ObjectHideFlags: 0

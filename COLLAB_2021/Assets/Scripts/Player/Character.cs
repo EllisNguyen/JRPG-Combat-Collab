@@ -290,7 +290,8 @@ public class Character
         }
 
         //Get types of the creature receiving damage.
-        float element = ElementChart.ElementalModifier(move.Base.Element, this.Base.element);
+        float element = ElementChart.ElementalModifier(move.Base.Element, attacker.Base.element);
+        Debug.Log(element);
 
         //
         var damageDetails = new DamageDetails()
