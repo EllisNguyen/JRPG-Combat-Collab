@@ -80,6 +80,12 @@ public class BattleSystem : MonoBehaviour
 
     int escapeAttempt;
     MoveData moveToLearn;
+    bool playerPerform = false;
+    bool enemyPerform = false;
+
+    public bool PlayerPerform { get { return playerPerform; } set { playerPerform = value; } }
+    public bool EnemyPerform { get { return enemyPerform; } set { enemyPerform = value; } }
+
     public BattleAction action;
 
     public BattlePawn ActiveUnit
@@ -176,14 +182,16 @@ public class BattleSystem : MonoBehaviour
     {
         var move = new Move(basicAttack);
 
-        //UseSKill(playerUnits[0], enemyUnits[0], move);
-        //RunMove()
+        currentMove = move;
+
         StartCoroutine(RunTurnsPlayer(BattleAction.Move));
     }
 
     public void BasicGuard()
     {
         var move = new Move(basicGuard);
+
+        currentMove = move;
 
         StartCoroutine(RunTurnsPlayer(BattleAction.Move));
     }
@@ -195,6 +203,8 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleUpdate()
     {
+        print(action);
+
         switch (state)
         {
             case BattleState.Start:
@@ -211,7 +221,8 @@ public class BattleSystem : MonoBehaviour
 
                 break;
             case BattleState.RunningTurn:
-                
+                if (!playerPerform) return;
+                StartCoroutine(RunTurnsPlayer(BattleAction.Move));
                 break;
             case BattleState.Busy:
                 ActionSelection();
@@ -292,7 +303,8 @@ public class BattleSystem : MonoBehaviour
     IEnumerator HandleCharacterFainted(BattlePawn faintedUnit)
     {
         //Display enemy fainted dialogue and play faint animation.
-        yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} fainted.");
+        yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} is fooking ded.");
+        faintedUnit.PlayFaintAnimation();
 
         //Enemy fainted and player won.
         yield return new WaitForSeconds(2f);
@@ -350,6 +362,9 @@ public class BattleSystem : MonoBehaviour
         //Perform player's turn.
         state = BattleState.RunningTurn;
 
+        action = playerAction;
+
+        playerPerform = false;
         //Check if player perform a move.
         if (playerAction == BattleAction.Move)
         {
@@ -394,20 +409,24 @@ public class BattleSystem : MonoBehaviour
         //    dialogueBox.EnableActionSelector(false);
         //}
         ////Escape wild battle.
-        else if (playerAction == BattleAction.Run)
+        else
         {
-            yield return TryToEscape();
-        }
+            if (playerAction == BattleAction.Run)
+            {
+                yield return TryToEscape();
+            }
 
-        //Return to action selection if battle is not over.
-        if (state != BattleState.BattleOver)
-        {
-            //ActionSelection();
-            state = BattleState.Busy;
+            //Return to action selection if battle is not over.
+            if (state != BattleState.BattleOver)
+            {
+                //ActionSelection();
+                state = BattleState.Busy;
+            }
+
         }
     }
 
-    public IEnumerator RunTurnsEnemy(BattleAction playerAction)
+    public IEnumerator RunTurnsEnemy(BattleAction enemyAction)
     {
         //Perform player's turn.
         state = BattleState.RunningTurn;
@@ -454,9 +473,11 @@ public class BattleSystem : MonoBehaviour
         dialogueBox.EnableDialogueText(true);
 
         //Decrease the PP of the move and fire the dialogue coroutine.
-        //move.Mana--;
+
+        playerUnits[0].Character.DecreaseMP(move.Mana);
+        
         print($"Used {move.Base.Name.ToUpper()}.");
-        dialogueBox.SetDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
+        yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
 
         //Check if the attack landed.
         if (CheckIfMoveHits(move, sourceUnit.Character, targetUnit.Character))
