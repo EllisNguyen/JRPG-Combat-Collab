@@ -336,9 +336,9 @@ public class Character
     #endregion HP control
 
     #region MP control
-    public void DecreaseMP(int damage)
+    public void DecreaseMP(int mana)
     {
-        MP = Mathf.Clamp(MP - damage, 0, MaxMP);
+        MP = Mathf.Clamp(MP - mana, 0, MaxMP);
         OnMPChanged?.Invoke();
     }
 

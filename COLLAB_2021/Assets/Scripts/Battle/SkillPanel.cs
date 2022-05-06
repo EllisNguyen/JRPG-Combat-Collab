@@ -22,8 +22,17 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] TextMeshProUGUI skillName;
     [SerializeField] TextMeshProUGUI manaRequirement;
     [SerializeField] Image typeIcon;
+    Button button;
+
+    public Button Button => button;
 
     BattleSystem battleSystem;
+
+    void Awake()
+    {
+        button = GetComponent<Button>();
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -52,13 +61,16 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void DoSkill()
     {
-
+        //StartCoroutine(battleSystem.RunTurnsPlayer(BattleAction.Move));
+        //battleSystem.DialogueBox.EnableActionSelector(false);
+        battleSystem.PlayerPerform = true;
+        battleSystem.State = BattleState.RunningTurn;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         battleSystem.currentMovePanel = this;
-        battleSystem.currentMove = _move;
+        battleSystem.currentMove = Move;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -70,7 +82,7 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         //TODO: Fight.
         //battleSystem.UseSKill()
-        StartCoroutine(battleSystem.RunTurnsPlayer(BattleAction.Move));
+        //StartCoroutine(battleSystem.RunTurnsPlayer(BattleAction.Move));
 
         //if (battleSystem.ActiveUnit.IsPlayerUnit) StartCoroutine(battleSystem.RunTurnsPlayer(BattleAction.Move));
         //else StartCoroutine(battleSystem.RunTurnsEnemy(BattleAction.Wait));

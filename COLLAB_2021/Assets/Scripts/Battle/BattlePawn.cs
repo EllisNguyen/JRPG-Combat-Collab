@@ -94,7 +94,7 @@ public class BattlePawn : MonoBehaviour
         var sequence = DOTween.Sequence();
 
         //Play sequence of move and fade altogether.
-        sequence.Append(gameObject.transform.DOLocalMoveY(originalPos.y - 50f, 0.15f));
+        sequence.Append(gameObject.transform.DOLocalMoveY(originalPos.y - 10f, 0.15f));
         sequence.Join(graphic.DOFade(0, 0.1f));
     }
 

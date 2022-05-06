@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 #if UNITY_EDITOR
 using UnityEditor;
-using Sirenix.OdinInspector;
 #endif
 
 [RequireComponent(typeof(EnemyMovement))]
