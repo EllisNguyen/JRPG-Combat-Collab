@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using TMPro;
 
 public class BattlePawn : MonoBehaviour
@@ -40,6 +41,12 @@ public class BattlePawn : MonoBehaviour
 
     ConditionsDB condition;
     Vector3 originalPos;
+
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem levelUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem atkUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem spatkUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem defUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem sfpdefUp;
 
     public void Setup(Character character)
     {

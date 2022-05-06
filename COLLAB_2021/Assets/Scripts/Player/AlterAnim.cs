@@ -77,8 +77,8 @@ public class AlterAnim : MonoBehaviour
 
         if (IsMoving)
             currentAnim.HandleUpdate();
-        else
-            spriteRenderer.sprite = currentAnim.Frames[idleFrame];
+        //else
+        //    spriteRenderer.sprite = currentAnim.Frames[idleFrame];
 
         wasPreviouslyMoving = IsMoving;
         spriteRenderer.flipX = flip;

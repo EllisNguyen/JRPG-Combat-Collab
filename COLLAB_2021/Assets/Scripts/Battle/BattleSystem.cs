@@ -328,6 +328,7 @@ public class BattleSystem : MonoBehaviour
             while (playerUnits[0].Character.CheckForLevelUp())
             {
                 playerHud.SetLevel();
+                playerUnits[0].levelUp.Play();
                 yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} grew to level {playerUnits[0].Character.Level}.");
 
                 var newMove = playerUnits[0].Character.GetLearnableMoveAtCurrentLevel();

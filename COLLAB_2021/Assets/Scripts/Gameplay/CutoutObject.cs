@@ -37,7 +37,7 @@ public class CutoutObject : MonoBehaviour
                 mat.DOFloat(0f, "_CutoutSize", fadeTime);
                 mat.DOFloat(0f, "_FalloffSize", fadeTime);
 
-                StartCoroutine(WaitToClear(fadeTime));
+                StartCoroutine(WaitToClear(0.01f));
             }
             return;
         }
@@ -52,6 +52,8 @@ public class CutoutObject : MonoBehaviour
             {
                 mat.DOFloat(cutoutSize, "_CutoutSize", fadeTime);
                 mat.DOFloat(0.05f, "_FalloffSize", fadeTime);
+
+                StartCoroutine(WaitToClear(0.01f));
 
                 curMaterials.Add(mat);
             }
