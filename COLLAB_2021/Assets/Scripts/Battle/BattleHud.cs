@@ -24,11 +24,11 @@ public class BattleHud : MonoBehaviour
     [BoxGroup("EXP BAR")] [SerializeField] Image expBar;
 
     [Header("Status Colors")]
-    [SerializeField] Color psnColor;
+    [SerializeField] Color radColor;
     [SerializeField] Color brnColor;
-    [SerializeField] Color slpColor;
+    [SerializeField] Color bldColor;
     [SerializeField] Color parColor;
-    [SerializeField] Color frzColor;
+    [SerializeField] Color decColor;
 
     //Store all color in Dictionary.
     Dictionary<ConditionID, Color> statusColor;
@@ -58,12 +58,23 @@ public class BattleHud : MonoBehaviour
 
         statusColor = new Dictionary<ConditionID, Color>()
         {
-            {ConditionID.psn, psnColor },
+            {ConditionID.rad, radColor },
             {ConditionID.brn, brnColor },
-            {ConditionID.slp, slpColor },
             {ConditionID.par, parColor },
-            {ConditionID.frz, frzColor },
+            {ConditionID.bld, bldColor },
+            {ConditionID.dec, decColor },
         };
+
+        //Change status image base on the status condition.
+        SetStatusText();
+
+        //Maybe reset stats here.
+
+        //Let the OnStatusChanged Action trigger the SetStatusImage().
+        _character.OnStatusChanged += SetStatusText;
+
+        //Let the OnHPChanged Action trigger the UpdateHP().
+        _character.OnHPChanged += UpdateHP;
     }
 
     /// <summary>
@@ -138,7 +149,7 @@ public class BattleHud : MonoBehaviour
         else
         {
             //Set status text and color.
-            statusText.text = _character.Status.Id.ToString();
+            statusText.text = _character.Status.Name.ToUpper();
             statusText.color = statusColor[_character.Status.Id];
 
             //statusSprite.sprite = statusImages[_creature.Status.Id];

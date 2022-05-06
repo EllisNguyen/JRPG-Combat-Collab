@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Slash
   description: 
-  element: 0
+  element: 6
   power: 25
   accuracy: 100
   alwaysHit: 1
@@ -27,8 +27,8 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries:
   - boosts: []
-    status: 4
+    status: 5
     volatileStatus: 0
-    chance: 15
+    chance: 85
     target: 0
   target: 0

@@ -330,6 +330,18 @@ public class BattleSystem : MonoBehaviour
                 playerHud.SetLevel();
                 yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} grew to level {playerUnits[0].Character.Level}.");
 
+                var newMove = playerUnits[0].Character.GetLearnableMoveAtCurrentLevel();
+
+                //Check if newMove return a null.
+                if (newMove != null)
+                {
+                    //ADD A NEW MOVE TO THE CHARACTER MOVESET.
+                    playerUnits[0].Character.LearnMove(newMove);
+
+                    //Show dialogue and added to moves list.
+                    yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
+                }
+
                 yield return playerHud.SetExpSmooth(true);
             }
 
@@ -352,7 +364,6 @@ public class BattleSystem : MonoBehaviour
         else
         {
             BattleOver(true);
-
         }
     }
 
@@ -705,6 +716,9 @@ public class BattleSystem : MonoBehaviour
         playerParty.Characters.ForEach(c => c.OnBattleOver());
         enemyParty.Characters.ForEach(e => e.OnBattleOver());
 
+        playerUnits[0].Hud.ClearData();
+        enemyUnits[0].Hud.ClearData();
+
         //Notify the game that the battle is over.
         OnBattleOver(won);
 
@@ -720,7 +734,7 @@ public class BattleSystem : MonoBehaviour
 
     public void Guard()
     {
-        //TODO: init basic guard.
+        BasicGuard();
     }
 
     public void Skill()

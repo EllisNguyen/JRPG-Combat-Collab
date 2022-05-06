@@ -199,6 +199,20 @@ public class Character
         return false;
     }
 
+    public LearnableSkill GetLearnableMoveAtCurrentLevel()
+    {
+        //Find the learnable move at current level using Where statement.
+        //Pass a lambda condition.
+        return Base.LearnableSkills.Where(x => x.Level == level).FirstOrDefault();
+        // --> return null if empty.
+    }
+
+    public void LearnMove(LearnableSkill moveToLearn)
+    {
+        //Add new move to moveset list.
+        Moves.Add(new Move(moveToLearn.Base));
+    }
+
     /// <summary>
     /// Reset all the stats.
     /// Call when end battle or when new battle start.

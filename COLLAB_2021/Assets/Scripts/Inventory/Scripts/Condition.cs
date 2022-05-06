@@ -14,20 +14,20 @@ public class Condition
     //Declare string property explain the condition.
     public string Description { get; set; }
 
-    //Declare string property that display the message when the creature inflict with the status.
+    //Declare string property that display the message when the character inflict with the status.
     public string StartMessage { get; set; }
 
     //Note: Can only assign a function that not return a value in Action.
     //
     public Action<Character> OnStart { get; set; }
 
-    //An action takes Creature class as a parameter.
-    //Call this also call Creature class.
+    //An action takes Character class as a parameter.
+    //Call this also call Character class.
     //Do a check call before perform a move.
     public Func<Character, bool> OnBeforeMove { get; set; }
 
-    //An action takes Creature class as a parameter.
-    //Call this also call Creature class.
+    //An action takes Character class as a parameter.
+    //Call this also call Character class.
     //Do a check call after a turn.
     public Action<Character> OnAfterTurn { get; set; }
 }
