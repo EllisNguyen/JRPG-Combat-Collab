@@ -184,7 +184,10 @@ public class BattleSystem : MonoBehaviour
 
         currentMove = move;
 
-        StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+        if(activeUnit.IsPlayerUnit)
+            StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+        else
+            StartCoroutine(RunTurnsEnemy(BattleAction.Move));
     }
 
     public void BasicGuard()
@@ -193,12 +196,10 @@ public class BattleSystem : MonoBehaviour
 
         currentMove = move;
 
-        StartCoroutine(RunTurnsPlayer(BattleAction.Move));
-    }
-
-    public void UseSKill(BattlePawn caster, BattlePawn receiver, Move move)
-    {
-        state = BattleState.RunningTurn;
+        if (activeUnit.IsPlayerUnit)
+            StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+        else
+            StartCoroutine(RunTurnsEnemy(BattleAction.Move));
     }
 
     public void HandleUpdate()
@@ -221,11 +222,14 @@ public class BattleSystem : MonoBehaviour
 
                 break;
             case BattleState.RunningTurn:
-                if (!playerPerform) return;
-                StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+                if (playerPerform)
+                    StartCoroutine(RunTurnsPlayer(BattleAction.Move));
+                else if (enemyPerform)
+                    StartCoroutine(RunTurnsEnemy(BattleAction.Move));
                 break;
             case BattleState.Busy:
-                ActionSelection();
+                //if(activeUnit.IsPlayerUnit)
+                    ActionSelection();
                 break;
             case BattleState.Inventory:
 
@@ -235,31 +239,6 @@ public class BattleSystem : MonoBehaviour
                 break;
             default:
                 break;
-        }
-    }
-
-    void HandleMoveSelection()
-    {
-        //Can only move between 0 and current number of moves.
-        //currentMove = ;
-
-        //dialogueBox.UpdateMoveSelection(currentMove, playerUnits[0].Character.CurrentMove);
-
-        //SELECT A MOVE
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z))
-        {
-            var move = playerUnits[0].Character.CurrentMove;
-            if (playerUnits[0].Character.Base.mana == 0) return;
-
-            //dialogueBox.EnableMoveSelector(false);
-            dialogueBox.EnableDialogueText(true);
-            StartCoroutine(RunTurnsPlayer(BattleAction.Move));
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.X))
-        {
-            //dialogueBox.EnableMoveSelector(false);
-            dialogueBox.EnableDialogueText(true);
-            //ActionSelection();
         }
     }
 
@@ -283,19 +262,22 @@ public class BattleSystem : MonoBehaviour
 
         dialogueBox.EnableDialogueText(false);
 
-        for (int i = 0; i < playerUnits.Count; i++)
+        if(activeUnit == null)
         {
-            foreach (SpeedProgressor progressor in playerProgressors)
+            for (int i = 0; i < playerUnits.Count; i++)
             {
-                StartCoroutine(progressor.SpeedProgress(playerUnits[i].Character, playerUnits[0]));
+                foreach (SpeedProgressor progressor in playerProgressors)
+                {
+                    StartCoroutine(progressor.SpeedProgress(playerUnits[i].Character, playerUnits[0]));
+                }
             }
-        }
 
-        for (int j = 0; j < enemyUnits.Count; j++)
-        {
-            foreach (SpeedProgressor progressor in enemyProgressors)
+            for (int j = 0; j < enemyUnits.Count; j++)
             {
-                StartCoroutine(progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[0]));
+                foreach (SpeedProgressor progressor in enemyProgressors)
+                {
+                    StartCoroutine(progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[0]));
+                }
             }
         }
     }
@@ -380,18 +362,6 @@ public class BattleSystem : MonoBehaviour
         //Check if player perform a move.
         if (playerAction == BattleAction.Move)
         {
-            //PLAYER.
-            //Store the current move into player's current creature data.
-            //playerUnits[0].Character.CurrentMove = currentMove;
-
-            //OPPONENT.
-            //Store the current move into player's current creature data (as randomly choose one).
-
-            //enemyUnits[0].Character.CurrentMove = enemyUnits[0].Character.GetRandomMove();
-
-            //Move FIRST TURN and SECOND TURN base on the creature's SPEED stat.
-            //First turn.
-
             yield return RunMove(activeUnit, enemyUnits[0], currentMove);
             yield return RunAfterTurn(activeUnit);//End turn.
             //ResetPlayerProgressor();
@@ -406,21 +376,6 @@ public class BattleSystem : MonoBehaviour
             //    if (state == BattleState.BattleOver) yield break;
             //}
         }
-
-        ////Check if player try to switch creature.
-        //if (playerAction == BattleAction.SwitchCharacter)
-        //{
-        //    //var selectedCharacter = partyScreen.SelectedMember;
-        //    state = BattleState.Busy;
-        //    //yield return SwitchCharacter(selectedCharacter);
-        //}
-        ////Check if player try to use items.
-        //else if (playerAction == BattleAction.UseItem)
-        //{
-        //    //This handle from item screen, do nothing and skip the turn after used the item.
-        //    dialogueBox.EnableActionSelector(false);
-        //}
-        ////Escape wild battle.
         else
         {
             if (playerAction == BattleAction.Run)
@@ -441,13 +396,17 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator RunTurnsEnemy(BattleAction enemyAction)
     {
         //Perform player's turn.
-        state = BattleState.RunningTurn;
-
-        //Enemy turn.
-        var enemyMove = activeUnit.Character.GetRandomMove();
-        yield return RunMove(activeUnit, playerUnits[0], enemyMove);
-        yield return RunAfterTurn(activeUnit);//End turn.
-        if (state == BattleState.BattleOver) yield break;
+        //
+        enemyPerform = false;
+        if(enemyAction == BattleAction.Move)
+        {
+            //Enemy turn.
+            var enemyMove = activeUnit.Character.GetRandomMove();
+            yield return RunMove(activeUnit, playerUnits[0], enemyMove);
+            //state = BattleState.RunningTurn;
+            yield return RunAfterTurn(activeUnit);//End turn.
+            if (state == BattleState.BattleOver) yield break;
+        }
     }
 
     public void ActionSelection()
@@ -455,11 +414,17 @@ public class BattleSystem : MonoBehaviour
         dialogueBox.EnableDialogueText(true);
         if (activeUnit != null)
         {
-            if (activeUnit == playerUnits[0])
+            if (activeUnit.IsPlayerUnit)// == playerUnits[0])
             {
                 PlayerAction();
             }
-            else ResetEnemyProgressor();
+            else if (!activeUnit.IsPlayerUnit)// == enemyUnits[0])
+            {
+                enemyPerform = true;
+                state = BattleState.RunningTurn;
+                //StartCoroutine(RunTurnsEnemy(BattleAction.Move));
+                //ResetEnemyProgressor();
+            }
         }
     }
 
@@ -611,7 +576,10 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitUntil(() => state == BattleState.RunningTurn);
         }
 
-        ResetPlayerProgressor();
+        if(activeUnit.IsPlayerUnit)
+            ResetPlayerProgressor();
+        else if(!activeUnit.IsPlayerUnit)
+            ResetEnemyProgressor();
     }
 
     //Boolean to calculate accuracy of the move, check if the move hit or not.

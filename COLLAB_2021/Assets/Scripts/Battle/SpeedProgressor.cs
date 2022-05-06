@@ -46,23 +46,41 @@ public class SpeedProgressor : MonoBehaviour
         int characterSpeed = character.Base.speed;
         print(character.Base.charName + " " + characterSpeed);
 
-        while(slider.value < 1 && battleSystem.State != BattleState.Busy)
+        //if (battleSystem.State == BattleState.RunningTurn) yield return null;
+
+        if(battleSystem.ActiveUnit == null)
         {
-            battleSystem.State = BattleState.Waiting;
-            slider.value += (characterSpeed * battleSystem.SpeedProgressorMultiplier) * 0.0015f;
-            yield return null;
-            //await Task.Yield();
+            while (slider.value < 1 && battleSystem.State != BattleState.Busy)
+            {
+                if (battleSystem.ActiveUnit != null) break;
+
+                battleSystem.State = BattleState.Waiting;
+                slider.value += (characterSpeed * battleSystem.SpeedProgressorMultiplier) * 0.0015f;
+                yield return null;
+                //await Task.Yield();
+            }
+
         }
 
-        if(slider.value >= 1)
+        if (slider.value == 1)
         {
-            if(battleSystem.State != BattleState.Busy) battleSystem.State = BattleState.Busy;
+            if (battleSystem.State != BattleState.Busy) battleSystem.State = BattleState.Busy;
             battleSystem.ActiveCharacter.sprite = character.Base.battleIcon;
             battleSystem.ActiveUnit = activeUnit;
 
-            if (activeUnit.IsPlayerUnit == battleSystem.ActiveUnit.IsPlayerUnit) battleSystem.action = BattleAction.Move;
-            //else StartCoroutine(battleSystem.RunTurnsEnemy(BattleAction.Wait));
+            if (battleSystem.ActiveUnit.IsPlayerUnit)
+            {
+                battleSystem.PlayerPerform = true;
+                //if (battleSystem.State != BattleState.RunningTurn) battleSystem.State = BattleState.RunningTurn;
+                battleSystem.action = BattleAction.Move;
+            }
+            else if (!battleSystem.ActiveUnit.IsPlayerUnit)
+            {
+                battleSystem.EnemyPerform = true;
+                //if (battleSystem.State != BattleState.RunningTurn) battleSystem.State = BattleState.RunningTurn;
+                //battleSystem.action = BattleAction.Move;
+            }
         }
-    }
 
+    }
 }

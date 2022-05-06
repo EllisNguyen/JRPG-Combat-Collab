@@ -418,11 +418,11 @@ public class Character
     public Move GetRandomMove()
     {
         //Declare a list of move with PP available.
-        var movesWithMana = Moves.Where(x => x.Mana > 0).ToList();
+        var movesWithinMana = Moves.Where(x => x.Mana > 0).ToList();
 
         //Run the move that have PP.
-        int r = UnityEngine.Random.Range(0, movesWithMana.Count);
-        return movesWithMana[r];
+        int r = UnityEngine.Random.Range(0, movesWithinMana.Count);
+        return movesWithinMana[r];
     }
 
     //A boolean check.

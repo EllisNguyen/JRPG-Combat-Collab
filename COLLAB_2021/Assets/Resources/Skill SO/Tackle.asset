@@ -10,25 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fdac6b2b7e24b646892f7e4c965996b, type: 3}
-  m_Name: Slash
+  m_Name: Tackle
   m_EditorClassIdentifier: 
-  moveName: Slash
+  moveName: Tackle
   description: 
-  element: 6
-  power: 25
+  element: 0
+  power: 15
   accuracy: 100
   alwaysHit: 1
-  mana: 1
+  mana: 2
   priority: 0
   category: 0
   effect:
     boosts: []
     status: 0
     volatileStatus: 0
-  secondaries:
-  - boosts: []
-    status: 5
-    volatileStatus: 0
-    chance: 85
-    target: 0
+  secondaries: []
   target: 0
