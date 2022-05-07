@@ -20,15 +20,15 @@ MonoBehaviour:
   charDescription: 
   health: 12
   mana: 28
-  physicalAtkDmg: 48
-  specialAtkDmg: 38
-  physicalDef: 39
-  specialDef: 37
-  speed: 20
+  physicalAtkDmg: 17
+  specialAtkDmg: 12
+  physicalDef: 8
+  specialDef: 7
+  speed: 19
   critChance: 11
   critDmg: 7
-  elementalRes: 26
-  expYield: 100
+  elementalRes: 12
+  expYield: 47
   element: 0
   growthRate: 0
   learnableSkills:

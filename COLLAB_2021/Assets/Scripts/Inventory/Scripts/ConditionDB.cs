@@ -144,7 +144,7 @@ public class ConditionsDB
                 OnStart = (Character character) =>
                 {
                     //Confused for 1-4 turn(s).
-                    character.VolatileStatusTime = Random.Range(1, 6);
+                    character.VolatileStatusTime = Random.Range(1, 4);
                     Debug.Log($"Will be confused for {character.VolatileStatusTime} moves.");
                 },
                 //A lambda function
