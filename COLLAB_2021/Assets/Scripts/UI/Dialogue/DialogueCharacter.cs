@@ -42,6 +42,16 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
         {
             
             textPopUp.SetActive(true);
+            //start dialogue if player is not in another dialogue and has pressed E
+            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
+            {
+                Debug.Log("motherfucking");
+
+                npcIDcheck?.Invoke(instance); //Trigger event
+
+                InitiateDialogue();
+
+            }
         }
     }
 
@@ -52,6 +62,8 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
             //start dialogue if player is not in another dialogue and has pressed E
             if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
             {
+                Debug.Log("motherfuck");
+
                 npcIDcheck?.Invoke(instance); //Trigger event
 
                 InitiateDialogue();
