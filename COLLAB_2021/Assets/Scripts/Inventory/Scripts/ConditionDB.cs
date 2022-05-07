@@ -98,7 +98,7 @@ public class ConditionsDB
         },
         {
             //Define the BLIND status conditions.
-            ConditionID.bld,
+            ConditionID.bln,
             new Condition
             {
                 Name = "Blind",
@@ -185,7 +185,7 @@ public class ConditionsDB
     {
         if (condition == null)
             return 1f;
-        else if (condition.Id == ConditionID.bld || condition.Id == ConditionID.dec)
+        else if (condition.Id == ConditionID.bln || condition.Id == ConditionID.dec)
             return 2f;
         else if (condition.Id == ConditionID.par || condition.Id == ConditionID.rad || condition.Id == ConditionID.brn)
             return 1.5f;
@@ -200,7 +200,7 @@ public enum ConditionID
     rad,            //RADIATED
     brn,            //BURNT
     par,            //PARALYZE
-    bld,            //BLINDED
+    bln,            //BLINDED
     dec,            //DECAY
     confusion,      //CONFUSION
 }

@@ -61,7 +61,7 @@ public class BattleHud : MonoBehaviour
             {ConditionID.rad, radColor },
             {ConditionID.brn, brnColor },
             {ConditionID.par, parColor },
-            {ConditionID.bld, bldColor },
+            {ConditionID.bln, bldColor },
             {ConditionID.dec, decColor },
         };
 

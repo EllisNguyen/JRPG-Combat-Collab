@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /*
 Author: Ly Duong Huy
@@ -9,17 +10,18 @@ Attached to: Player
 Summary:
 Handles Player's Movements
 
-Last edit: 25/04/2022 - by Phap Nguyen.
+Last edit: 07/05/2022 - by Phap Nguyen.
  */
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class TopDownMovement : MonoBehaviour
 {
     //Variables
     Transform cameraTransform;
 
+    [SerializeField] NavMeshAgent agent;
 
     [SerializeField] float speed = 6f; //player movement speed
-    [SerializeField] float sprintSpeed = 10f; //player sprint speed
 
     [SerializeField] AlterAnim animator;
     [SerializeField] bool isMoving;
@@ -29,14 +31,7 @@ public class TopDownMovement : MonoBehaviour
     void Start()
     {
         cameraTransform = GameObject.Find("Main Camera").transform; //get camera reference
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
+        agent = GetComponent<NavMeshAgent>();
     }
 
     /// <summary>
@@ -59,36 +54,24 @@ public class TopDownMovement : MonoBehaviour
 
         Vector3 playerPosition = this.transform.position;//store the position before moving
 
-        float playerAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
         //returns the deviation in RADIAN from z axis (Atan2 x/z), 
         //exchange to degrees through Rad2Deg 
         //and add in camera angles for camera dependency.
-
-        Vector3 movements = Quaternion.Euler(0f, playerAngle, 0f) * Vector3.forward; //movements with the camera offset taken into calculation
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        //sprint speed
+        
+        if (direction != Vector3.zero)
         {
-
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-            {
-                
-                playerPosition += movements * Time.deltaTime * sprintSpeed;
-                
-                //movements
-            }
-        }
-        else if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-        //normal speed
-        {
-            
-            playerPosition += movements * Time.deltaTime * speed;
+            //playerPosition += movements * Time.deltaTime * speed;
             //movements
+            Vector3 destination = transform.position + transform.right * direction.x + transform.forward * direction.z;
 
+            agent.speed = speed;
+            agent.destination = destination;
             isMoving = true;
         }
         else
         {
+            agent.destination = transform.position;
+
             //animation idle
             isMoving = false;
         }
