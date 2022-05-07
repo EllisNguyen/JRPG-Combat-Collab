@@ -1809,6 +1809,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBattle_Pawn
       objectReference: {fileID: 0}
+    - target: {fileID: 5119804583604539819, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119804583604539819, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119804583604539819, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703021510987996791, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_Size.x
+      value: 9.234375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703021510987996791, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_Size.y
+      value: 15.515625
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703021510987996791, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3153848585804268297, guid: f8388bfb2fe45c2489821cca829bbfdb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4c4fd35982e754b89c0bd30c2834fd, type: 3}
 --- !u!4 &330232823 stripped
@@ -8110,6 +8134,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 700163299}
     m_Modifications:
+    - target: {fileID: 6970467468064722008, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468064722008, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468064722008, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468064722008, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468155480594, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468155480594, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468155480594, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467468155480594, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6970467469361670848, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
       propertyPath: m_Name
       value: EnemyHud
@@ -8196,6 +8252,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970467469361670849, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467469444344858, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467469444344858, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467469444344858, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970467469444344858, guid: 07260a1ba0d298c42b262f77a2173df1, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

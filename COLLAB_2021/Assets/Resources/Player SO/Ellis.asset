@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Ellis
   portraitSprite: {fileID: 21300000, guid: 8e79b1771c8815d47987a30034b28885, type: 3}
-  battleSprite: {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  battleSprite: {fileID: 21300000, guid: f8388bfb2fe45c2489821cca829bbfdb, type: 3}
   battleIcon: {fileID: 21300000, guid: 0fb80ab8c45c1ec40a9acfc7b6c863cc, type: 3}
   overworldAnim: []
   charDescription: 
   health: 21
   mana: 21
-  physicalAtkDmg: 80
+  physicalAtkDmg: 56
   specialAtkDmg: 23
   physicalDef: 16
   specialDef: 31
@@ -34,5 +34,7 @@ MonoBehaviour:
   learnableSkills:
   - skillData: {fileID: 11400000, guid: 4f3c582d3f62e724082650f023ca1c08, type: 2}
     level: 0
+  - skillData: {fileID: 11400000, guid: 710fbdcba388f18408704526b622546a, type: 2}
+    level: 1
   - skillData: {fileID: 11400000, guid: 5561deaf1996d574591fd59e3cc68165, type: 2}
     level: 2

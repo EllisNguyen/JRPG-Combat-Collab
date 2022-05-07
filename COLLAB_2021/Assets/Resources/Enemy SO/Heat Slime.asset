@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Heat Slime
   portraitSprite: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
-  battleSprite: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
+  battleSprite: {fileID: 333607023786938565, guid: e0988637bc1607546922a7969f34e363, type: 3}
   battleIcon: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
   overworldAnim:
   - {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}

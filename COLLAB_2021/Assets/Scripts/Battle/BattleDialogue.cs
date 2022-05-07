@@ -34,7 +34,7 @@ public class BattleDialogue : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(1f/GameManager.Instance.letterPerSecond);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.25f);
     }
 
     public void EnableDialogueText(bool enabled)

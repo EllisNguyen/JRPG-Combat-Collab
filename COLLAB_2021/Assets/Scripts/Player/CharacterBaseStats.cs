@@ -136,7 +136,7 @@ public class ElementChart //Type effectiveness
     static float[][] chart =    //Row = attacker; Col = defender
     {
             //                          Nor  Hea   Ele  Rad  Ice  Lgt   Dar     
-            /*Normal*/      new float[]{1f,  1f,   1f,  1f,  2f,  0.5f, 1f},
+            /*Normal*/      new float[]{1f,  1f,   1f,  1f,  1f,  0.5f, 1f},
             /*Heat*/        new float[]{1f,  1f,   1f,  1f,  2f,  0.5f, 1f},
             /*Electric*/    new float[]{1f,  0.5f, 1f,  2f,  1f,  1f,   1f},
             /*Radiation*/   new float[]{1f,  1f,   2f,  1f,  1f,  1f,   1f},
@@ -161,14 +161,14 @@ public enum Stat
 {
     health,
     mana,
-    physicalAtkDmg,
-    specialAtkDmg,
-    physicalDef,
-    specialDef,
-    speed,
-    critChance,
-    critDmg,
+    PhysATK,
+    SpecATK,
+    PhysDEF,
+    SpecDEF,
+    SPEED,
+    CritChance,
+    CritDmg,
 
-    accuracy,
-    evasion
+    Accuraccy,
+    Evasion
 }

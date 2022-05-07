@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: GUARD
   description: 
-  type: 0
+  element: 0
   power: 0
   accuracy: 0
   alwaysHit: 1
   mana: 0
   priority: 0
-  category: 0
+  category: 2
   effect:
     boosts:
     - stat: 4

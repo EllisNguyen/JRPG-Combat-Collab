@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Normal Slime
   portraitSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  battleSprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  battleSprite: {fileID: -8628245789655506527, guid: 5b8093c0f104a48428a4d1dc64c002e9, type: 3}
   battleIcon: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   overworldAnim: []
   charDescription: 

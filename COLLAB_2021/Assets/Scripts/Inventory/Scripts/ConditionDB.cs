@@ -34,7 +34,7 @@ public class ConditionsDB
                 OnAfterTurn = (Character creature) =>
                 {
                     creature.DecreaseHP(creature.MaxHP / 8);
-                    creature.StatusChanges.Enqueue($"{creature.Base.charName} hurt by poison.");
+                    creature.StatusChanges.Enqueue($"{creature.Base.charName.ToUpper()} hurt by the radiation.");
                 }
             }
         },
@@ -46,10 +46,21 @@ public class ConditionsDB
                 Name = "Burn",
                 StartMessage = "has been burned.",
                 //A lambda function
+                OnStart = (Character character) =>
+                {
+                    Dictionary<Stat, float> StatBoosts;
+
+                    StatBoosts = new Dictionary<Stat, float>()
+                    {
+                        {Stat.SpecDEF, -GetStatusBonus(character.Status)},
+                    };
+
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} Phys.DEF fell.");
+                },
                 OnAfterTurn = (Character character) =>
                 {
                     character.DecreaseHP(character.MaxHP / 16);
-                    character.StatusChanges.Enqueue($"{character.Base.charName} hurt by burn.");
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} hurt by burn.");
                 }
             }
         },
@@ -61,18 +72,30 @@ public class ConditionsDB
                 Name = "Paralyze",
                 StartMessage = "has been paralyzed.",
                 //A lambda function
+                OnStart = (Character character) =>
+                {
+                    Dictionary<Stat, float> StatBoosts;
+
+                    StatBoosts = new Dictionary<Stat, float>()
+                    {
+                        {Stat.SpecDEF, -GetStatusBonus(character.Status)},
+                    };
+
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} Phys.ATK fell.");
+                },
                 OnBeforeMove = (Character character) =>
                 {
                     //Randomly roll a number if the creature can perform a move.
                     if(Random.Range(1, 5) == 1)
                     {
-                        character.StatusChanges.Enqueue($"{character.Base.charName} paralyzed and cannot move.");
+                        character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} paralyzed and cannot move.");
                         return false;
                     }
                     return true;
                 }
             }
         },
+
         {
             //Define the DECAY status conditions.
             ConditionID.dec,
@@ -81,17 +104,29 @@ public class ConditionsDB
                 Name = "Decay",
                 StartMessage = "turned into a walking corpse.",
                 //A lambda function
+                OnStart = (Character character) =>
+                {
+                    Dictionary<Stat, float> StatBoosts;
+
+                    StatBoosts = new Dictionary<Stat, float>()
+                    {
+                        {Stat.SpecDEF, -GetStatusBonus(character.Status)},
+                    };
+
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} Spec.DEF fell.");
+                },
                 OnBeforeMove = (Character character) =>
                 {
                     //Randomly roll a number if the creature can perform a move.
                     if(Random.Range(1, 3) == 1)
                     {
                         character.CureStatus();
-                        character.StatusChanges.Enqueue($"{character.Base.charName} is healthy again!");
+                        character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} is healthy again!");
                         return true;
                     }
 
-                    character.StatusChanges.Enqueue($"{character.Base.charName} is struggling.");
+                    character.ResetStatBoost();
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} is struggling.");
                     return false;
                 },
             }
@@ -102,11 +137,12 @@ public class ConditionsDB
             new Condition
             {
                 Name = "Blind",
-                StartMessage = "blinded.",
+                StartMessage = "cannot see anything.",
                 OnStart = (Character character) =>
                 {
                     //Sleep for 1-3 turn(s).
                     character.StatusTime = Random.Range(1, 3);
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} will be blinded for {character.StatusTime} turn(s).");
                 },
                 //A lambda function
                 OnBeforeMove = (Character character) =>
@@ -118,7 +154,7 @@ public class ConditionsDB
                         character.CureStatus();
 
                         //Set wake up dialogue.
-                        character.StatusChanges.Enqueue($"{character.Base.charName} eyes are wide opened.");
+                        character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} eyes are wide opened.");
                         return true;
                     }
 
@@ -126,7 +162,7 @@ public class ConditionsDB
                     character.StatusTime--;
 
                     //Set sleeping dialogue.
-                    character.StatusChanges.Enqueue($"{character.Base.charName} still can't see shit.");
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} still can't see shit.");
 
                     return false;
                 }
@@ -157,7 +193,7 @@ public class ConditionsDB
                         character.CureVolatileStatus();
 
                         //Set wake up dialogue.
-                        character.StatusChanges.Enqueue($"{character.Base.charName} snapped out of confusion.");
+                        character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} snapped out of confusion.");
                         return true;
                     }
 
@@ -170,9 +206,9 @@ public class ConditionsDB
 
                     //Set confusion dialogue.
                     //Hurt the creature.
-                    character.StatusChanges.Enqueue($"{character.Base.charName} is confused.");
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} is confused.");
                     character.DecreaseHP(character.MaxHP / 8);
-                    character.StatusChanges.Enqueue($"{character.Base.charName} hurt itself in its confusion.");
+                    character.StatusChanges.Enqueue($"{character.Base.charName.ToUpper()} hurt itself in its confusion.");
 
                     return false;
                 }

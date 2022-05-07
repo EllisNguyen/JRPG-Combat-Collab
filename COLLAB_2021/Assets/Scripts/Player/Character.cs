@@ -137,19 +137,19 @@ public class Character
 
         //Calculate and store value of each stat:
         /*ATK*/
-        Stats.Add(Stat.physicalAtkDmg, Mathf.FloorToInt((Base.physicalAtkDmg * Level) / 100f) + 5);
+        Stats.Add(Stat.PhysATK, Mathf.FloorToInt((Base.physicalAtkDmg * Level) / 100f) + 5);
         
         /*DEF*/
-        Stats.Add(Stat.physicalDef, Mathf.FloorToInt((Base.physicalDef * Level) / 100f) + 5);
+        Stats.Add(Stat.PhysDEF, Mathf.FloorToInt((Base.physicalDef * Level) / 100f) + 5);
         
         /*SPATK*/
-        Stats.Add(Stat.specialAtkDmg, Mathf.FloorToInt((Base.specialAtkDmg * Level) / 100f) + 5);
+        Stats.Add(Stat.SpecATK, Mathf.FloorToInt((Base.specialAtkDmg * Level) / 100f) + 5);
        
         /*SPDEF*/
-        Stats.Add(Stat.specialDef, Mathf.FloorToInt((Base.specialDef * Level) / 100f) + 5);
+        Stats.Add(Stat.SpecDEF, Mathf.FloorToInt((Base.specialDef * Level) / 100f) + 5);
         
         /*SPD*/
-        Stats.Add(Stat.speed, Mathf.FloorToInt((Base.speed * Level) / 100f) + 5);
+        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed * Level) / 100f) + 5);
 
         //Calculate HP
         MaxHP = Mathf.FloorToInt((Base.health * Level) / 100f) + 10 + Level;
@@ -176,12 +176,12 @@ public class Character
             if (boost > 0)
             {
                 //Add a dialogue to the queue to run.
-                StatusChanges.Enqueue(($"{Base.charName}'s {stat} rose !!"));
+                StatusChanges.Enqueue(($"{Base.charName.ToUpper()}'s {stat} rose !!"));
             }
             else
             {
                 //Add a dialogue to the queue to run.
-                StatusChanges.Enqueue(($"{Base.charName}'s {stat} fell !!"));
+                StatusChanges.Enqueue(($"{Base.charName.ToUpper()}'s {stat} fell !!"));
             }
 
             Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}.");
@@ -217,19 +217,19 @@ public class Character
     /// Reset all the stats.
     /// Call when end battle or when new battle start.
     /// </summary>
-    void ResetStatBoost()
+    public void ResetStatBoost()
     {
         //Set all stats enum key back to value 0.
         StatBoosts = new Dictionary<Stat, int>()
         {
             //Set value to 0 when none of the stats are boosted.
-            {Stat.physicalAtkDmg, 0},
-            {Stat.physicalDef, 0},
-            {Stat.specialAtkDmg, 0},
-            {Stat.specialDef, 0},
-            {Stat.speed, 0},
-            {Stat.critChance, 0},
-            {Stat.critDmg, 0},
+            {Stat.PhysATK, 0},
+            {Stat.PhysDEF, 0},
+            {Stat.SpecATK, 0},
+            {Stat.SpecDEF, 0},
+            {Stat.SPEED, 0},
+            {Stat.CritChance, 0},
+            {Stat.CritDmg, 0},
         };
     }
 
@@ -241,7 +241,7 @@ public class Character
     public int PhysATK
     {
         //Formula from pokemon
-        get { return GetStat(Stat.physicalAtkDmg); }
+        get { return GetStat(Stat.PhysATK); }
     }
 
     /// <summary>
@@ -251,7 +251,7 @@ public class Character
     public int PhysDEF
     {
         //Formula from pokemon
-        get { return GetStat(Stat.physicalDef); }
+        get { return GetStat(Stat.PhysDEF); }
     }
 
     /// <summary>
@@ -261,7 +261,7 @@ public class Character
     public int SpecATK
     {
         //Formula from pokemon
-        get { return GetStat(Stat.specialAtkDmg); }
+        get { return GetStat(Stat.SpecATK); }
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ public class Character
     public int SpecDEF
     {
         //Formula from pokemon
-        get { return GetStat(Stat.specialDef); }
+        get { return GetStat(Stat.SpecDEF); }
     }
 
     /// <summary>
@@ -281,7 +281,7 @@ public class Character
     public int Speed
     {
         //Formula from pokemon
-        get { return GetStat(Stat.speed); }
+        get { return GetStat(Stat.SPEED); }
     }
 
     /// <summary>
@@ -294,7 +294,7 @@ public class Character
 
     //Formula follow Pokemon.
     //Damage calculation: bulbapedia.bulbagarden.net/wiki/Damage
-    public DamageDetails TakeDamage(Move move, Character attacker)
+    public DamageDetails TakeDamage(Move move, Character attacker, Character defender)
     {
         //Crit hit calculation in pokemon
         float critical = 1f;
@@ -325,7 +325,7 @@ public class Character
         float modifier = UnityEngine.Random.Range(0.85f, 1f) * element * critical;
 
         //
-        float a = (2 * attacker.Level + 10) / 250f;
+        float a = ((2 * attacker.Level + 10) / 250f) * ConditionsDB.GetStatusBonus(defender.Status);
         float d = a * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifier);
 
@@ -376,7 +376,7 @@ public class Character
         Status?.OnStart?.Invoke(this);
 
         //Add the status dialogue to queue.
-        StatusChanges.Enqueue($"{Base.charName} {Status.StartMessage}");
+        StatusChanges.Enqueue($"{Base.charName.ToUpper()} {Status.StartMessage}");
 
         //Apply status condition indicator.
         OnStatusChanged?.Invoke();
@@ -404,7 +404,7 @@ public class Character
         VolatileStatus?.OnStart?.Invoke(this);
 
         //Add the status dialogue to queue.
-        StatusChanges.Enqueue($"{Base.charName} {VolatileStatus.StartMessage}");
+        StatusChanges.Enqueue($"{Base.charName.ToUpper()} {VolatileStatus.StartMessage}");
     }
 
     //Kill the status condition on the creature.

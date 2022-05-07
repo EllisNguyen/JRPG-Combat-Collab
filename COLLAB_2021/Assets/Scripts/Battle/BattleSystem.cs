@@ -285,7 +285,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator HandleCharacterFainted(BattlePawn faintedUnit)
     {
         //Display enemy fainted dialogue and play faint animation.
-        yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} is fooking ded.");
+        yield return dialogueBox.TypeDialogue($"You have slained enemy {faintedUnit.Character.Base.charName.ToUpper()}.");
         faintedUnit.PlayFaintAnimation();
 
         //Enemy fainted and player won.
@@ -475,7 +475,7 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 //Declare fainted boolean
-                var damageDetails = targetUnit.Character.TakeDamage(move, sourceUnit.Character);
+                var damageDetails = targetUnit.Character.TakeDamage(move, sourceUnit.Character, targetUnit.Character);
 
                 //Call the update health bar func.
                 yield return targetUnit.Hud.WaitForHpUpdate();
@@ -594,8 +594,8 @@ public class BattleSystem : MonoBehaviour
         float moveAccuracy = move.Base.Accuracy;
 
         //Store the move acuracy in the battle.
-        int accuracy = source.StatBoosts[Stat.accuracy];
-        int evasion = source.StatBoosts[Stat.evasion];
+        int accuracy = source.StatBoosts[Stat.Accuraccy];
+        int evasion = source.StatBoosts[Stat.Evasion];
 
         //An array of value that boosting the stat.
         var boostValues = new float[] { 1f, 4f / 3f, 5f / 3f, 2f, 7f / 3f, 8f / 3f, 3f };
