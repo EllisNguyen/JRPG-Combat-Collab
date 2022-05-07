@@ -20,7 +20,7 @@ MonoBehaviour:
   charDescription: 
   health: 21
   mana: 21
-  physicalAtkDmg: 32
+  physicalAtkDmg: 80
   specialAtkDmg: 23
   physicalDef: 16
   specialDef: 31

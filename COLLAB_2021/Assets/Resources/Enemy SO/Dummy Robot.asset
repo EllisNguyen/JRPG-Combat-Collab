@@ -32,8 +32,8 @@ MonoBehaviour:
   critChance: 45
   critDmg: 38
   elementalRes: 46
-  expYield: 5
-  eles: 0
+  expYield: 41
+  element: 0
   growthRate: 0
   learnableSkills:
   - skillData: {fileID: 11400000, guid: ad949738acc8da943877e954ee4d4924, type: 2}

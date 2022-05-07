@@ -84,14 +84,16 @@ public class ConditionsDB
                 OnBeforeMove = (Character character) =>
                 {
                     //Randomly roll a number if the creature can perform a move.
-                    if(Random.Range(1, 5) == 1)
+                    if(Random.Range(1, 3) == 1)
                     {
                         character.CureStatus();
                         character.StatusChanges.Enqueue($"{character.Base.charName} is healthy again!");
                         return true;
                     }
+
+                    character.StatusChanges.Enqueue($"{character.Base.charName} is struggling.");
                     return false;
-                }
+                },
             }
         },
         {
@@ -105,7 +107,6 @@ public class ConditionsDB
                 {
                     //Sleep for 1-3 turn(s).
                     character.StatusTime = Random.Range(1, 3);
-                    Debug.Log($"Will be blinded for {character.StatusTime} moves.");
                 },
                 //A lambda function
                 OnBeforeMove = (Character character) =>

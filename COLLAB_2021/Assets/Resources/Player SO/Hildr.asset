@@ -28,12 +28,15 @@ MonoBehaviour:
   critChance: 27
   critDmg: 17
   elementalRes: 27
-  exp: 5
-  eles: 1
+  expYield: 5
+  element: 0
+  growthRate: 0
   learnableSkills:
   - skillData: {fileID: 11400000, guid: 4f3c582d3f62e724082650f023ca1c08, type: 2}
     level: 0
   - skillData: {fileID: 11400000, guid: 4a8801744e37660498b0d421cfb08990, type: 2}
     level: 0
   - skillData: {fileID: 11400000, guid: 5561deaf1996d574591fd59e3cc68165, type: 2}
-    level: 0
+    level: 1
+  - skillData: {fileID: 11400000, guid: 710fbdcba388f18408704526b622546a, type: 2}
+    level: 1
