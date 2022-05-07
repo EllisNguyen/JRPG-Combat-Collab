@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Ellis
   portraitSprite: {fileID: 21300000, guid: 8e79b1771c8815d47987a30034b28885, type: 3}
-  battleSprite: {fileID: 21300000, guid: f8388bfb2fe45c2489821cca829bbfdb, type: 3}
+  battleSprite: {fileID: -3153848585804268297, guid: f8388bfb2fe45c2489821cca829bbfdb, type: 3}
   battleIcon: {fileID: 21300000, guid: 0fb80ab8c45c1ec40a9acfc7b6c863cc, type: 3}
   overworldAnim: []
   charDescription: 

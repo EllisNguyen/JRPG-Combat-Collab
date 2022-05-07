@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Fire Robot
   portraitSprite: {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
-  battleSprite: {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
+  battleSprite: {fileID: 6035477124656669715, guid: 051ae6a6eccd35e4db6c162efeb0d772, type: 3}
   battleIcon: {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
   overworldAnim:
   - {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
