@@ -54,6 +54,11 @@ public class BattlePawn : MonoBehaviour
 
         graphic.sprite = Character.Base.battleSprite;
 
+        if (isPlayerUnit)
+            gameObject.transform.localPosition = new Vector3(-10f, originalPos.y);
+        else
+            gameObject.transform.localPosition = new Vector3(10f, originalPos.y);
+
         PlayEnterAnimation();
     }
 
@@ -61,12 +66,7 @@ public class BattlePawn : MonoBehaviour
     public void PlayEnterAnimation()
     {
         //Set position when battle start.
-        if (isPlayerUnit)
-            gameObject.transform.localPosition = new Vector3(-10f, originalPos.y);
-        else
-            gameObject.transform.localPosition = new Vector3(10f, originalPos.y);
-
-        gameObject.transform.DOLocalMoveX(originalPos.x, Character.Speed / 7f);
+        gameObject.transform.DOLocalMoveX(originalPos.x, Character.Speed / 4.5f);
     }
 
     //Animation when Character enter the battle.

@@ -44,6 +44,7 @@ public class BattleHud : MonoBehaviour
         {
             //Unsub the OnHPChanged and OnStatusChanged Action.
             _character.OnHPChanged -= UpdateHP;
+            _character.OnHPChanged -= UpdateMP;
             _character.OnStatusChanged -= SetStatusText;
         }
 
@@ -75,6 +76,7 @@ public class BattleHud : MonoBehaviour
 
         //Let the OnHPChanged Action trigger the UpdateHP().
         _character.OnHPChanged += UpdateHP;
+        _character.OnHPChanged += UpdateMP;
     }
 
     /// <summary>
@@ -167,6 +169,17 @@ public class BattleHud : MonoBehaviour
         yield return hpBar.SetHPSmooth((float)_character.HP / _character.MaxHP);
     }
 
+    public void UpdateMP()
+    {
+        StartCoroutine(UpdateMPAsync());
+    }
+
+    public IEnumerator UpdateMPAsync()
+    {
+        //Set current health on health bar
+        yield return mpBar.SetMPSmooth((float)_character.MP / _character.MaxMP);
+    }
+
     public IEnumerator WaitForHpUpdate()
     {
         yield return new WaitUntil(() => hpBar.IsUpdating == false);
@@ -178,6 +191,7 @@ public class BattleHud : MonoBehaviour
         {
             //Unsub the OnHPChanged and OnStatusChanged Action.
             _character.OnHPChanged -= UpdateHP;
+            _character.OnHPChanged -= UpdateMP;
             _character.OnStatusChanged -= SetStatusText;
         }
     }

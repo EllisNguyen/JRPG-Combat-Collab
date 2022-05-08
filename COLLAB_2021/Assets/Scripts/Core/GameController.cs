@@ -13,8 +13,11 @@ public class GameController : MonoBehaviour
     [Header("Player References")]
     public PlayerEntity player;
     [SerializeField] BattleSystem battleSystem;
-    [SerializeField] GameObject worldCamera;
+    [SerializeField] Camera worldCamera;
     [SerializeField] DialogueManager dialogueManager; //dialogueManager Ref
+
+    [SerializeField] LayerMask freeroamLayer;
+    [SerializeField] LayerMask battleLayer;
     
     GameState state;
 
@@ -47,7 +50,8 @@ public class GameController : MonoBehaviour
         //battleSystem.gameObject.SetActive(true);
         this.enemy = enemy;
 
-        worldCamera.SetActive(false);
+        //worldCamera.SetActive(false);
+        worldCamera.cullingMask = freeroamLayer;
 
         var playerParty = GameManager.Instance.GetComponent<CharacterParty>();
         var enemyParty = enemy.GetComponent<CharacterParty>();
@@ -100,6 +104,8 @@ public class GameController : MonoBehaviour
 
         battleSystem = null;
         GameManager.Instance.gameState = GameState.FreeRoam;
-        worldCamera.SetActive(true);
+        //worldCamera.SetActive(true);
+
+        worldCamera.cullingMask = freeroamLayer;
     }
 }

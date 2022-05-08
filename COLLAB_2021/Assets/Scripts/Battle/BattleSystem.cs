@@ -10,6 +10,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 using Sirenix.OdinInspector;
 
 public enum BattleState { Start, Waiting, ActionSelection, MoveSelection, RunningTurn, Busy, Inventory, BattleOver }
@@ -19,6 +20,23 @@ public enum BattleAction { Move, SwitchCharacter, UseItem, Run, Wait }
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleState state;
+    [SerializeField] CinemachineVirtualCamera vCamera;
+    [SerializeField] CinemachineBrain brain;
+    [SerializeField] Transform target;
+    [FoldoutGroup("Camera targets")][SerializeField] Transform centerBattle;
+    [FoldoutGroup("Camera targets")][SerializeField] Transform playerPos;
+    [FoldoutGroup("Camera targets")][SerializeField] Transform enemyPos;
+    [FoldoutGroup("Camera targets")][SerializeField] float shakeTimer;
+
+    public Transform Target
+    {
+        get { return target; }
+        set { target = value; }
+    }
+
+    public Transform CenterBattle => centerBattle;
+    public Transform PlayerPos => playerPos;
+    public Transform EnemyPos => enemyPos;
 
     [FoldoutGroup("Player")] [SerializeField] BattleHud playerHud;
     [FoldoutGroup("Player")] [SerializeField] List<BattlePawn> playerUnits;
@@ -104,12 +122,34 @@ public class BattleSystem : MonoBehaviour
     {
         GameController.Instance.BattleSystem = this;
         GameController.Instance.SubToBattleEnd();
+        //vCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        //brain = FindObjectOfType<CinemachineBrain>();
+        //vCamera.Priority = 11;
+
+        target = centerBattle;
+
+        brain.m_DefaultBlend.m_Time = 0.35f;
+        vCamera.Follow = target;
+        vCamera.LookAt = target;
     }
 
     public void StartBattle(CharacterParty playerParty, CharacterParty enemyParty)
     {
         this.playerParty = playerParty;
         this.enemyParty = enemyParty;
+
+        vCamera.Priority = 11;
+
+        CinemachineTransposer vTranposer = vCamera.AddCinemachineComponent<CinemachineTransposer>();
+        
+
+        float angle = 0;
+        DOTween.To(() => angle, x => angle = x, -15, 1f)
+            .OnUpdate(() => {
+                vTranposer.m_FollowOffset = new Vector3(0, 1, angle);
+            });
+
+        CinemachineComposer vComposer = vCamera.AddCinemachineComponent<CinemachineComposer>();
 
         //player = playerParty.GetComponent<PlayerEntity>();
         //enemy = enemyParty.GetComponent<EnemyEntity>();
@@ -216,7 +256,6 @@ public class BattleSystem : MonoBehaviour
                 WaitingForTurn();
                 break;
             case BattleState.ActionSelection:
-                if (currentMove != null) print(currentMove.Base.Name);
                 break;
             case BattleState.MoveSelection:
 
@@ -242,9 +281,28 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    IEnumerator CameraShake(float intensity, float time)
+    {
+        CinemachineBasicMultiChannelPerlin multiChannelPerlin = vCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        multiChannelPerlin.m_AmplitudeGain = intensity;
+        shakeTimer = time;
+
+        while (shakeTimer > 0)
+        {
+            shakeTimer -= Time.deltaTime;
+            yield return null;
+        }
+
+        if (shakeTimer <= 0)
+        {
+            multiChannelPerlin.m_AmplitudeGain = 0;
+        }
+    }
+
     void PlayerAction()
     {
         state = BattleState.ActionSelection;
+        target = playerPos;
         activeSprite.enabled = true;
         activeSprite.sprite = playerUnits[0].Character.Base.portraitSprite;
 
@@ -285,7 +343,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator HandleCharacterFainted(BattlePawn faintedUnit)
     {
         //Display enemy fainted dialogue and play faint animation.
-        yield return dialogueBox.TypeDialogue($"You have slained enemy {faintedUnit.Character.Base.charName.ToUpper()}.");
+        yield return dialogueBox.TypeDialogue($"{faintedUnit.Character.Base.charName.ToUpper()} has fallen.");
         faintedUnit.PlayFaintAnimation();
 
         //Enemy fainted and player won.
@@ -294,6 +352,8 @@ public class BattleSystem : MonoBehaviour
         //Calculate EXP gained if enemy fainted.
         if (!faintedUnit.IsPlayerUnit)
         {
+            yield return dialogueBox.TypeDialogue($"You have slain enemy {faintedUnit.Character.Base.charName.ToUpper()}.");
+
             //EXP gains.
             var expYield = faintedUnit.Character.Base.expYield;
             int enemyLevel = faintedUnit.Character.Level;
@@ -329,6 +389,10 @@ public class BattleSystem : MonoBehaviour
             }
 
             yield return new WaitForSeconds(1f);
+        }
+        else
+        {
+            yield return dialogueBox.TypeDialogue($"Damn bro u ded.");
         }
 
         CheckForBattleOver(faintedUnit);
@@ -416,10 +480,12 @@ public class BattleSystem : MonoBehaviour
         {
             if (activeUnit.IsPlayerUnit)// == playerUnits[0])
             {
+                vCamera.m_LookAt = playerPos;
                 PlayerAction();
             }
             else if (!activeUnit.IsPlayerUnit)// == enemyUnits[0])
             {
+                vCamera.m_LookAt = enemyPos;
                 enemyPerform = true;
                 state = BattleState.RunningTurn;
                 //StartCoroutine(RunTurnsEnemy(BattleAction.Move));
@@ -451,11 +517,14 @@ public class BattleSystem : MonoBehaviour
 
         //Decrease the PP of the move and fire the dialogue coroutine.
 
-        playerUnits[0].Character.DecreaseMP(move.Mana);
-        
+        sourceUnit.Character.DecreaseMP(move.Mana);
+        sourceUnit.Hud.UpdateMP();
+
+        vCamera.m_LookAt = centerBattle;
+
         print($"Used {move.Base.Name.ToUpper()}.");
         yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
-
+        
         //Check if the attack landed.
         if (CheckIfMoveHits(move, sourceUnit.Character, targetUnit.Character))
         {
@@ -465,6 +534,8 @@ public class BattleSystem : MonoBehaviour
 
             //Hit animation.
             targetUnit.PlayHitAnimation();
+
+            yield return CameraShake(2, 0.1f);
 
             //Check if the move is Status effect.
             if (move.Base.Category == MoveCategory.Status)
@@ -619,7 +690,7 @@ public class BattleSystem : MonoBehaviour
     #endregion
 
     //
-    IEnumerator SwitchCharacter(Character newCreature, bool isTrainerAboutToUse = false)
+    IEnumerator SwitchCharacter(Character newCharacter, bool isTrainerAboutToUse = false)
     {
         //Check for current creature HP.
         if (playerUnits[0].Character.HP > 0)
@@ -631,13 +702,13 @@ public class BattleSystem : MonoBehaviour
         }
 
         //Send out the next healthy creature.
-        playerUnits[0].Setup(newCreature);
+        playerUnits[0].Setup(newCharacter);
 
         //
         //dialogueBox.SetMoveName(newCreature.Moves);
 
         //Set dialogue text with typing effect
-        yield return (dialogueBox.TypeDialogue($"Do your best {newCreature.Base.charName.ToUpper()}!"));
+        yield return (dialogueBox.TypeDialogue($"Do your best {newCharacter.Base.charName.ToUpper()}!"));
 
         //if (isTrainerAboutToUse)
         //    StartCoroutine(SendNextTrainerCreature());

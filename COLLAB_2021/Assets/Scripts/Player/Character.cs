@@ -155,7 +155,7 @@ public class Character
         MaxHP = Mathf.FloorToInt((Base.health * Level) / 100f) + 10 + Level;
 
         //Calculate HP
-        MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 5 + Level;
+        MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 10 + Level;
     }
 
     //Modify stat boost dictionary when a status move is performed.
