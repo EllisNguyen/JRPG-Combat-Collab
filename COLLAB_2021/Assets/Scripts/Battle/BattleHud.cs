@@ -94,6 +94,7 @@ public class BattleHud : MonoBehaviour
         levelText.text = $"<size=9>Level</size>\n{_character.Level}";
     }
 
+    //Increase EXP instantly.
     public void SetExp()
     {
         //Skip setting exp for opponent.

@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] float titleTimer;
 
     [Header("Other")]
+    [SerializeField] AnimationCurve yScaleCurve;
     [SerializeField] CanvasGroup pressAnykey;
     [SerializeField] Image anykeyPressedAnim;
     [SerializeField] CanvasGroup menuGroup;
@@ -41,6 +42,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void HandleCurveAnim()
+    {
+        float blend = yScaleCurve.Evaluate(Time.time);
+    }
+
     IEnumerator TitleStartSequence()
     {
         introFade.DOFade(0, titleSequenceDuration);
@@ -55,15 +61,17 @@ public class MenuManager : MonoBehaviour
         RectTransform animRect = anykeyPressedAnim.GetComponent<RectTransform>();
 
         sequence.Append(anykeyPressedAnim.DOFade(1, 0.075f).SetEase(this.EaseType));
-        sequence.Join(animRect.DOSizeDelta(new Vector2(100, 100), 0.3f).SetEase(this.EaseType));
+        sequence.Join(animRect.DOSizeDelta(new Vector2(550, 1), 0.25f).SetEase(this.EaseType));
         sequence.Join(pressAnykey.DOFade(0, titleTimer / 3).SetEase(this.EaseType));
         sequence.Insert(0.08f, anykeyPressedAnim.DOFade(0, 0.075f).SetEase(this.EaseType));
         yield return sequence.WaitForCompletion();
-        
+
 
         titleRectTransform.DOAnchorPos(titleCurrentLocation + titleNextLocationIncrement, titleTimer);
         titleRectTransform.DOSizeDelta(titleCurrentSize + titleNextSizeIncrement, titleTimer);
         //pressAnykey.gameObject.SetActive(false);
+        anykeyPressedAnim.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(titleTimer);
         menuGroup.DOFade(1, titleTimer);
     }
