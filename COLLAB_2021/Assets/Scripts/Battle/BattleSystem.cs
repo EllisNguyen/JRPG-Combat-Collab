@@ -459,15 +459,15 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator RunTurnsEnemy(BattleAction enemyAction)
     {
-        //Perform player's turn.
-        //
+        //Perform Enemy's turn.
+
         enemyPerform = false;
-        if(enemyAction == BattleAction.Move)
+        if (enemyAction == BattleAction.Move)
         {
-            //Enemy turn.
-            var enemyMove = activeUnit.Character.GetRandomMove();
+            //Randomize the enemy's move.
+            Move enemyMove = activeUnit.Character.GetRandomMove(activeUnit.Character);
             yield return RunMove(activeUnit, playerUnits[0], enemyMove);
-            //state = BattleState.RunningTurn;
+
             yield return RunAfterTurn(activeUnit);//End turn.
             if (state == BattleState.BattleOver) yield break;
         }

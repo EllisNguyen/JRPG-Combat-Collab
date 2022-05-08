@@ -21,6 +21,7 @@ public class MoveData : ScriptableObject
     [SerializeField] MoveEffect effect;
     [SerializeField] List<SecondaryEffects> secondaries;
     [SerializeField] MoveTarget target;
+    [SerializeField] ParticleSystem hitEffect;
 
     void OnValidate()
     {

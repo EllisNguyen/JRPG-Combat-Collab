@@ -15,7 +15,7 @@ MonoBehaviour:
   moveName: Tackle
   description: 
   element: 0
-  power: 15
+  power: 25
   accuracy: 100
   alwaysHit: 1
   mana: 2
@@ -27,3 +27,4 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
+  hitEffect: {fileID: 0}

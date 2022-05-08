@@ -418,14 +418,17 @@ public class Character
 
     //For AI enemy.
     //Choose a random move out of its selected move.
-    public Move GetRandomMove()
+    public Move GetRandomMove(Character character)
     {
-        //Declare a list of move with PP available.
-        var movesWithinMana = Moves.Where(x => x.Mana > 0).ToList();
+        //Declare a list of move that the character still can use.
+        var movesWithinMP = Moves.Where(x => character.MP - x.Mana >= 0).ToList();
 
-        //Run the move that have PP.
-        int r = UnityEngine.Random.Range(0, movesWithinMana.Count);
-        return movesWithinMana[r];
+        //Randomly get move from the list.
+        int r = UnityEngine.Random.Range(0, movesWithinMP.Count);
+
+        Debug.Log(movesWithinMP[r]);
+
+        return movesWithinMP[r];
     }
 
     //A boolean check.

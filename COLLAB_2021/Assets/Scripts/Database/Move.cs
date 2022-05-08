@@ -42,7 +42,7 @@ public class Move
     }
 
     //Implementation of restoring PP item.
-    public void IncreasePP(int amount)
+    public void IncreaseMana(int amount)
     {
         Mana = Mathf.Clamp(Mana + amount, 0, Base.Mana);
     }
