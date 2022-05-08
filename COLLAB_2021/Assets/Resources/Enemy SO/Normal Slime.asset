@@ -18,12 +18,12 @@ MonoBehaviour:
   battleIcon: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   overworldAnim: []
   charDescription: 
-  health: 12
-  mana: 28
-  physicalAtkDmg: 17
-  specialAtkDmg: 12
-  physicalDef: 8
-  specialDef: 7
+  health: 1
+  mana: 2
+  physicalAtkDmg: 2
+  specialAtkDmg: 5
+  physicalDef: 3
+  specialDef: 5
   speed: 19
   critChance: 11
   critDmg: 7

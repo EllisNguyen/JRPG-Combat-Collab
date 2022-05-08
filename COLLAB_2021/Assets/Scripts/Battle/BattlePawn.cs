@@ -66,7 +66,7 @@ public class BattlePawn : MonoBehaviour
     public void PlayEnterAnimation()
     {
         //Set position when battle start.
-        gameObject.transform.DOLocalMoveX(originalPos.x, Character.Speed / 4.5f);
+        gameObject.transform.DOLocalMoveX(originalPos.x, Random.Range(0.5f,1.25f));
     }
 
     //Animation when Character enter the battle.
@@ -77,7 +77,7 @@ public class BattlePawn : MonoBehaviour
         //    gameObject.transform.localPosition = new Vector3(originalPos.y, -10f);
 
         //if (isPlayerUnit)
-            gameObject.transform.DOLocalMoveX(-10f, Character.Speed / 7f);
+            gameObject.transform.DOLocalMoveX(-10f, Random.Range(0.5f, 1.25f));
     }
 
     public void PlayAttackAnimation()

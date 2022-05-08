@@ -84,8 +84,8 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void UpdateData()
     {
         //Set current health on health bar.
-        hpBar.SetHP((float)_character.HP / _character.MaxHP);
-        mpBar.SetMP((float)_character.MP / _character.MaxMP);
+        hpBar.SetHP((float)_character.HP / _character.MaxHP, _character);
+        mpBar.SetMP((float)_character.MP / _character.MaxMP, _character);
 
         expBar.fillAmount = _character.Exp;
     }

@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         this.enemy = enemy;
 
         //worldCamera.SetActive(false);
-        worldCamera.cullingMask = freeroamLayer;
+        worldCamera.cullingMask = battleLayer;
 
         var playerParty = GameManager.Instance.GetComponent<CharacterParty>();
         var enemyParty = enemy.GetComponent<CharacterParty>();

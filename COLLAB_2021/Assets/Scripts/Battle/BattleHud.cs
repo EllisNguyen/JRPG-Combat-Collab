@@ -52,8 +52,8 @@ public class BattleHud : MonoBehaviour
 
         nameText.text = character.Base.charName;
         SetLevel();
-        hpBar.SetHP((float)character.HP / character.MaxHP);
-        mpBar.SetMP((float)character.MP / character.MaxMP);
+        hpBar.SetHP((float)character.HP / character.MaxHP, character);
+        mpBar.SetMP((float)character.MP / character.MaxMP, character);
 
         SetExp();
 
@@ -166,7 +166,7 @@ public class BattleHud : MonoBehaviour
     public IEnumerator UpdateHPAsync()
     {
         //Set current health on health bar
-        yield return hpBar.SetHPSmooth((float)_character.HP / _character.MaxHP);
+        yield return hpBar.SetHPSmooth((float)_character.HP / _character.MaxHP, _character);
     }
 
     public void UpdateMP()
@@ -177,7 +177,7 @@ public class BattleHud : MonoBehaviour
     public IEnumerator UpdateMPAsync()
     {
         //Set current health on health bar
-        yield return mpBar.SetMPSmooth((float)_character.MP / _character.MaxMP);
+        yield return mpBar.SetMPSmooth((float)_character.MP / _character.MaxMP, _character);
     }
 
     public IEnumerator WaitForHpUpdate()

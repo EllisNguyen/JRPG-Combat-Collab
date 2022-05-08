@@ -89,6 +89,9 @@ public class Character
             if (move.Level <= level) Moves.Add(new Move(move.Base));
         }
 
+        //Store EXP.
+        Exp = Base.GetExpForLevel(Level);
+
         //Set stats
         CalculateStats();
         HP = MaxHP;
@@ -152,10 +155,10 @@ public class Character
         Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed * Level) / 100f) + 5);
 
         //Calculate HP
-        MaxHP = Mathf.FloorToInt((Base.health * Level) / 100f) + 10 + Level;
+        MaxHP = Mathf.CeilToInt((Base.health * Level) / 100f) + 15 + Level;
 
         //Calculate HP
-        MaxMP = Mathf.FloorToInt((Base.mana * Level) / 100f) + 10 + Level;
+        MaxMP = Mathf.CeilToInt((Base.mana * Level) / 100f) + 10 + Level;
     }
 
     //Modify stat boost dictionary when a status move is performed.

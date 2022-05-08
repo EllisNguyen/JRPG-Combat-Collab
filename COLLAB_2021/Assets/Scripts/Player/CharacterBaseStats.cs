@@ -19,17 +19,17 @@ public class CharacterBaseStats : ScriptableObject
 
     [Header("Character Stats")]
     [TextArea] public string charDescription;
-    [Range(5,100)] public int health = 50;
-    [Range(5,100)] public int mana;
-    [Range(5,100)] public int physicalAtkDmg;
-    [Range(5,100)] public int specialAtkDmg;
-    [Range(5,100)] public int physicalDef;
-    [Range(5,100)] public int specialDef;
-    [Range(5,100)] public int speed;
-    [Range(5,100)] public int critChance;
-    [Range(5,100)] public int critDmg;
-    [Range(5,100)] public int elementalRes;
-    [Range(5,100)] public int expYield;
+    [Range(1,100)] public int health;
+    [Range(1,100)] public int mana;
+    [Range(1,100)] public int physicalAtkDmg;
+    [Range(1,100)] public int specialAtkDmg;
+    [Range(1,100)] public int physicalDef;
+    [Range(1,100)] public int specialDef;
+    [Range(1,100)] public int speed;
+    [Range(1,100)] public int critChance;
+    [Range(1,100)] public int critDmg;
+    [Range(1,100)] public int elementalRes;
+    [Range(1,100)] public int expYield;
     public elements element; //Reference to the elements enum
     #endregion
 
@@ -136,21 +136,19 @@ public class ElementChart //Type effectiveness
     static float[][] chart =    //Row = attacker; Col = defender
     {
             //                          Nor  Hea   Ele  Rad  Ice  Lgt   Dar     
-            /*Normal*/      new float[]{1f,  1f,   1f,  1f,  1f,  0.5f, 1f},
+            /*Normal*/      new float[]{1f,  1f,   1f,  1f,  1f,  1f, 1f},
             /*Heat*/        new float[]{1f,  1f,   1f,  1f,  2f,  0.5f, 1f},
-            /*Electric*/    new float[]{1f,  0.5f, 1f,  2f,  1f,  1f,   1f},
-            /*Radiation*/   new float[]{1f,  1f,   2f,  1f,  1f,  1f,   1f},
+            /*Electric*/    new float[]{1f,  1f, 1f,  2f,  0.5f,  0.5f,   1f},
+            /*Radiation*/   new float[]{1f,  1f,   2f,  2f,  1f,  1f,   1f},
             /*Ice*/         new float[]{1f,  0.5f, 1f,  2f,  0f,  1f,   0.5f},
-            /*Light*/       new float[]{1f,  1f,   1f,  1f,  1f,  0f,   2f},
-            /*Dark*/        new float[]{1f,  1f,   1f,  1f,  1f,  2f,   0f},
+            /*Light*/       new float[]{1f,  2f,   1f,  1f,  1f,  0f,   2f},
+            /*Dark*/        new float[]{1f,  1f,   1f,  1f,  2f,  2f,   0f},
         };
 
     public static float ElementalModifier(elements attacker, elements defender)
     {
         int row = (int)attacker;
         int col = (int)defender;
-
-        Debug.Log($"ROW: {row} --- COL: {col}");
 
         return chart[row][col];
     }
