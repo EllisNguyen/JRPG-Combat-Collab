@@ -35,7 +35,7 @@ public class QuestNPC : DialogueCharacter
     [SerializeField] Quest questToAdd;
     //private QuestSystem quest;
 
-    public  override void Start()
+    public override void Start()
     {
         base.Start();
         questManager = FindObjectOfType<QuestManager>();
@@ -58,11 +58,10 @@ public class QuestNPC : DialogueCharacter
         else
         {
             
-            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
-            {
-                FindObjectOfType<DialogueManager>().StartDialogue(questAlreadyDoneDialogue);
-                textPopUp.SetActive(false);
-            }
+            
+            FindObjectOfType<DialogueManager>().StartDialogue(questAlreadyDoneDialogue);
+            textPopUp.SetActive(false);
+            
         }
     }
 
@@ -89,20 +88,18 @@ public class QuestNPC : DialogueCharacter
             
             helped = true;
             assignedQuest = false;
-            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
-            {
+            
                 FindObjectOfType<DialogueManager>().StartDialogue(questCompletedDialogue);
                 questAssigned?.Invoke(quest);
                 textPopUp.SetActive(false);
-            }
+            
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.E) && !dialogueManager.inDialogue)
-            {
+            
                 FindObjectOfType<DialogueManager>().StartDialogue(questNotCompletedDialogue);
                 textPopUp.SetActive(false);
-            }
+            
         }
     }
 }
