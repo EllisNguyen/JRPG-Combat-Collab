@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New AbilityBaseStats", menuName = "AbilityBaseStats")]
 
 public class AbilityBaseStats : ScriptableObject
 {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerEntity : MonoBehaviour
 {
+    [Header("Menu")]
     public GameObject inventory;
     public GameObject partyMenu;
     public GameObject pauseMenu;
@@ -9,9 +10,20 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
     public CharacterParty party;
 
+    [Header("Values")]
+    [SerializeField] int money;
+    [SerializeField] Vector3 position;
+
+    public int Money
+    {
+        get { return money; }
+        set { money = value; }
+    }
+
     public void HandleMovement()
     {
         movement.Movements();
+        position = this.gameObject.transform.position;
     }
 
     public void HandleInput()
