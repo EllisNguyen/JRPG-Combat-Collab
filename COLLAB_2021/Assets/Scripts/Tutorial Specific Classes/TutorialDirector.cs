@@ -13,7 +13,7 @@ public class TutorialDirector : MonoBehaviour
 {
     //Variables
 
-    [SerializeField] GameObject questNPC2; //reference to the 2nd Quest Giver
+    [SerializeField] List<GameObject> questNPC2 = new List<GameObject>(); //reference to the 2nd Quest Giver
     [SerializeField] GameObject menuTransitionObject; //reference to the game object that loads menu
 
     // Start is called before the first frame update
@@ -21,9 +21,12 @@ public class TutorialDirector : MonoBehaviour
     {
 
         menuTransitionObject = GameObject.Find("ToMenu");
-        questNPC2 = GameObject.Find("Andre");
+        
         menuTransitionObject.SetActive(false); //Disable ToMenu Load object until quest 2 completion
-        questNPC2.SetActive(false); //Disable Quest Giver 2 until Quest 1 is completed
+        foreach (GameObject item in questNPC2)
+        {
+            item.SetActive(false);
+        } //Disable Quest Giver 2 until Quest 1 is completed
         QuestNPC.questAssigned += InitQuest1;
         QuestNPC.questAssigned += InitQuest2;
     }
@@ -42,8 +45,11 @@ public class TutorialDirector : MonoBehaviour
         
         if (quest01.name == "QuestTut01")
         {
-            
-            questNPC2.SetActive(true);
+
+            foreach (GameObject item in questNPC2)
+            {
+                item.SetActive(true);
+            } //Enable Quest Giver 2 after Quest 1 is completed
         }
     }
 }
