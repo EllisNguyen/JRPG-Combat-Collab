@@ -12,7 +12,7 @@ public class ItemInShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Description.GetComponent<Text>.name
+        //Description.GetComponent<Text>.name
     }
 
     // Update is called once per frame
@@ -20,14 +20,14 @@ public class ItemInShop : MonoBehaviour
     {
         
     }
-    public void OnTriggerEnter(Collider player)
-    {
-        if (player.name == "Player")
-        {
-            BuyCanvas.SetActive(true);
-            Description.text=
-        }
-    }
+    //public void OnTriggerEnter(Collider player)
+    //{
+    //    if (player.name == "Player")
+    //    {
+    //        BuyCanvas.SetActive(true);
+    //        Description.text=
+    //    }
+    //}
 
 }
 
