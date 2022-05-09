@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: URPBFGrassBall02
   m_Shader: {fileID: 4800000, guid: 2c2cefb6802b6cd429dfbe4041764676, type: 3}
-  m_ShaderKeywords: USE_AL USE_CS USE_PR USE_RT USE_S USE_TP _RTEFFECT_ON
+  m_ShaderKeywords: USE_AL USE_CS USE_PR USE_RT USE_S USE_VR _RTEFFECT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -86,32 +86,32 @@ Material:
     - _DstBlend: 0
     - _FadeAmplitude: 28
     - _FadeDistance: 16
-    - _FadeDistanceEnd: 50
-    - _FadeDistanceStart: 30
+    - _FadeDistanceEnd: 30
+    - _FadeDistanceStart: 25
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GrassCut: 0
     - _GrassSaturation: 3
-    - _GrassShading: 1
-    - _GrassThinness: 1.2
-    - _GrassThinnessIntersection: 0.45
+    - _GrassShading: 0.17
+    - _GrassThinness: 1.62
+    - _GrassThinnessIntersection: 0.6
     - _LightIntensity: 1
     - _Metallic: 0
-    - _MinimumNumberStacks: 17
+    - _MinimumNumberStacks: 6
     - _Mode: 0
     - _NearCameraSmoosh: 0.5
     - _NoisePower: 1.24
-    - _NumberOfStacks: 10
+    - _NumberOfStacks: 8
     - _OcclusionStrength: 1
-    - _OffsetValue: 3
+    - _OffsetValue: 2.5
     - _Parallax: 0.02
     - _ProceduralDistance: 5.5
     - _ProceduralStrength: 1.5
     - _RTEffect: 1
-    - _RimMax: 0.591
-    - _RimMin: 0.11
-    - _RimPower: 3.15
+    - _RimMax: 0.6
+    - _RimMin: 0.163
+    - _RimPower: 3
     - _ShadowFuziness: 1
     - _ShadowMax: 0
     - _SmoothnessTextureChannel: 0
@@ -128,11 +128,11 @@ Material:
     - _UseShadow: 1
     - _UseShadowCast: 0
     - _UseSuperStack: 0
-    - _UseTP: 1
-    - _UseVR: 0
+    - _UseTP: 0
+    - _UseVR: 1
     - _UseWC: 0
     - _WindForce: 0.3
-    - _WindMovement: 0.4
+    - _WindMovement: 1
     - _WorldRotation: 0
     - _WorldScale: 10
     - _ZWrite: 1

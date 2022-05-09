@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 4189878857287121638}
   - {fileID: 1753886433460974631}
+  - {fileID: 7440437483588287148}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,7 +79,7 @@ MonoBehaviour:
   curTimer: 0
   incremental: 0.2
   useProgressBar: 1
-  incrementFill: {fileID: 0}
+  incrementFill: {fileID: 5821338075808898598}
   holdFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -93,7 +94,7 @@ MonoBehaviour:
       (Use W A S D to move)'
     - Try to read what is on that bulletin board and come back here.
   dialogueManager: {fileID: 0}
-  textPopUp: {fileID: 4935600578369565638}
+  textPopUp: {fileID: 2416150755252902697}
   npcIdNumber: 0
   assignedQuest: 0
   helped: 0
@@ -304,3 +305,129 @@ MonoBehaviour:
   defaultDirection: 0
   flip: 0
   idleFrame: 1
+--- !u!1001 &7260317544837203772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1563378246706039995}
+    m_Modifications:
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97629607
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2164396
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008919229323550587, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991730119210621973, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_Name
+      value: InteractionProgressor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991730119210621973, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+--- !u!1 &2416150755252902697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4991730119210621973, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+  m_PrefabInstance: {fileID: 7260317544837203772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &7440437483588287148 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 252318330407959952, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+  m_PrefabInstance: {fileID: 7260317544837203772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5821338075808898598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3749343945134790938, guid: 136eea104838bbe42bccb8bf1ff878e0, type: 3}
+  m_PrefabInstance: {fileID: 7260317544837203772}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

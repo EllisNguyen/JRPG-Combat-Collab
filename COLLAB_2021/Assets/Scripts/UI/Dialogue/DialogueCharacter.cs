@@ -50,7 +50,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
     public virtual void Start()
     {
         useProgressBar = true;
-        incrementFill = GameObject.Find("InteractionProgress").GetComponent<Image>();//init the variable
+        //incrementFill = GameObject.Find("InteractionProgress").GetComponent<Image>();//init the variable
         instance = this; //refer the interface instance to this
         instance.ID = npcIdNumber; //Set this npc's ID
         //Get the dialogue manager
@@ -113,7 +113,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
 
             }
 
-
+            if(!dialogueManager.inDialogue) textPopUp.SetActive(true);
         }
     }
 
