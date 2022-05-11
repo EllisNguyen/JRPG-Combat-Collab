@@ -14,13 +14,15 @@ public class ItemInShop : MonoBehaviour
     [SerializeField] Text SellPrice;
     [SerializeField] Image ItemImage;
     [SerializeField] ItemBase item;
-    [SerializeField] SpriteRenderer graphic;
+    [SerializeField] SpriteRenderer graphic; 
+    [SerializeField] GameObject keyGraphic;
+    int Money = 10;
     // Start is called before the first frame update
     void Start()
     {
  
-       Description = GameObject.Find("Description").GetComponent<Text>();
-       ItemName = GameObject.Find("ItemName").GetComponent<Text>();
+       //Description = GameObject.Find("Description").GetComponent<Text>();
+       //ItemName = GameObject.Find("ItemName").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -32,18 +34,47 @@ public class ItemInShop : MonoBehaviour
     {
         if (player.name == "Player")
         {
+            keyGraphic.SetActive(true);
             BuyCanvas.SetActive(true);
             Description.text = BuyList[0].Item.ItemDescription;
             ItemName.text = BuyList[0].Item.ItemName;
             ItemImage.sprite = BuyList[0].Item.ItemSprite;
             BuyPrice.text = "Buy Price  "+BuyList[0].Item.BuyPrice.ToString();
             SellPrice.text = "Sell Price " + BuyList[0].Item.SellPrice.ToString();
+          
         }
+        
+    }
+    public void OnTriggerStay(Collider player)
+    {
+        if (player.name == "Player")
+        {
+            keyGraphic.SetActive(true);
+            BuyCanvas.SetActive(true);
+            Description.text = BuyList[0].Item.ItemDescription;
+            ItemName.text = BuyList[0].Item.ItemName;
+            ItemImage.sprite = BuyList[0].Item.ItemSprite;
+            BuyPrice.text = "Buy Price  " + BuyList[0].Item.BuyPrice.ToString();
+            SellPrice.text = "Sell Price " + BuyList[0].Item.SellPrice.ToString();
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (Money < item.BuyPrice)
+                {
+                    Debug.Log("You Dont Have Enough Money to Buy");
+                }
+                if (Money > item.BuyPrice)
+                {
+                    Debug.Log("Bought");
+                    Money = Money - item.BuyPrice;
+                }
+            }
+        }
+
     }
     public void OnTriggerExit(Collider player)
     {
-        
-            BuyCanvas.SetActive(false);
+        keyGraphic.SetActive(false);
+        BuyCanvas.SetActive(false);
            
 
         
