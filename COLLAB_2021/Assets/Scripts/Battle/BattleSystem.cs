@@ -517,39 +517,39 @@ public class BattleSystem : MonoBehaviour
             for (int i = 0; i < playerParty.Characters.Count; i++)
             {
                 yield return playerHuds[i].SetExpSmooth();
-            }
-
-            //Check level up.
-            //Update the HUD.
-            //Learn new move(s).
-            while (playerUnits[0].Character.CheckForLevelUp())
-            {
-                for (int i = 0; i < playerParty.Characters.Count; i++)
+                //Check level up.
+                //Update the HUD.
+                //Learn new move(s).
+                while (playerUnits[i].Character.CheckForLevelUp())
                 {
-                    playerHuds[i].SetLevel();
-                }
+                    for (int j = 0; j < playerParty.Characters.Count; j++)
+                    {
+                        playerHuds[i].SetLevel();
+                    }
                 
-                playerUnits[0].levelUp.Play();
-                yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} grew to level {playerUnits[0].Character.Level}.");
+                    playerUnits[i].levelUp.Play();
+                    yield return dialogueBox.TypeDialogue($"{playerUnits[i].Character.Base.charName.ToUpper()} grew to level {playerUnits[i].Character.Level}.");
 
-                var newMove = playerUnits[0].Character.GetLearnableMoveAtCurrentLevel();
+                    var newMove = playerUnits[0].Character.GetLearnableMoveAtCurrentLevel();
 
-                //Check if newMove return a null.
-                if (newMove != null)
-                {
-                    //ADD A NEW MOVE TO THE CHARACTER MOVESET.
-                    playerUnits[0].Character.LearnMove(newMove);
+                    //Check if newMove return a null.
+                    if (newMove != null)
+                    {
+                        //ADD A NEW MOVE TO THE CHARACTER MOVESET.
+                        playerUnits[0].Character.LearnMove(newMove);
 
-                    //Show dialogue and added to moves list.
-                    yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
-                }
+                        //Show dialogue and added to moves list.
+                        yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
+                    }
 
 
-                for (int i = 0; i < playerParty.Characters.Count; i++)
-                {
-                    yield return playerHuds[i].SetExpSmooth();
+                    for (int k = 0; k < playerParty.Characters.Count; k++)
+                    {
+                        yield return playerHuds[i].SetExpSmooth();
+                    }
                 }
             }
+
 
             yield return new WaitForSeconds(1f);
         }

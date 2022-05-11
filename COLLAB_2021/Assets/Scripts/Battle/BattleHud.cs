@@ -122,7 +122,7 @@ public class BattleHud : MonoBehaviour
         //yield return expBar.gameObject.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
         while (expBar.fillAmount < normalizedExp)
         {
-            expBar.fillAmount += 0.25f * Time.deltaTime;
+            expBar.fillAmount += 0.45f * Time.deltaTime;
             yield return null;
         }
         expBar.fillAmount = normalizedExp;
