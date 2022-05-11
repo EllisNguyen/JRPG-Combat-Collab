@@ -111,7 +111,6 @@ public class EnemyEntity : MonoBehaviour
         {
             //TODO: Init battle.
             InitBattle();
-            print("battle start");
         }
     }
 }

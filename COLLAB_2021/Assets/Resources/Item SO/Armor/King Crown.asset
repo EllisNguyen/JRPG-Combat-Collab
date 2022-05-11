@@ -19,10 +19,11 @@ MonoBehaviour:
   sellPrice: 0
   buyPrice: 0
   stackable: 0
+  interactionKey: 3
   coreAttributes:
   - attributeType: 2
-    attributeName: Attack Up
+    attributeName: ATK+
     attributeGain: 81
   - attributeType: 5
-    attributeName: Special Defense
+    attributeName: DEF+
     attributeGain: 39

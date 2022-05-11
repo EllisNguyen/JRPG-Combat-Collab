@@ -16,6 +16,7 @@ public class BattleHud : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] Image portrait;
     [SerializeField] HpBar hpBar;
     [SerializeField] MpBar mpBar;
     [SerializeField] TextMeshProUGUI statusText;
@@ -51,6 +52,7 @@ public class BattleHud : MonoBehaviour
         _character = character;
 
         nameText.text = character.Base.charName;
+        portrait.sprite = character.Base.portraitSprite;
         SetLevel();
         hpBar.SetHP((float)character.HP / character.MaxHP, character);
         mpBar.SetMP((float)character.MP / character.MaxMP, character);

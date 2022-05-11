@@ -17,9 +17,11 @@ public enum BattleState { Start, Waiting, ActionSelection, MoveSelection, Runnin
 
 public enum BattleAction { Move, SwitchCharacter, UseItem, Run, Wait }
 
+[RequireComponent(typeof(BattleInfoGetter))]
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleState state;
+    [SerializeField] BattleInfoGetter infoGetter;
     [SerializeField] CinemachineVirtualCamera vCamera;
     [SerializeField] CinemachineBrain brain;
     [SerializeField] Transform target;
@@ -38,18 +40,22 @@ public class BattleSystem : MonoBehaviour
     public Transform PlayerPos => playerPos;
     public Transform EnemyPos => enemyPos;
 
-    [FoldoutGroup("Player")] [SerializeField] BattleHud playerHud;
+    [FoldoutGroup("Player")] [SerializeField] List<BattleHud> playerHuds;
     [FoldoutGroup("Player")] [SerializeField] List<BattlePawn> playerUnits;
+    [FoldoutGroup("Player")] [SerializeField] BattleHud[] pMemberHuds;
+    [FoldoutGroup("Player")] [SerializeField] GameObject playerHudContainer;
 
     [PropertySpace(10)]
 
-    [FoldoutGroup("Enemy")] [SerializeField] BattleHud enemyHud;
+    [FoldoutGroup("Enemy")] [SerializeField] List<BattleHud> enemyHuds;
     [FoldoutGroup("Enemy")] [SerializeField] List<BattlePawn> enemyUnits;
+    [FoldoutGroup("Enemy")][SerializeField] BattleHud[] eMemberHuds;
+    [FoldoutGroup("Enemy")][SerializeField] GameObject enemyHudContainer;
 
     [PropertySpace(10)]
 
-    [FoldoutGroup("Battle Components")] [SerializeField] GameObject playerPawn_Pref;
-    [FoldoutGroup("Battle Components")] [SerializeField] GameObject enemyPawn_Pref;
+    [FoldoutGroup("Battle Components")] [SerializeField] BattlePawn playerPawn_Pref;
+    [FoldoutGroup("Battle Components")] [SerializeField] BattlePawn enemyPawn_Pref;
     [FoldoutGroup("Battle Components")] [SerializeField] InventoryUI inventoryUI;
     [FoldoutGroup("Battle Components")] [SerializeField] BattleDialogue dialogueBox;
 
@@ -70,8 +76,8 @@ public class BattleSystem : MonoBehaviour
 
     [PropertySpace(10)]
 
-    [FoldoutGroup("Spawnpoints")] public List<Transform> playerSpawnPoints;
-    [FoldoutGroup("Spawnpoints")] public List<Transform> enemySpawnPoints;
+    [FoldoutGroup("Spawnpoints")] public List<BattleSpawnPoint> playerSpawnPoints;
+    [FoldoutGroup("Spawnpoints")] public List<BattleSpawnPoint> enemySpawnPoints;
 
     [FoldoutGroup("Battle Multiplier")] [SerializeField] float speedProgressorMultiplier = 0.03f;
 
@@ -94,8 +100,6 @@ public class BattleSystem : MonoBehaviour
     [FoldoutGroup("Speed progressor")] [SerializeField] List<SpeedProgressor> enemyProgressors;
 
     [FoldoutGroup("Active entity")] [SerializeField] BattlePawn activeUnit;
-    [FoldoutGroup("Active entity")] [SerializeField] Image activeSprite;
-
     int escapeAttempt;
     MoveData moveToLearn;
     bool playerPerform = false;
@@ -122,6 +126,8 @@ public class BattleSystem : MonoBehaviour
     {
         GameController.Instance.BattleSystem = this;
         GameController.Instance.SubToBattleEnd();
+        infoGetter.battleSystem = this;
+        //memberSlots = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
         //vCamera = FindObjectOfType<CinemachineVirtualCamera>();
         //brain = FindObjectOfType<CinemachineBrain>();
         //vCamera.Priority = 11;
@@ -133,16 +139,120 @@ public class BattleSystem : MonoBehaviour
         vCamera.LookAt = target;
     }
 
-    public void StartBattle(CharacterParty playerParty, CharacterParty enemyParty)
+    void SpawnPlayerPawn(CharacterParty party)
     {
-        this.playerParty = playerParty;
-        this.enemyParty = enemyParty;
+        //Destroy all current child in all the spawnpoints.
+        for (int i = 0; i < playerSpawnPoints.Count; i++)
+        {        
+            foreach (Transform child in playerSpawnPoints[i].transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        playerUnits = new List<BattlePawn>();
+
+        for (int j = 0; j < party.Characters.Count; j++)
+        {
+            BattlePawn unitObj = Instantiate(playerPawn_Pref, playerSpawnPoints[j].gameObject.transform);
+            playerUnits.Add(unitObj);
+
+            unitObj.name = "CHARACTER: " + party.Characters[j].Base.charName;
+
+            foreach (BattleSpawnPoint spawnPoint in playerSpawnPoints)
+            {
+                if (playerUnits.Count == party.Characters.Count) break;
+                if (spawnPoint.transform.childCount > 0)
+                {
+                    spawnPoint.SetActiveSpawnpoint(unitObj);
+                }
+            }
+        }
+    }
+
+    void EnablePlayerHud(CharacterParty party)
+    {
+        //Find all BattleHud class in child and put in an array.
+        eMemberHuds = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
+
+        Debug.Log("PLAYER member slots = " + eMemberHuds.Length);
+
+        for (int i = 0; i < eMemberHuds.Length; i++)
+        {
+            //Check if the party member is withing the number of characters.
+            if (i < party.Characters.Count)
+            {
+                //Enable slot before setting the data.
+                eMemberHuds[i].gameObject.SetActive(true);
+            }
+            else if (i > party.Characters.Count)
+            {
+                eMemberHuds[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    void SpawnEnemyPawn(CharacterParty party)
+    {
+        //Destroy all current child in all the spawnpoints.
+        for (int i = 0; i < enemySpawnPoints.Count; i++)
+        {
+            foreach (Transform child in enemySpawnPoints[i].transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        enemyUnits = new List<BattlePawn>();
+
+        for (int j = 0; j < party.Characters.Count; j++)
+        {
+            BattlePawn unitObj = Instantiate(enemyPawn_Pref, enemySpawnPoints[j].gameObject.transform);
+            enemyUnits.Add(unitObj);
+
+            unitObj.name = "ENEMY: " + party.Characters[j].Base.charName;
+
+            foreach (BattleSpawnPoint spawnPoint in enemySpawnPoints)
+            {
+                if (spawnPoint.transform.childCount > 0)
+                {
+                    spawnPoint.SetActiveSpawnpoint(unitObj);
+                }
+            }
+        }
+    }
+
+    void EnableEnemyHud(CharacterParty party)
+    {
+        //Find all BattleHud class in child and put in an array.
+        eMemberHuds = enemyHudContainer.GetComponentsInChildren<BattleHud>(true);
+
+        Debug.Log("ENEMY member slots = " + eMemberHuds.Length);
+
+        for (int i = 0; i < eMemberHuds.Length; i++)
+        {
+            //Check if the party member is withing the number of characters.
+            if (i < party.Characters.Count)
+            {
+                //Enable slot before setting the data.
+                eMemberHuds[i].gameObject.SetActive(true);
+            }
+            else if (i > party.Characters.Count)
+            {
+                eMemberHuds[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void StartBattle(CharacterParty _playerParty, CharacterParty _enemyParty)
+    {
+        this.playerParty = _playerParty;
+        this.enemyParty = _enemyParty;
 
         vCamera.Priority = 11;
 
         CinemachineTransposer vTranposer = vCamera.AddCinemachineComponent<CinemachineTransposer>();
         
-
         float angle = 0;
         DOTween.To(() => angle, x => angle = x, -15, 1f)
             .OnUpdate(() => {
@@ -151,11 +261,10 @@ public class BattleSystem : MonoBehaviour
 
         CinemachineComposer vComposer = vCamera.AddCinemachineComponent<CinemachineComposer>();
 
-        //player = playerParty.GetComponent<PlayerEntity>();
-        //enemy = enemyParty.GetComponent<EnemyEntity>();
+        SpawnPlayerPawn(_playerParty);
+        SpawnEnemyPawn(_enemyParty);
 
         StartCoroutine(SetupBattle());
-        //WaitingForTurn();
     }
 
     /// <summary>
@@ -165,7 +274,6 @@ public class BattleSystem : MonoBehaviour
     {
         activeCharacter.sprite = null;
         activeUnit = null;
-        activeSprite.enabled = false;
 
         foreach (Transform child in progressorHolder.transform)
         {
@@ -181,40 +289,79 @@ public class BattleSystem : MonoBehaviour
         foreach (BattlePawn playerUnit in playerUnits)
         {
             var progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
-            progresorObj.SetProgressorData(playerUnits[0].Character);
+            progresorObj.SetProgressorData(playerUnit.Character);
             playerProgressors.Add(progresorObj);
+
+            progresorObj.name = "PROGRESSOR: " + playerUnit.Character.Base.name.ToUpper();
+
+            foreach (BattlePawn pawn in playerUnits)
+            {
+                pawn.Progressor = progresorObj;
+            }
         }
 
         //Add enemy progressor onto correct position.
         foreach (BattlePawn enemyUnit in enemyUnits)
         {
             var progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
-            progresorObj.SetProgressorData(enemyUnits[0].Character);
+            progresorObj.SetProgressorData(enemyUnit.Character);
             enemyProgressors.Add(progresorObj);
+
+            progresorObj.name = "PROGRESSOR: " + enemyUnit.Character.Base.name.ToUpper();
+
+            foreach (BattlePawn pawn in enemyUnits)
+            {
+                pawn.Progressor = progresorObj;
+            }
         }
     }
 
     public IEnumerator SetupBattle()
     {
-        playerUnits[0].Setup(playerParty.GetHealthyCharacter());
-        enemyUnits[0].Setup(enemyParty.GetHealthyCharacter());
+        for (int i = 0; i < playerUnits.Count; i++)
+        {
+            playerUnits[i].Setup(playerParty.Characters[i]);
 
-        playerUnits[0].Hud = playerHud;
-        enemyUnits[0].Hud = enemyHud;
+            //print("char num " + i + " with name of " + playerParty.Characters[i].Base.charName);
 
-        playerHud.SetData(playerUnits[0].Character);
-        enemyHud.SetData(enemyUnits[0].Character);
+            playerUnits[i].Hud = playerHuds[i];
+            playerHuds[i].SetData(playerUnits[i].Character);
+        }
 
-        enemyHud.DisableNonPlayerElement();
+        for (int j = 0; j < enemyUnits.Count; j++)
+        {
+            enemyUnits[j].Setup(enemyParty.Characters[j]);
+            enemyUnits[j].Hud = enemyHuds[j];
+            enemyHuds[j].SetData(enemyUnits[j].Character);
+            enemyHuds[j].DisableNonPlayerElement();
+        }
+        EnablePlayerHud(playerParty);
+        EnableEnemyHud(enemyParty);
+
+        //playerUnits[0].Setup(playerParty.GetHealthyCharacter());
+        //enemyUnits[0].Setup(enemyParty.GetHealthyCharacter());
+
+        //playerHud.SetData(playerUnits[0].Character);
+        //enemyHud.SetData(enemyUnits[0].Character);  
 
         ResetSpeedProgressor();
 
-        yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName}.");
-        dialogueBox.SetSkillList(playerUnits[0].Character.Moves);
+        if (enemyUnits.Count > 1)
+        {
+            yield return dialogueBox.TypeDialogue($"You stumbled upon a group of enemies led by {enemyUnits[0].Character.Base.charName}.");
+        }
+        else if (enemyUnits.Count == 1)
+        {
+            yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName}.");
+        }
+
+        yield return null;
+
+        //dialogueBox.SetSkillList(playerUnits[0].Character.Moves);
 
         //yield return new WaitForSecondsRealtime(1f);
 
-        //yield return dialogueBox.TypeDialogue($"Ready for action.");
+        yield return dialogueBox.TypeDialogue($"Ready for action.");
         state = BattleState.Waiting;
     }
 
@@ -244,8 +391,6 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleUpdate()
     {
-        print(action);
-
         switch (state)
         {
             case BattleState.Start:
@@ -303,8 +448,6 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.ActionSelection;
         target = playerPos;
-        activeSprite.enabled = true;
-        activeSprite.sprite = playerUnits[0].Character.Base.portraitSprite;
 
         dialogueBox.SetDialogue("Select your next move.");
 
@@ -316,7 +459,6 @@ public class BattleSystem : MonoBehaviour
     {
         activeCharacter.sprite = null;
         activeUnit = null;
-        activeSprite.enabled = false;
 
         dialogueBox.EnableDialogueText(false);
 
@@ -324,17 +466,17 @@ public class BattleSystem : MonoBehaviour
         {
             for (int i = 0; i < playerUnits.Count; i++)
             {
-                foreach (SpeedProgressor progressor in playerProgressors)
+                for (int k = 0; k < playerProgressors.Count; k++)
                 {
-                    StartCoroutine(progressor.SpeedProgress(playerUnits[i].Character, playerUnits[0]));
+                    StartCoroutine(playerProgressors[i].SpeedProgress(playerUnits[i].Character, playerUnits[i]));
                 }
             }
 
             for (int j = 0; j < enemyUnits.Count; j++)
             {
-                foreach (SpeedProgressor progressor in enemyProgressors)
+                for (int k = 0; k < enemyProgressors.Count; k++)
                 {
-                    StartCoroutine(progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[0]));
+                    StartCoroutine(enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, playerUnits[j]));
                 }
             }
         }
@@ -359,17 +501,28 @@ public class BattleSystem : MonoBehaviour
             int enemyLevel = faintedUnit.Character.Level;
 
             int expGain = Mathf.FloorToInt((expYield * enemyLevel) / 7);
-            playerUnits[0].Character.Exp += expGain;
+            for (int i = 0; i < playerUnits.Count; i++)
+            {
+                playerUnits[i].Character.Exp += expGain;
+            }
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} gained {expGain} exp.");
-            yield return playerHud.SetExpSmooth();
+            yield return dialogueBox.TypeDialogue($"Gained {expGain} exp.");
+
+            for (int i = 0; i < playerParty.Characters.Count; i++)
+            {
+                yield return playerHuds[i].SetExpSmooth();
+            }
 
             //Check level up.
             //Update the HUD.
             //Learn new move(s).
             while (playerUnits[0].Character.CheckForLevelUp())
             {
-                playerHud.SetLevel();
+                for (int i = 0; i < playerParty.Characters.Count; i++)
+                {
+                    playerHuds[i].SetLevel();
+                }
+                
                 playerUnits[0].levelUp.Play();
                 yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} grew to level {playerUnits[0].Character.Level}.");
 
@@ -385,7 +538,11 @@ public class BattleSystem : MonoBehaviour
                     yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
                 }
 
-                yield return playerHud.SetExpSmooth(true);
+
+                for (int i = 0; i < playerParty.Characters.Count; i++)
+                {
+                    yield return playerHuds[i].SetExpSmooth();
+                }
             }
 
             yield return new WaitForSeconds(1f);
@@ -404,7 +561,7 @@ public class BattleSystem : MonoBehaviour
         if (faintedUnit.IsPlayerUnit)
         {
             //Declare a check for healthy creature in party.
-            var nextCreature = playerParty.GetHealthyCharacter();
+            var nextCreature = playerParty.GetHealthyCharacters();
 
             BattleOver(false);
         }
@@ -647,10 +804,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitUntil(() => state == BattleState.RunningTurn);
         }
 
-        if(activeUnit.IsPlayerUnit)
-            ResetPlayerProgressor();
-        else if(!activeUnit.IsPlayerUnit)
-            ResetEnemyProgressor();
+        ClearProgressor();
     }
 
     //Boolean to calculate accuracy of the move, check if the move hit or not.
@@ -807,7 +961,10 @@ public class BattleSystem : MonoBehaviour
 
         if (enemySpeed < playerSpeed)
         {
-            playerUnits[0].PlayFleeAnimation();
+            for (int i = 0; i < playerUnits.Count; i++)
+            {
+                playerUnits[i].PlayFleeAnimation();
+            }
             yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
             BattleOver(true);
         }
@@ -819,7 +976,10 @@ public class BattleSystem : MonoBehaviour
 
             if (UnityEngine.Random.Range(0, 256) < f)
             {
-                playerUnits[0].PlayFleeAnimation();
+                for (int i = 0; i < playerUnits.Count; i++)
+                {
+                    playerUnits[i].PlayFleeAnimation();
+                }
                 yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
                 BattleOver(true);
             }
@@ -835,15 +995,21 @@ public class BattleSystem : MonoBehaviour
     public void ResetEnemyProgressor()
     {
         if (state != BattleState.Waiting) state = BattleState.Waiting;
+        activeUnit.Progressor.Slider.value = 0;
         activeUnit = null;
-        enemyProgressors[0].Slider.value = 0;
     }
 
     public void ResetPlayerProgressor()
     {
         if (state != BattleState.Waiting) state = BattleState.Waiting;
+        activeUnit.Progressor.Slider.value = 0;
         activeUnit = null;
-        playerProgressors[0].Slider.value = 0;
+    }
 
+    public void ClearProgressor()
+    {
+        if (state != BattleState.Waiting) state = BattleState.Waiting;
+        activeUnit.Progressor.Slider.value = 0;
+        activeUnit = null;
     }
 }

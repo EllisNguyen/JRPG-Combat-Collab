@@ -28,5 +28,7 @@ MonoBehaviour:
   critChance: 11
   critDmg: 45
   elementalRes: 20
-  exp: 5
-  eles: 2
+  expYield: 1
+  element: 3
+  growthRate: 0
+  learnableSkills: []

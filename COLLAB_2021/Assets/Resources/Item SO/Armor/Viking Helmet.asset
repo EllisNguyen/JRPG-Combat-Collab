@@ -19,7 +19,7 @@ MonoBehaviour:
   sellPrice: 0
   buyPrice: 0
   stackable: 0
-  interactionKey: 0
+  interactionKey: 3
   coreAttributes:
   - attributeType: 2
     attributeName: ATK+
