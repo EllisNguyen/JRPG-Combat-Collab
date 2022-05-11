@@ -285,19 +285,20 @@ public class BattleSystem : MonoBehaviour
         playerProgressors = new List<SpeedProgressor>();
         enemyProgressors = new List<SpeedProgressor>();
 
+
         //Add player progressor onto correct position.
         foreach (BattlePawn playerUnit in playerUnits)
         {
-            var progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
+            SpeedProgressor progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
             progresorObj.SetProgressorData(playerUnit.Character);
             playerProgressors.Add(progresorObj);
 
-            progresorObj.name = "PROGRESSOR: " + playerUnit.Character.Base.name.ToUpper();
+            progresorObj.name = "PROGRESSOR: " + playerUnit.Character.Base.charName.ToUpper();
+        }
 
-            foreach (BattlePawn pawn in playerUnits)
-            {
-                pawn.Progressor = progresorObj;
-            }
+        for (int i = 0; i < playerUnits.Count; i++)
+        {
+            playerUnits[i].Progressor = playerProgressors[i];
         }
 
         //Add enemy progressor onto correct position.
@@ -309,10 +310,15 @@ public class BattleSystem : MonoBehaviour
 
             progresorObj.name = "PROGRESSOR: " + enemyUnit.Character.Base.name.ToUpper();
 
-            foreach (BattlePawn pawn in enemyUnits)
+            for (int i = 0; i < enemyUnits.Count; i++)
             {
-                pawn.Progressor = progresorObj;
+                enemyUnits[i].Progressor = progresorObj;
             }
+        }
+
+        for (int i = 0; i < enemyUnits.Count; i++)
+        {
+            enemyUnits[i].Progressor = enemyProgressors[i];
         }
     }
 
@@ -1008,8 +1014,11 @@ public class BattleSystem : MonoBehaviour
 
     public void ClearProgressor()
     {
-        if (state != BattleState.Waiting) state = BattleState.Waiting;
         activeUnit.Progressor.Slider.value = 0;
         activeUnit = null;
+
+        if (state != BattleState.Waiting) state = BattleState.Waiting;
+
+        print("clear progress");
     }
 }
