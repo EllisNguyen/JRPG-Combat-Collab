@@ -20,6 +20,13 @@ public class BattlePawn : MonoBehaviour
     [SerializeField] CharacterBaseStats _base;
     [SerializeField] int level;
     [SerializeField] BattleHud hud;
+    [SerializeField] SpeedProgressor progressor;
+
+    public SpeedProgressor Progressor
+    {
+        get { return progressor; }
+        set { progressor = value; }
+    }
 
     public Character Character { get; set; }
     [SerializeField] bool isPlayerUnit;
@@ -51,7 +58,7 @@ public class BattlePawn : MonoBehaviour
     public void Setup(Character character)
     {
         Character = character;
-
+        _base = character.Base;
         graphic.sprite = Character.Base.battleSprite;
 
         if (isPlayerUnit)

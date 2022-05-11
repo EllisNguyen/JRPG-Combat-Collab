@@ -19,13 +19,14 @@ MonoBehaviour:
   sellPrice: 0
   buyPrice: 0
   stackable: 0
+  interactionKey: 3
   coreAttributes:
   - attributeType: 7
-    attributeName: Crit. Rate
+    attributeName: DEF+++
     attributeGain: 76
   - attributeType: 8
-    attributeName: Crit. Damage
+    attributeName: Sp.ATK+
     attributeGain: 20
   - attributeType: 3
-    attributeName: Defense Up
+    attributeName: ATK++
     attributeGain: 61

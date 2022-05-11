@@ -41,10 +41,12 @@ public class CharacterParty : MonoBehaviour
         }
     }
 
-    public Character GetHealthyCharacter()
+    public List<Character> GetHealthyCharacters()
     {
         //Loop through list of characters and find the first one satisfy the HP>0 condition.
-        return characters.Where(x => x.HP > 0).FirstOrDefault();
+        var healthyCharacters = characters.Where(x => x.HP > 0).ToList();
+
+        return healthyCharacters;
     }
 
     public void AddCharacter(Character newCharacter)

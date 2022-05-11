@@ -24,13 +24,13 @@ MonoBehaviour:
   specialAtkDmg: 40
   physicalDef: 15
   specialDef: 26
-  speed: 35
+  speed: 42
   critChance: 27
   critDmg: 17
   elementalRes: 27
   expYield: 5
-  element: 0
-  growthRate: 0
+  element: 1
+  growthRate: 1
   learnableSkills:
   - skillData: {fileID: 11400000, guid: 4f3c582d3f62e724082650f023ca1c08, type: 2}
     level: 0

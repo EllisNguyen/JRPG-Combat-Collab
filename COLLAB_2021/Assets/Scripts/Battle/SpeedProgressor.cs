@@ -44,7 +44,8 @@ public class SpeedProgressor : MonoBehaviour
     public IEnumerator SpeedProgress(Character character, BattlePawn activeUnit)
     {
         int characterSpeed = character.Base.speed;
-        print(character.Base.charName + " " + characterSpeed);
+
+        print($"{character.Base.charName} move at speed of {character.Base.speed}");
 
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
 
@@ -55,11 +56,10 @@ public class SpeedProgressor : MonoBehaviour
                 if (battleSystem.ActiveUnit != null) break;
 
                 battleSystem.State = BattleState.Waiting;
-                slider.value += (characterSpeed * battleSystem.SpeedProgressorMultiplier) * 0.0015f;
+                slider.value += (characterSpeed / 15 * battleSystem.SpeedProgressorMultiplier) * 0.02f;
                 yield return null;
                 //await Task.Yield();
             }
-
         }
 
         if (slider.value == 1)

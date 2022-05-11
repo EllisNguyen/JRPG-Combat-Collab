@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff6a98628ccc7448848e3c1629d5578, type: 3}
+  m_Name: Cielle
+  m_EditorClassIdentifier: 
+  charName: Cielle
+  portraitSprite: {fileID: 21300000, guid: d2dff2dbe36d84b478b8166742f33d93, type: 3}
+  battleSprite: {fileID: -3455613507728379158, guid: ddd46e976697aad48a2bad02443c2983, type: 3}
+  battleIcon: {fileID: 21300000, guid: 75f032e18c41eb141a4fa99fd4753ca8, type: 3}
+  overworldAnim: []
+  charDescription: 
+  health: 15
+  mana: 60
+  physicalAtkDmg: 14
+  specialAtkDmg: 35
+  physicalDef: 13
+  specialDef: 35
+  speed: 65
+  critChance: 29
+  critDmg: 25
+  elementalRes: 20
+  expYield: 1
+  element: 1
+  growthRate: 1
+  learnableSkills:
+  - skillData: {fileID: 11400000, guid: 746dc2d5f05c98246baaabe544997fe0, type: 2}
+    level: 1
+  - skillData: {fileID: 11400000, guid: 710fbdcba388f18408704526b622546a, type: 2}
+    level: 2
+  - skillData: {fileID: 11400000, guid: 4a8801744e37660498b0d421cfb08990, type: 2}
+    level: 4

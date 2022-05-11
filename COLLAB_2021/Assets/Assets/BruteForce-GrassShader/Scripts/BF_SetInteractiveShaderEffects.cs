@@ -22,9 +22,9 @@ public class BF_SetInteractiveShaderEffects : MonoBehaviour
     {
         if (transformToFollow != null)
         {
-            transform.position = new Vector3(transformToFollow.position.x, transformToFollow.position.y + 20, transformToFollow.position.z);
+            //transform.position = new Vector3(transformToFollow.position.x, transformToFollow.position.y + 20, transformToFollow.position.z);
         }
         Shader.SetGlobalVector("_Position", transform.position);
-        transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+        //transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
 }

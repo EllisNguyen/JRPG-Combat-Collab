@@ -9,8 +9,6 @@ public class BattleInfoGetter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        battleSystem = GetComponent<BattleSystem>();
-
         var player = GameController.Instance.player;
         var enemy = GameController.Instance.enemy;
 

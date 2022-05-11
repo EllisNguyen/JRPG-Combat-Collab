@@ -72,6 +72,12 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         //level
         levelTxt.text = "Lv." + _character.Level;
+
+        //Set current health on health bar.
+        hpBar.SetHP((float)_character.HP / _character.MaxHP, _character);
+        mpBar.SetMP((float)_character.HP / _character.MaxHP, _character);
+
+        expBar.fillAmount = _character.Exp;
         #endregion Set character's info
     }
 
