@@ -57,10 +57,8 @@ public class BattlePawn : MonoBehaviour
     Vector3 originalPos;
 
     [FoldoutGroup("Combat Boost Particle")]public ParticleSystem levelUp;
-    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem atkUp;
-    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem spatkUp;
-    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem defUp;
-    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem sfpdefUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem statUp;
+    [FoldoutGroup("Combat Boost Particle")]public ParticleSystem statDown;
 
     public void Setup(Character character)
     {

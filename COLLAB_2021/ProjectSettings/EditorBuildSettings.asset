@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scene/TestMenu.unity
     guid: b6e5d1af274aacd448518245d59264fb
   - enabled: 1
-    path: Assets/Scenes/MapHubTest.unity
-    guid: de99cd940a90c70448290954a47ecc6d
+    path: Assets/Scenes/WORKING.unity
+    guid: 560e6067313bed644a2525df1d873c3d
   - enabled: 1
     path: Assets/Scenes/TestBattle.unity
     guid: fe4c69440bf90d340aae2396c4ef2039

@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5956546337792145435, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956546337792145435, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5956546337792145435, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.6313726
       objectReference: {fileID: 0}
@@ -22,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 5956546337792145435, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: -3021034074473316615, guid: 9a0a1d6a8fa8d944bbfc32d4ae7f2b55, type: 3}
+      objectReference: {fileID: -5620181873407883548, guid: 9a0a1d6a8fa8d944bbfc32d4ae7f2b55, type: 3}
     - target: {fileID: 8202001257172027710, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -67,9 +75,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8204058571021027836, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8204134887903028442, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
       propertyPath: m_Name
-      value: DEF_UP
+      value: STAT_UP Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8204134887903028442, guid: 49830e574fc58f745b25a8807ff8f525, type: 3}
       propertyPath: m_IsActive

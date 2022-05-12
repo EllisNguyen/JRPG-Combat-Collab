@@ -1,7 +1,7 @@
 ///Author: Phap Nguyen.
 ///Description: Battle system for the game.
 ///Day created: 22/12/2022
-///Last edited: 05/05/2022 - Phap Nguyen.
+///Last edited: 12/05/2022 - Phap Nguyen.
 
 using System.Collections.Generic;
 using DG.Tweening;
@@ -127,10 +127,6 @@ public class BattleSystem : MonoBehaviour
         GameController.Instance.BattleSystem = this;
         GameController.Instance.SubToBattleEnd();
         infoGetter.battleSystem = this;
-        //memberSlots = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
-        //vCamera = FindObjectOfType<CinemachineVirtualCamera>();
-        //brain = FindObjectOfType<CinemachineBrain>();
-        //vCamera.Priority = 11;
 
         target = centerBattle;
 
@@ -344,12 +340,6 @@ public class BattleSystem : MonoBehaviour
         EnablePlayerHud(playerParty);
         EnableEnemyHud(enemyParty);
 
-        //playerUnits[0].Setup(playerParty.GetHealthyCharacter());
-        //enemyUnits[0].Setup(enemyParty.GetHealthyCharacter());
-
-        //playerHud.SetData(playerUnits[0].Character);
-        //enemyHud.SetData(enemyUnits[0].Character);  
-
         ResetSpeedProgressor();
 
         if (enemyUnits.Count > 1)
@@ -487,7 +477,7 @@ public class BattleSystem : MonoBehaviour
             {
                 for (int k = 0; k < enemyProgressors.Count; k++)
                 {
-                    StartCoroutine(enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, playerUnits[j]));
+                    StartCoroutine(enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, enemyUnits[j]));
                 }
             }
         }
@@ -708,6 +698,7 @@ public class BattleSystem : MonoBehaviour
             //Check if the move is Status effect.
             if (move.Base.Category == MoveCategory.Status)
             {
+                
                 yield return RunMoveEffect(move.Base.Effect, sourceUnit.Character, targetUnit.Character, move.Base.Target);
             }
             //Do damage if not Status effect move.
@@ -764,10 +755,16 @@ public class BattleSystem : MonoBehaviour
         {
             //Apply boost to source unit if target is SELF.
             if (moveTarget == MoveTarget.Self)
+            {
+                //TODO: play VFX.
                 source.ApplyBoost(effects.Boost);
+            }
             //Apply boost to source unit if target is FOE.
             else
+            {
+                //TODO: play VFX.
                 target.ApplyBoost(effects.Boost);
+            }
         }
 
         //STATUS CONDITION.
@@ -889,6 +886,8 @@ public class BattleSystem : MonoBehaviour
         {
             //Dequeue the first message and store it in message var.
             var message = character.StatusChanges.Dequeue();
+
+            //if(character.)
 
             //Display in dialogue box.
             yield return dialogueBox.TypeDialogue(message);
