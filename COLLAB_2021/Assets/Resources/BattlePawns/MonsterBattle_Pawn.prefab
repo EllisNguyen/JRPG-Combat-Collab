@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: isPlayerUnit
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1083908060885378715, guid: 36e4c582066775f45a247bb2b5651a73, type: 3}
+      propertyPath: skills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1113028377449168228, guid: 36e4c582066775f45a247bb2b5651a73, type: 3}
       propertyPath: m_Name
       value: MonsterBattle_Pawn

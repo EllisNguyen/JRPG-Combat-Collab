@@ -365,6 +365,11 @@ public class BattleSystem : MonoBehaviour
 
         //dialogueBox.SetSkillList(playerUnits[0].Character.Moves);
 
+        for (int k = 0; k < playerUnits.Count; k++)
+        {
+            playerUnits[k].Skills = playerUnits[0].Character.Moves;
+        }
+
         //yield return new WaitForSecondsRealtime(1f);
 
         yield return dialogueBox.TypeDialogue($"Ready for action.");

@@ -21,11 +21,18 @@ public class BattlePawn : MonoBehaviour
     [SerializeField] int level;
     [SerializeField] BattleHud hud;
     [SerializeField] SpeedProgressor progressor;
+    [SerializeField] List<Move> skills;
 
     public SpeedProgressor Progressor
     {
         get { return progressor; }
         set { progressor = value; }
+    }
+
+    public List<Move> Skills
+    {
+        get { return skills; }
+        set { skills = value; }
     }
 
     public Character Character { get; set; }
