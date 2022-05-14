@@ -28,7 +28,7 @@ MonoBehaviour:
   specialAtkDmg: 24
   physicalDef: 7
   specialDef: 21
-  speed: 6
+  speed: 37
   critChance: 45
   critDmg: 38
   elementalRes: 46

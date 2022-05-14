@@ -11,6 +11,7 @@ using TMPro;//Text mesh pro, better text :)
 
 public class ItemAboutPanel : MonoBehaviour
 {
+    #region VARIABLES
     public RectTransform rect;
 
     [Header("About")]
@@ -39,7 +40,9 @@ public class ItemAboutPanel : MonoBehaviour
         get { return attributeCount; }
         set => attributeCount = value;
     }
+    #endregion VARIABLES
 
+    #region FUNCTIONS
     /// <summary>
     /// Call when pressed on an item in the inventory, setup the data of selected item on the button onto the about panel.
     /// </summary>
@@ -155,4 +158,5 @@ public class ItemAboutPanel : MonoBehaviour
         else
             return ItemRarity.Exotic;
     }
+    #endregion FUNCTIONS
 }

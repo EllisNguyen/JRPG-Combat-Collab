@@ -531,12 +531,11 @@ public class BattleSystem : MonoBehaviour
                     if (newMove != null)
                     {
                         //ADD A NEW MOVE TO THE CHARACTER MOVESET.
-                        playerUnits[0].Character.LearnMove(newMove);
+                        playerUnits[i].Character.LearnMove(newMove);
 
                         //Show dialogue and added to moves list.
-                        yield return dialogueBox.TypeDialogue($"{playerUnits[0].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
+                        yield return dialogueBox.TypeDialogue($"{playerUnits[i].Character.Base.charName.ToUpper()} learned {newMove.Base.Name.ToUpper()}.");
                     }
-
 
                     for (int k = 0; k < playerParty.Characters.Count; k++)
                     {
@@ -624,7 +623,9 @@ public class BattleSystem : MonoBehaviour
         {
             //Randomize the enemy's move.
             Move enemyMove = activeUnit.Character.GetRandomMove(activeUnit.Character);
-            yield return RunMove(activeUnit, playerUnits[0], enemyMove);
+            int randomTarget = UnityEngine.Random.Range(0, playerUnits.Count);
+
+            yield return RunMove(activeUnit, playerUnits[randomTarget], enemyMove);
 
             yield return RunAfterTurn(activeUnit);//End turn.
             if (state == BattleState.BattleOver) yield break;
