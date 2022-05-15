@@ -45,8 +45,6 @@ public class SpeedProgressor : MonoBehaviour
     {
         int characterSpeed = character.Base.speed;
 
-        print($"{character.Base.charName} move at speed of {character.Base.speed}");
-
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
 
         if(battleSystem.ActiveUnit == null)

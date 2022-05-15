@@ -676,12 +676,15 @@ MonoBehaviour:
   state: 0
   infoGetter: {fileID: 70077217}
   vCamera: {fileID: 2000782202}
+  normalFov: 0
+  critFov: 25
   brain: {fileID: 1783027986}
   target: {fileID: 0}
   centerBattle: {fileID: 1502298956}
   playerPos: {fileID: 1289195236}
   enemyPos: {fileID: 1650121267}
   shakeTimer: 0
+  defaultTransitionTime: 0.45
   playerHuds:
   - {fileID: 522641735}
   - {fileID: 620184018}

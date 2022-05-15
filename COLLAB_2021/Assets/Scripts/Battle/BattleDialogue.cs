@@ -32,9 +32,9 @@ public class BattleDialogue : MonoBehaviour
         foreach (var letter in dialogue.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(1f/GameManager.Instance.letterPerSecond);
+            yield return new WaitForSecondsRealtime(1f/GameManager.Instance.letterPerSecond);
         }
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSecondsRealtime(1.25f);
     }
 
     public void EnableDialogueText(bool enabled)

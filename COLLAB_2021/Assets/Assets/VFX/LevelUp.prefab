@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6103598526244749016}
   - component: {fileID: 5956546337792145435}
   - component: {fileID: 4483157406615890504}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_LensExplode_0203_Open_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4827,7 +4827,7 @@ GameObject:
   - component: {fileID: 8200462282129179530}
   - component: {fileID: 8294691351384336838}
   - component: {fileID: 8294095717209680354}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_Dot_01_Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9643,7 +9643,7 @@ GameObject:
   - component: {fileID: 8200104084858051926}
   - component: {fileID: 8314565882086835660}
   - component: {fileID: 8295583122367996388}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_LensExplode_0203_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14459,7 +14459,7 @@ GameObject:
   - component: {fileID: 8200241670730401398}
   - component: {fileID: 8294620533685393672}
   - component: {fileID: 8293615938092177790}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_LensExplode_0201_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19279,7 +19279,7 @@ GameObject:
   - component: {fileID: 8200219735049254268}
   - component: {fileID: 8294955136979107258}
   - component: {fileID: 8293864679056719556}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_Dot_02_Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24095,7 +24095,7 @@ GameObject:
   - component: {fileID: 8200208051185490708}
   - component: {fileID: 8294730670210135872}
   - component: {fileID: 8293719600374654066}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_Dot_01_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28911,7 +28911,7 @@ GameObject:
   - component: {fileID: 8201914269313724696}
   - component: {fileID: 8314597530066176246}
   - component: {fileID: 8293819425220330828}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: P_LensExplode_0202_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33727,7 +33727,7 @@ GameObject:
   - component: {fileID: 8202001257172027710}
   - component: {fileID: 8294919328535532560}
   - component: {fileID: 8294130422545140414}
-  m_Layer: 5
+  m_Layer: 29
   m_Name: LevelUp
   m_TagString: Effects
   m_Icon: {fileID: 0}

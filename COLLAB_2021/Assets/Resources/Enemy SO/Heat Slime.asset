@@ -15,6 +15,7 @@ MonoBehaviour:
   charName: Heat Slime
   portraitSprite: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
   battleSprite: {fileID: 333607023786938565, guid: e0988637bc1607546922a7969f34e363, type: 3}
+  attackSprite: {fileID: 7843255327204234387, guid: 3e9103ae9053c074cbe7f7c99357a342, type: 3}
   battleIcon: {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
   overworldAnim:
   - {fileID: 3473350193247658618, guid: f71969e2508c77b459cea098517e047a, type: 3}
@@ -29,8 +30,7 @@ MonoBehaviour:
   physicalDef: 23
   specialDef: 41
   speed: 52
-  critChance: 23
-  critDmg: 25
+  luck: 1
   elementalRes: 24
   expYield: 50
   element: 0

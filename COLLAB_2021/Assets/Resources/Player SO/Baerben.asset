@@ -15,6 +15,8 @@ MonoBehaviour:
   charName: Baerben
   portraitSprite: {fileID: 21300000, guid: c2deaa051d0300c46a3d76291bc27615, type: 3}
   battleSprite: {fileID: 3167681279352272670, guid: 0f6211c5bfa6fc54781c80d5baec85bb, type: 3}
+  attackSprite: {fileID: 0}
+  guardSprite: {fileID: 0}
   battleIcon: {fileID: 21300000, guid: 47dc27d2f6dccd54a893365645987640, type: 3}
   overworldAnim: []
   charDescription: 
@@ -25,8 +27,7 @@ MonoBehaviour:
   physicalDef: 38
   specialDef: 16
   speed: 22
-  critChance: 35
-  critDmg: 15
+  luck: 1
   elementalRes: 30
   expYield: 1
   element: 4

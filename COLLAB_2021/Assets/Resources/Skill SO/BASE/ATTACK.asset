@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: ATTACK
   description: 
-  type: 0
+  element: 0
   power: 25
-  accuracy: 0
+  accuracy: 80
   alwaysHit: 1
   mana: 0
   priority: 0
@@ -27,3 +27,5 @@ MonoBehaviour:
     volatileStatus: 0
   secondaries: []
   target: 0
+  hitEffect: {fileID: 1388458029259005876, guid: 7f334eb0eb3587444820638911a9ea83, type: 3}
+  fxSpawnOffset: {x: 0, y: 1.2, z: -0.5}

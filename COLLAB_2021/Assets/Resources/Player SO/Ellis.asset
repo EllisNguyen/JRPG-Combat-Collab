@@ -15,6 +15,8 @@ MonoBehaviour:
   charName: Ellis
   portraitSprite: {fileID: 21300000, guid: 8e79b1771c8815d47987a30034b28885, type: 3}
   battleSprite: {fileID: -3153848585804268297, guid: f8388bfb2fe45c2489821cca829bbfdb, type: 3}
+  attackSprite: {fileID: 8529322024372871602, guid: be9fbdef9903ebd4694be4c336302a6c, type: 3}
+  guardSprite: {fileID: -7720301639281419722, guid: edc0c45923b7a074b9c30035b2778bc8, type: 3}
   battleIcon: {fileID: 21300000, guid: 0fb80ab8c45c1ec40a9acfc7b6c863cc, type: 3}
   overworldAnim: []
   charDescription: 
@@ -25,8 +27,7 @@ MonoBehaviour:
   physicalDef: 31
   specialDef: 16
   speed: 42
-  critChance: 20
-  critDmg: 11
+  luck: 1
   elementalRes: 12
   expYield: 5
   element: 0

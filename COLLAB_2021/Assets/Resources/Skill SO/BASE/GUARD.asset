@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GUARD
   m_EditorClassIdentifier: 
   moveName: GUARD
+  guard: 1
   description: 
   element: 0
   power: 0
@@ -24,10 +25,12 @@ MonoBehaviour:
   effect:
     boosts:
     - stat: 4
-      boost: 2
+      boost: 1
     - stat: 5
-      boost: 2
+      boost: 1
     status: 0
     volatileStatus: 0
   secondaries: []
   target: 1
+  hitEffect: {fileID: 5521679303832076018, guid: ab6e3aa394c6f574b8aae287c9fa5546, type: 3}
+  fxSpawnOffset: {x: 0, y: 1, z: 0.5}

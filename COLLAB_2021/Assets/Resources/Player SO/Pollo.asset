@@ -15,6 +15,8 @@ MonoBehaviour:
   charName: Pollo
   portraitSprite: {fileID: 21300000, guid: f13e872def4a1c54fbd979f8fc237173, type: 3}
   battleSprite: {fileID: -2854817042713855047, guid: 174c725653e308c47906e412ab882a0d, type: 3}
+  attackSprite: {fileID: 0}
+  guardSprite: {fileID: 0}
   battleIcon: {fileID: 21300000, guid: 626ccc4e43c0f7c4ebafa4cd7d62291a, type: 3}
   overworldAnim:
   - {fileID: 0}
@@ -26,8 +28,7 @@ MonoBehaviour:
   physicalDef: 48
   specialDef: 38
   speed: 37
-  critChance: 28
-  critDmg: 45
+  luck: 1
   elementalRes: 11
   expYield: 1
   element: 0

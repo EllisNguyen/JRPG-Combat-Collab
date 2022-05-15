@@ -15,6 +15,8 @@ MonoBehaviour:
   charName: Cielle
   portraitSprite: {fileID: 21300000, guid: d2dff2dbe36d84b478b8166742f33d93, type: 3}
   battleSprite: {fileID: -3455613507728379158, guid: ddd46e976697aad48a2bad02443c2983, type: 3}
+  attackSprite: {fileID: 4306178142505025204, guid: b8ce4ca75bda6a24daf53c723231c7f1, type: 3}
+  guardSprite: {fileID: -7349581038657780995, guid: a12e69c7108268f44ab3624c9d884278, type: 3}
   battleIcon: {fileID: 21300000, guid: 75f032e18c41eb141a4fa99fd4753ca8, type: 3}
   overworldAnim: []
   charDescription: 
@@ -25,8 +27,7 @@ MonoBehaviour:
   physicalDef: 13
   specialDef: 35
   speed: 48
-  critChance: 29
-  critDmg: 25
+  luck: 1
   elementalRes: 20
   expYield: 1
   element: 1

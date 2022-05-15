@@ -15,6 +15,7 @@ MonoBehaviour:
   charName: Fire Robot
   portraitSprite: {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
   battleSprite: {fileID: 6035477124656669715, guid: 051ae6a6eccd35e4db6c162efeb0d772, type: 3}
+  attackSprite: {fileID: 2608534806445164875, guid: 10c7f9cae52c44d4ca0e94faa4bcfcbf, type: 3}
   battleIcon: {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
   overworldAnim:
   - {fileID: -8610643921566649629, guid: 4376d573ed7b6364898183c6c750e868, type: 3}
@@ -29,8 +30,7 @@ MonoBehaviour:
   physicalDef: 16
   specialDef: 23
   speed: 41
-  critChance: 25
-  critDmg: 21
+  luck: 1
   elementalRes: 28
   expYield: 100
   element: 0

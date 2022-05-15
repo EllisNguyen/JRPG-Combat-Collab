@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterBattle_Pawn
       objectReference: {fileID: 0}
+    - target: {fileID: 1565163182547543226, guid: 36e4c582066775f45a247bb2b5651a73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565163182547543226, guid: 36e4c582066775f45a247bb2b5651a73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2130481238584960355, guid: 36e4c582066775f45a247bb2b5651a73, type: 3}
       propertyPath: m_RootOrder
       value: 0

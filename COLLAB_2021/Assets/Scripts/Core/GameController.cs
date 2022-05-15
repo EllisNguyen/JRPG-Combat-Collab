@@ -100,12 +100,26 @@ public class GameController : MonoBehaviour
 
     public void EndBattle(bool won)
     {
-        SceneManager.UnloadSceneAsync("TestBattle");
+        StartCoroutine(BattleEndSequence());
+    }
 
+    public IEnumerator BattleEndSequence()
+    {
+        GameManager.Instance.FadeOut();
+
+        yield return new WaitUntil(() => GameManager.Instance.isFading == false);
+
+        SceneManager.UnloadSceneAsync("TestBattle");
         battleSystem = null;
+        worldCamera.cullingMask = freeroamLayer;
+
+        yield return new WaitForSeconds(0.5f);
         GameManager.Instance.gameState = GameState.FreeRoam;
         //worldCamera.SetActive(true);
 
-        worldCamera.cullingMask = freeroamLayer;
+        //GameManager.Instance.FadeIn();
+
+
+        GameManager.Instance.FadeIn();
     }
 }

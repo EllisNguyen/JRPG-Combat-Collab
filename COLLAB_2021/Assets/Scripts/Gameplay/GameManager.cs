@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using Sirenix.OdinInspector;
 
 /*
 Class: GameManager
@@ -48,15 +51,21 @@ public class GameManager : MonoBehaviour
     public bool enableSkill = false;
     public bool enableInventory = false;
 
+    [Header("Fade")]
+    public Image fadeImg;
+    public float fadeTimer = 1f;
+    public bool isFading;
+
+
     private void Awake()
     {
         Instance = this;
-
     }
 
     private void Start()
     {
-        
+        fadeImg.DOFade(1, 0);
+        FadeIn();
     }
 
     private void Update()
@@ -83,8 +92,27 @@ public class GameManager : MonoBehaviour
                 GamePaused();
                 break;
         }
+
     }
 
+    [Button]
+    public void FadeIn()
+    {
+        isFading = true;
+        fadeImg.DOFade(0, fadeTimer).OnComplete(FadeFalse);
+    }
+
+    [Button]
+    public void FadeOut()
+    {
+        isFading = true;
+        fadeImg.DOFade(1, fadeTimer).OnComplete(FadeFalse); ;
+    }
+
+    void FadeFalse()
+    {
+        isFading = false;
+    }
 
     /*public void UpdateState(GameState passedInState)
     {

@@ -7,6 +7,7 @@ using UnityEngine;
 public class MoveData : ScriptableObject
 {
     [SerializeField] string moveName;
+    [SerializeField] bool guard;
 
     [TextArea]
     [SerializeField] string description;
@@ -22,6 +23,11 @@ public class MoveData : ScriptableObject
     [SerializeField] List<SecondaryEffects> secondaries;
     [SerializeField] MoveTarget target;
     [SerializeField] ParticleSystem hitEffect;
+    [SerializeField] Vector3 fxSpawnOffset = new Vector3(0, 1.2f, -0.5f);
+
+    public ParticleSystem HitEffect => hitEffect;
+    public bool Guard => guard;
+    public Vector3 SpawnOffset => fxSpawnOffset;
 
     void OnValidate()
     {
@@ -188,5 +194,5 @@ public class StatBoost
 
 public enum MoveTarget
 {
-    Foe,Self
+    Foe,Self,PlayerTeam,EnemyTeam
 }

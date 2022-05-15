@@ -14,6 +14,8 @@ public class CharacterBaseStats : ScriptableObject
     public string charName;
     [PreviewField] public Sprite portraitSprite;
     [PreviewField] public Sprite battleSprite;
+    [PreviewField] public Sprite attackSprite;
+    [PreviewField] public Sprite guardSprite;
     [PreviewField] public Sprite battleIcon;
     public List<Sprite> overworldAnim;
 
@@ -26,8 +28,7 @@ public class CharacterBaseStats : ScriptableObject
     [Range(1,100)] public int physicalDef;
     [Range(1,100)] public int specialDef;
     [Range(1,100)] public int speed;
-    [Range(1,100)] public int critChance;
-    [Range(1,100)] public int critDmg;
+    [Range(1,70)] public int luck;
     [Range(1,100)] public int elementalRes;
     [Range(1,100)] public int expYield;
     public elements element; //Reference to the elements enum
@@ -96,8 +97,7 @@ public class CharacterBaseStats : ScriptableObject
         physicalDef = Random.Range(5, 50);
         specialDef = Random.Range(5, 50);
         speed = Random.Range(5, 50);
-        critChance = Random.Range(5, 50);
-        critDmg = Random.Range(5, 50);
+        luck = Random.Range(5, 50);
         elementalRes = Random.Range(5, 50);
     }
 }
@@ -164,9 +164,8 @@ public enum Stat
     PhysDEF,
     SpecDEF,
     SPEED,
-    CritChance,
-    CritDmg,
+    Luck,
 
-    Accuraccy,
+    Accuracy,
     Evasion
 }

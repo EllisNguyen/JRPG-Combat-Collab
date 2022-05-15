@@ -23,12 +23,15 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleState state;
     [SerializeField] BattleInfoGetter infoGetter;
     [SerializeField] CinemachineVirtualCamera vCamera;
+    [SerializeField] float normalFov;
+    [SerializeField] float critFov = 15f;
     [SerializeField] CinemachineBrain brain;
     [SerializeField] Transform target;
     [FoldoutGroup("Camera targets")][SerializeField] Transform centerBattle;
     [FoldoutGroup("Camera targets")][SerializeField] Transform playerPos;
     [FoldoutGroup("Camera targets")][SerializeField] Transform enemyPos;
     [FoldoutGroup("Camera targets")][SerializeField] float shakeTimer;
+    [FoldoutGroup("Camera targets")][SerializeField] float defaultTransitionTime = 0.35f;
 
     public Transform Target
     {
@@ -127,10 +130,12 @@ public class BattleSystem : MonoBehaviour
         GameController.Instance.BattleSystem = this;
         GameController.Instance.SubToBattleEnd();
         infoGetter.battleSystem = this;
+        brain = FindObjectOfType<CinemachineBrain>();
 
         target = centerBattle;
+        normalFov = vCamera.m_Lens.FieldOfView;
 
-        brain.m_DefaultBlend.m_Time = 0.35f;
+        brain.m_DefaultBlend.m_Time = defaultTransitionTime;
         vCamera.Follow = target;
         vCamera.LookAt = target;
     }
@@ -390,6 +395,13 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(RunTurnsEnemy(BattleAction.Move));
     }
 
+    public void SpawnParticle(Move move, BattlePawn target)
+    {
+        if (move.Base.HitEffect == null) return;
+
+        Instantiate(move.Base.HitEffect, target.transform.position + move.Base.SpawnOffset, Quaternion.identity);
+    }
+
     public void HandleUpdate()
     {
         switch (state)
@@ -420,7 +432,7 @@ public class BattleSystem : MonoBehaviour
 
                 break;
             case BattleState.BattleOver:
-
+                //StartCoroutine(GameController.Instance.BattleEndSequence());
                 break;
             default:
                 break;
@@ -578,12 +590,30 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.RunningTurn;
 
         action = playerAction;
+        var target = currentMove.Base.Target;
 
         playerPerform = false;
         //Check if player perform a move.
         if (playerAction == BattleAction.Move)
         {
-            yield return RunMove(activeUnit, enemyUnits[0], currentMove);
+            switch (target)
+            {
+                case MoveTarget.Foe:
+                    yield return RunMove(activeUnit, enemyUnits[0], currentMove);
+                    break;
+                case MoveTarget.Self:
+                    yield return RunMove(activeUnit, activeUnit, currentMove);
+                    break;
+                case MoveTarget.PlayerTeam:
+                    //TODO: make AOE effect.
+                    break;
+                case MoveTarget.EnemyTeam:
+                    //TODO: make AOE effect.
+                    break;
+                default:
+                    break;
+            }
+            
             yield return RunAfterTurn(activeUnit);//End turn.
             //ResetPlayerProgressor();
 
@@ -619,13 +649,31 @@ public class BattleSystem : MonoBehaviour
         //Perform Enemy's turn.
 
         enemyPerform = false;
+        
         if (enemyAction == BattleAction.Move)
         {
             //Randomize the enemy's move.
             Move enemyMove = activeUnit.Character.GetRandomMove(activeUnit.Character);
+            var target = enemyMove.Base.Target;
             int randomTarget = UnityEngine.Random.Range(0, playerUnits.Count);
 
-            yield return RunMove(activeUnit, playerUnits[randomTarget], enemyMove);
+            switch (target)
+            {
+                case MoveTarget.Foe:
+                    yield return RunMove(activeUnit, playerUnits[randomTarget], enemyMove);
+                    break;
+                case MoveTarget.Self:
+                    yield return RunMove(activeUnit, activeUnit, enemyMove);
+                    break;
+                case MoveTarget.PlayerTeam:
+                    //TODO: make AOE effect.
+                    break;
+                case MoveTarget.EnemyTeam:
+                    //TODO: make AOE effect.
+                    break;
+                default:
+                    break;
+            }  
 
             yield return RunAfterTurn(activeUnit);//End turn.
             if (state == BattleState.BattleOver) yield break;
@@ -687,32 +735,51 @@ public class BattleSystem : MonoBehaviour
         //Check if the attack landed.
         if (CheckIfMoveHits(move, sourceUnit.Character, targetUnit.Character))
         {
-            //Perform a simple attack animation.
-            sourceUnit.PlayAttackAnimation();
-            //yield return new WaitForSeconds(0.5f);
+            if(move.Base.Guard) sourceUnit.PlayGuardAnimation(move, sourceUnit);
+            else
+                sourceUnit.PlayAttackAnimation(move, targetUnit);
 
-            //Hit animation.
-            targetUnit.PlayHitAnimation();
+            SpawnParticle(move, targetUnit);
 
-            yield return CameraShake(2, 0.1f);
+            if(move.Base.Target == MoveTarget.Foe)
+            {
+                targetUnit.PlayHitAnimation();//Hit animation.
+                yield return CameraShake(4, 0.1f);
+            }
+
 
             //Check if the move is Status effect.
             if (move.Base.Category == MoveCategory.Status)
-            {
-                
+            {   
                 yield return RunMoveEffect(move.Base.Effect, sourceUnit.Character, targetUnit.Character, move.Base.Target);
             }
             //Do damage if not Status effect move.
             else
             {
                 //Declare fainted boolean
+                brain.m_DefaultBlend.m_Time = 15f;
+                //brain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
                 var damageDetails = targetUnit.Character.TakeDamage(move, sourceUnit.Character, targetUnit.Character);
 
-                //Call the update health bar func.
-                yield return targetUnit.Hud.WaitForHpUpdate();
+                if(damageDetails.Critical > 1)
+                {
+                    vCamera.m_LookAt = targetUnit.LookAtPos;
+                    vCamera.m_Lens.FieldOfView = critFov;
+                    Time.timeScale = 0.75f;
+                    yield return new WaitForSecondsRealtime(0.5f);
+                }
 
                 //Show crit or type effectiveness dialogue.
                 yield return ShowDamageDetails(damageDetails);
+
+                Time.timeScale = 1f;
+                //Call the update health bar func.
+                yield return targetUnit.Hud.WaitForHpUpdate();
+
+                brain.m_DefaultBlend.m_Time = defaultTransitionTime;
+                brain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.EaseInOut;
+                vCamera.m_Lens.FieldOfView = normalFov;
+                vCamera.m_LookAt = centerBattle;
             }
 
             //Check for available secondary effects.
@@ -757,7 +824,6 @@ public class BattleSystem : MonoBehaviour
             //Apply boost to source unit if target is SELF.
             if (moveTarget == MoveTarget.Self)
             {
-                //TODO: play VFX.
                 source.ApplyBoost(effects.Boost);
             }
             //Apply boost to source unit if target is FOE.
@@ -828,7 +894,7 @@ public class BattleSystem : MonoBehaviour
         float moveAccuracy = move.Base.Accuracy;
 
         //Store the move acuracy in the battle.
-        int accuracy = source.StatBoosts[Stat.Accuraccy];
+        int accuracy = source.StatBoosts[Stat.Accuracy];
         int evasion = source.StatBoosts[Stat.Evasion];
 
         //An array of value that boosting the stat.
@@ -916,13 +982,12 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.BattleOver;
 
+        GameManager.Instance.FadeOut();
+
         //Loop through all character in party.
         //Reset all boosted stats.
         playerParty.Characters.ForEach(c => c.OnBattleOver());
         enemyParty.Characters.ForEach(e => e.OnBattleOver());
-
-        playerUnits[0].Hud.ClearData();
-        enemyUnits[0].Hud.ClearData();
 
         //Notify the game that the battle is over.
         OnBattleOver(won);
@@ -945,6 +1010,7 @@ public class BattleSystem : MonoBehaviour
     public void Skill()
     {
         dialogueBox.EnableSkillSelector(true);
+        dialogueBox.SetSkillList(activeUnit.Character.Moves);
     }
 
     public void Bag()
@@ -963,11 +1029,12 @@ public class BattleSystem : MonoBehaviour
     IEnumerator TryToEscape()
     {
         state = BattleState.Busy;
+        dialogueBox.EnableDialogueText(true);
 
         ++escapeAttempt;
 
         //Get player's and enemy's speed.
-        int playerSpeed = playerUnits[0].Character.Base.speed;
+        int playerSpeed = playerUnits[0].Character.Base.speed * 4;
         int enemySpeed = enemyUnits[0].Character.Base.speed;
 
         if (enemySpeed < playerSpeed)
@@ -976,7 +1043,7 @@ public class BattleSystem : MonoBehaviour
             {
                 playerUnits[i].PlayFleeAnimation();
             }
-            yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
+            yield return dialogueBox.TypeDialogue("Got away safely.");
             BattleOver(true);
         }
         else
@@ -991,7 +1058,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     playerUnits[i].PlayFleeAnimation();
                 }
-                yield return dialogueBox.TypeDialogue("YESS WE OUT RUN THAT BITCH.");
+                yield return dialogueBox.TypeDialogue("Got away safely.");
                 BattleOver(true);
             }
             //Continue battle when escape failed.
@@ -1001,6 +1068,8 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.RunningTurn;
             }
         }
+
+        dialogueBox.EnableDialogueText(false);
     }
 
     public void ResetEnemyProgressor()

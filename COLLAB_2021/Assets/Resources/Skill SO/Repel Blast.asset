@@ -10,26 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fdac6b2b7e24b646892f7e4c965996b, type: 3}
-  m_Name: Fireball
+  m_Name: Repel Blast
   m_EditorClassIdentifier: 
-  moveName: Fireball
-  description: 
-  element: 1
-  power: 50
+  moveName: Repel Blast
+  description: Single target attack. Blind enemy.
+  element: 5
+  power: 30
   accuracy: 90
-  alwaysHit: 1
-  mana: 7
+  alwaysHit: 0
+  mana: 2
   priority: 0
   category: 1
   effect:
     boosts: []
-    status: 0
+    status: 4
     volatileStatus: 0
-  secondaries:
-  - boosts: []
-    status: 2
-    volatileStatus: 0
-    chance: 10
-    target: 0
+  secondaries: []
   target: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 7336054724249031272, guid: 78b2dec186e7e224e92b4cecc9565159, type: 3}
+  fxSpawnOffset: {x: 0, y: 1.2, z: -0.5}

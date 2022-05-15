@@ -231,8 +231,9 @@ public class Character
             {Stat.SpecATK, 0},
             {Stat.SpecDEF, 0},
             {Stat.SPEED, 0},
-            {Stat.CritChance, 0},
-            {Stat.CritDmg, 0},
+            {Stat.Luck, 0},
+            {Stat.Accuracy, 0},
+            {Stat.Evasion, 0},
         };
     }
 
@@ -301,14 +302,13 @@ public class Character
     {
         //Crit hit calculation in pokemon
         float critical = 1f;
-        if (UnityEngine.Random.value * 100f <= 6.25f)
+        if (UnityEngine.Random.value * 100f <= attacker.Base.luck)
         {
             critical = 1.5f;
         }
 
         //Get types of the creature receiving damage.
         float element = ElementChart.ElementalModifier(move.Base.Element, attacker.Base.element);
-        Debug.Log(element);
 
         //
         var damageDetails = new DamageDetails()
@@ -468,7 +468,6 @@ public class Character
     //This func fire when battle is over.
     public void OnBattleOver()
     {
-        Debug.Log("Name: " + _base.charName);
         enemyDead?.Invoke(_base);
         VolatileStatus = null;
         ResetStatBoost();

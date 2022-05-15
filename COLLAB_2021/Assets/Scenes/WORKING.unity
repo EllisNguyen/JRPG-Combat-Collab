@@ -11801,6 +11801,10 @@ PrefabInstance:
       propertyPath: m_DefaultBlend.m_Time
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 4950898890673517846, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_DefaultBlend.m_Style
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.400001

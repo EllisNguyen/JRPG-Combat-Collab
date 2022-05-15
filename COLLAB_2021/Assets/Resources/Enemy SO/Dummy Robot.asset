@@ -15,6 +15,7 @@ MonoBehaviour:
   charName: Dummy Robot
   portraitSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   battleSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
+  attackSprite: {fileID: 0}
   battleIcon: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   overworldAnim:
   - {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
@@ -29,8 +30,7 @@ MonoBehaviour:
   physicalDef: 7
   specialDef: 21
   speed: 37
-  critChance: 45
-  critDmg: 38
+  luck: 1
   elementalRes: 46
   expYield: 41
   element: 0
