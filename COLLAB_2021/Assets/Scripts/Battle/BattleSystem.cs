@@ -1006,6 +1006,16 @@ public class BattleSystem : MonoBehaviour
 
         GameManager.Instance.FadeOut();
 
+        for (int i = 0; i < playerUnits.Count; i++)
+        {
+            playerUnits[i].Hud.ClearData();
+        }
+
+        for (int j = 0; j < enemyUnits.Count; j++)
+        {
+            enemyUnits[j].Hud.ClearData();
+        }
+
         //Loop through all character in party.
         //Reset all boosted stats.
         playerParty.Characters.ForEach(c => c.OnBattleOver());

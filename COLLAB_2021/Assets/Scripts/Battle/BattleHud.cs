@@ -190,12 +190,12 @@ public class BattleHud : MonoBehaviour
 
     public void ClearData()
     {
-        if (_character != null)
-        {
+        //if (_character != null)
+        //{
             //Unsub the OnHPChanged and OnStatusChanged Action.
             _character.OnHPChanged -= UpdateHP;
             _character.OnHPChanged -= UpdateMP;
             _character.OnStatusChanged -= SetStatusText;
-        }
+        //}
     }
 }

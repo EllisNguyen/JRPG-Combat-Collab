@@ -142,6 +142,7 @@ public class EnemyEntity : MonoBehaviour
     public void InitBattle()
     {
         GameController.Instance.StartBattle(this);
+        isMoving = false;
     }
 
     private void OnTriggerEnter(Collider other)
