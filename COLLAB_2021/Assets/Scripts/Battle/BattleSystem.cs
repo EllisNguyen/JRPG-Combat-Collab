@@ -590,12 +590,22 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.RunningTurn;
 
         action = playerAction;
-        var target = currentMove.Base.Target;
 
         playerPerform = false;
         //Check if player perform a move.
         if (playerAction == BattleAction.Move)
         {
+            if (currentMove.Mana > activeUnit.Character.MP)
+            {
+                dialogueBox.EnableActionSelector(false);
+                dialogueBox.EnableDialogueText(true);
+                yield return dialogueBox.TypeDialogue($"{activeUnit.Character.Base.charName.ToUpper()} don't have enough MP to use this skill.");
+
+                ActionSelection();
+                yield break;
+            }
+
+            var target = currentMove.Base.Target;
             switch (target)
             {
                 case MoveTarget.Foe:
@@ -615,17 +625,8 @@ public class BattleSystem : MonoBehaviour
             }
             
             yield return RunAfterTurn(activeUnit);//End turn.
-            //ResetPlayerProgressor();
 
             if (state == BattleState.BattleOver) yield break;
-            ////Exec if second creature still live.
-            //if (secondCharacter.HP > 0)
-            //{
-            //    //Second turn.
-            //    yield return RunMove(secondUnit, firstUnit, secondUnit.Character.CurrentMove);
-            //    yield return RunAfterTurn(secondUnit);//End turn.
-            //    if (state == BattleState.BattleOver) yield break;
-            //}
         }
         else
         {
@@ -640,7 +641,6 @@ public class BattleSystem : MonoBehaviour
                 //ActionSelection();
                 state = BattleState.Busy;
             }
-
         }
     }
 
@@ -682,7 +682,7 @@ public class BattleSystem : MonoBehaviour
 
     public void ActionSelection()
     {
-        dialogueBox.EnableDialogueText(true);
+        dialogueBox.EnableDialogueText(false);
         if (activeUnit != null)
         {
             if (activeUnit.IsPlayerUnit)// == playerUnits[0])
@@ -706,16 +706,38 @@ public class BattleSystem : MonoBehaviour
     //
     IEnumerator RunMove(BattlePawn sourceUnit, BattlePawn targetUnit, Move move)
     {
+        sourceUnit.Character.CurrentMove = move;
+
         //Declare a bool from the creature current status and check if any status will stop the creature move.
         bool canRunMove = sourceUnit.Character.OnBeforeMove();
         if (!canRunMove)
         {
-            yield return ShowStatusChanges(sourceUnit.Character);
+            //if(sourceUnit.Character.MP < move.Mana)
+            //{
+            //    dialogueBox.EnableActionSelector(false);
+            //    dialogueBox.EnableDialogueText(true);
+            //    yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} don't have enough MP to use this skill.");
 
-            //Call the update health bar function.
-            yield return sourceUnit.Hud.WaitForHpUpdate();
+            //    if (sourceUnit.IsPlayerUnit)
+            //    {
+            //        dialogueBox.EnableActionSelector(true);
+            //        dialogueBox.EnableDialogueText(false);
+            //        ActionSelection();
+            //    }
+            //    else
+            //        StartCoroutine(RunTurnsEnemy(BattleAction.Move));
 
-            yield break;
+            //    yield break;
+            //}
+            //else
+            //{
+                yield return ShowStatusChanges(sourceUnit.Character);
+
+                //Call the update health bar function.
+                yield return sourceUnit.Hud.WaitForHpUpdate();
+
+                yield break;
+            //}
         }
         yield return ShowStatusChanges(sourceUnit.Character);
 

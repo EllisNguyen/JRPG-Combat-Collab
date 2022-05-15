@@ -114,7 +114,7 @@ public class BattlePawn : MonoBehaviour
     {
         graphic.sprite = _base.guardSprite;
 
-        yield return new WaitForSeconds(0.55f);
+        yield return new WaitForSeconds(0.85f);
 
         graphic.sprite = _base.battleSprite;
     }

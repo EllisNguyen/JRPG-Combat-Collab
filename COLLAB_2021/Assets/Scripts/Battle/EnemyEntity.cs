@@ -49,7 +49,7 @@ public class EnemyEntity : MonoBehaviour
 
         if (_base != null)
         {
-            _sprite = _base.overworldAnim[0];
+            _sprite = _base.overworldAnim[1];
             graphic.sprite = _sprite;
 
             if(animator.WalkLeftSprites != null && animator.WalkRightSprites != null)

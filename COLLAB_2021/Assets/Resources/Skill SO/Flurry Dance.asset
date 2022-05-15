@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Flurry Dance
   m_EditorClassIdentifier: 
   moveName: Flurry Dance
+  guard: 0
   description: 
   element: 1
   power: 30

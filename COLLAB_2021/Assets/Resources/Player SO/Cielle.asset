@@ -37,5 +37,5 @@ MonoBehaviour:
     level: 1
   - skillData: {fileID: 11400000, guid: 710fbdcba388f18408704526b622546a, type: 2}
     level: 2
-  - skillData: {fileID: 11400000, guid: 4a8801744e37660498b0d421cfb08990, type: 2}
+  - skillData: {fileID: 11400000, guid: e03abd37c4400b347a60a80890846a3d, type: 2}
     level: 4

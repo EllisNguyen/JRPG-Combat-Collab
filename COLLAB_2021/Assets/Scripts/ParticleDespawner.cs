@@ -16,7 +16,7 @@ public class ParticleDespawner : MonoBehaviour
 
     private IEnumerator Start()
     {
-        yield return new WaitForSecondsRealtime(destroyTimer);
+        yield return new WaitForSecondsRealtime(destroyTimer + 0.5f);
 
         Destroy(gameObject);
     }

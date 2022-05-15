@@ -434,8 +434,15 @@ public class Character
     //A boolean check.
     public bool OnBeforeMove()
     {
-        //Boolean to check wether creature can perform a move.
+        //Boolean to check whether creature can perform a move.
         bool canPerformMove = true;
+
+        Debug.Log($"Try using {CurrentMove.Base.Name.ToUpper()}, need to use {CurrentMove.Mana} out of {MP} current MP.");
+
+        if (_currentMove.Mana > MP)
+        {
+            canPerformMove = false;
+        }
 
         //Check if status condition is not null.
         if (Status?.OnBeforeMove != null)
@@ -471,9 +478,7 @@ public class Character
         enemyDead?.Invoke(_base);
         VolatileStatus = null;
         ResetStatBoost();
-    }
-
-    
+    }  
 }
 
 public class DamageDetails

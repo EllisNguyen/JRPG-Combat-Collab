@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _base: {fileID: 11400000, guid: 44affc7ea093142478c1a479d509c449, type: 2}
-  _sprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  _sprite: {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   movement: {fileID: 3538318352488113226}
   detectionCollider: {fileID: 7885974269846197197}
   detectionRadius: 2
@@ -341,7 +341,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  m_Sprite: {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
