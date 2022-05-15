@@ -45,22 +45,24 @@ public class SpeedProgressor : MonoBehaviour
     {
         int characterSpeed = character.Base.speed;
 
+        print($"{character.Base.charName} move at speed of {character.Base.speed}");
+
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
 
         if(battleSystem.ActiveUnit == null)
         {
-            while (slider.value < 1 && battleSystem.State != BattleState.Busy)
+            while (slider.value < slider.maxValue && battleSystem.State != BattleState.Busy)
             {
                 if (battleSystem.ActiveUnit != null) break;
 
                 battleSystem.State = BattleState.Waiting;
-                slider.value += (characterSpeed / 15 * battleSystem.SpeedProgressorMultiplier) * 0.02f;
+                slider.value += (characterSpeed * battleSystem.SpeedProgressorMultiplier) * 0.003f;
                 yield return null;
                 //await Task.Yield();
             }
         }
 
-        if (slider.value == 1)
+        if (slider.value == slider.maxValue)
         {
             if (battleSystem.State != BattleState.Busy) battleSystem.State = BattleState.Busy;
             battleSystem.ActiveCharacter.sprite = character.Base.battleIcon;

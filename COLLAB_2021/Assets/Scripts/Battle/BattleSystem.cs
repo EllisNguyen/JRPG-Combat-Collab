@@ -479,18 +479,24 @@ public class BattleSystem : MonoBehaviour
         {
             for (int i = 0; i < playerUnits.Count; i++)
             {
-                for (int k = 0; k < playerProgressors.Count; k++)
-                {
-                    StartCoroutine(playerProgressors[i].SpeedProgress(playerUnits[i].Character, playerUnits[i]));
-                }
+                StartCoroutine(playerUnits[i].Progressor.SpeedProgress(playerUnits[i].Character, playerUnits[i]));
+
+                //for (int m = 0; m < playerProgressors.Count; m++)
+                //{
+                //    StartCoroutine(playerProgressors[m].SpeedProgress(playerUnits[m].Character, playerUnits[m]));
+                //    //playerProgressors[i].SpeedProgress(playerUnits[i].Character, playerUnits[i]));
+                //}
             }
 
             for (int j = 0; j < enemyUnits.Count; j++)
             {
-                for (int k = 0; k < enemyProgressors.Count; k++)
-                {
-                    StartCoroutine(enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, enemyUnits[j]));
-                }
+                StartCoroutine(enemyUnits[j].Progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[j]));
+
+                //for (int n = 0; n < enemyProgressors.Count; n++)
+                //{
+                //    StartCoroutine(enemyProgressors[n].SpeedProgress(enemyUnits[n].Character, enemyUnits[n]));
+                //    //enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, enemyUnits[j]);
+                //}
             }
         }
     }

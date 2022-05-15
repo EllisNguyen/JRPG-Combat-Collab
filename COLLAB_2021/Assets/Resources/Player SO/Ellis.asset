@@ -26,8 +26,8 @@ MonoBehaviour:
   specialAtkDmg: 24
   physicalDef: 31
   specialDef: 16
-  speed: 42
-  luck: 1
+  speed: 28
+  luck: 30
   elementalRes: 12
   expYield: 5
   element: 0
