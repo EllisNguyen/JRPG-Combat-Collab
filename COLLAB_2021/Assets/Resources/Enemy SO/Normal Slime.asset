@@ -27,10 +27,10 @@ MonoBehaviour:
   health: 1
   mana: 2
   physicalAtkDmg: 2
-  specialAtkDmg: 5
+  specialAtkDmg: 1
   physicalDef: 3
   specialDef: 5
-  speed: 46
+  speed: {x: 12, y: 57}
   luck: 1
   elementalRes: 12
   expYield: 47

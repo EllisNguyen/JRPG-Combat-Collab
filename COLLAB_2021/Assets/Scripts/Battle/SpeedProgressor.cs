@@ -13,6 +13,11 @@ public class SpeedProgressor : MonoBehaviour
 {
     [SerializeField] Slider slider;
     [SerializeField] Image portrait;
+    [SerializeField] bool isPlayer;
+
+    [SerializeField] RectTransform avatarHolder;
+    [SerializeField] Vector2 playerPos = new Vector2(0, 15);
+    [SerializeField] Vector2 enemyPos = new Vector2(0, -15);
 
     public Slider Slider
     {
@@ -30,9 +35,12 @@ public class SpeedProgressor : MonoBehaviour
         battleSystem = FindObjectOfType<BattleSystem>();
     }
 
-    public void SetProgressorData(Character character)
+    public void SetProgressorData(Character character, bool isPlayer)
     {
         portrait.sprite = character.Base.battleIcon;
+
+        if(isPlayer) avatarHolder.anchoredPosition = playerPos;
+        else avatarHolder.anchoredPosition = enemyPos;
     }
 
     /// <summary>
@@ -43,9 +51,7 @@ public class SpeedProgressor : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SpeedProgress(Character character, BattlePawn activeUnit)
     {
-        int characterSpeed = character.Base.speed;
-
-        print($"{character.Base.charName} move at speed of {character.Base.speed}");
+        int characterSpeed = Random.Range(character.Base.MinSpeed, character.Base.MaxSpeed);
 
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
 

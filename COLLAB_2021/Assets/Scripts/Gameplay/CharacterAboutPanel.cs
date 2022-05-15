@@ -69,7 +69,7 @@ public class CharacterAboutPanel : MonoBehaviour
         def = selectedCharacter.Base.physicalDef;
         spatk = selectedCharacter.Base.specialAtkDmg;
         spdef = selectedCharacter.Base.specialDef;
-        spd = selectedCharacter.Base.speed;
+        spd = selectedCharacter.Base.MaxSpeed;
         #endregion data number
 
         //Set UI text for stats.

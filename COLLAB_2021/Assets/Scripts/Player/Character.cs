@@ -152,7 +152,7 @@ public class Character
         Stats.Add(Stat.SpecDEF, Mathf.FloorToInt((Base.specialDef * Level) / 100f) + 5);
         
         /*SPD*/
-        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed * Level) / 100f) + 5);
+        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed.y * Level) / 100f) + 5);
 
         //Calculate HP
         MaxHP = Mathf.CeilToInt((Base.health * Level) / 100f) + 15 + Level;

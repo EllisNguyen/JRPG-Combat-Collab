@@ -30,7 +30,7 @@ MonoBehaviour:
   specialAtkDmg: 29
   physicalDef: 16
   specialDef: 23
-  speed: 41
+  speed: {x: 27, y: 39}
   luck: 1
   elementalRes: 28
   expYield: 100

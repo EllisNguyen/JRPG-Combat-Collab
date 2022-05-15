@@ -27,12 +27,15 @@ public class CharacterBaseStats : ScriptableObject
     [Range(1,100)] public int specialAtkDmg;
     [Range(1,100)] public int physicalDef;
     [Range(1,100)] public int specialDef;
-    [Range(1,100)] public int speed;
+    [MinMaxSlider(1, 100, true)] public Vector2 speed = new Vector2(20, 20);
     [Range(1,70)] public int luck;
     [Range(1,100)] public int elementalRes;
     [Range(1,100)] public int expYield;
     public elements element; //Reference to the elements enum
     #endregion
+
+    public int MinSpeed => Mathf.FloorToInt(speed.x);
+    public int MaxSpeed => Mathf.FloorToInt(speed.y);
 
     [SerializeField] GrowthRate growthRate;
     [SerializeField] List<LearnableSkill> learnableSkills;
@@ -96,7 +99,7 @@ public class CharacterBaseStats : ScriptableObject
         specialAtkDmg = Random.Range(5, 50);
         physicalDef = Random.Range(5, 50);
         specialDef = Random.Range(5, 50);
-        speed = Random.Range(5, 50);
+        speed = new Vector2(Random.Range(5, 50), Random.Range(5, 50));
         luck = Random.Range(5, 50);
         elementalRes = Random.Range(5, 50);
     }

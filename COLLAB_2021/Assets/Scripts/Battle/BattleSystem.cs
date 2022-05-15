@@ -291,7 +291,7 @@ public class BattleSystem : MonoBehaviour
         foreach (BattlePawn playerUnit in playerUnits)
         {
             SpeedProgressor progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
-            progresorObj.SetProgressorData(playerUnit.Character);
+            progresorObj.SetProgressorData(playerUnit.Character, true);
             playerProgressors.Add(progresorObj);
 
             progresorObj.name = "PROGRESSOR: " + playerUnit.Character.Base.charName.ToUpper();
@@ -306,7 +306,7 @@ public class BattleSystem : MonoBehaviour
         foreach (BattlePawn enemyUnit in enemyUnits)
         {
             var progresorObj = Instantiate(speedProgressorPrefab, progressorHolder.transform);
-            progresorObj.SetProgressorData(enemyUnit.Character);
+            progresorObj.SetProgressorData(enemyUnit.Character, false);
             enemyProgressors.Add(progresorObj);
 
             progresorObj.name = "PROGRESSOR: " + enemyUnit.Character.Base.name.ToUpper();
@@ -1073,8 +1073,8 @@ public class BattleSystem : MonoBehaviour
         ++escapeAttempt;
 
         //Get player's and enemy's speed.
-        int playerSpeed = playerUnits[0].Character.Base.speed * 4;
-        int enemySpeed = enemyUnits[0].Character.Base.speed;
+        int playerSpeed = playerUnits[0].Character.Base.MaxSpeed * 4;
+        int enemySpeed = enemyUnits[0].Character.Base.MinSpeed;
 
         if (enemySpeed < playerSpeed)
         {
