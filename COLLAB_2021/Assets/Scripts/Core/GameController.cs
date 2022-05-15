@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
 
         SceneManager.LoadScene("TestBattle", LoadSceneMode.Additive);
 
-
+        enemy.gameObject.SetActive(false);
         //Start battle.
         //battleSystem.StartBattle(playerParty, enemyParty);
     }
@@ -118,7 +118,6 @@ public class GameController : MonoBehaviour
         //worldCamera.SetActive(true);
 
         //GameManager.Instance.FadeIn();
-
 
         GameManager.Instance.FadeIn();
     }

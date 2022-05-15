@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 #if UNITY_EDITOR
@@ -31,6 +32,10 @@ public class EnemyEntity : MonoBehaviour
     public CharacterParty party;
     public int enemyLevel;
     public bool isMoving;
+    public bool stunned = false;
+    float stunTimer = 3f;
+    public float curStunTime;
+    [SerializeField] GameObject stunText;
 
     GameState state;
 
@@ -65,8 +70,42 @@ public class EnemyEntity : MonoBehaviour
     }
 #endif
 
+    void StunTimer()
+    {
+        stunned = true;
+        stunText.SetActive(true);
+        triggerCollider.enabled = false;
+
+        float stun = 0;
+        DOTween.To(() => stun, x => stun = x, 20, stunTimer)
+            .OnUpdate(() => {
+                curStunTime = stun;
+            }).OnComplete(() =>
+            {
+                stunned = false;
+                stunText.SetActive(false);
+                triggerCollider.enabled = true;
+            });
+    }
+
+    private void Start()
+    {
+        stunText.SetActive(stunned);
+        triggerCollider.enabled = !stunned;
+    }
+
+    private void OnEnable()
+    {
+        StunTimer();
+    }
+
     void Update()
     {
+        if (stunned == true)
+        {
+            return;
+        }
+
         if (GameManager.Instance.gameState != GameState.FreeRoam)
         {
             movement.enemy.enabled = false;

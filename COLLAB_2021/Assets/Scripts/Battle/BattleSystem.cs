@@ -174,21 +174,21 @@ public class BattleSystem : MonoBehaviour
     void EnablePlayerHud(CharacterParty party)
     {
         //Find all BattleHud class in child and put in an array.
-        eMemberHuds = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
+        pMemberHuds = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
 
-        Debug.Log("PLAYER member slots = " + eMemberHuds.Length);
+        Debug.Log("PLAYER member slots = " + pMemberHuds.Length);
 
-        for (int i = 0; i < eMemberHuds.Length; i++)
+        for (int i = 0; i < pMemberHuds.Length; i++)
         {
             //Check if the party member is withing the number of characters.
             if (i < party.Characters.Count)
             {
                 //Enable slot before setting the data.
-                eMemberHuds[i].gameObject.SetActive(true);
+                pMemberHuds[i].gameObject.SetActive(true);
             }
             else if (i > party.Characters.Count)
             {
-                eMemberHuds[i].gameObject.SetActive(false);
+                pMemberHuds[i].gameObject.SetActive(false);
             }
         }
     }
@@ -349,11 +349,11 @@ public class BattleSystem : MonoBehaviour
 
         if (enemyUnits.Count > 1)
         {
-            yield return dialogueBox.TypeDialogue($"You stumbled upon a group of enemies led by {enemyUnits[0].Character.Base.charName}.");
+            yield return dialogueBox.TypeDialogue($"You stumbled upon a group of enemies led by {enemyUnits[0].Character.Base.charName.ToUpper()}.");
         }
         else if (enemyUnits.Count == 1)
         {
-            yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName}.");
+            yield return dialogueBox.TypeDialogue($"You stumbled upon enemy {enemyUnits[0].Character.Base.charName.ToUpper()}.");
         }
 
         yield return null;
@@ -575,11 +575,11 @@ public class BattleSystem : MonoBehaviour
             //Declare a check for healthy creature in party.
             var nextCreature = playerParty.GetHealthyCharacters();
 
-            BattleOver(false);
+            BattleOver(false, true);
         }
         else
         {
-            BattleOver(true);
+            BattleOver(true, true);
         }
     }
 
@@ -1000,7 +1000,7 @@ public class BattleSystem : MonoBehaviour
     /// <summary>
     /// Trigger the battle over state.
     /// </summary>
-    void BattleOver(bool won)
+    void BattleOver(bool won, bool isOver)
     {
         state = BattleState.BattleOver;
 
@@ -1012,9 +1012,10 @@ public class BattleSystem : MonoBehaviour
         enemyParty.Characters.ForEach(e => e.OnBattleOver());
 
         //Notify the game that the battle is over.
-        OnBattleOver(won);
+        OnBattleOver(isOver);
 
-        enemy.gameObject.SetActive(false);
+        if (won) Destroy(enemy.gameObject);
+        else enemy.gameObject.SetActive(true);
     }
 
     #region HANDLE ACTION SELECTION
@@ -1066,7 +1067,7 @@ public class BattleSystem : MonoBehaviour
                 playerUnits[i].PlayFleeAnimation();
             }
             yield return dialogueBox.TypeDialogue("Got away safely.");
-            BattleOver(true);
+            BattleOver(false, true);
         }
         else
         {
@@ -1081,7 +1082,7 @@ public class BattleSystem : MonoBehaviour
                     playerUnits[i].PlayFleeAnimation();
                 }
                 yield return dialogueBox.TypeDialogue("Got away safely.");
-                BattleOver(true);
+                BattleOver(false, true);
             }
             //Continue battle when escape failed.
             else
