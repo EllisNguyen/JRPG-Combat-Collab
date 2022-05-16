@@ -718,32 +718,12 @@ public class BattleSystem : MonoBehaviour
         bool canRunMove = sourceUnit.Character.OnBeforeMove();
         if (!canRunMove)
         {
-            //if(sourceUnit.Character.MP < move.Mana)
-            //{
-            //    dialogueBox.EnableActionSelector(false);
-            //    dialogueBox.EnableDialogueText(true);
-            //    yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} don't have enough MP to use this skill.");
+            yield return ShowStatusChanges(sourceUnit.Character);
 
-            //    if (sourceUnit.IsPlayerUnit)
-            //    {
-            //        dialogueBox.EnableActionSelector(true);
-            //        dialogueBox.EnableDialogueText(false);
-            //        ActionSelection();
-            //    }
-            //    else
-            //        StartCoroutine(RunTurnsEnemy(BattleAction.Move));
+            //Call the update health bar function.
+            yield return sourceUnit.Hud.WaitForHpUpdate();
 
-            //    yield break;
-            //}
-            //else
-            //{
-                yield return ShowStatusChanges(sourceUnit.Character);
-
-                //Call the update health bar function.
-                yield return sourceUnit.Hud.WaitForHpUpdate();
-
-                yield break;
-            //}
+            yield break;
         }
         yield return ShowStatusChanges(sourceUnit.Character);
 
@@ -841,6 +821,141 @@ public class BattleSystem : MonoBehaviour
             yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()}'s attack missed.");
         }
     }
+
+    List<Character> Units(List<BattlePawn> targets)
+    {
+        List<Character> chars = new List<Character>();
+
+        for (int i = 0; i < targets.Count; i++)
+        {
+            chars.Add(targets[i].Character);
+        }
+
+        return chars;
+    }
+
+    //IEnumerator RunAOEMove(BattlePawn sourceUnit, List<BattlePawn> targetUnits, Move move)
+    //{
+    //    sourceUnit.Character.CurrentMove = move;
+    //    List<Character> targets = new List<Character>();
+
+    //    if (move.Base.Target == MoveTarget.EnemyTeam)
+    //    {
+    //        targetUnits = enemyUnits;
+    //    }
+    //    else if (move.Base.Target == MoveTarget.PlayerTeam)
+    //    {
+    //        targetUnits = playerUnits;
+    //    }
+    //    targets = Units(targetUnits);
+
+    //    //Declare a bool from the creature current status and check if any status will stop the creature move.
+    //    bool canRunMove = sourceUnit.Character.OnBeforeMove();
+    //    if (!canRunMove)
+    //    {
+    //        yield return ShowStatusChanges(sourceUnit.Character);
+
+    //        //Call the update health bar function.
+    //        yield return sourceUnit.Hud.WaitForHpUpdate();
+
+    //        yield break;
+    //    }
+    //    yield return ShowStatusChanges(sourceUnit.Character);
+
+    //    dialogueBox.EnableActionSelector(false);
+    //    dialogueBox.EnableDialogueText(true);
+
+    //    //Decrease the PP of the move and fire the dialogue coroutine.
+
+    //    sourceUnit.Character.DecreaseMP(move.Mana);
+    //    sourceUnit.Hud.UpdateMP();
+
+    //    vCamera.m_LookAt = centerBattle;
+
+    //    print($"Used {move.Base.Name.ToUpper()}.");
+    //    yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
+
+    //    //Check if the attack landed.
+    //    if (CheckIfMoveHits(move, sourceUnit.Character, targets))
+    //    {
+    //        if (move.Base.Guard) sourceUnit.PlayGuardAnimation(move, sourceUnit);
+    //        else
+    //            sourceUnit.PlayAttackAnimation(move, targetUnits);
+
+    //        SpawnParticle(move, targetUnits);
+
+    //        if (move.Base.Target == MoveTarget.Foe)
+    //        {
+    //            targetUnits.PlayHitAnimation();//Hit animation.
+    //            yield return CameraShake(4, 0.1f);
+    //        }
+
+
+    //        //Check if the move is Status effect.
+    //        if (move.Base.Category == MoveCategory.Status)
+    //        {
+    //            yield return RunMoveEffect(move.Base.Effect, sourceUnit.Character, targetUnits.Character, move.Base.Target);
+    //        }
+    //        //Do damage if not Status effect move.
+    //        else
+    //        {
+    //            //Declare fainted boolean
+    //            brain.m_DefaultBlend.m_Time = 15f;
+    //            //brain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
+    //            var damageDetails = targetUnits.Character.TakeDamage(move, sourceUnit.Character, targetUnits.Character);
+
+    //            if (damageDetails.Critical > 1)
+    //            {
+    //                vCamera.m_LookAt = targetUnits.LookAtPos;
+    //                vCamera.m_Lens.FieldOfView = critFov;
+    //                Time.timeScale = 0.75f;
+    //                yield return new WaitForSecondsRealtime(0.5f);
+    //            }
+
+    //            //Show crit or type effectiveness dialogue.
+    //            yield return ShowDamageDetails(damageDetails);
+
+    //            Time.timeScale = 1f;
+    //            //Call the update health bar func.
+    //            yield return targetUnits.Hud.WaitForHpUpdate();
+
+    //            brain.m_DefaultBlend.m_Time = defaultTransitionTime;
+    //            brain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.EaseInOut;
+    //            vCamera.m_Lens.FieldOfView = normalFov;
+    //            vCamera.m_LookAt = centerBattle;
+    //        }
+
+    //        //Check for available secondary effects.
+    //        //Check if secondary effect available.
+    //        //Check for opponent health.
+    //        if (move.Base.Secondaries != null && move.Base.Secondaries.Count > 0 && targetUnits.Character.HP > 0)
+    //        {
+    //            //Loop through all secondary effects.
+    //            foreach (var secondary in move.Base.Secondaries)
+    //            {
+    //                //Chance of secondary fx to occur.
+    //                var rnd = UnityEngine.Random.Range(1, 101);
+
+    //                //Compare random number to fixed chance.
+    //                if (rnd <= secondary.Chance)
+    //                {
+    //                    yield return RunMoveEffect(secondary, sourceUnit.Character, targetUnits.Character, secondary.Target);
+    //                }
+    //            }
+    //        }
+
+    //        //Check for the creature's health.
+    //        if (targetUnits.Character.HP <= 0)
+    //        {
+    //            yield return HandleCharacterFainted(targetUnits);
+    //        }
+    //    }
+    //    //If the move does not landed / missed.
+    //    else
+    //    {
+    //        yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()}'s attack missed.");
+    //    }
+    ////}
 
     //E
     IEnumerator RunMoveEffect(MoveEffect effects, Character source, Character target, MoveTarget moveTarget)

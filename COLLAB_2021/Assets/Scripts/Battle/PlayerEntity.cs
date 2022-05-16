@@ -13,6 +13,9 @@ public class PlayerEntity : MonoBehaviour
     [Header("Values")]
     [SerializeField] int money;
     [SerializeField] Vector3 position;
+    [SerializeField] ParticleSystem increaseMana;
+    [SerializeField] float healTimer = 5f;
+    [SerializeField] float curTimer;
 
     public int Money
     {
