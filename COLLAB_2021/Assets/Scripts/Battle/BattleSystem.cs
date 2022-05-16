@@ -605,7 +605,7 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogueBox.EnableActionSelector(false);
                 dialogueBox.EnableDialogueText(true);
-                yield return dialogueBox.TypeDialogue($"{activeUnit.Character.Base.charName.ToUpper()} don't have enough MP to use this skill.");
+                yield return dialogueBox.TypeDialogue($"Not enough MP.");
 
                 ActionSelection();
                 yield break;

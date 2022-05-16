@@ -37,6 +37,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
 
     //dialogue for this specific class
     public Dialogue dialogue;
+    public TextMeshPro nameText;
     
     public DialogueManager dialogueManager;
     [SerializeField] public GameObject textPopUp;
@@ -56,6 +57,7 @@ public class DialogueCharacter : MonoBehaviour, NPCInterface
         //Get the dialogue manager
         dialogueManager = FindObjectOfType<DialogueManager>();
         textPopUp.SetActive(false);
+        nameText.text = dialogue.speaker;
     }
 
     //If player is in the trigger of the character, check for initiate dialogue input
