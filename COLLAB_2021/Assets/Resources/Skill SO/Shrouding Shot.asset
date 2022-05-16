@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Shrouding Shot
   m_EditorClassIdentifier: 
   moveName: Shrouding Shot
-  description: "AoE buff. Boosts all allies\u2019 defense and evasion by 20%."
+  guard: 0
+  description: "AoE buff. Boosts all allies\u2019 defense and evasion by 1."
   element: 0
   power: 0
   accuracy: 90

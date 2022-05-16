@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: Flurry Dance
   guard: 0
-  description: 
+  description: Random target. Might burn enemy.
   element: 1
   power: 30
   accuracy: 90

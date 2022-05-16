@@ -61,7 +61,9 @@ public class BattleSystem : MonoBehaviour
     [FoldoutGroup("Battle Components")] [SerializeField] BattlePawn enemyPawn_Pref;
     [FoldoutGroup("Battle Components")] [SerializeField] InventoryUI inventoryUI;
     [FoldoutGroup("Battle Components")] [SerializeField] BattleDialogue dialogueBox;
+    [FoldoutGroup("Battle Components")] [SerializeField] MoveInfoPanel moveInfoPanel;
 
+    public MoveInfoPanel MoveInfoPanel => moveInfoPanel;
     public BattleDialogue DialogueBox => dialogueBox;
 
     [PropertySpace(10)]

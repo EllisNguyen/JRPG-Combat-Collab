@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
 
 public class GameController : MonoBehaviour
 {
@@ -20,6 +21,22 @@ public class GameController : MonoBehaviour
     [SerializeField] LayerMask battleLayer;
     
     GameState state;
+
+    [FoldoutGroup("Element color")]public Color normal;
+    [FoldoutGroup("Element color")]public Color heat;
+    [FoldoutGroup("Element color")]public Color electric;
+    [FoldoutGroup("Element color")]public Color radiation;
+    [FoldoutGroup("Element color")]public Color ice;
+    [FoldoutGroup("Element color")]public Color light;
+    [FoldoutGroup("Element color")]public Color dark;
+
+    [FoldoutGroup("Element icon")]public Sprite normalIcon;
+    [FoldoutGroup("Element icon")]public Sprite heatIcon;
+    [FoldoutGroup("Element icon")]public Sprite electricIcon;
+    [FoldoutGroup("Element icon")]public Sprite radiationIcon;
+    [FoldoutGroup("Element icon")]public Sprite iceIcon;
+    [FoldoutGroup("Element icon")]public Sprite lightIcon;
+    [FoldoutGroup("Element icon")]public Sprite darkIcon;
 
     public BattleSystem BattleSystem
     {

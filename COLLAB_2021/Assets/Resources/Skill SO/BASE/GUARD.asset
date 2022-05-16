@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveName: GUARD
   guard: 1
-  description: 
+  description: Guard increase Phys.DEF and Sp.DEF by 1 each.
   element: 0
   power: 0
   accuracy: 0

@@ -13276,6 +13276,20 @@ MonoBehaviour:
   battleLayer:
     serializedVersion: 2
     m_Bits: 536870912
+  normal: {r: 0.47058827, g: 0.47058827, b: 0.47058827, a: 1}
+  heat: {r: 0.6313726, g: 0.19607845, b: 0.18823531, a: 1}
+  electric: {r: 0.87843144, g: 0.7411765, b: 0.34901962, a: 1}
+  radiation: {r: 0.32156864, g: 0.6784314, b: 0.13725491, a: 1}
+  ice: {r: 0.098039225, g: 0.654902, b: 0.75294125, a: 1}
+  light: {r: 0.37254903, g: 0.6901961, b: 0.6039216, a: 1}
+  dark: {r: 0.44705886, g: 0.24313727, b: 0.74509805, a: 1}
+  normalIcon: {fileID: 21300000, guid: 7e764d8ebc4a54eba980efa7d97d64bd, type: 3}
+  heatIcon: {fileID: 21300000, guid: ba21e48f675c44360ab2f2adf0f09a65, type: 3}
+  electricIcon: {fileID: 21300000, guid: c11d2849b15c64c11a6673cb63329c93, type: 3}
+  radiationIcon: {fileID: 21300000, guid: 17b83f4cfcad440a7981083e22879202, type: 3}
+  iceIcon: {fileID: 21300000, guid: 612ae28d61b7c47329c9c6df451d053a, type: 3}
+  lightIcon: {fileID: 21300000, guid: f92f060e0626b4af0ba96cfcefd8a5db, type: 3}
+  darkIcon: {fileID: 21300000, guid: aebcdfd45683e4895b8081d7bef80ed8, type: 3}
   enemy: {fileID: 0}
 --- !u!1 &4041421279208778046
 GameObject:
@@ -28958,6 +28972,9 @@ MonoBehaviour:
   party: {fileID: 4041421280388896427}
   money: 0
   position: {x: 0, y: 0, z: 0}
+  increaseMana: {fileID: 0}
+  healTimer: 5
+  curTimer: 0
 --- !u!114 &4041421280388896424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33006,11 +33023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670823, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_Follow
@@ -33126,11 +33143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8981061058478198491, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}

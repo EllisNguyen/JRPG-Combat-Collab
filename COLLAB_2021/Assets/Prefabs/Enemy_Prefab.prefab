@@ -266,7 +266,9 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   movementSpeed: 6
   popupObject: {fileID: 7142250376991314112, guid: a8ab934fe50d0f34495c90d595313dc2, type: 3}
-  follow: 1
+  wanderRadius: 2
+  wanderTimer: {x: 4, y: 8}
+  follow: 0
   enemy: {fileID: 8797810910489976030}
 --- !u!195 &8797810910489976030
 NavMeshAgent:
@@ -538,16 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3731688d2a0d543a16753f3c24f54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkRightSprites:
-  - {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: 8936921706386391257, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -2063852962750616285, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  walkLeftSprites:
-  - {fileID: 1049996829110888860, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -5906265219504249597, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: 8936921706386391257, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
-  - {fileID: -2063852962750616285, guid: 5ca6353ac62933a4b879e37471eafbcc, type: 3}
+  walkRightSprites: []
+  walkLeftSprites: []
   defaultDirection: 1
   flip: 0
   idleFrame: 0

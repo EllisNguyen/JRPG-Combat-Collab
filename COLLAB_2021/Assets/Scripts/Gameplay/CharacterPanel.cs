@@ -13,7 +13,7 @@ using DG.Tweening;
 
 public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    Character _character;
+    [HideInInspector] public Character _character;
 
     [Header("Info")]
     [SerializeField] string characterName;
@@ -74,8 +74,8 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         levelTxt.text = "Lv." + _character.Level;
 
         //Set current health on health bar.
-        hpBar.SetHP((float)_character.HP / _character.MaxHP, _character);
-        mpBar.SetMP((float)_character.HP / _character.MaxHP, _character);
+        hpBar.SetHP((float)_character.HP / (float)_character.MaxHP, _character);
+        mpBar.SetMP((float)_character.MP / (float)_character.MaxMP, _character);
 
         expBar.fillAmount = _character.Exp;
         #endregion Set character's info
@@ -90,10 +90,10 @@ public class CharacterPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void UpdateData()
     {
         //Set current health on health bar.
-        hpBar.SetHP((float)_character.HP / _character.MaxHP, _character);
-        mpBar.SetMP((float)_character.MP / _character.MaxMP, _character);
+        hpBar.SetHP((float)_character.HP / (float)_character.MaxHP, _character);
+        mpBar.SetMP((float)_character.MP / (float)_character.MaxMP, _character);
 
-        expBar.fillAmount = _character.Exp;
+        expBar.fillAmount = ((float)_character.Exp / (float)_character.Exp);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

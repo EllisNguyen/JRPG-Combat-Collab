@@ -54,7 +54,7 @@ public class PartyContainer : MonoBehaviour
         //Loop through the list of CharacterPanel and setup UI for all of them.
         foreach (var member in memberSlots)
         {
-            member.SetUi();
+            member.Init(member._character);
         }
 
         //Everytime party is updated, run the SetPartyData function.

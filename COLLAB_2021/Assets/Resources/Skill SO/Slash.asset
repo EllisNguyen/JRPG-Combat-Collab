@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   moveName: Slash
-  description: 
+  guard: 0
+  description: Do a knife trick, yeah.
   element: 0
   power: 30
   accuracy: 100

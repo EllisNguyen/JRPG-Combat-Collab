@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: ATTACK
   m_EditorClassIdentifier: 
   moveName: ATTACK
-  description: 
+  guard: 0
+  description: Normal attack.
   element: 0
   power: 25
   accuracy: 80

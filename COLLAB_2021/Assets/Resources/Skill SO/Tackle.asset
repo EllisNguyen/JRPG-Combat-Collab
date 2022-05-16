@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Tackle
   m_EditorClassIdentifier: 
   moveName: Tackle
-  description: 
+  guard: 0
+  description: Headbutt the enemy. Not always hit with slight chance of confusion
+    cause on the user.
   element: 0
   power: 25
-  accuracy: 100
+  accuracy: 80
   alwaysHit: 0
   mana: 2
   priority: 0
@@ -25,7 +27,12 @@ MonoBehaviour:
     boosts: []
     status: 0
     volatileStatus: 0
-  secondaries: []
+  secondaries:
+  - boosts: []
+    status: 0
+    volatileStatus: 6
+    chance: 10
+    target: 1
   target: 0
   hitEffect: {fileID: 1388458029259005876, guid: 7f334eb0eb3587444820638911a9ea83, type: 3}
   fxSpawnOffset: {x: 0, y: 1.2, z: -0.5}

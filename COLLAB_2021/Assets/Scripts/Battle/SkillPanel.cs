@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Sirenix.OdinInspector;
 
 public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -22,7 +23,12 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] TextMeshProUGUI skillName;
     [SerializeField] TextMeshProUGUI manaRequirement;
     [SerializeField] Image typeIcon;
+    [SerializeField] Image baseImage;
     Button button;
+
+    [FoldoutGroup("Attack type")][SerializeField] GameObject physicalAttack;
+    [FoldoutGroup("Attack type")][SerializeField] GameObject specialAttack;
+    [FoldoutGroup("Attack type")][SerializeField] GameObject statusEffect;
 
     public Button Button => button;
 
@@ -44,9 +50,64 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         gameObject.name = move.Base.Name;
 
-        manaRequirement.text = $"Mana req. {move.Base.Mana}";
+        manaRequirement.text = $"{move.Base.Mana} MP";
         typeIcon.sprite = null;
         battleSystem = FindObjectOfType<BattleSystem>();
+
+        switch (move.Base.Element)
+        {
+            case elements.normal:
+                typeIcon.sprite = GameController.Instance.normalIcon;
+                typeIcon.color = GameController.Instance.normal;
+                break;
+            case elements.heat:
+                typeIcon.sprite = GameController.Instance.heatIcon;
+                typeIcon.color = GameController.Instance.heat;
+                break;
+            case elements.electric:
+                typeIcon.sprite = GameController.Instance.electricIcon;
+                typeIcon.color = GameController.Instance.electric;
+                break;
+            case elements.radiation:
+                typeIcon.sprite = GameController.Instance.radiationIcon;
+                typeIcon.color = GameController.Instance.radiation;
+                break;
+            case elements.ice:
+                typeIcon.sprite = GameController.Instance.iceIcon;
+                typeIcon.color = GameController.Instance.ice;
+                break;
+            case elements.light:
+                typeIcon.sprite = GameController.Instance.lightIcon;
+                typeIcon.color = GameController.Instance.light;
+                break;
+            case elements.dark:
+                typeIcon.sprite = GameController.Instance.darkIcon;
+                typeIcon.color = GameController.Instance.dark;
+                break;
+            default:
+                break;
+        }
+
+        switch (move.Base.Category)
+        {
+            case MoveCategory.Physical:
+                physicalAttack.SetActive(true);
+                specialAttack.SetActive(false);
+                statusEffect.SetActive(false);
+                break;
+            case MoveCategory.Range:
+                physicalAttack.SetActive(false);
+                specialAttack.SetActive(true);
+                statusEffect.SetActive(false);
+                break;
+            case MoveCategory.Status:
+                physicalAttack.SetActive(false);
+                specialAttack.SetActive(false);
+                statusEffect.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -71,15 +132,19 @@ public class SkillPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         battleSystem.currentMovePanel = this;
         battleSystem.currentMove = Move;
+        battleSystem.MoveInfoPanel.gameObject.SetActive(true);
+        battleSystem.MoveInfoPanel.SetData(_move);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        battleSystem.currentMovePanel = null;
+        //battleSystem.currentMovePanel = null;
+        battleSystem.MoveInfoPanel.gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        battleSystem.MoveInfoPanel.gameObject.SetActive(false);
         //TODO: Fight.
         //battleSystem.UseSKill()
         //StartCoroutine(battleSystem.RunTurnsPlayer(BattleAction.Move));

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Micro-aggression
   m_EditorClassIdentifier: 
   moveName: Micro-aggression
-  description: 
+  guard: 0
+  description: Boost user confident in Sp.ATK and Sp.DEF by 1. Could cause confusion
+    on the user.
   element: 0
   power: 10
   accuracy: 90
@@ -23,10 +25,10 @@ MonoBehaviour:
   category: 1
   effect:
     boosts:
-    - stat: 4
-      boost: -1
+    - stat: 3
+      boost: 1
     - stat: 5
-      boost: -1
+      boost: 1
     status: 0
     volatileStatus: 0
   secondaries:
@@ -35,8 +37,8 @@ MonoBehaviour:
       boost: -2
     status: 0
     volatileStatus: 6
-    chance: 40
-    target: 0
+    chance: 50
+    target: 1
   target: 1
   hitEffect: {fileID: 0}
   fxSpawnOffset: {x: 0, y: 1.2, z: -0.5}
