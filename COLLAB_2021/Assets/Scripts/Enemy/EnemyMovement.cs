@@ -14,7 +14,7 @@ Summary:
 Simple Enemy Follow the player Script
  */
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : Navigation
 {
     public Transform playerTransform; //stores the player's Transform in the Editor
     [SerializeField] float movementSpeed = 6f;
@@ -23,60 +23,29 @@ public class EnemyMovement : MonoBehaviour
     private DamagePopup damagePopup; //reference to the DamagePopup class
     //EnemyInterface instance; //instance of the enemyinterface
 
-    public float wanderRadius;
-    [MinMaxSlider(1, 10, true)] public Vector2 wanderTimer = new Vector2(3, 5);
-    private float timer;
-
-
     public bool follow = true; //enables following player or not
 
-    public NavMeshAgent enemy;
+    //public NavMeshAgent enemy;
 
     private void Start()
     {
-        //ID = 0; //Set enemy ID TESTING
-        //instance = this.gameObject.GetComponent<EnemyInterface>();
+        Agent.speed = movementSpeed;
     }
 
-    public void HandleUpdate()
+    public virtual void HandleUpdate()
     {
-        if(follow == false && playerTransform == null)
-        {
-            timer += Time.deltaTime;
-            float nextTimer = Random.Range(wanderTimer.x, wanderTimer.y);
-
-            if (timer >= nextTimer)
-            {
-                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-                enemy.SetDestination(newPos);
-                timer = 0;
-            }
-            return;
-        }
+        base.HandleUpdate();
 
         if (follow == true && playerTransform != null)
         {
-            enemy.SetDestination(playerTransform.position);
+            Agent.SetDestination(playerTransform.position);
         }
-
     }
+
 
     private void OnMouseDown()
     {
         PopupValue(100);
-    }
-
-    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
-    {
-        Vector3 randDirection = Random.insideUnitSphere * dist;
-
-        randDirection += origin;
-
-        NavMeshHit navHit;
-
-        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
-
-        return navHit.position;
     }
 
     private void PopupValue(float damage)
@@ -91,14 +60,7 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector3 GetMovementDirection()
     {
-        Vector3 normalizedDirection = enemy.desiredVelocity.normalized;
+        Vector3 normalizedDirection = Agent.desiredVelocity.normalized;
         return normalizedDirection;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Vector3 gizmosPos = new Vector3((float)transform.position.x, (float)transform.position.y);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, wanderRadius);
     }
 }

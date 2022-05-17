@@ -108,28 +108,30 @@ public class EnemyEntity : MonoBehaviour
 
         if (GameManager.Instance.gameState != GameState.FreeRoam)
         {
-            movement.enemy.enabled = false;
+            movement.Agent.enabled = false;
             return;
         }
         else
         {
-            movement.enemy.enabled = true;
+            movement.Agent.enabled = true;
         }
 
-        if (movement.GetMovementDirection().x > 0)
+        animator.MoveX = movement.GetMovementDirection().x;
+        if (movement.GetMovementDirection().x != 0)
         {
-            animator.MoveX = movement.GetMovementDirection().x;
-            animator.FlipSprite(false);
-        }
-        else
-        {
-            animator.MoveX = movement.GetMovementDirection().x;
-            animator.FlipSprite(true);
+            if (movement.GetMovementDirection().x > 0)
+            {
+                animator.FlipSprite(false);
+            }
+            else
+            {
+                animator.FlipSprite(true);
+            }
         }
 
         movement.HandleUpdate();
 
-        if (movement.enemy.velocity.sqrMagnitude != 0)
+        if (movement.Agent.velocity.sqrMagnitude != 0)
         {
             isMoving = true;
         }
