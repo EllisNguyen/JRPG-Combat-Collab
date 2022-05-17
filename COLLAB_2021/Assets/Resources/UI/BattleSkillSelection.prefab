@@ -469,20 +469,6 @@ MonoBehaviour:
   manaRequirement: {fileID: 1566585800767431025}
   typeIcon: {fileID: 7644161624823231819}
   baseImage: {fileID: 2861322449010200241}
-  normal: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
-  heat: {r: 0.6320754, g: 0.19565314, b: 0.18783373, a: 1}
-  electric: {r: 0.8784314, g: 0.740223, b: 0.3490196, a: 1}
-  radiation: {r: 0.32341963, g: 0.6792453, b: 0.13777146, a: 1}
-  ice: {r: 0.09611962, g: 0.6544436, b: 0.754717, a: 1}
-  light: {r: 0.373576, g: 0.6886792, b: 0.6032009, a: 1}
-  dark: {r: 0.44872117, g: 0.24256852, b: 0.745283, a: 1}
-  normalIcon: {fileID: 21300000, guid: 7e764d8ebc4a54eba980efa7d97d64bd, type: 3}
-  heatIcon: {fileID: 21300000, guid: ba21e48f675c44360ab2f2adf0f09a65, type: 3}
-  electricIcon: {fileID: 21300000, guid: c11d2849b15c64c11a6673cb63329c93, type: 3}
-  radiationIcon: {fileID: 21300000, guid: fb719f9257eba4963aaf94397b2844b1, type: 3}
-  iceIcon: {fileID: 21300000, guid: 2fddfc54a383741c8b6d236468e33eee, type: 3}
-  lightIcon: {fileID: 21300000, guid: f92f060e0626b4af0ba96cfcefd8a5db, type: 3}
-  darkIcon: {fileID: 21300000, guid: aebcdfd45683e4895b8081d7bef80ed8, type: 3}
   physicalAttack: {fileID: 4720301110682444597}
   specialAttack: {fileID: 6554246718019146233}
   statusEffect: {fileID: 8331156214283176100}
@@ -668,8 +654,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 6.5
+  m_fontSizeBase: 6.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -863,11 +849,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
       propertyPath: m_fontSize
-      value: 12
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
       propertyPath: m_fontSizeBase
-      value: 12
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
       propertyPath: m_VerticalAlignment
@@ -875,7 +873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
       propertyPath: m_enableWordWrapping
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3668507259923575827, guid: 7fa1207a2b798744f9d6955f6261980c, type: 3}
       propertyPath: m_HorizontalAlignment

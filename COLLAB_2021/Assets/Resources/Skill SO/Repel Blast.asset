@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Repel Blast
   m_EditorClassIdentifier: 
   moveName: Repel Blast
+  guard: 0
   description: Single target attack. Blind enemy.
   element: 5
   power: 30
   accuracy: 90
   alwaysHit: 0
-  mana: 2
+  mana: 4
   priority: 0
   category: 1
   effect:
