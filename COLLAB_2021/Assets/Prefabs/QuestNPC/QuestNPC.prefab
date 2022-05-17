@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1563378246706039998}
   - component: {fileID: 481013254402599063}
   - component: {fileID: 7829383310598742201}
+  - component: {fileID: 6057483023691268164}
+  - component: {fileID: 3020118800792502542}
   m_Layer: 0
   m_Name: QuestNPC
   m_TagString: Untagged
@@ -117,6 +119,51 @@ MonoBehaviour:
     - He's waiting for you up that slide in front of you.
   questNumber: 0
   questToAdd: {fileID: 11400000, guid: e605f9e3a1b0df549b01e7d31140ec17, type: 2}
+--- !u!195 &6057483023691268164
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563378246706039996}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3020118800792502542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563378246706039996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3555075e32fe07840ab20ded51309d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navigationType: 1
+  agent: {fileID: 6057483023691268164}
+  wanderRadius: 2
+  wanderTimer: {x: 3, y: 5}
+  waypoints: []
+  selectRandom: 0
+  waypointTimer: {x: 3, y: 5}
+  movementSpeed: 6
+  animator: {fileID: 5050181826615882388}
+  graphic: {fileID: 5156583081667991498}
+  isMoving: 0
 --- !u!1 &4935600578369565638
 GameObject:
   m_ObjectHideFlags: 0

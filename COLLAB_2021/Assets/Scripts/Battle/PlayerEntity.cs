@@ -23,10 +23,29 @@ public class PlayerEntity : MonoBehaviour
         set { money = value; }
     }
 
+    private void Start()
+    {
+        curTimer = healTimer;
+    }
+
     public void HandleMovement()
     {
         movement.Movements();
         position = this.gameObject.transform.position;
+
+        for (int i = 0; i < party.Characters.Count; i++)
+        {
+            if(party.Characters[i].MP < party.Characters[i].MaxMP)
+            {
+                healTimer -= 0.15f * Time.deltaTime;
+                if(healTimer < 0)
+                {
+                    increaseMana.Play();
+                    party.Characters[i].IncreaseMP(3);
+                    healTimer = curTimer;
+                }
+            }
+        }
     }
 
     public void HandleInput()
