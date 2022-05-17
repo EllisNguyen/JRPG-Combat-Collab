@@ -90,7 +90,6 @@ public class CharacterBaseStats : ScriptableObject
         }
     }
 
-    [Button]
     public void RandomAttributes()
     {
         health = Random.Range(5, 50);

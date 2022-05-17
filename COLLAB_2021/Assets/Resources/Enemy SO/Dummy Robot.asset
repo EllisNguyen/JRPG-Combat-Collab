@@ -16,6 +16,7 @@ MonoBehaviour:
   portraitSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   battleSprite: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   attackSprite: {fileID: 0}
+  guardSprite: {fileID: 0}
   battleIcon: {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
   overworldAnim:
   - {fileID: 7656034915726927105, guid: 834aadffee2b6074494ccc07010a41f3, type: 3}
@@ -29,7 +30,7 @@ MonoBehaviour:
   specialAtkDmg: 24
   physicalDef: 7
   specialDef: 21
-  speed: 37
+  speed: {x: 20, y: 20}
   luck: 1
   elementalRes: 46
   expYield: 41
@@ -40,3 +41,17 @@ MonoBehaviour:
     level: 0
   - skillData: {fileID: 11400000, guid: 4f3c582d3f62e724082650f023ca1c08, type: 2}
     level: 1
+  money: 20
+  drops:
+  - item: {fileID: 11400000, guid: 5893acd579a1b0244a23016df8a77243, type: 2}
+    count: {x: 1, y: 4}
+    chance: 50
+  - item: {fileID: 11400000, guid: c36ad79449e135942be3d5d6ea959fbe, type: 2}
+    count: {x: 1, y: 4}
+    chance: 15
+  - item: {fileID: 11400000, guid: 7cc55ccbbddbb57419160294902f16d4, type: 2}
+    count: {x: 1, y: 5}
+    chance: 35
+  - item: {fileID: 11400000, guid: 048e2254f2f0a594d859963665a32ece, type: 2}
+    count: {x: 1, y: 2}
+    chance: 5
