@@ -1,5 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+///Author: Phap Nguyen.
+///Description: Enemy control.
+///Day created: 01/05/2022
+///Last edited: 17/05/2022 - Phap Nguyen.
+
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;

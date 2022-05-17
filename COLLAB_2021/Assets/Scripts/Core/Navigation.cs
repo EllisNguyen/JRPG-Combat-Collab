@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: Universal navigation for NPC and Enemy.
+///Day created: 17/05/2022
+///Last edited: 17/05/2022 - Phap Nguyen.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

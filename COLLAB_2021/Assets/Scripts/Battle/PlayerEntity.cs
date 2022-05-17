@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: Hold all player components.
+///Day created: 01/05/2022
+///Last edited: 17/05/2022 - Phap Nguyen.
+
 using UnityEngine;
 
 public class PlayerEntity : MonoBehaviour

@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: Show info of skill when hover on the skill button in battle.
+///Day created: 16/05/2022
+///Last edited: 17/05/2022 - Phap Nguyen.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

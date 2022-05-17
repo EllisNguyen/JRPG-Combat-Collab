@@ -1,3 +1,8 @@
+///Author: Phap Nguyen.
+///Description: ScriptableObject for playable character.
+///Day created: 25/04/2022
+///Last edited: 17/05/2022 - Phap Nguyen.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
