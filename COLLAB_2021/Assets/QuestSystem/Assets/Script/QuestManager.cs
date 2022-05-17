@@ -26,24 +26,25 @@ public class QuestManager : MonoBehaviour
             //add all the input to quest
             quest.QuestCompleted.AddListener(OnQuestCompleted);
             //instantiate the quest window
-            GameObject questObj = Instantiate(questPrefab, questsContent);
-            Debug.Log(questObj.name);
+            // GameObject questObj = Instantiate(questPrefab, questsContent);
+            // Debug.Log(questObj.name);
+            questHolder.GetComponent<QuestWindow>().Initalize(quest);
             //get the icon
-            questObj.transform.Find("icon").GetComponent<Image>().sprite = quest.Infomation.Icon;
+            //questObj.transform.Find("icon").GetComponent<Image>().sprite = quest.Infomation.Icon;
             //get the button click
-            questObj.GetComponent<Button>().onClick.AddListener(delegate
-            {
-                if (quest.HaveClicked == false)
-                {
-                    
-                    //get the quest window and initalize the quest
-                    questHolder.GetComponent<QuestWindow>().Initalize(quest);
-                    //make the quest holder to true
-                    questHolder.SetActive(true);
-                    //set the have click to true then no one can click
-                    quest.HaveClicked = true;
-                }
-            });
+            // questObj.GetComponent<Button>().onClick.AddListener(delegate
+            // {
+            //     if (quest.HaveClicked == false)
+            //     {
+            //         
+            //         //get the quest window and initalize the quest
+            //         questHolder.GetComponent<QuestWindow>().Initalize(quest);
+            //         //make the quest holder to true
+            //         questHolder.SetActive(true);
+            //         //set the have click to true then no one can click
+            //         quest.HaveClicked = true;
+            //     }
+            // });
         }
     }
     public void CreateQuest()
