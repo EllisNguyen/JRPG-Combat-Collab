@@ -35,6 +35,7 @@ public class QuestManager : MonoBehaviour
             {
                 if (quest.HaveClicked == false)
                 {
+                    
                     //get the quest window and initalize the quest
                     questHolder.GetComponent<QuestWindow>().Initalize(quest);
                     //make the quest holder to true
