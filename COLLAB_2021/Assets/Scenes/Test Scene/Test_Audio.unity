@@ -281,10 +281,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   tracks:
-  - source: {fileID: 0}
+  - source: {fileID: 2115900512}
     audio:
     - type: 0
-      clip: {fileID: 0}
+      clip: {fileID: 8300000, guid: cb0859727a81fc54493fc4f09be42cbd, type: 3}
+    - type: 1
+      clip: {fileID: 8300000, guid: 45824ed3a108be942941bf34c66a03b9, type: 3}
+  - source: {fileID: 215803363}
+    audio:
+    - type: 2
+      clip: {fileID: 8300000, guid: 6ce225db1ba917940b8426dbb012ff28, type: 3}
+    - type: 3
+      clip: {fileID: 8300000, guid: 41e79f02ff3089b4897eaed6fc6ae8a3, type: 3}
 --- !u!4 &711757844
 Transform:
   m_ObjectHideFlags: 0
