@@ -19,15 +19,15 @@ namespace Audio
         {
             if(Input.GetKeyUp(KeyCode.T))
             {
-                audioController.PlayAudio(AudioType.ST_01);
+                audioController.PlayAudio(AudioType.ST_01, true, 1.0f);
             }
             if (Input.GetKeyUp(KeyCode.Y))
             {
-               audioController.StopAudio(AudioType.ST_01);
+               audioController.StopAudio(AudioType.ST_01, true);
             }
             if (Input.GetKeyUp(KeyCode.U))
             {
-               audioController.RestartAudio(AudioType.ST_01);
+               audioController.RestartAudio(AudioType.ST_01,true);
             }
 
             if (Input.GetKeyUp(KeyCode.G))
