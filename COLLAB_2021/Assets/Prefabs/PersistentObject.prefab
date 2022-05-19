@@ -31839,6 +31839,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4041421280388896401}
     m_Modifications:
+    - target: {fileID: 4004349349389388483, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8940513139467441361, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -31883,9 +31887,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8942008191113760331, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942144548563827869, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942464209807774007, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942636693597813619, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8942663203867457845, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
       propertyPath: m_Name
       value: Overworld_Heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942663203867457845, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942694560008214249, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942708733878047763, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7509a0171e96e43a0780e49ebcb4ab, type: 3}
@@ -35355,9 +35387,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2290147918683992568, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2290228267284109818, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
       propertyPath: m_Name
       value: Overworld_Mana
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290228267284109818, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290254156964535228, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290322864356422876, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290339784706848294, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290744131603328644, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2290889250723945554, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070975650306796044, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f6fb6e4ef1937947800575f4e519d05, type: 3}

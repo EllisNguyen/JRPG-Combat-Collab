@@ -4,6 +4,7 @@
 ///Last edited: 17/05/2022 - Phap Nguyen.
 
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class PlayerEntity : MonoBehaviour
 {
@@ -40,16 +41,25 @@ public class PlayerEntity : MonoBehaviour
 
         for (int i = 0; i < party.Characters.Count; i++)
         {
-            if(party.Characters[i].MP < party.Characters[i].MaxMP)
+            if (party.Characters[i].MP < party.Characters[i].MaxMP)
             {
-                healTimer -= 0.15f * Time.deltaTime;
-                if(healTimer < 0)
+                healTimer -= Time.deltaTime;
+                if (healTimer < 0)
                 {
                     increaseMana.Play();
                     party.Characters[i].IncreaseMP(3);
                     healTimer = curTimer;
                 }
             }
+        }
+    }
+
+    [Button]
+    void minusMana()
+    {
+        foreach (var character in party.Characters)
+        {
+            character.DecreaseMP(10);
         }
     }
 
