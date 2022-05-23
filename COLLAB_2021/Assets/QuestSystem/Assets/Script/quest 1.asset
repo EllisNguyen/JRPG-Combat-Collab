@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HaveClicked: 0
   Infomation:
-    Name: minh da ket thuc roi
+    Name: Kill boss
     Icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-    Description: pro pro
+    Description: 'Kill 2 boss
+
+'
   Reward:
     XP: 12
-    Checkmark: {fileID: 6744708064126985494, guid: da2446f7b11e2624a85b24ad6914f4a0, type: 3}
   Goals:
   - {fileID: 418857207808489664}
 --- !u!114 &418857207808489664

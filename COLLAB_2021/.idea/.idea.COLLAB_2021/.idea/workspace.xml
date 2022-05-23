@@ -13,8 +13,8 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/ShopSystem/buyCanvas.cs" />
-      <option value="$PROJECT_DIR$/Assets/ShopSystem/ItemInShop.cs" />
       <option value="$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/ShopSystem/ItemInShop.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="29Hj2OCFCJD2VgAuCcKtOQ2dMFf" />
@@ -61,7 +61,8 @@
       <option name="presentableId" value="Default" />
       <updated>1652776699385</updated>
       <workItem from="1652776703194" duration="4853000" />
-      <workItem from="1652804347018" duration="1660000" />
+      <workItem from="1652804347018" duration="1672000" />
+      <workItem from="1653209199312" duration="981000" />
     </task>
     <servers />
   </component>

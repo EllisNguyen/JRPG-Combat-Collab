@@ -17,7 +17,7 @@ public class ItemInShop : MonoBehaviour
     [SerializeField] SpriteRenderer graphic; 
     [SerializeField] GameObject keyGraphic;
     public buyCanvas _buyCanvas;
-    int Money = 10;
+    int Money = 100000;
     // Start is called before the first frame update
     void Start()
     {
