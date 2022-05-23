@@ -576,7 +576,7 @@ MonoBehaviour:
   - {fileID: 1823596108}
   - {fileID: 1825790351}
   - {fileID: 1203239198}
-  speedProgressorMultiplier: 0.02
+  speedProgressorMultiplier: 0.4
   basicAttack: {fileID: 11400000, guid: ad949738acc8da943877e954ee4d4924, type: 2}
   basicGuard: {fileID: 11400000, guid: aefa919a8fa54614ead62997809990df, type: 2}
   currentMovePanel: {fileID: 0}
