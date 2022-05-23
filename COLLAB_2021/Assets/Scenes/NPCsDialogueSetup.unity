@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -216,80 +216,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &628208570
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.speaker
-      value: Barkeeper
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: Yeah? We got rooms for free. It is this much per night.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569801, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: dialogue.sentences.Array.data[1]
-      value: "Hey. We are barely making a living here, the Empire has run us dry
-        for months. That\u2019s how things are. No gold? No room."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569802, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_Name
-      value: Barkeeper
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.6895447
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.658
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.459851
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725076222945569805, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 49d4016a5c93d4748bd30f6b12578e08, type: 3}
 --- !u!1 &955545583
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4041421278545370405, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4041421278545370405, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalPosition.x
@@ -443,22 +369,178 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
-      propertyPath: m_LocalRotation.y
       value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 3e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312376912791027174, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312376912791027174, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312376912791027174, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312376912791027174, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475178019209861748, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475178019209861748, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475178019209861748, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475178019209861748, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+--- !u!1001 &1079035583
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_Name
+      value: Bartender
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: npcIdNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.speaker
+      value: Bartender - John
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.speaker
+      value: Bartender - John
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: Yeah? We got rooms for free. It is this much per night.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: "Hey. We are barely making a living here, the Empire has run us dry
+        for months. That\u2019s how things are. No gold? No room."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: Try talking to Josh. He is drinking over there. Might got some work
+        for ya.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questAlreadyDoneDialogue.speaker
+      value: Bartender - John
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNotCompletedDialogue.speaker
+      value: Bartender - John
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questAlreadyDoneDialogue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.data[0]
+      value: Seems like you got a job. Return here after completing it, the room
+        is not going anywhere.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questCompletedDialogue.sentences.Array.data[1]
+      value: Go and meet Andre. He's just up that slide to my back.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questAlreadyDoneDialogue.sentences.Array.data[0]
+      value: Go on now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNotCompletedDialogue.sentences.Array.data[0]
+      value: He's just to your left.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
 --- !u!1001 &1080832989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -468,7 +550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -687,11 +769,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_Name
-      value: QuestNPC
+      value: MercA
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: npcIdNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: questNumber
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: dialogue.speaker
-      value: Mercenary A
+      value: Mercenary A - J
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questCompletedDialogue.speaker
