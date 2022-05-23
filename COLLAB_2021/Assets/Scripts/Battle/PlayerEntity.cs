@@ -63,6 +63,15 @@ public class PlayerEntity : MonoBehaviour
         }
     }
 
+    [Button]
+    void HealAll()
+    {
+        foreach (var character in party.Characters)
+        {
+            character.IncreaseHP(100);
+        }
+    }
+
     public void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Tab))

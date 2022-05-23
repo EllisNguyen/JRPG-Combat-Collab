@@ -19,6 +19,7 @@ public class SpeedProgressor : MonoBehaviour
     [SerializeField] RectTransform avatarHolder;
     [SerializeField] Vector2 playerPos = new Vector2(0, 15);
     [SerializeField] Vector2 enemyPos = new Vector2(0, -15);
+    int speed;
 
     public Slider Slider
     {
@@ -38,6 +39,7 @@ public class SpeedProgressor : MonoBehaviour
 
     public void SetProgressorData(Character character, bool isPlayer)
     {
+        speed = UnityEngine.Random.Range(character.Base.MinSpeed, character.Base.MaxSpeed);
         portrait.sprite = character.Base.battleIcon;
 
         if(isPlayer) avatarHolder.anchoredPosition = playerPos;
@@ -54,6 +56,8 @@ public class SpeedProgressor : MonoBehaviour
     {
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
 
+        //print(character.Speed);
+
         if(battleSystem.ActiveUnit == null)
         {
             while (slider.value < slider.maxValue && battleSystem.State != BattleState.Busy)
@@ -61,7 +65,7 @@ public class SpeedProgressor : MonoBehaviour
                 if (battleSystem.ActiveUnit != null) break;
 
                 battleSystem.State = BattleState.Waiting;
-                slider.value += (character.Speed * battleSystem.SpeedProgressorMultiplier) * 0.003f;
+                slider.value += (speed * battleSystem.SpeedProgressorMultiplier) * 0.2f;
                 yield return null;
                 //await Task.Yield();
             }
