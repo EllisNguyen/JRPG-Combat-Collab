@@ -412,7 +412,6 @@ public class BattleSystem : MonoBehaviour
                 //WaitingForTurn();
                 break;
             case BattleState.Waiting:
-                Debug.Log("waiting to choose move");
                 WaitingForTurn();
                 break;
             case BattleState.ActionSelection:
@@ -1096,6 +1095,7 @@ public class BattleSystem : MonoBehaviour
         //Check if any messages stat change queue.
         while (character.StatusChanges.Count > 0)
         {
+            dialogueBox.EnableDialogueText(true);
             //Dequeue the first message and store it in message var.
             var message = character.StatusChanges.Dequeue();
 

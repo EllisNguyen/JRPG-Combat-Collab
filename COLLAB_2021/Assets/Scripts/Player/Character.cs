@@ -151,8 +151,10 @@ public class Character
         /*SPDEF*/
         Stats.Add(Stat.SpecDEF, Mathf.FloorToInt((Base.specialDef * Level) / 100f) + 5);
         
+
+        int speed = UnityEngine.Random.Range(Base.MinSpeed, Base.MaxSpeed);
         /*SPD*/
-        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed.y * Level) / 100f) + 5);
+        Stats.Add(Stat.SPEED, Mathf.FloorToInt((speed * Level) / 100f) + 5);
 
         //Calculate HP
         MaxHP = Mathf.CeilToInt((Base.health * Level) / 100f) + 15 + Level;
@@ -425,8 +427,6 @@ public class Character
 
         //Randomly get move from the list.
         int r = UnityEngine.Random.Range(0, movesWithinMP.Count);
-
-        Debug.Log(movesWithinMP[r]);
 
         return movesWithinMP[r];
     }
