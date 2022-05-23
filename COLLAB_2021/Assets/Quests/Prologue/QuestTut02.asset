@@ -38,4 +38,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Monster: Slime
-  monsterName: Normal Slime
+  monsterID: Normal Slime

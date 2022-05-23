@@ -74,7 +74,7 @@ public class PlayerEntity : MonoBehaviour
 
     public void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ActivateMenu(pauseMenu);
         }
