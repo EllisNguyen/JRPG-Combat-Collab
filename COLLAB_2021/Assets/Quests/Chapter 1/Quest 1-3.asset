@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63fcd69e7a45e2e479e0eaeaaeb3328f, type: 3}
+  m_Name: Quest 1-3
+  m_EditorClassIdentifier: 
+  HaveClicked: 0
+  Infomation:
+    Name: Trouble in the Dark
+    Icon: {fileID: 0}
+    Description: Kill 5 Red Slimes
+  Reward:
+    XP: 10
+  Goals:
+  - {fileID: 1361347864075428846}
+--- !u!114 &1361347864075428846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee28e190476d164192676d57ab5a98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredAmount: 5
+  GoalCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  Monster: Red Slime
+  monsterID: Heat Slime

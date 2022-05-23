@@ -77,6 +77,8 @@ public class Character
     public event System.Action OnHPChanged;
     public event System.Action OnMPChanged;
 
+    int speed;
+
     //Initialize character's stats.
     //Add move according to learnable moves list.
     //Calculate or modify the stats once.
@@ -91,6 +93,8 @@ public class Character
 
         //Store EXP.
         Exp = Base.GetExpForLevel(Level);
+
+        speed = UnityEngine.Random.Range(Base.MinSpeed, Base.MaxSpeed);
 
         //Set stats
         CalculateStats();
@@ -152,7 +156,7 @@ public class Character
         Stats.Add(Stat.SpecDEF, Mathf.FloorToInt((Base.specialDef * Level) / 100f) + 5);
         
         /*SPD*/
-        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.speed.y * Level) / 100f) + 5);
+        Stats.Add(Stat.SPEED, Mathf.FloorToInt((Base.MinSpeed * Level) / 100f) + 5);
 
         //Calculate HP
         MaxHP = Mathf.CeilToInt((Base.health * Level) / 100f) + 15 + Level;
@@ -426,8 +430,6 @@ public class Character
         //Randomly get move from the list.
         int r = UnityEngine.Random.Range(0, movesWithinMP.Count);
 
-        Debug.Log(movesWithinMP[r]);
-
         return movesWithinMP[r];
     }
 
@@ -475,9 +477,9 @@ public class Character
     //This func fire when battle is over.
     public void OnBattleOver()
     {
-        enemyDead?.Invoke(_base);
         VolatileStatus = null;
         ResetStatBoost();
+        enemyDead?.Invoke(_base);
     }  
 }
 

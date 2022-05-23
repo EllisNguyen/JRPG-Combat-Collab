@@ -412,7 +412,6 @@ public class BattleSystem : MonoBehaviour
                 //WaitingForTurn();
                 break;
             case BattleState.Waiting:
-                Debug.Log("waiting to choose move");
                 WaitingForTurn();
                 break;
             case BattleState.ActionSelection:
@@ -482,23 +481,13 @@ public class BattleSystem : MonoBehaviour
             for (int i = 0; i < playerUnits.Count; i++)
             {
                 StartCoroutine(playerUnits[i].Progressor.SpeedProgress(playerUnits[i].Character, playerUnits[i]));
-
-                //for (int m = 0; m < playerProgressors.Count; m++)
-                //{
-                //    StartCoroutine(playerProgressors[m].SpeedProgress(playerUnits[m].Character, playerUnits[m]));
-                //    //playerProgressors[i].SpeedProgress(playerUnits[i].Character, playerUnits[i]));
-                //}
+                //print(playerUnits[i].Character.Speed);
             }
 
             for (int j = 0; j < enemyUnits.Count; j++)
             {
                 StartCoroutine(enemyUnits[j].Progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[j]));
-
-                //for (int n = 0; n < enemyProgressors.Count; n++)
-                //{
-                //    StartCoroutine(enemyProgressors[n].SpeedProgress(enemyUnits[n].Character, enemyUnits[n]));
-                //    //enemyProgressors[j].SpeedProgress(enemyUnits[j].Character, enemyUnits[j]);
-                //}
+                print(enemyUnits[j].Character.Speed);
             }
         }
     }
@@ -1096,6 +1085,7 @@ public class BattleSystem : MonoBehaviour
         //Check if any messages stat change queue.
         while (character.StatusChanges.Count > 0)
         {
+            dialogueBox.EnableDialogueText(true);
             //Dequeue the first message and store it in message var.
             var message = character.StatusChanges.Dequeue();
 

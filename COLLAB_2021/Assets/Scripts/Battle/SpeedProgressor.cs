@@ -1,13 +1,14 @@
 ///Author: Phap Nguyen.
 ///Description: Speed progressor.
 ///Day created: 22/02/2022
-///Last edited: 05/05/2022 - Phap Nguyen.
+///Last edited: 22/05/2022 - Phap Nguyen.
 
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SpeedProgressor : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class SpeedProgressor : MonoBehaviour
     [SerializeField] RectTransform avatarHolder;
     [SerializeField] Vector2 playerPos = new Vector2(0, 15);
     [SerializeField] Vector2 enemyPos = new Vector2(0, -15);
+    int speed;
 
     public Slider Slider
     {
@@ -37,6 +39,7 @@ public class SpeedProgressor : MonoBehaviour
 
     public void SetProgressorData(Character character, bool isPlayer)
     {
+        speed = UnityEngine.Random.Range(character.Base.MinSpeed, character.Base.MaxSpeed);
         portrait.sprite = character.Base.battleIcon;
 
         if(isPlayer) avatarHolder.anchoredPosition = playerPos;
@@ -51,9 +54,9 @@ public class SpeedProgressor : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SpeedProgress(Character character, BattlePawn activeUnit)
     {
-        int characterSpeed = Random.Range(character.Base.MinSpeed, character.Base.MaxSpeed);
-
         //if (battleSystem.State == BattleState.RunningTurn) yield return null;
+
+        //print(character.Speed);
 
         if(battleSystem.ActiveUnit == null)
         {
@@ -62,10 +65,11 @@ public class SpeedProgressor : MonoBehaviour
                 if (battleSystem.ActiveUnit != null) break;
 
                 battleSystem.State = BattleState.Waiting;
-                slider.value += (characterSpeed * battleSystem.SpeedProgressorMultiplier) * 0.003f;
+                slider.value += (speed * battleSystem.SpeedProgressorMultiplier) * 0.2f;
                 yield return null;
                 //await Task.Yield();
             }
+
         }
 
         if (slider.value == slider.maxValue)
@@ -77,16 +81,13 @@ public class SpeedProgressor : MonoBehaviour
             if (battleSystem.ActiveUnit.IsPlayerUnit)
             {
                 battleSystem.PlayerPerform = true;
-                //if (battleSystem.State != BattleState.RunningTurn) battleSystem.State = BattleState.RunningTurn;
                 battleSystem.action = BattleAction.Move;
             }
             else if (!battleSystem.ActiveUnit.IsPlayerUnit)
             {
                 battleSystem.EnemyPerform = true;
-                //if (battleSystem.State != BattleState.RunningTurn) battleSystem.State = BattleState.RunningTurn;
-                //battleSystem.action = BattleAction.Move;
             }
         }
-
+        //yield return null;
     }
 }

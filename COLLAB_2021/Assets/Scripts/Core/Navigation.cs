@@ -53,7 +53,7 @@ public class Navigation : MonoBehaviour
 
     #endregion GETTER SETTER
 
-    void Start()
+    protected void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         Agent.enabled = true;
@@ -66,9 +66,9 @@ public class Navigation : MonoBehaviour
                 timer = 0;
                 break;
             case NavigationType.Waypoints:
-                timer = 0;
+                target = waypoints[0].position;
                 UpdateDestination();
-                print(target);
+                timer = 0;
                 break;
             default:
                 break;
@@ -104,7 +104,6 @@ public class Navigation : MonoBehaviour
                 }
                 break;
             case NavigationType.Waypoints:
-                print($"{gameObject.name} test");
                 if (Vector3.Distance(transform.position, target) < 1)
                 {
                     target = waypoints[waypointIndex].position;
@@ -158,7 +157,6 @@ public class Navigation : MonoBehaviour
     void UpdateDestination()
     {
         agent.SetDestination(target);
-        print(target);
     }
 
     private void OnDrawGizmos()

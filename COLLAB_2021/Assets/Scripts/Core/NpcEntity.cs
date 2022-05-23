@@ -15,6 +15,7 @@ public class NpcEntity : Navigation
 
     void Start()
     {
+        base.Start();
         Agent.speed = movementSpeed;
     }
 
@@ -25,11 +26,6 @@ public class NpcEntity : Navigation
 
     void Update()
     {
-        for (int i = 0; i < Waypoints.Count; i++)
-        {
-            print($"waypoint {Waypoints[i]} position is {Waypoints[i].position}");
-        }
-
         if (GameManager.Instance.gameState != GameState.FreeRoam)
         {
             Agent.enabled = false;
