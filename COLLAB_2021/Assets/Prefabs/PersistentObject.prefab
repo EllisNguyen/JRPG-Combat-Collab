@@ -28644,7 +28644,7 @@ Transform:
   m_GameObject: {fileID: 4041421280379628148}
   m_LocalRotation: {x: 0.13052598, y: -0, z: -0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: -0.12293889}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 4041421280388896401}
   m_RootOrder: 4
@@ -28689,7 +28689,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40731ddb1c1a3f143bc48e6cff595aa1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -28713,18 +28713,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkRightSprites:
-  - {fileID: 5043395037558663772, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: -8432719292549815190, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: -5033891105202000990, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: 21300000, guid: 40731ddb1c1a3f143bc48e6cff595aa1, type: 3}
+  - {fileID: 21300000, guid: 61d8bde655d3f8f45b42fc78f7bd8282, type: 3}
+  - {fileID: 21300000, guid: b7b08f79fd6d07844be041a82b599d0d, type: 3}
+  - {fileID: 21300000, guid: 5e302e44c435ffa4d8748bc47b44b7ae, type: 3}
   walkLeftSprites:
-  - {fileID: 5043395037558663772, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: 9094310761201794350, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: -8432719292549815190, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
-  - {fileID: -5033891105202000990, guid: 34f6a8b2f8d69064c9fa81e26b4e46ec, type: 3}
+  - {fileID: 21300000, guid: 40731ddb1c1a3f143bc48e6cff595aa1, type: 3}
+  - {fileID: 21300000, guid: 61d8bde655d3f8f45b42fc78f7bd8282, type: 3}
+  - {fileID: 21300000, guid: b7b08f79fd6d07844be041a82b599d0d, type: 3}
+  - {fileID: 21300000, guid: 5e302e44c435ffa4d8748bc47b44b7ae, type: 3}
   defaultDirection: 1
   flip: 0
-  idleFrame: 1
+  idleFrame: 0
 --- !u!1 &4041421280384549916
 GameObject:
   m_ObjectHideFlags: 0
@@ -33055,11 +33055,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 3e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670816, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8981061057116670823, guid: a0d44c536a09f614fbb801be6c6f71ef, type: 3}
       propertyPath: m_Follow

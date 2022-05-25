@@ -51,8 +51,8 @@ public class AlterAnim : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
-        walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
+        walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer, 0.21f);
+        walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer, 0.21f);
 
         SetFacingDirection(defaultDirection);
     }
