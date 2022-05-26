@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HaveClicked: 0
   Infomation:
-    Name: Trouble in the Dark
+    Name: Trouble in the Dark - 03
     Icon: {fileID: 0}
     Description: Kill 5 Red Slimes
   Reward:
