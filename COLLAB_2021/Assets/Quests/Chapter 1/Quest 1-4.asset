@@ -14,9 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HaveClicked: 0
   Infomation:
-    Name: 
+    Name: Trouble in the Dark - 04
     Icon: {fileID: 0}
-    Description: 
+    Description: Talk to the Mercenary A.
   Reward:
     XP: 10
-  Goals: []
+  Goals:
+  - {fileID: 6016763430148925673}
+--- !u!114 &6016763430148925673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d354aa27e89c404f899f8ede718e191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredAmount: 1
+  GoalCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  npcName: Mercenary A
+  npcID: 4
