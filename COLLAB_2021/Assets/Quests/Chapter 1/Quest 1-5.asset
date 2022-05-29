@@ -14,9 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HaveClicked: 0
   Infomation:
-    Name: The Resistance - 01
+    Name: The Resistance - 02
     Icon: {fileID: 0}
-    Description: 
+    Description: Take on the Steel Golem
   Reward:
     XP: 10
-  Goals: []
+  Goals:
+  - {fileID: 4161873316548838649}
+--- !u!114 &4161873316548838649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee28e190476d164192676d57ab5a98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredAmount: 1
+  GoalCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  Monster: 
+  monsterID: 

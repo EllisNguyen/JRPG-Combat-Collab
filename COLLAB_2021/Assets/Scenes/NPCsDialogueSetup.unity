@@ -369,19 +369,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898889279352995, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
-      propertyPath: m_LocalRotation.y
       value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 3e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950898890673517848, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 5312376912791027174, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_AnchorMax.y
@@ -595,6 +595,10 @@ PrefabInstance:
     - target: {fileID: 1563378246706039996, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_Name
       value: The Guide
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: npcIdNumber
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: dialogue.speaker
