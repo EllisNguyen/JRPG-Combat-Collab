@@ -77,10 +77,12 @@ public class QuestNPC : DialogueCharacter
         questManager.CurrentQuests.Add(questToAdd);
         quest = questManager.CurrentQuests[questNumber];
         questManager.CreateQuest();
+        questAssigned?.Invoke(quest);
         
 
     }
 
+    //Check quest completion for dialogue between notComplete and completed
     void CheckQuest()
     {
         if (quest.Completed)
@@ -90,7 +92,7 @@ public class QuestNPC : DialogueCharacter
             assignedQuest = false;
             
                 FindObjectOfType<DialogueManager>().StartDialogue(questCompletedDialogue);
-                questAssigned?.Invoke(quest);
+                
                 textPopUp.SetActive(false);
             
         }
