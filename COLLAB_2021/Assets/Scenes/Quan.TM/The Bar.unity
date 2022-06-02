@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.25
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.083333336
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -926,6 +926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar Table
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3389d03051eacb4fbdac60ad20c4cde, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3389d03051eacb4fbdac60ad20c4cde, type: 3}
 --- !u!1001 &1079035583
@@ -941,15 +945,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.87
+      value: 1.153
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.62
+      value: 0.985
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.64
+      value: 1.927
       objectReference: {fileID: 0}
     - target: {fileID: 1563378246706039995, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: m_LocalRotation.w
@@ -983,10 +987,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bartender
       objectReference: {fileID: 0}
+    - target: {fileID: 1563378246706039998, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_Radius
+      value: 1.52
+      objectReference: {fileID: 0}
     - target: {fileID: 3020118800792502542, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: movementSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4189878857287121638, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189878857287121638, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050181826615882388, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156583081667991498, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ad9277085e9bdd469ed7e9cc4889786, type: 3}
     - target: {fileID: 7829383310598742201, guid: ec2279134ba6dd84b9bd844f797b8b06, type: 3}
       propertyPath: questToAdd
       value: 
@@ -1700,21 +1724,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!1 &2058981012 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b3389d03051eacb4fbdac60ad20c4cde, type: 3}
-  m_PrefabInstance: {fileID: 1046520945}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &2058981013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058981012}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.144273, y: 0.77546954, z: 1.3242838}
-  m_Center: {x: -0.79833794, y: -0.16285771, z: 0.5695133}
