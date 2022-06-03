@@ -12,6 +12,7 @@ public class PlayerEntity : MonoBehaviour
     public GameObject inventory;
     public GameObject partyMenu;
     public GameObject pauseMenu;
+    public GameObject questMenu;
     GameObject curMenu;
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
     public CharacterParty party;
@@ -89,9 +90,9 @@ public class PlayerEntity : MonoBehaviour
             ActivateMenu(partyMenu);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-
+            ActivateMenu(questMenu);
         }
     }
 

@@ -10,11 +10,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F69663-E9A6-4D00-B209-1DD8DFD4D38F/f5/680676eb/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestWindow.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/ShopSystem/buyCanvas.cs" />
       <option value="$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestManager.cs" />
       <option value="$PROJECT_DIR$/Assets/ShopSystem/ItemInShop.cs" />
+      <option value="$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/PlayerEntity.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="29Hj2OCFCJD2VgAuCcKtOQ2dMFf" />
@@ -63,6 +69,10 @@
       <workItem from="1652776703194" duration="4853000" />
       <workItem from="1652804347018" duration="1672000" />
       <workItem from="1653209199312" duration="981000" />
+      <workItem from="1653315938038" duration="1866000" />
+      <workItem from="1653383249215" duration="1662000" />
+      <workItem from="1653464451462" duration="233000" />
+      <workItem from="1654246002531" duration="2584000" />
     </task>
     <servers />
   </component>

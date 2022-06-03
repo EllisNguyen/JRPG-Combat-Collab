@@ -15,7 +15,7 @@ public class QuestWindow : MonoBehaviour
     [SerializeField] private Transform goalsContent;
     //where the xp text
     [SerializeField] private Text xpText;
-    
+        
    
 
     public void Initalize(Quest quest)
@@ -30,6 +30,7 @@ public class QuestWindow : MonoBehaviour
         //loop the goal inside the quest goal
         foreach (var goal in quest.Goals)
         {
+           
             //instantiate goal obj
             GameObject goalObj = Instantiate(goalPrefab, goalsContent);
             //goalObj.transform.Find("Text").GetComponent<Text>().text = goal.GetDescription();
@@ -37,6 +38,8 @@ public class QuestWindow : MonoBehaviour
             GameObject countObj = goalObj.transform.Find("Count").gameObject;
             //find skil obj
             GameObject skipObj = goalObj.transform.Find("Skip").gameObject;
+            //Find quest obj
+            GameObject questObj= goalObj.transform.Find("CheckInfo").gameObject;
             if (goal.Completed)
             {
                 //set count object to false 
@@ -48,6 +51,7 @@ public class QuestWindow : MonoBehaviour
             }
             else
             {
+                
                 //get current amount
                 countObj.GetComponent<Text>().text = goal.CurrentAmount + "/" + goal.RequiredAmount;
                 //if  player click skip obj
@@ -63,6 +67,15 @@ public class QuestWindow : MonoBehaviour
                     //get done tick gameobject
                     goalObj.transform.Find("Done").gameObject.SetActive(true);
                 });
+                questObj.GetComponent<Button>().onClick.AddListener(delegate
+                {
+                   // get the title text
+                     titleText.text = quest.Infomation.Name;
+                     //get the description text
+                     descriptionText.text = quest.Infomation.Description;
+                    
+                     xpText.text = quest.Reward.XP.ToString();
+                });
             }
         }
         xpText.text = quest.Reward.XP.ToString();
@@ -73,8 +86,19 @@ public class QuestWindow : MonoBehaviour
         gameObject.SetActive(false);
         for(int i = 0; i< goalsContent.childCount;i++)
         {
-            Destroy(goalsContent.GetChild(i).gameObject);
+            Destroy(this);
         }
+    }
+
+    public void GetQuestInformation()
+    {
+        
+        //get the title text
+        // titleText.text = quest.Infomation.Name;
+        // //get the description text
+        // descriptionText.text = quest.Infomation.Description;
+        //
+        // xpText.text = quest.Reward.XP.ToString();
     }
 
 }
