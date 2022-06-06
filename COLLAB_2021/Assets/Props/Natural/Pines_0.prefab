@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7883252646483715182}
   - component: {fileID: 7883252646483715183}
+  - component: {fileID: 8405425097757163279}
   m_Layer: 0
   m_Name: Pines_0
   m_TagString: Untagged
@@ -82,3 +83,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &8405425097757163279
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883252646483715176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 2.6, z: 0.2}
+  m_Center: {x: 0, y: 1.28, z: 0}
