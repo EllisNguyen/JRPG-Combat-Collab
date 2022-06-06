@@ -31,12 +31,12 @@ public class DirectorC1 : MonoBehaviour
 
     private void InitQuest2(Quest quest02)
     {
-        if (quest02.name == "Quest 1-3")
+        if (quest02.name == "Quest 1-4")
         {
             foreach (GameObject item in quest14)
             {
                 item.SetActive(true);
-            } //Enable Quest Giver 1-4 after Quest 1-3 is assigned
+            } //Enable Quest monster 1-4 after Quest 1-4 is assigned
         }
     }
 
@@ -44,13 +44,13 @@ public class DirectorC1 : MonoBehaviour
     void InitQuest1(Quest quest01)
     {
 
-        if (quest01.name == "Quest 1-2")
+        if (quest01.name == "Quest 1-3")
         {
 
             foreach (GameObject item in quest13)
             {
                 item.SetActive(true);
-            } //Enable Quest Giver 1-3 after Quest 1-2 is assigned
+            } //Enable Quest 1-3 monsters after Quest 1-3 is assigned
         }
     }
 
