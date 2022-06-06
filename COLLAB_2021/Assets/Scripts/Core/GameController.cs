@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
+        CharacterDB.Init();
+        MoveDB.Init();
         ConditionsDB.Init();
     }
 
@@ -137,5 +139,24 @@ public class GameController : MonoBehaviour
         //GameManager.Instance.FadeIn();
 
         GameManager.Instance.FadeIn();
+    }
+
+    public SceneDetails CurrentScene { get; private set; }
+    public SceneDetails PrevScene { get; private set; }
+
+    public void SetCurrentScene(SceneDetails curScene)
+    {
+        PrevScene = CurrentScene;
+        CurrentScene = curScene;
+    }
+
+    public void SaveSlot(int num)
+    {
+        SavingSystem.i.Save($"SaveSlot{num}");
+    }
+
+    public void LoadSlot(int num)
+    {
+        SavingSystem.i.Load($"SaveSlot{num}");
     }
 }

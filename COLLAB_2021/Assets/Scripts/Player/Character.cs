@@ -110,6 +110,59 @@ public class Character
         VolatileStatus = null;
     }
 
+    /// <summary>
+    /// Constructor to restore the save data Creature class.
+    /// </summary>
+    /// <param name="saveData"></param>
+    /// Use to restore all data of that Creature class.
+    public Character(CharacterSaveData saveData)
+    {
+        _base = CharacterDB.GetCharacterByName(saveData.name);
+
+        HP = saveData.hp;
+        level = saveData.level;
+        Exp = saveData.exp;
+
+        if (saveData.statusId != null)
+        {
+            Status = ConditionsDB.Conditions[saveData.statusId.Value];
+        }
+        else
+        {
+            Status = null;
+        }
+
+        //Restore moves datas.
+        Moves = saveData.moves.Select(s => new Move(s)).ToList();
+
+        CalculateStats();
+
+        //Initialize the status changes.
+        StatusChanges = new Queue<string>();
+
+        //Reset all boosted stats.
+        ResetStatBoost();
+        VolatileStatus = null;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public CharacterSaveData GetSaveData()
+    {
+        var saveData = new CharacterSaveData()
+        {
+            name = Base.charName,
+            hp = HP,
+            level = Level,
+            exp = Exp,
+            statusId = Status?.Id,
+            moves = Moves.Select(m => m.GetSaveData()).ToList()
+        };
+        return saveData;
+    }
+
     //Dictionary that store all character's stats key.
     //Privately set the stats only.
     public Dictionary<Stat, int> Stats { get; private set; }
@@ -493,7 +546,7 @@ public class DamageDetails
 [System.Serializable]
 public class CharacterSaveData
 {
-    public string name;//Use this to get all data of the creature in the scriptable object.
+    public string name;//Use this to get all data of the character in the scriptable object.
 
     public int hp;
     public int level;

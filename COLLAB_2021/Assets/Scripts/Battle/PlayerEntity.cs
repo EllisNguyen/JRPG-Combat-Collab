@@ -3,10 +3,13 @@
 ///Day created: 01/05/2022
 ///Last edited: 17/05/2022 - Phap Nguyen.
 
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PlayerEntity : MonoBehaviour
+public class PlayerEntity : MonoBehaviour, ISavable
 {
     [Header("Menu")]
     public GameObject inventory;
@@ -119,4 +122,46 @@ public class PlayerEntity : MonoBehaviour
             GameManager.Instance.gameState = GameState.Menu;
         }
     }
+
+    #region Entity to save
+
+    /// <summary>
+    /// Get the position of the player.
+    /// </summary>
+    /// <returns></returns>
+    public object CaptureState()
+    {
+        var saveData = new PlayerSaveData()
+        {
+            /* POSITION 0 */        /* POSITION 1 */        /* POSITION 2 */
+            position = new float[] { transform.position.x, transform.position.y, transform.position.z },
+            characters = GetComponent<CharacterParty>().Characters.Select(p => p.GetSaveData()).ToList()
+        };
+
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (PlayerSaveData)state;
+
+        //Convert state obj into float array.
+        var pos = saveData.position;
+
+        //Set player position.
+        transform.position = new Vector3(pos[0], pos[1], pos[2]);
+
+        //Restore creature party.
+        GetComponent<CharacterParty>().Characters = saveData.characters.Select(s => new Character(s)).ToList();
+    }
+    #endregion
+
+}
+
+[System.Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<CharacterSaveData> characters;
 }
