@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject askQuit;
+    public GameObject Menu;
    public void PlayGame()
    {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -16,6 +18,20 @@ public class MainMenu : MonoBehaviour
 
    public void QuitGame()
    {
+        Menu.SetActive(false);
+        askQuit.SetActive(true);
        Application.Quit();
    }
+    public void ConfirmQuit()
+    {
+
+        Application.Quit();
+    }
+    public void RefuseQuit()
+    {
+
+        askQuit.SetActive(false);
+        Menu.SetActive(true);
+    }
+
 }

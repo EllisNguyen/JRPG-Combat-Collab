@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     static AudioSource audioSource;
     void Start()
     {
-        example1 = Resources.Load<AudioClip> ("example1");
+        example1 = Resources.Load<AudioClip> ("Button Hover");
         example2 = Resources.Load<AudioClip> ("example2");
         example2 = Resources.Load<AudioClip> ("example3");
 
@@ -28,7 +28,8 @@ public class SoundManager : MonoBehaviour
     {
         switch(clip)
         {
-            case "example1":
+            case"Hover":
+                Debug.Log("zzz");
                 audioSource.PlayOneShot(example1);
                 break;
             case "example2":
