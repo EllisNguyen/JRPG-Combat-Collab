@@ -15,13 +15,14 @@ public class QuestNPC : DialogueCharacter
     public bool helped; //determine whether the player has finished the quest
 
     public static event Action<Quest> questAssigned;
+    public static event Action<Quest> questCompleted;
 
     private QuestManager questManager;
-    
+
     public Dialogue questCompletedDialogue;
-    
+
     public Dialogue questNotCompletedDialogue;
-    
+
     public Dialogue questAlreadyDoneDialogue;
 
     //[SerializeField] private GameObject quests;
@@ -42,11 +43,11 @@ public class QuestNPC : DialogueCharacter
     }
     public override void InitiateDialogue()
     {
-        
+
         if (!assignedQuest && !helped)
         {
             base.InitiateDialogue();
-            
+
             //assign the quest
             AssignQuest();
         }
@@ -57,17 +58,17 @@ public class QuestNPC : DialogueCharacter
         }
         else
         {
-            
-            
+
+
             FindObjectOfType<DialogueManager>().StartDialogue(questAlreadyDoneDialogue);
             textPopUp.SetActive(false);
-            
+
         }
     }
 
     void AssignQuest()
     {
-        
+
 
         assignedQuest = true;
 
@@ -78,7 +79,7 @@ public class QuestNPC : DialogueCharacter
         quest = questManager.CurrentQuests[questNumber];
         questManager.CreateQuest();
         questAssigned?.Invoke(quest);
-        
+
 
     }
 
@@ -87,21 +88,21 @@ public class QuestNPC : DialogueCharacter
     {
         if (quest.Completed)
         {
-            
+
             helped = true;
             assignedQuest = false;
-            
-                FindObjectOfType<DialogueManager>().StartDialogue(questCompletedDialogue);
-                
-                textPopUp.SetActive(false);
-            
+
+            FindObjectOfType<DialogueManager>().StartDialogue(questCompletedDialogue);
+            questCompleted?.Invoke(quest);
+            textPopUp.SetActive(false);
+
         }
         else
         {
-            
-                FindObjectOfType<DialogueManager>().StartDialogue(questNotCompletedDialogue);
-                textPopUp.SetActive(false);
-            
+
+            FindObjectOfType<DialogueManager>().StartDialogue(questNotCompletedDialogue);
+            textPopUp.SetActive(false);
+
         }
     }
 }
