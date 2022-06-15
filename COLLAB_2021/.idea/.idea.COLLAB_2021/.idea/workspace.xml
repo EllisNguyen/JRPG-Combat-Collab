@@ -21,6 +21,7 @@
       <option value="$PROJECT_DIR$/Assets/ShopSystem/ItemInShop.cs" />
       <option value="$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/PlayerEntity.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="29Hj2OCFCJD2VgAuCcKtOQ2dMFf" />
@@ -74,6 +75,7 @@
       <workItem from="1653464451462" duration="233000" />
       <workItem from="1654246002531" duration="2584000" />
       <workItem from="1654679122521" duration="599000" />
+      <workItem from="1654935863444" duration="2663000" />
     </task>
     <servers />
   </component>

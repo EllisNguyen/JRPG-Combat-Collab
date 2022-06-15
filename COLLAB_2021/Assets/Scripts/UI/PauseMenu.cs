@@ -12,13 +12,14 @@ Pause Menu with simple functions
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;//store the pause menu game object
-    [SerializeField] Scene sceneMainMenu; //store the main menu scene for return
+     public Scene sceneMainMenu; //store the main menu scene for return
     // Start is called before the first frame update
 
     //start the scene with pause menu being hidden
     void Start()
     {
         pauseMenu.SetActive(false);
+        sceneMainMenu = SceneManager.GetSceneByName("Test Menu");
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f; //Set time to paused
             pauseMenu.SetActive(true);
         }
+        Debug.Log(sceneMainMenu.buildIndex);
     }
 
     //Resume to the game. Disable the Pause Menu, return the time scale to 1.
@@ -51,7 +53,9 @@ public class PauseMenu : MonoBehaviour
     //Quit to MainMenu using the index of the scene passed in sceneMainMenu
     public void ReturnMainMenu()
     {
-        SceneManager.LoadScene(sceneMainMenu.buildIndex, LoadSceneMode.Single);
+        SceneManager.GetSceneByName("Test Menu");
+       // SceneManager.LoadScene(sceneMainMenu.buildIndex, LoadSceneMode.Single);
+        SceneManager.LoadScene("TestMenu", LoadSceneMode.Single);
         Time.timeScale = 1f;
     }
 
