@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
         //Enable the pause menu if esc is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0f; //Set time to paused
+            //Time.timeScale = 0f; //Set time to paused
             pauseMenu.SetActive(true);
         }
         Debug.Log(sceneMainMenu.buildIndex);
@@ -56,7 +56,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.GetSceneByName("Test Menu");
        // SceneManager.LoadScene(sceneMainMenu.buildIndex, LoadSceneMode.Single);
         SceneManager.LoadScene("TestMenu", LoadSceneMode.Single);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     //Close and exit application
