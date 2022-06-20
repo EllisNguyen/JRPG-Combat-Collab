@@ -31,6 +31,7 @@ public class MenuManager : MonoBehaviour
         titleCurrentLocation = titleRectTransform.anchoredPosition;
         titleCurrentSize = titleRectTransform.sizeDelta;
         StartCoroutine(TitleStartSequence());
+        Destroy(GameObject.Find("PersistentObject"));
     }
 
     // Update is called once per frame
