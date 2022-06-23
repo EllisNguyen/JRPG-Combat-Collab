@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab30b83c0b23b24d8a722d0aaa16edb, type: 3}
+  m_Name: Torn Psi-Op Uniform
+  m_EditorClassIdentifier: 
+  rarity: 0
+  itemName: Torn Psi-Op Uniform
+  itemDescription: 'Once illustrous and prideful, now a mark of shame.
+
+'
+  itemSprite: {fileID: -1843885241185752990, guid: 5aff0d0b3828ecc4fb900f75a029affb, type: 3}
+  sellPrice: 0
+  buyPrice: 0
+  stackable: 0
+  interactionKey: 3
+  coreAttributes:
+  - attributeType: 12
+    attributeName: Sp.DEF++
+    attributeGain: 30

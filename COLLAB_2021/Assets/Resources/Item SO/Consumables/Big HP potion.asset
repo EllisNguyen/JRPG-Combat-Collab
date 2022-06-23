@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6e93f9b90c7e3448224217f56a78ee, type: 3}
-  m_Name: Elixir
+  m_Name: Big HP potion
   m_EditorClassIdentifier: 
-  rarity: 3
-  itemName: Elixir
-  itemDescription: Fully heal HP & mana
-  itemSprite: {fileID: 3831794567539520422, guid: 3684cef95908ecf4a841cb6d8ba0d5e9, type: 3}
-  sellPrice: 100
-  buyPrice: 200
+  rarity: 2
+  itemName: Big HP potion
+  itemDescription: Proportionally heal HP
+  itemSprite: {fileID: 3776030286249841582, guid: dfc84704bcb16fc4693e8fa69589a41b, type: 3}
+  sellPrice: 35
+  buyPrice: 70
   stackable: 1
   interactionKey: 2
   coreAttributes:
   - attributeType: 0
     attributeName: Health Regen
-    attributeGain: 100
-  - attributeType: 1
-    attributeName: Mana Regen
-    attributeGain: 100
+    attributeGain: 30

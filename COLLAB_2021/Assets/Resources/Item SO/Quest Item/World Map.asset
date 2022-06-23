@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 1
   itemName: World Map
-  itemDescription: a map of the world
+  itemDescription: Map of the Empire's Lands.
   itemSprite: {fileID: 21300000, guid: cf69688e8a3cb45768c6c3605d58cc40, type: 3}
   sellPrice: 0
   buyPrice: 0
   stackable: 0
+  interactionKey: 0
+  coreAttributes: []
