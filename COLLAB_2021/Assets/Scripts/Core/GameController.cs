@@ -158,5 +158,6 @@ public class GameController : MonoBehaviour
     public void LoadSlot(int num)
     {
         SavingSystem.i.Load($"SaveSlot{num}");
+        player.Movement.ResetNavMesh();
     }
 }

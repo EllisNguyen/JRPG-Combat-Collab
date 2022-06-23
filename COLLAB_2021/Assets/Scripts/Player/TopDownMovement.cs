@@ -79,4 +79,9 @@ public class TopDownMovement : MonoBehaviour
         animator.IsMoving = isMoving;
         this.transform.position = playerPosition; //updating the position after moving
     }
+
+    public void ResetNavMesh()
+    {
+        agent.ResetPath();
+    }
 }

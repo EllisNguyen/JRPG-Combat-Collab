@@ -20,6 +20,8 @@ public class PlayerEntity : MonoBehaviour, ISavable
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
     public CharacterParty party;
 
+    public TopDownMovement Movement => movement;
+
     [Header("Values")]
     [SerializeField] int money;
     [SerializeField] Vector3 position;
@@ -138,7 +140,7 @@ public class PlayerEntity : MonoBehaviour, ISavable
             characters = GetComponent<CharacterParty>().Characters.Select(p => p.GetSaveData()).ToList()
         };
 
-
+        Debug.Log($"X {saveData.position[0]} - Y {saveData.position[1]} - Z {saveData.position[2]}");
         return saveData;
     }
 
