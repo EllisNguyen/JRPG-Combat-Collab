@@ -27,6 +27,10 @@ public class PlayerEntity : MonoBehaviour, ISavable
     [SerializeField] float healTimer = 5f;
     [SerializeField] float curTimer;
 
+
+    [SerializeField] AudioSource manaHeal;
+  
+
     public int Money
     {
         get { return money; }
@@ -51,6 +55,7 @@ public class PlayerEntity : MonoBehaviour, ISavable
                 if (healTimer < 0)
                 {
                     increaseMana.Play();
+                    manaHeal.Play();
                     party.Characters[i].IncreaseMP(3);
                     healTimer = curTimer;
                 }
