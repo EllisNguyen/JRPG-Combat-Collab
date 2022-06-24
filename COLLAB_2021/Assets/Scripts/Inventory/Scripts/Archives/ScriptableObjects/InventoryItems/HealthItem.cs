@@ -15,6 +15,7 @@ public class HealthItem : ItemObject
     public void Use()
     {
         character.HP += atttributes[1];
+        
     }
    
 }

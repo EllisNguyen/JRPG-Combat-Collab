@@ -400,7 +400,7 @@ public class BattleSystem : MonoBehaviour
     public void SpawnParticle(Move move, BattlePawn target)
     {
         if (move.Base.HitEffect == null) return;
-
+        
         Instantiate(move.Base.HitEffect, target.transform.position + move.Base.SpawnOffset, Quaternion.identity);
     }
 
