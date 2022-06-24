@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6e93f9b90c7e3448224217f56a78ee, type: 3}
-  m_Name: Elixir
+  m_Name: Small Mana potion
   m_EditorClassIdentifier: 
-  rarity: 3
-  itemName: Elixir
-  itemDescription: Fully heal HP & mana
-  itemSprite: {fileID: 3831794567539520422, guid: 3684cef95908ecf4a841cb6d8ba0d5e9, type: 3}
-  sellPrice: 100
-  buyPrice: 200
+  rarity: 0
+  itemName: Small Mana potion
+  itemDescription: Proportionally restore mana
+  itemSprite: {fileID: 1185527514606905908, guid: 0803e5028d1bb304e9e1a0b4809e60c0, type: 3}
+  sellPrice: 15
+  buyPrice: 30
   stackable: 1
   interactionKey: 2
   coreAttributes:
-  - attributeType: 0
-    attributeName: Health Regen
-    attributeGain: 100
   - attributeType: 1
     attributeName: Mana Regen
-    attributeGain: 100
+    attributeGain: 10

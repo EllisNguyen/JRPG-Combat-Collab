@@ -11314,7 +11314,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41174
+  m_Name: pb_Mesh29912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12101,6 +12101,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1516855122, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1729763341, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12116,6 +12120,10 @@ PrefabInstance:
     - target: {fileID: 1729763341, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729763342, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1822824591, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12304,6 +12312,18 @@ PrefabInstance:
     - target: {fileID: 4041421278545370405, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041421280388896427, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: characters.Array.data[0].level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041421280388896427, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: characters.Array.data[1].level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041421280388896427, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
+      propertyPath: characters.Array.data[2].level
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4198458161149514701, guid: cdb8fa7e0a7a59c45ac245c8868bbd26, type: 3}
       propertyPath: m_AnchorMax.y

@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rarity: 3
   itemName: Spell Book
-  itemDescription: book with a list of spell
+  itemDescription: Skills mastered recorded thorugh out the journey.
   itemSprite: {fileID: 21300000, guid: c9250edf4111a480399f5e39edc635f7, type: 3}
   sellPrice: 0
   buyPrice: 0
   stackable: 0
+  interactionKey: 0
+  coreAttributes: []
