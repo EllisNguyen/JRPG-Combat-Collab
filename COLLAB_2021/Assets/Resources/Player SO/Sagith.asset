@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Sagith
   portraitSprite: {fileID: 21300000, guid: 262346ce6a2bad040a0ddf25dce20848, type: 3}
-  battleSprite: {fileID: -8465048047403305680, guid: ae85d2b6b436cda4faccb193dfe18baf, type: 3}
-  attackSprite: {fileID: 0}
-  guardSprite: {fileID: 0}
+  battleSprite: {fileID: 21300000, guid: 8ce939a52adff3240acf7440dfdeabab, type: 3}
+  attackSprite: {fileID: 21300000, guid: dce77b703243a7946a7044a5e0c8e959, type: 3}
+  guardSprite: {fileID: 21300000, guid: 7de2626bef8949b409765584101dc873, type: 3}
+  rangeSprite: {fileID: 21300000, guid: 0255bc0a42b0bd04e8065bf9dbdf6d80, type: 3}
   battleIcon: {fileID: 21300000, guid: ffd818720aaebdc4fae9aae0be79a612, type: 3}
   overworldAnim: []
   charDescription: 
@@ -26,7 +27,7 @@ MonoBehaviour:
   specialAtkDmg: 33
   physicalDef: 24
   specialDef: 42
-  speed: 34
+  speed: {x: 20, y: 20}
   luck: 1
   elementalRes: 20
   expYield: 1

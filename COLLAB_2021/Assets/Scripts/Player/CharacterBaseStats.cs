@@ -16,6 +16,7 @@ public class CharacterBaseStats : ScriptableObject
     [PreviewField] public Sprite battleSprite;
     [PreviewField] public Sprite attackSprite;
     [PreviewField] public Sprite guardSprite;
+    [PreviewField] public Sprite rangeSprite;
     [PreviewField] public Sprite battleIcon;
     public List<Sprite> overworldAnim;
 
