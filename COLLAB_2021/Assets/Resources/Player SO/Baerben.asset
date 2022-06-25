@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Baerben
   portraitSprite: {fileID: 21300000, guid: c2deaa051d0300c46a3d76291bc27615, type: 3}
-  battleSprite: {fileID: 3167681279352272670, guid: 0f6211c5bfa6fc54781c80d5baec85bb, type: 3}
-  attackSprite: {fileID: 0}
-  guardSprite: {fileID: 0}
+  battleSprite: {fileID: 21300000, guid: bc21d16f03690664cb56bcb691d64af3, type: 3}
+  attackSprite: {fileID: 21300000, guid: ab16b214190f4f54e8ff450dd7de131d, type: 3}
+  guardSprite: {fileID: 21300000, guid: eff63ac88346549468ca1a8b9aca3c72, type: 3}
+  rangeSprite: {fileID: 21300000, guid: b1905d9b278b6724c8fac1a7eefb787f, type: 3}
   battleIcon: {fileID: 21300000, guid: 47dc27d2f6dccd54a893365645987640, type: 3}
   overworldAnim: []
   charDescription: 
@@ -26,7 +27,7 @@ MonoBehaviour:
   specialAtkDmg: 27
   physicalDef: 38
   specialDef: 16
-  speed: 22
+  speed: {x: 20, y: 20}
   luck: 1
   elementalRes: 30
   expYield: 1

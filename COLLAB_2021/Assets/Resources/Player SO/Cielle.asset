@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Cielle
   portraitSprite: {fileID: 21300000, guid: d2dff2dbe36d84b478b8166742f33d93, type: 3}
-  battleSprite: {fileID: -3455613507728379158, guid: ddd46e976697aad48a2bad02443c2983, type: 3}
-  attackSprite: {fileID: 4306178142505025204, guid: b8ce4ca75bda6a24daf53c723231c7f1, type: 3}
-  guardSprite: {fileID: -7349581038657780995, guid: a12e69c7108268f44ab3624c9d884278, type: 3}
+  battleSprite: {fileID: 21300000, guid: 687fc92f0d89e0742bd3d73b16278805, type: 3}
+  attackSprite: {fileID: 21300000, guid: a464382bb18dd2c499e6f30afc3ce507, type: 3}
+  guardSprite: {fileID: 21300000, guid: 6a43d6f6935a84b498fadfb3000796a6, type: 3}
+  rangeSprite: {fileID: 21300000, guid: 835d17d806f502d448af2cf8890c1b30, type: 3}
   battleIcon: {fileID: 21300000, guid: 75f032e18c41eb141a4fa99fd4753ca8, type: 3}
   overworldAnim: []
   charDescription: 

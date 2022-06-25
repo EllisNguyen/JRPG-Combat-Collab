@@ -161,7 +161,7 @@ public class BattlePawn : MonoBehaviour
 
     IEnumerator RangeCombatSequence(Move move, BattlePawn target)
     {
-        graphic.sprite = _base.attackSprite;
+        graphic.sprite = _base.rangeSprite;
 
         yield return new WaitForSeconds(0.55f);
 
