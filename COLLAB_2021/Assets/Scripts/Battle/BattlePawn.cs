@@ -25,7 +25,7 @@ public class BattlePawn : MonoBehaviour
     [SerializeField] Transform lookatPos;
     [SerializeField] List<Move> skills;
     [SerializeField] Color hitColor;
-
+    [SerializeField] public AudioSource levelUpAudio;
     public Transform CloseCombatPos => cqcPos;
     public Transform LookAtPos => lookatPos;
 
@@ -199,5 +199,10 @@ public class BattlePawn : MonoBehaviour
 
         //Return to original color.
         sequence.Append(graphic.DOColor(Color.white, 0.1f));
+    }
+
+    public void PlayLevelUpAudio()
+    {
+        levelUpAudio.Play();
     }
 }

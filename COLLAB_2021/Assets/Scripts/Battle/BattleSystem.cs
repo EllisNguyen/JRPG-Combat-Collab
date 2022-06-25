@@ -27,6 +27,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] float critFov = 15f;
     [SerializeField] CinemachineBrain brain;
     [SerializeField] Transform target;
+    [SerializeField] AudioSource levelUpAudio;
     [FoldoutGroup("Camera targets")][SerializeField] Transform centerBattle;
     [FoldoutGroup("Camera targets")][SerializeField] Transform playerPos;
     [FoldoutGroup("Camera targets")][SerializeField] Transform enemyPos;
@@ -521,6 +522,7 @@ public class BattleSystem : MonoBehaviour
             for (int i = 0; i < playerParty.Characters.Count; i++)
             {
                 yield return playerHuds[i].SetExpSmooth();
+                
                 //Check level up.
                 //Update the HUD.
                 //Learn new move(s).
@@ -532,6 +534,7 @@ public class BattleSystem : MonoBehaviour
                     }
                 
                     playerUnits[i].levelUp.Play();
+                    playerUnits[i].PlayLevelUpAudio();
                     yield return dialogueBox.TypeDialogue($"{playerUnits[i].Character.Base.charName.ToUpper()} grew to level {playerUnits[i].Character.Level}.");
 
                     var newMove = playerUnits[0].Character.GetLearnableMoveAtCurrentLevel();
