@@ -13,10 +13,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/88F69663-E9A6-4D00-B209-1DD8DFD4D38F/f5/680676eb/Random.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../BUVSpace/Assets/StudentMaterials/HAN18070016/2-7 - New Ships/DodgeEnemy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../VRIF Project - Copy/Assets/CurvedUI/Scripts/CurvedUIInputModule.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D962C48D-73CA-4558-8939-0BF9D50D28AD/91/12ae7a4f/CanvasGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestWindow.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../VRIF Project - Copy/Assets/Modern UI Pack/Scripts/Demo/DemoElementSway.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -25,7 +23,6 @@
       <option value="$PROJECT_DIR$/Assets/ShopSystem/ItemInShop.cs" />
       <option value="$PROJECT_DIR$/Assets/QuestSystem/Assets/Script/QuestWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/PlayerEntity.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Database/MoveData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Inventory/Scripts/Archives/ScriptableObjects/InventoryItems/HealthItem.cs" />
@@ -34,6 +31,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/BattlePawn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/BattleSystem.cs" />
       <option value="$PROJECT_DIR$/../../VRIF Project - Copy/Assets/Modern UI Pack/Scripts/Demo/DemoElementSway.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Saving/SavingSystem.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="29Hj2OCFCJD2VgAuCcKtOQ2dMFf" />
@@ -92,6 +91,8 @@
       <workItem from="1655744592289" duration="352000" />
       <workItem from="1655745061666" duration="3037000" />
       <workItem from="1656082787138" duration="3523000" />
+      <workItem from="1656512501131" duration="87000" />
+      <workItem from="1656512788766" duration="955000" />
     </task>
     <servers />
   </component>
