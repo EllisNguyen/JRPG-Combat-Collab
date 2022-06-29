@@ -87,7 +87,7 @@ public class QuestManager : MonoBehaviour
     }
     private void OnQuestCompleted(Quest quest)
     {
-        Debug.Log(CurrentQuests.IndexOf(quest));
+       // Debug.Log(CurrentQuests.IndexOf(quest));
         //questsContent.GetChild(CurrentQuests.IndexOf(quest)).Find("CheckMark").gameObject.SetActive(true);
         
     }

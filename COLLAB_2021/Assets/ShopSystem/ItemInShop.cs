@@ -63,12 +63,12 @@ public class ItemInShop : MonoBehaviour
             {
                 if (Money < item.BuyPrice)
                 {
-                    Debug.Log("You Dont Have Enough Money to Buy");
+                   // Debug.Log("You Dont Have Enough Money to Buy");
                 }
                 if (Money > item.BuyPrice)
                 {
                     inventory.AddItem(BuyList[0].Item,BuyList[0].ItemCount);
-                    Debug.Log("Bought");
+                   // Debug.Log("Bought");
                     Money = Money - item.BuyPrice;
                     Destroy(this.gameObject);
                 }
