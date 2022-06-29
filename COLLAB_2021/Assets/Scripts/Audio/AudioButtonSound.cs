@@ -20,13 +20,11 @@ namespace Audio
         }
         public void onHover()
         {
-            Debug.Log("zxzxz");
             audioController.PlayAudio(AudioType.SFX_01);
 
         }
         public void onClicked()
         {
-            Debug.Log("zxzxz");
             audioController.PlayAudio(AudioType.SFX_02);
 
         }

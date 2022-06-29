@@ -29,7 +29,6 @@ public class SoundManager : MonoBehaviour
         switch(clip)
         {
             case"Hover":
-                Debug.Log("zzz");
                 audioSource.PlayOneShot(example1);
                 break;
             case "example2":

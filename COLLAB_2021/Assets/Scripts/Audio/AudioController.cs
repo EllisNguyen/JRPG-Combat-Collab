@@ -115,14 +115,12 @@ namespace Audio
 
                 Coroutine _jobRunner = StartCoroutine(RunAudioJob(_job));
                 m_JobTable.Add(_job.type, _jobRunner);
-                Log("Starting job on ["+_job.type+"] with operation: "+_job.action);
             }
 
             private void RemoveJob(AudioType _type)
             {
                 if (!m_JobTable.ContainsKey(_type))
                 {
-                    Log("Trying to stop a job ["+_type+"] that is not running.");
                     return;
                 }
                 Coroutine _runningJob = (Coroutine)m_JobTable[_type];
@@ -208,7 +206,6 @@ namespace Audio
                 }
 
                 m_JobTable.Remove(_job.type);
-                Log("Job count: "+m_JobTable.Count);
             }
 
             private void GenerateAudioTable()
@@ -218,15 +215,8 @@ namespace Audio
                     foreach(AudioObject _obj in _track.audio)
                     {
                         // do not duplicate keys
-                        if (m_AudioTable.ContainsKey(_obj.type))
-                        {
-                            LogWarning("You are trying to register audio ["+_obj.type+"] that has already been registered.");
-                        } 
-                        else
-                        {
-                            m_AudioTable.Add(_obj.type, _track);
-                            Log("Registering audio ["+_obj.type+"]");
-                        }
+                        if (!m_AudioTable.ContainsKey(_obj.type)) m_AudioTable.Add(_obj.type, _track);
+           
                     }
                 }
             }
@@ -235,7 +225,6 @@ namespace Audio
             {
                 if (!m_AudioTable.ContainsKey(_type))
                 {
-                    LogWarning("You are trying to <color=#fff>"+_job+"</color> for ["+_type+"] but no track was found supporting this audio type.");
                     return null;
                 }
                 return (AudioTrack)m_AudioTable[_type];
@@ -251,18 +240,6 @@ namespace Audio
                     }
                 }
                 return null;
-            }
-
-            private void Log(string _msg)
-            {
-                if (!debug) return;
-                Debug.Log("[Audio Controller]: "+_msg);
-            }
-            
-            private void LogWarning(string _msg)
-            {
-                if (!debug) return;
-                Debug.LogWarning("[Audio Controller]: "+_msg);
             }
 #endregion
         }
