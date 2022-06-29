@@ -31,7 +31,7 @@ public class PauseMenu : MonoBehaviour
             //Time.timeScale = 0f; //Set time to paused
             pauseMenu.SetActive(true);
         }
-        Debug.Log(sceneMainMenu.buildIndex);
+//        Debug.Log(sceneMainMenu.buildIndex);
     }
 
     //Resume to the game. Disable the Pause Menu, return the time scale to 1.
