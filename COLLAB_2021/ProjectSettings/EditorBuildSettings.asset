@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scene/TestBattle.unity
     guid: fe4c69440bf90d340aae2396c4ef2039
+  - enabled: 1
+    path: Assets/Scenes/Quan.TM/Expedition Fire.unity
+    guid: ac743aa42bf4e8d4988c18b9dd625d1c
+  - enabled: 1
+    path: Assets/Scenes/Quan.TM/Expedition Ice.unity
+    guid: 9d665f536bc63a548b95e4e3fc54cbd9
   m_configObjects: {}

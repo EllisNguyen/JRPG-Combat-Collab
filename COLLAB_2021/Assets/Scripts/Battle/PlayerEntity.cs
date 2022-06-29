@@ -16,7 +16,7 @@ public class PlayerEntity : MonoBehaviour, ISavable
     public GameObject partyMenu;
     public GameObject pauseMenu;
     public GameObject questMenu;
-    GameObject curMenu;
+    public GameObject curMenu;
     [SerializeField] TopDownMovement movement; //TopDownMovement class reference
     public CharacterParty party;
 
@@ -31,7 +31,12 @@ public class PlayerEntity : MonoBehaviour, ISavable
 
 
     [SerializeField] AudioSource manaHeal;
-  
+
+    public static PlayerEntity Player;
+    private void Awake()
+    {
+        Player = this;
+    }
 
     public int Money
     {
@@ -111,7 +116,7 @@ public class PlayerEntity : MonoBehaviour, ISavable
     /// Enable menu if not currently active + set correct gamestate and vice versa.
     /// </summary>
     /// <param name="menu"></param>
-    void ActivateMenu(GameObject menu)
+    public void ActivateMenu(GameObject menu)
     {
         if(curMenu == menu)
         {
@@ -128,6 +133,14 @@ public class PlayerEntity : MonoBehaviour, ISavable
             menu.SetActive(true);
             GameManager.Instance.gameState = GameState.Menu;
         }
+    }
+
+    public void DeactivateMenu()
+    {
+        inventory.SetActive(false);
+        partyMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        //questMenu.SetActive(false);
     }
 
     #region Entity to save

@@ -179,7 +179,7 @@ public class BattleSystem : MonoBehaviour
         //Find all BattleHud class in child and put in an array.
         pMemberHuds = playerHudContainer.GetComponentsInChildren<BattleHud>(true);
 
-        Debug.Log("PLAYER member slots = " + pMemberHuds.Length);
+        //Debug.Log("PLAYER member slots = " + pMemberHuds.Length);
 
         for (int i = 0; i < pMemberHuds.Length; i++)
         {
@@ -231,7 +231,7 @@ public class BattleSystem : MonoBehaviour
         //Find all BattleHud class in child and put in an array.
         eMemberHuds = enemyHudContainer.GetComponentsInChildren<BattleHud>(true);
 
-        Debug.Log("ENEMY member slots = " + eMemberHuds.Length);
+        //Debug.Log("ENEMY member slots = " + eMemberHuds.Length);
 
         for (int i = 0; i < eMemberHuds.Length; i++)
         {
@@ -488,7 +488,7 @@ public class BattleSystem : MonoBehaviour
             for (int j = 0; j < enemyUnits.Count; j++)
             {
                 StartCoroutine(enemyUnits[j].Progressor.SpeedProgress(enemyUnits[j].Character, enemyUnits[j]));
-                print(enemyUnits[j].Character.Speed);
+                //print(enemyUnits[j].Character.Speed);
             }
         }
     }
@@ -731,7 +731,7 @@ public class BattleSystem : MonoBehaviour
 
         vCamera.m_LookAt = centerBattle;
 
-        print($"Used {move.Base.Name.ToUpper()}.");
+        //print($"Used {move.Base.Name.ToUpper()}.");
         yield return dialogueBox.TypeDialogue($"{sourceUnit.Character.Base.charName.ToUpper()} used {move.Base.Name.ToUpper()}.");
         
         //Check if the attack landed.
@@ -1242,6 +1242,6 @@ public class BattleSystem : MonoBehaviour
 
         if (state != BattleState.Waiting) state = BattleState.Waiting;
 
-        print("clear progress");
+        //print("clear progress");
     }
 }

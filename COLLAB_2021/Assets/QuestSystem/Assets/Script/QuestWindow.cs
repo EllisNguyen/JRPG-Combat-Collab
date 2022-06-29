@@ -20,7 +20,7 @@ public class QuestWindow : MonoBehaviour
 
     public void Initalize(Quest quest)
     {
-        Debug.Log(quest.name);
+        //Debug.Log(quest.name);
         //get the title text
         titleText.text = quest.Infomation.Name;
         //get the description text
@@ -57,7 +57,7 @@ public class QuestWindow : MonoBehaviour
                 //if  player click skip obj
                 skipObj.GetComponent<Button>().onClick.AddListener(delegate
                 {
-                    Debug.Log("zxc");
+                    //Debug.Log("zxc");
                     //call skip function
                     goal.Skip();
                     //set countobj to true
