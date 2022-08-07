@@ -1,1 +1,1 @@
-# collapse2021
+# JPRG turn-based combat.
